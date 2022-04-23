@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Account">
+
+    <ImageView
+        android:id="@+id/backToSettings"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:scaleX="-1"
+        android:scaleY="-1"
+        android:src="@drawable/arrow_right" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/fonts"
+        android:gravity="center_horizontal"
+        android:text="ACCOUNT"
+        android:textColor="@color/black"
+        android:textSize="33sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        app:cardCornerRadius="80dp">
+
+        <ImageView
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:src="@drawable/profile_pic" />
+
+        <ImageView
+            android:layout_width="83dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/update_photo" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="215dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/name_title"
+            style="@style/account_txt_views"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/name_edt"
+            style="@style/account_edt_views"
+            app:layout_constraintBottom_toBottomOf="@+id/name_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/name_title"
+            app:layout_constraintTop_toTopOf="@+id/name_title" />
+
+        <TextView
+            android:id="@+id/gender_title"
+            style="@style/account_txt_views"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="Gender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_title" />
+
+        <ImageView
+            android:id="@+id/gender_male"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:adjustViewBounds="true"
+            android:elevation="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/gender_male_selected"
+            app:layout_constraintBottom_toBottomOf="@+id/gender_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toEndOf="@+id/gender_title"
+            app:layout_constraintTop_toTopOf="@+id/gender_title" />
+
+        <ImageView
+            android:id="@+id/gender_female"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:elevation="5dp"
+            android:src="@drawable/gender_female"
+            app:layout_constraintBottom_toBottomOf="@+id/gender_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.294"
+            app:layout_constraintStart_toEndOf="@+id/gender_male"
+            app:layout_constraintTop_toTopOf="@+id/gender_title" />
+
+        <TextView
+            android:id="@+id/age_title"
+            style="@style/account_txt_views"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="Age"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gender_title" />
+
+        <EditText
+            android:id="@+id/age_edt"
+            style="@style/account_edt_views"
+            app:layout_constraintBottom_toBottomOf="@+id/age_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/age_title"
+            app:layout_constraintTop_toTopOf="@+id/age_title" />
+
+        <TextView
+            android:id="@+id/email_title"
+            style="@style/account_txt_views"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="Email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/age_title" />
+
+        <EditText
+            android:id="@+id/email_edt"
+            style="@style/account_edt_views"
+            app:layout_constraintBottom_toBottomOf="@+id/email_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/email_title"
+            app:layout_constraintTop_toTopOf="@+id/email_title" />
+
+        <TextView
+            android:id="@+id/phone_title"
+            style="@style/account_txt_views"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:text="Phone No."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_title" />
+
+        <EditText
+            android:id="@+id/phone_edt"
+            style="@style/account_edt_views"
+            app:layout_constraintBottom_toBottomOf="@+id/phone_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/phone_title"
+            app:layout_constraintTop_toTopOf="@+id/phone_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:layout_width="177dp"
+        android:layout_height="42dp"
+        android:text="LOGOUT"
+        android:fontFamily="@font/fonts"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:backgroundTint="#FF565E"
+        android:background="@drawable/edit_text_background"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="30dp"/>
+</FrameLayout>

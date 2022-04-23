@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Messages">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You Have not\nStarted Chatting Yet"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="200dp"
+        android:textSize="24sp"
+        android:lineSpacingExtra="-24dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/fonts"
+        />
+    <Button
+        android:layout_width="305dp"
+        android:layout_height="55dp"
+        android:text="Start Chatting"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:fontFamily="@font/fonts"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:backgroundTint="#1D8BF1"
+        android:background="@drawable/edit_text_background"/>
+
+</FrameLayout>

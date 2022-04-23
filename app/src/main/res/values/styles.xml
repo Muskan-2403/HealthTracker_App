@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="setting_option">
+        <item name="android:layout_marginStart">94dp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:gravity">center_vertical|start</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:fontFamily">@font/fonts</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="account_txt_views">
+        <item name="android:fontFamily">@font/fonts</item>
+        <item name="android:textColor">#6A6A6A</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginStart">30dp</item>
+    </style>
+
+    <style name="account_edt_views">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:fontFamily">@font/fonts</item>
+        <item name="android:layout_marginStart">30dp</item>
+    </style>
+
+    <style name="client_list_title_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginTop">77dp</item>
+
+    </style>
+
+    <style name="client_list_details_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">100dp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="client_details_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="client_title_txt">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:fontFamily">@font/montserrat</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">12sp</item>
+    </style>
+</resources>
