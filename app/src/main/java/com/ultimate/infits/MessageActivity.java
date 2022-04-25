@@ -34,8 +34,8 @@ public class MessageActivity extends AppCompatActivity implements NavigationView
         toggle.syncState();
 
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new Messages()).commit();
-            navigationView.setCheckedItem(R.id.dashboard);
+            getSupportFragmentManager().beginTransaction().replace(R.id.message_activity_frame, new Messages()).commit();
+            navigationView.setCheckedItem(R.id.message);
         }
     }
     @Override
@@ -55,5 +55,8 @@ public class MessageActivity extends AppCompatActivity implements NavigationView
             startActivity(intent);
         }
         return true;
+    }
+    public void changeFrag(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.message_activity_frame,new ChattingArea()).commit();
     }
 }

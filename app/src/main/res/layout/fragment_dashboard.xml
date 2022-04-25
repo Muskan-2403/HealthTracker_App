@@ -70,6 +70,7 @@
                 android:layout_marginStart="40dp"
                 android:textColor="#4A4A4A"/>
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/client_profile"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:orientation="horizontal"

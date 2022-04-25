@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Messages">
+    tools:context=".Messages"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -20,6 +21,7 @@
         android:fontFamily="@font/fonts"
         />
     <Button
+        android:id="@+id/start_chatting_btn"
         android:layout_width="305dp"
         android:layout_height="55dp"
         android:text="Start Chatting"

@@ -21,7 +21,7 @@ public class Settings extends AppCompatActivity  implements NavigationView.OnNav
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_settings);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,10 +33,8 @@ public class Settings extends AppCompatActivity  implements NavigationView.OnNav
         draw.addDrawerListener(toggle);
         toggle.syncState();
 
-        if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new BlankFragment()).commit();
-            navigationView.setCheckedItem(R.id.dashboard);
-        }
+            getSupportFragmentManager().beginTransaction().add(R.id.settings_frag, new SettingMain()).commit();
+            navigationView.setCheckedItem(R.id.settings);
     }
     @Override
     public void onBackPressed() {
@@ -50,8 +48,8 @@ public class Settings extends AppCompatActivity  implements NavigationView.OnNav
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.settings){
-            Intent intent = new Intent(this,Settings.class);
+        if (item.getItemId() == R.id.message){
+            Intent intent = new Intent(this,MessageActivity.class);
             startActivity(intent);
         }
         return true;

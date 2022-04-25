@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -39,12 +40,18 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
             if (position == 3|| position == 1 && arrayList != AllMessages.unreadChat){
                 holder.unread.setVisibility(View.VISIBLE);
             }
+            holder.itemView.setOnClickListener(v ->{
+            MessageActivity messageActivity  = (MessageActivity) con;
+            messageActivity.changeFrag();
+            });
     }
 
     @Override
     public int getItemCount() {
         return arrayList.length;
     }
+
+
 
     public class ChatLogHolder extends RecyclerView.ViewHolder{
         TextView textView,unread;

@@ -4,7 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Client extends AppCompatActivity {
+public class
+Client extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

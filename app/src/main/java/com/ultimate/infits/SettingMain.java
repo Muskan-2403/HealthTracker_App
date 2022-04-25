@@ -3,8 +3,6 @@ package com.ultimate.infits;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,17 +59,15 @@ public class SettingMain extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting_main, container, false);
-        gotoAccount = view.findViewById(R.id.gotoAccount);
-        gotoAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new Account()).commit();
-            }
-        });
-        // Inflate the layout for this fragment
+//        gotoAccount = view.findViewById(R.id.gotoAccount);
+//        gotoAccount.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new Account()).commit();
+//            }
+//        });
         return view;
     }
 }
