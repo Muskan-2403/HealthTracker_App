@@ -57,6 +57,22 @@
         <entry key="..\:/Analaised/Infits/app/src/main/res/layout/notification_list.xml" value="0.14666666666666667" />
         <entry key="..\:/Analaised/Infits/app/src/main/res/layout/tracker_list_item.xml" value="0.22" />
         <entry key="..\:/Analaised/Infits/app/src/main/res/menu/main_menu.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/drawable/rounded_corner.xml" value="0.215625" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/font/aleo_light.xml" value="0.2296875" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/font/asul.xml" value="0.2296875" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/font/baloo_bhai_2.xml" value="0.2296875" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_dashboard.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_main.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_message.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_notification.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_enquiries_reports.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_profile_recycler.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_upcoming_consultations_layout.xml" value="0.25" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_dashboard.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_messages.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_setting_main.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/nav_header.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/menu/main_menu.xml" value="0.19947916666666668" />
       </map>
     </option>
   </component>
