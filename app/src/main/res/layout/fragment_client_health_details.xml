@@ -33,13 +33,10 @@
             android:textColor="@color/blue"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Client Documents"
-            android:fontFamily="@font/fonts"
-            android:textSize="18sp"
             android:layout_marginTop="80dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            style="@style/repeat_overlay_check" />
 
         <ImageView
             android:layout_width="18dp"
@@ -51,22 +48,16 @@
             android:layout_marginEnd="20dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Document Name"
-            android:fontFamily="@font/fonts"
-            android:textSize="18sp"
             android:layout_marginTop="110dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            style="@style/repeat_overlay_check" />
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Upload Date"
-            android:fontFamily="@font/fonts"
-            android:textSize="18sp"
             android:layout_marginTop="110dp"
             android:layout_marginStart="130dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            style="@style/repeat_overlay_check" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/files_list"

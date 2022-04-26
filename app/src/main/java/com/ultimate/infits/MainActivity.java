@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new AllMessages()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new DietChartFragment()).commit();
             navigationView.setCheckedItem(R.id.dashboard);
         }
     }
