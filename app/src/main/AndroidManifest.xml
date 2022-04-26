@@ -19,9 +19,6 @@
             android:name=".Notification"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -40,6 +37,10 @@
         <activity
             android:name=".ClientListSearch"
             android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

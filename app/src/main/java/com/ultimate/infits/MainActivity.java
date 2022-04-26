@@ -50,14 +50,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.message){
-            Intent intent = new Intent(this,MessageActivity.class);
-            startActivity(intent);
+        switch(item.getItemId())
+        {
+            case R.id.dashboard:
+                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new DashboardFragment()).commit();
+                break;
+
+            case R.id.message:
+                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Messages()).commit();
+                break;
+
+            case R.id.settings:
+                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new SettingMain()).commit();
+
         }
-        if (item.getItemId() == R.id.settings){
-            Intent intent = new Intent(this,Settings.class);
-            startActivity(intent);
-        }
+        //if(item.getItemId()==R.id.dashboard)
+
+        //if (item.getItemId() == R.id.message){
+          //  Intent intent = new Intent(this,MessageActivity.class);
+            //startActivity(intent);
+        //}
+        //if (item.getItemId() == R.id.settings){
+          //  Intent intent = new Intent(this,Settings.class);
+            //startActivity(intent);
+        //}
         return true;
     }
 }
