@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="400dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
@@ -39,59 +39,56 @@
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="80dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:paddingEnd="50dp">
                 <androidx.cardview.widget.CardView
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    app:cardElevation="20dp"
-                    android:layout_marginEnd="20dp"/>
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:cardElevation="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:cardCornerRadius="10dp"/>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    app:cardElevation="20dp" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:cardElevation="10dp"
+                    app:cardCornerRadius="10dp"/>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    app:cardElevation="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"/>
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:cardElevation="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:cardCornerRadius="10dp"/>
                 <androidx.cardview.widget.CardView
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    app:cardElevation="20dp"/>
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:cardElevation="10dp"
+                    app:cardCornerRadius="10dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/food_list"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_marginTop="30dp">
             <LinearLayout
-                android:layout_width="250dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_margin="5dp">
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
                     <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"
-                        app:cardElevation="20dp" />
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginVertical="5dp"
+                        app:cardElevation="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -143,11 +140,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
                     <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"
-                        app:cardElevation="20dp" />
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginVertical="5dp"
+                        app:cardElevation="10dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -199,11 +197,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
                     <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"
-                        app:cardElevation="20dp" />
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginVertical="5dp"
+                        app:cardElevation="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -255,11 +254,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
                     <androidx.cardview.widget.CardView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"
-                        app:cardElevation="20dp" />
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginVertical="5dp"
+                        app:cardElevation="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
