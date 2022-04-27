@@ -16,7 +16,7 @@ import android.widget.ImageView;
  */
 public class SettingMain extends Fragment {
 
-    ImageView gotoAccount;
+    ImageView gotoAccount,achievements,notifications,aboutUs,help;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,11 +61,39 @@ public class SettingMain extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting_main, container, false);
-        gotoAccount = view.findViewById(R.id.gotoAccount);
+        gotoAccount = view.findViewById(R.id.dieitician_gotoAccount);
         gotoAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.settings_frag, new Account()).commit();
+            }
+        });
+        achievements=view.findViewById(R.id.dieitician_achievements_settings_view);
+        achievements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.settings_frag,new Achivement()).commit();
+            }
+        });
+        aboutUs=view.findViewById(R.id.dietician_about_us_view);
+        aboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.settings_frag,new )
+            }
+        });
+        help=view.findViewById(R.id.dietician_help_view);
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        notifications=view.findViewById(R.id.dietician_notifications_view);
+        notifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
         return view;

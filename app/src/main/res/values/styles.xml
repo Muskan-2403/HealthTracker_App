@@ -72,7 +72,7 @@
         <item name="android:layout_width">25dp</item>
         <item name="android:layout_height">25dp</item>
         <item name="android:gravity">center|bottom</item>
-        <item name="android:background">@drawable/img</item>
+        <item name="android:background">@drawable/purple_icon</item>
         <item name="android:fontFamily">@font/fonts</item>
         <item name="android:textSize">15sp</item>
         <item name="android:layout_marginStart">10dp</item>
