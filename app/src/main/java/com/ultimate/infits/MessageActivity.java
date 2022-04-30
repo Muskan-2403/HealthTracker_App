@@ -11,8 +11,4 @@ public class MessageActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
     }
-    @Override
-    public void onBackPressed() {
-
-    }
 }

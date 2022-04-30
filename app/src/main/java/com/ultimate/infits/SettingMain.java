@@ -2,7 +2,12 @@ package com.ultimate.infits;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +21,8 @@ import android.widget.ImageView;
  */
 public class SettingMain extends Fragment {
 
-    ImageView gotoAccount,achievements,notifications,aboutUs,help;
-
+    ImageView aboutUs,help;
+    CardView gotoAccount,achievements,notifications;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,40 +67,44 @@ public class SettingMain extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting_main, container, false);
         gotoAccount = view.findViewById(R.id.dieitician_gotoAccount);
-        gotoAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.settings_frag, new Account()).commit();
-            }
+        notifications = view.findViewById(R.id.notification);
+        gotoAccount.setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_account);
         });
         achievements=view.findViewById(R.id.dieitician_achievements_settings_view);
-        achievements.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.settings_frag,new Achivement()).commit();
-            }
+        achievements.setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_achivement);
         });
-        aboutUs=view.findViewById(R.id.dietician_about_us_view);
-        aboutUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              //  getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.settings_frag,new )
-            }
+        notifications.setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_notification);
         });
-        help=view.findViewById(R.id.dietician_help_view);
-        help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        return view;
+    }
 
-            }
-        });
-        notifications=view.findViewById(R.id.dietician_notifications_view);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+//        aboutUs=view.findViewById(R.id.dietician_about_us_view);
+//        aboutUs.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//              //  getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.settings_frag,new )
+//            }
+//        });
+//        help=view.findViewById(R.id.dietician_help_view);
+//        help.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+        notifications=view.findViewById(R.id.notification);
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Navigation.findNavController(v).navigate(R.id.action_settingMain_to_notification);
             }
         });
-        return view;
     }
 }
