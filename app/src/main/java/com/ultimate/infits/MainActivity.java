@@ -66,21 +66,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId())
         {
+            case R.id.clientList:
+                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new ClientList()).commit();
+                draw.closeDrawer(GravityCompat.START);
+                break;
             case R.id.dashboard:
                 getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new DashboardFragment()).commit();
                 draw.closeDrawer(GravityCompat.START);
                 break;
-
             case R.id.message:
                 startActivity(new Intent(this,MessageActivity.class));
                 draw.closeDrawer(GravityCompat.START);
                 break;
-
             case R.id.settings:
                 startActivity(new Intent(this,Settings.class));
                 draw.closeDrawer(GravityCompat.START);
                 break;
-
             case R.id.Appointment:
                 getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Calender()).commit();
                 draw.closeDrawer(GravityCompat.START);
