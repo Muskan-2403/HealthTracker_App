@@ -8,9 +8,18 @@
         android:layout_width="340dp"
         android:layout_height="110dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="40dp"
         android:backgroundTint="#C6E0FF"
         app:cardCornerRadius="20dp">
+
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/bar" />
 
         <TextView
             android:layout_width="wrap_content"
