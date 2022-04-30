@@ -1,6 +1,7 @@
 package com.ultimate.infits;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -63,6 +64,9 @@ public class ClientListAdapter extends RecyclerView.Adapter<ClientListAdapter.Cl
         holder.name.setText(pos.getClient_list_name());
         holder.startdate.setText(pos.getClient_list_startdate());
         holder.enddate.setText(pos.getClient_list_enddate());
+        holder.itemView.setOnClickListener(v->{
+                ct.startActivity(new Intent(ct,ClientDetails.class));
+        });
     }
 
     @Override

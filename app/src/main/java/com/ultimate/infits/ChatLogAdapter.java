@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -41,8 +42,9 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
                 holder.unread.setVisibility(View.VISIBLE);
             }
             holder.itemView.setOnClickListener(v ->{
-            MessageActivity messageActivity  = (MessageActivity) con;
-            messageActivity.changeFrag();
+//            MessageActivity messageActivity  = (MessageActivity) con;
+//            messageActivity.changeFrag();
+                Navigation.findNavController(v).navigate(R.id.action_allMessages_to_chattingArea);
             });
     }
 

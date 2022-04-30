@@ -38,14 +38,14 @@ public class ClientDetails extends AppCompatActivity  {
         metrics_btn = findViewById(R.id.metrics_btn);
         tracker_btn = findViewById(R.id.tracker_btn);
         health_details_btn = findViewById(R.id.health_details_btn);
-        getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new BlankFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new DietChartFragment()).commit();
         diet_chart_btn.setOnClickListener(v ->{
             diet_chart_btn.setBackgroundResource(R.drawable.diet_chart_selected);
             chat_btn.setBackgroundResource(R.drawable.chat_unselected);
             metrics_btn.setBackgroundResource(R.drawable.metrics_unselected);
             tracker_btn.setBackgroundResource(R.drawable.tracker_unselected);
             health_details_btn.setBackgroundResource(R.drawable.health_details_unselected);
-            getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new BlankFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new DietChartFragment()).commit();
         });
         chat_btn.setOnClickListener(v ->{
             diet_chart_btn.setBackgroundResource(R.drawable.diet_chart_unselected);

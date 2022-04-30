@@ -4,6 +4,10 @@
     tools:showIn="navigation_view">
 <group android:checkableBehavior="all">
     <item
+        android:id="@+id/clientList"
+        android:title="Client List"
+        android:icon="@drawable/dashboard"/>
+    <item
         android:id="@+id/dashboard"
         android:title="Dashboard"
         android:icon="@drawable/dashboard"/>

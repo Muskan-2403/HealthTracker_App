@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/message_nav"
     app:startDestination="@id/messages">
 
     <fragment
@@ -19,11 +19,12 @@
         android:name="com.ultimate.infits.AllMessages"
         android:label="fragment_all_messages"
         tools:layout="@layout/fragment_all_messages" >
+
         <action
             android:id="@+id/action_allMessages_to_chattingArea"
             app:destination="@id/chattingArea" />
         <action
-            android:id="@+id/action_allMessages_to_messages"
+            android:id="@+id/action_allMessages_to_messages3"
             app:destination="@id/messages" />
     </fragment>
     <fragment
@@ -32,7 +33,7 @@
         android:label="fragment_chatting_area"
         tools:layout="@layout/fragment_chatting_area" >
         <action
-            android:id="@+id/action_chattingArea_to_allMessages"
+            android:id="@+id/action_chattingArea_to_allMessages4"
             app:destination="@id/allMessages" />
     </fragment>
 </navigation>

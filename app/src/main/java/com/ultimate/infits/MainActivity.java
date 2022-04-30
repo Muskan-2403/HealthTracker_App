@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
-            //navigationView.setCheckedItem(R.id.dashboard);
         }
         else{
             getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.message:
-                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Messages()).commit();
+                startActivity(new Intent(this,MessageActivity.class));
                 draw.closeDrawer(GravityCompat.START);
                 break;
 
