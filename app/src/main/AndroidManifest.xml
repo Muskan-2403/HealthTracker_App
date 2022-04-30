@@ -39,6 +39,7 @@
         <activity
             android:name=".ClientListSearch"
             android:exported="false" />
+        
 
         <meta-data
             android:name="preloaded_fonts"
