@@ -4,6 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ClientList">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="300dp"
+            android:id="@+id/search_mag_icon"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/filter_icon"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <RadioGroup
         android:id="@+id/toggle"
@@ -12,7 +31,7 @@
         android:background="@drawable/outline"
         android:checkedButton="@+id/active_btn"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="45dp"
         android:layout_marginStart="25dp">
 
         <RadioButton
@@ -41,11 +60,13 @@
             android:textColor="@drawable/switch_text"
             android:fontFamily="@font/fonts"/>
     </RadioGroup>
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/client_list"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="60dp"
-    android:padding="30dp"
-    android:layout_gravity="center_horizontal"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/client_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:padding="5dp" />
+    </LinearLayout>
 </FrameLayout>

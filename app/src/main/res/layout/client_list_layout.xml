@@ -14,6 +14,7 @@
         app:cardCornerRadius="10dp">
 
         <ImageView
+            android:id="@+id/client_list_profile_pic"
             android:layout_width="46dp"
             android:layout_height="46dp"
             android:layout_marginStart="14dp"
@@ -21,6 +22,7 @@
             android:src="@drawable/doctor_pic" />
 
         <TextView
+            android:id="@+id/client_list_profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="69dp"
@@ -66,16 +68,19 @@
             android:text="End" />
 
         <TextView
+            android:id="@+id/client_list_plan_name"
             style="@style/client_list_details_txt"
             android:layout_marginStart="11dp"
             android:text="Muscle Gain" />
 
         <TextView
+            android:id="@+id/client_list_startdate"
             style="@style/client_list_details_txt"
             android:layout_marginStart="123dp"
             android:text="10 Mar 2022" />
 
         <TextView
+            android:id="@+id/client_list_enddate"
             style="@style/client_list_details_txt"
             android:layout_marginStart="243dp"
             android:text="10 Mar 2023" />

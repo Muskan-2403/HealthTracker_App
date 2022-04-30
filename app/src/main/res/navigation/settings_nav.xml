@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_nav"
+    app:startDestination="@id/settingMain">
+
+    <fragment
+        android:id="@+id/settingMain"
+        android:name="com.ultimate.infits.SettingMain"
+        android:label="fragment_setting_main"
+        tools:layout="@layout/fragment_setting_main" >
+        <action
+            android:id="@+id/action_settingMain_to_account"
+            app:destination="@id/account" />
+        <action
+            android:id="@+id/action_settingMain_to_achivement"
+            app:destination="@id/achivement" />
+        <action
+            android:id="@+id/action_settingMain_to_notification"
+            app:destination="@id/notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/account"
+        android:name="com.ultimate.infits.Account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_account_to_settingMain"
+            app:destination="@id/settingMain" />
+    </fragment>
+    <fragment
+        android:id="@+id/achivement"
+        android:name="com.ultimate.infits.Achivement"
+        android:label="fragment_achivement"
+        tools:layout="@layout/fragment_achivement" >
+        <action
+            android:id="@+id/action_achivement_to_settingMain"
+            app:destination="@id/settingMain" />
+    </fragment>
+    <fragment
+        android:id="@+id/notification"
+        android:name="com.ultimate.infits.Notification"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notification_to_settingMain"
+            app:destination="@id/settingMain" />
+    </fragment>
+</navigation>

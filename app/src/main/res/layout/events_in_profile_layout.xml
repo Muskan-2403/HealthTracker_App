@@ -30,7 +30,11 @@
             android:text="Martha Finch"
             android:textColor="#004EAD"
             android:textSize="18sp" />
-
+            android:text="Martha Finch"
+            android:textColor="#004EAD"
+            android:layout_marginTop="35dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/repeat_overlay_check" />
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -47,7 +51,10 @@
             android:text="9:00 - 10:00"
             android:textColor="#004EAD"
             android:textSize="18sp" />
-
+            android:text="9:00 - 10:00"
+            android:textColor="#004EAD"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/repeat_overlay_check" />
     </androidx.cardview.widget.CardView>
-
 </RelativeLayout>

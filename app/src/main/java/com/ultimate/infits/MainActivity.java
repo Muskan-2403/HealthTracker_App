@@ -11,12 +11,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout draw;
     NavigationView navigationView;
+    LinearLayout nav_account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +36,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new AllMessages()).commit();
-            navigationView.setCheckedItem(R.id.dashboard);
+            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
         }
+        else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
+            draw.open();
+        }
+        nav_account= (LinearLayout) findViewById(R.id.nav_account);
+        nav_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                draw.closeDrawer(GravityCompat.START);
+                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Profile()).commit();
+            }
+        });
     }
 
     @Override
@@ -54,26 +68,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             case R.id.dashboard:
                 getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new DashboardFragment()).commit();
+                draw.closeDrawer(GravityCompat.START);
                 break;
 
             case R.id.message:
-                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Messages()).commit();
+                startActivity(new Intent(this,MessageActivity.class));
+                draw.closeDrawer(GravityCompat.START);
                 break;
 
             case R.id.settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new SettingMain()).commit();
+                startActivity(new Intent(this,Settings.class));
+                draw.closeDrawer(GravityCompat.START);
+                break;
 
+            case R.id.Appointment:
+                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Calender()).commit();
+                draw.closeDrawer(GravityCompat.START);
+                break;
         }
-        //if(item.getItemId()==R.id.dashboard)
-
-        //if (item.getItemId() == R.id.message){
-          //  Intent intent = new Intent(this,MessageActivity.class);
-            //startActivity(intent);
-        //}
-        //if (item.getItemId() == R.id.settings){
-          //  Intent intent = new Intent(this,Settings.class);
-            //startActivity(intent);
-        //}
         return true;
     }
 }
