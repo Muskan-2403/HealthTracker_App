@@ -7,44 +7,46 @@
     <androidx.cardview.widget.CardView
         android:layout_width="340dp"
         android:layout_height="110dp"
-        app:cardCornerRadius="20dp"
-        android:backgroundTint="#C6E0FF">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Appointment"
-            android:fontFamily="@font/fonts"
-            android:textSize="20sp"
-            android:textColor="#004EAD"
-            android:layout_gravity="center_horizontal"
-            />
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:backgroundTint="#C6E0FF"
+        app:cardCornerRadius="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Martha Finch"
-            android:textColor="#004EAD"
-            android:fontFamily="@font/fonts"
-            android:layout_marginTop="35dp"
-            android:textSize="18sp"
             android:layout_gravity="center_horizontal"
-            />
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/clock"
-            android:layout_marginTop="70dp"
-            android:layout_marginStart="110dp"/>
+            android:fontFamily="@font/fonts"
+            android:text="Appointment"
+            android:textColor="#004EAD"
+            android:textSize="20sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="9:00 - 10:00"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/fonts"
+            android:text="Martha Finch"
             android:textColor="#004EAD"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="70dp"
+            android:src="@drawable/clock" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="60dp"
             android:fontFamily="@font/fonts"
-            android:textSize="18sp"
-            android:layout_gravity="center_horizontal"
-            />
+            android:text="9:00 - 10:00"
+            android:textColor="#004EAD"
+            android:textSize="18sp" />
 
     </androidx.cardview.widget.CardView>
 

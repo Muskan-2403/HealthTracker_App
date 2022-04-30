@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ClientListSearch"
     android:orientation="vertical">
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_margin="25dp"
+        android:layout_width="347dp"
+        android:layout_height="26dp"
         android:layout_gravity="center"
-        android:hint="Search"
+        android:layout_margin="25dp"
+        android:background="@drawable/message_box"
         android:fontFamily="@font/fonts"
-        android:background="@drawable/message_box"/>
+        android:hint="Search" />
     <RadioGroup
         android:id="@+id/toggle"
         android:layout_width="140dp"
