@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ultimate.infits">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,19 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".register"
+            android:exported="false" />
+        <activity
+            android:name=".login"
+            android:exported="false" />
+        <activity
             android:name=".Tracker"
             android:exported="false" />
-         <activity
-         android:name=".WeekSetter"
-         android:exported="false" />
-        <activity android:name=".ClientDetails"
-            android:exported="false"/>
+        <activity
+            android:name=".WeekSetter"
+            android:exported="false" />
+        <activity
+            android:name=".ClientDetails"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,12 +41,12 @@
         <activity
             android:name=".MessageActivity"
             android:exported="false" />
-        <activity android:name=".Settings"
-            android:exported="false"/>
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
         <activity
             android:name=".ClientListSearch"
             android:exported="false" />
-        
 
         <meta-data
             android:name="preloaded_fonts"
