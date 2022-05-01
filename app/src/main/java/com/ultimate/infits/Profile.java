@@ -6,6 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,18 @@ import androidx.fragment.app.Fragment;
  */
 public class Profile extends Fragment {
 
+    RecyclerView recyclerView1;
+    String reviewer_name[]={"Martha Finch", "Martha Finch","Martha Finch","Martha Finch"};
+    String reviwer_ratings[]={"4.8","4.8","4.8","4.8"};
+    String reviwer_review[]={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet... ",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet... ",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet... ",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet... "};
+    String reviewer_image[]={"app/src/main/res/drawable-v24/review_profile.png"
+            ,"app/src/main/res/drawable-v24/review_profile.png", "app/src/main/res/drawable-v24/review_profile.png",
+            "app/src/main/res/drawable-v24/review_profile.png"};
+
+    List<Dietician_review> obj= new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,6 +75,16 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View v= inflater.inflate(R.layout.fragment_profile, container, false);
+        RecyclerView r1=v.findViewById(R.id.dietician_reviews);
+        for (int i=0;i<reviewer_image.length;i++)
+        {
+            Dietician_review object=new Dietician_review(reviewer_name[i],reviewer_image[i],reviwer_review[i],reviwer_ratings[i]);
+            obj.add(object);
+        }
+        Dietician_review_adapter adap=new Dietician_review_adapter(getContext(),obj);
+        r1.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        r1.setAdapter(adap);
+        return v;
     }
 }

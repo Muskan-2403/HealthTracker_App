@@ -3,6 +3,7 @@ package com.ultimate.infits;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -66,7 +67,10 @@ public class Messages extends Fragment {
         View view = inflater.inflate(R.layout.fragment_messages, container, false);
         start_chatting_btn = view.findViewById(R.id.start_chatting_btn);
         start_chatting_btn.setOnClickListener(v ->{
-            Navigation.findNavController(v).navigate(R.id.action_messages_to_allMessages);
+            FragmentTransaction ftmess1= getActivity().getSupportFragmentManager().beginTransaction();
+            ftmess1.replace(R.id.FrameContainer,new BlankFragment());
+            ftmess1.add(R.id.FrameContainer,new AllMessages());
+            ftmess1.commit();
         });
         return view;
     }
