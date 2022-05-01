@@ -51,7 +51,7 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
 
         }
         holder.pdate.setText(d);
-        holder.ptime.setText("Rs."+t);
+        holder.ptime.setText(t);
        // holder.pimg.setImageDrawable(img);
         holder.pname.setText(n);
     }

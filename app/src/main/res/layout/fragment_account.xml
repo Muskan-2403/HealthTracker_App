@@ -47,7 +47,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginTop="215dp"
         android:padding="10dp">
 
@@ -154,17 +154,22 @@
             app:layout_constraintStart_toEndOf="@+id/phone_title"
             app:layout_constraintTop_toTopOf="@+id/phone_title" />
 
+        <Button
+            android:layout_width="177dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/edit_text_background"
+            android:backgroundTint="#FF565E"
+            android:fontFamily="@font/fonts"
+            android:text="LOGOUT"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.585"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.997" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:layout_width="177dp"
-        android:layout_height="42dp"
-        android:text="LOGOUT"
-        android:fontFamily="@font/fonts"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:backgroundTint="#FF565E"
-        android:background="@drawable/edit_text_background"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="30dp"/>
 </FrameLayout>

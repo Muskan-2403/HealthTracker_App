@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="210dp"
     android:orientation="vertical"
     android:backgroundTint="#EFF8FF"
     android:layout_marginStart="10dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="134dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         app:cardCornerRadius="10dp"
         app:cardBackgroundColor="#EFF8FF"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp">
 
         <TextView
             android:id="@+id/consultation_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo_bhai_2"
-            android:layout_marginLeft="47dp"
+            android:layout_marginLeft="39dp"
             android:layout_marginTop="8dp"
             android:text="Dec 07"
             android:textColor="#4A4A4A" />
@@ -31,14 +31,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo_bhai_2"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="43dp"
+            android:layout_marginLeft="39dp"
             android:text="05:00 PM" />
-        android:textColor="#4A4A4A"
+        <!--android:textColor="#4A4A4A"-->
         <androidx.cardview.widget.CardView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="47dp"
-            android:layout_marginLeft="47dp">
+            android:layout_marginLeft="39dp">
             <ImageView
                 android:id="@+id/consultation_profile_photo"
                 android:layout_width="60dp"
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="110dp"
             android:text="Michael Simpson"
             android:textSize="18dp" />
 
@@ -66,9 +66,9 @@
             android:layout_height="25dp"
             android:layout_marginTop="165dp"
             android:text="Join the call"
-            android:background="@drawable/rounded_corner"/>
-
-
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#9e9e9e"/>
+        
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

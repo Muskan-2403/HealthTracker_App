@@ -65,7 +65,7 @@ public class DietChartFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_diet_chart, container, false);
         re = view.findViewById(R.id.diet_chart_list);
-        String[] time = {"Breakfast","lunch","Diner"};
+        String[] time = {"Breakfast","Lunch","Dinner"};
         DietChartAdapter da = new DietChartAdapter(time,getContext());
         re.setAdapter(da);
         re.setLayoutManager(new LinearLayoutManager(getContext()));

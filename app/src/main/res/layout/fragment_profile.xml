@@ -44,7 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:drawableStart="@drawable/star"
-            android:text="4.8 (25 Reviews)" />
+            android:text="4.8 (25 Reviews)"
+            android:layout_marginTop="3dp"/>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
