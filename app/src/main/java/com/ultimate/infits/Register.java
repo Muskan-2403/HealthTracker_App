@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class register extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
     EditText username,password;
     Button registerBtn;
     connectionHelper connectionHelper;
+    Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class register extends AppCompatActivity {
         username = findViewById(R.id.usernameReg);
         password = findViewById(R.id.passwordReg);
         registerBtn = findViewById(R.id.registerbtn);
+        login = findViewById(R.id.memlog);
         connectionHelper = new connectionHelper(this);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -31,24 +33,30 @@ public class register extends AppCompatActivity {
                 String pass = password.getText().toString();
 
                 if (uname.equals("")||pass.equals("")){
-                    Toast.makeText(register.this,"Please enter all the feilds",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this,"Please enter all the feilds",Toast.LENGTH_SHORT).show();
                 }else {
-                    Boolean checkpass = connectionHelper.checkUsernamePass(uname,pass);
-                    if (checkpass==false){
+                    Boolean checkusernamePass = connectionHelper.checkUsernamePass(uname,pass);
+                    if (checkusernamePass==false){
                         Boolean insert = connectionHelper.insertData(uname,pass);
                         if (insert==true){
-                            Toast.makeText(register.this,"registered successfully!!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this,"registered successfully!!",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(intent);
                         }else {
-                            Toast.makeText(register.this,"registration failed",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this,"registration failed",Toast.LENGTH_SHORT).show();
                         }
                     }else {
-                        Toast.makeText(register.this,"user already exists. Please login",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this,"user already exists. Please login",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Login.class));
+            }
+        });
     }
 }

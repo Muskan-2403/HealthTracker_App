@@ -4,23 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login">
-
-    <TextView
-        android:id="@+id/reg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register for new account"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:clickable="true"
-        android:fontFamily="@font/nats_regular"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+    tools:context=".Login">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
@@ -28,7 +12,6 @@
         android:layout_width="303dp"
         android:layout_height="wrap_content"
         android:hint="Username"
-        android:fontFamily="@font/nats_regular"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:hintTextColor="@color/white"
@@ -41,19 +24,9 @@
             android:id="@+id/unameLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="username" />
+            android:hint="username"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="303dp"
-        android:layout_height="297dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/infit_transparent2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout5"
@@ -62,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:hint="Password"
-        android:fontFamily="@font/nats_regular"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:hintTextColor="@color/white"
@@ -75,7 +47,8 @@
             android:id="@+id/passLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password" />
+            android:hint="password"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -83,7 +56,6 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/white"
-        android:fontFamily="@font/nats_regular"
         android:text="Login"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -97,65 +69,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.782" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/social_back"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921"
-        app:srcCompat="@drawable/google" />
-
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/social_back"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921"
-        app:srcCompat="@drawable/twitter" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/social_back"
-        android:backgroundTint="@color/white"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.849"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921"
-        app:srcCompat="@drawable/facebook" />
-
-    <TextView
-        android:id="@+id/fpass"
+    <Button
+        android:id="@+id/regBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password?"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:clickable="true"
-        android:fontFamily="@font/nats_regular"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
+        android:text="register"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="548dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

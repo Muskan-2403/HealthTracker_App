@@ -41,16 +41,6 @@ public class connectionHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean checkUserName(String username){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from infitsDB where username = ?",new String[] {username});
-        if(cursor.getCount()>0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     public boolean checkUsernamePass(String username,String password){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("select * from infitsDB where username = ? and passwor = ?",new String[] {username,password});
