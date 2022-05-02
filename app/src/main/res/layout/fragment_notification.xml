@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
     tools:context=".Notification"
     android:background="@drawable/notification_background">
 
@@ -15,10 +16,10 @@
         android:textColor="@color/white"
         android:layout_margin="35dp"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notification_list"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"/>
 
 </FrameLayout>

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -69,15 +70,29 @@ public class SettingMain extends Fragment {
         gotoAccount = view.findViewById(R.id.dieitician_gotoAccount);
         notifications = view.findViewById(R.id.notification);
         gotoAccount.setOnClickListener(v->{
-            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_account);
+            FragmentTransaction ftset1= getActivity().getSupportFragmentManager().beginTransaction();
+            ftset1.replace(R.id.FrameContainer,new BlankFragment());
+            ftset1.add(R.id.FrameContainer,new Account());
+            ftset1.addToBackStack("settings_account");
+            ftset1.commit();
+            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Account()).commit();
+            //Navigation.findNavController(v).navigate(R.id.action_settingMain_to_account);
         });
         achievements=view.findViewById(R.id.dieitician_achievements_settings_view);
         achievements.setOnClickListener(v->{
-            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_achivement);
-        });
+            FragmentTransaction ftset2= getActivity().getSupportFragmentManager().beginTransaction();
+            ftset2.replace(R.id.FrameContainer,new BlankFragment());
+            ftset2.add(R.id.FrameContainer,new Achivement());
+            ftset2.addToBackStack("settings_achievement");
+            ftset2.commit();
+       });
         notifications.setOnClickListener(v->{
-            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_notification);
-        });
+            FragmentTransaction ftset3= getActivity().getSupportFragmentManager().beginTransaction();
+            ftset3.replace(R.id.FrameContainer,new BlankFragment());
+            ftset3.add(R.id.FrameContainer,new Notification());
+            ftset3.addToBackStack("settings_notification");
+            ftset3.commit();
+       });
         return view;
     }
 
@@ -99,12 +114,5 @@ public class SettingMain extends Fragment {
 //
 //            }
 //        });
-        notifications=view.findViewById(R.id.notification);
-        notifications.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_settingMain_to_notification);
-            }
-        });
     }
 }

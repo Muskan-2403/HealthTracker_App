@@ -38,15 +38,15 @@
             android:id="@+id/active_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:background="@drawable/switch_off"
             android:button="@null"
+            android:fontFamily="@font/fonts"
             android:gravity="center"
-            android:layout_margin="1dp"
             android:text="Active"
             android:textColor="@drawable/switch_text"
-            android:fontFamily="@font/fonts"
-            />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
             android:id="@+id/pending_btn"
