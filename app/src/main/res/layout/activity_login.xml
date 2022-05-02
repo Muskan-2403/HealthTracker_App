@@ -6,50 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="303dp"
+
+    <EditText
+        android:id="@+id/unameLogin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="306dp"
+        android:hint="username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/unameLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="username"
-            tools:ignore="TouchTargetSizeCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="303dp"
+    <EditText
+        android:id="@+id/passLogin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:hint="Password"
-        android:textColorHint="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="24dp"
+        android:hint="password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="password"
-            tools:ignore="TouchTargetSizeCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/unameLogin"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/loginbtn"
@@ -73,8 +51,12 @@
         android:id="@+id/regBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="168dp"
         android:text="register"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="548dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
