@@ -25,14 +25,14 @@ public class Dietician_review_adapter extends RecyclerView.Adapter<Dietician_rev
 
     @NonNull
     @Override
-    public Dietician_review_adapter.Dietician_review_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Dietician_review_ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
         View view=inflater.inflate(R.layout.dietician_reviews,parent,false);
-        return new Dietician_review_adapter.Dietician_review_ViewHolder(view);
+        return new Dietician_review_ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Dietician_review_adapter.Dietician_review_ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Dietician_review_ViewHolder holder, int position) {
         Dietician_review pos=list1.get(position);
 
         String r=pos.getReviewer_rating();

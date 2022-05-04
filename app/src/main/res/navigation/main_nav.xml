@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/clientList3">
+    <fragment
+        android:id="@+id/clientList3"
+        android:name="com.ultimate.infits.ClientList"
+        android:label="fragment_client_list"
+        tools:layout="@layout/fragment_client_list" >
+        <action
+            android:id="@+id/action_clientList3_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_clientList3_to_calender"
+            app:destination="@id/calender" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.ultimate.infits.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/calender"
+        android:name="com.ultimate.infits.Calender"
+        android:label="fragment_calender"
+        tools:layout="@layout/fragment_calender" />
+</navigation>

@@ -2,7 +2,6 @@ package com.ultimate.infits;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.*;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

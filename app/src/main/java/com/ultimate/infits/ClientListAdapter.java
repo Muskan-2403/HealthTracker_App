@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class ClientListAdapter extends RecyclerView.Adapter<ClientListAdapter.ClientListHolder>{
     Context ct;

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_side_menu_navigation"
+    app:startDestination="@id/clientList2">
+
+    <fragment
+        android:id="@+id/clientList2"
+        android:name="com.ultimate.infits.ClientList"
+        android:label="fragment_client_list"
+        tools:layout="@layout/fragment_client_list" >
+        <action
+            android:id="@+id/action_clientList2_to_profile"
+            app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_clientList2_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_clientList2_to_calender"
+            app:destination="@id/calender" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.ultimate.infits.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <include app:graph="@navigation/message_nav" />
+    <include app:graph="@navigation/settings_nav" />
+    <fragment
+        android:id="@+id/calender"
+        android:name="com.ultimate.infits.Calender"
+        android:label="fragment_calender"
+        tools:layout="@layout/fragment_calender" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.ultimate.infits.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

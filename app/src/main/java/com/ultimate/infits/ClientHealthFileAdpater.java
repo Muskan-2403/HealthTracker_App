@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.zip.Inflater;
-
 public class ClientHealthFileAdpater extends RecyclerView.Adapter<ClientHealthFileAdpater.ClientHealthFileViewHolder> {
 
     Context ct;

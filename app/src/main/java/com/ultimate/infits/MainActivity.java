@@ -1,24 +1,16 @@
 package com.ultimate.infits;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.LinearLayout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-
-import android.widget.LinearLayout;
-
-import android.widget.RelativeLayout;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -28,7 +20,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout draw;
     NavigationView navigationView;
-    RelativeLayout nav_account;
+    LinearLayout nav_account;
     public static List<String> stack_fragment= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,43 +33,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         draw = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,draw,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,draw,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         draw.addDrawerListener(toggle);
         toggle.syncState();
 
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
-            stack_fragment.add("client_list");
+//            Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.client_list);
+            //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
+            //stack_fragment.add("client_list");
+            System.out.println("My name is jeff");
         }
         else{
-            getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
             draw.open();
         }
-        nav_account= (RelativeLayout) findViewById(R.id.nav_account);
-        nav_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                draw.closeDrawer(GravityCompat.START);
-                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Profile()).commit();
-            }
+
+        nav_account= (LinearLayout) findViewById(R.id.nav_account);
+        nav_account.setOnClickListener(v -> {
+            draw.closeDrawer(GravityCompat.START);
+            Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.profile);
+            //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Profile()).commit();
         });
     }
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         if (draw.isDrawerOpen(GravityCompat.START)){
             draw.closeDrawer(GravityCompat.START);
         }
         else{
-            if(getSupportFragmentManager().getBackStackEntryCount()>0)
+           /* if(getSupportFragmentManager().getBackStackEntryCount()>0)
             {
-                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new BlankFragment()).commit();
-                //if(stack_fragment.size()>0) {
-                //    stack_fragment.remove(stack_fragment.get(stack_fragment.size() - 1));
-                //    System.out.println(stack_fragment);
-                //}
-                getSupportFragmentManager().popBackStackImmediate();
-            }
+
+                //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new BlankFragment()).commit();
+                /*if(stack_fragment.size()>0) {
+                    stack_fragment.remove(stack_fragment.get(stack_fragment.size() - 1));
+                    System.out.println(stack_fragment);
+                }*/
+               // getSupportFragmentManager().popBackStackImmediate();
+            /*}
            else {
                 AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this);
                 ad.setTitle("Warning!");
@@ -99,29 +94,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
                 AlertDialog dialog = ad.create();
                 dialog.show();
-            }
+            }*/
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId())
-        {
-            case R.id.clientList:
-                FragmentTransaction ft1= getSupportFragmentManager().beginTransaction();
-                ft1.replace(R.id.FrameContainer,new BlankFragment());
-                ft1.add(R.id.FrameContainer,new ClientList());
-                if( (stack_fragment.size()>0) && (stack_fragment.get(stack_fragment.size()-1)!="client_list"))
-                {
-                    ft1.addToBackStack("client_list");
-                    stack_fragment.add("client_list");
-                }
-                ft1.commit();
-               // getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new ClientList()).commit();
-                draw.closeDrawer(GravityCompat.START);
-                break;
+        switch(item.getItemId()) {
             case R.id.dashboard:
-                FragmentTransaction ft2= getSupportFragmentManager().beginTransaction();
+                Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.dashboardFragment);
+                System.out.println("Dash");
+                /*FragmentTransaction ft2= getSupportFragmentManager().beginTransaction();
                 ft2.replace(R.id.FrameContainer,new BlankFragment());
                 ft2.add(R.id.FrameContainer,new DashboardFragment());
                 if( (stack_fragment.size()>0) && (stack_fragment.get(stack_fragment.size()-1)!="dashboard"))
@@ -129,11 +112,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     ft2.addToBackStack("dashboard");
                     stack_fragment.add("dashboard");
                 }
-                ft2.commit();
+                ft2.commit();*/
                 draw.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.message:
-                FragmentTransaction ft3= getSupportFragmentManager().beginTransaction();
+            case R.id.messageItem:
+                Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.message_nav);
+                System.out.println("Message");
+
+                /*FragmentTransaction ft3= getSupportFragmentManager().beginTransaction();
                 ft3.replace(R.id.FrameContainer,new BlankFragment());
                 ft3.add(R.id.FrameContainer,new Messages());
                 if( (stack_fragment.size()>0) && (stack_fragment.get(stack_fragment.size()-1)!="messages"))
@@ -141,12 +127,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     ft3.addToBackStack("messages");
                     stack_fragment.add("messages");
                 }
-                ft3.commit();
+                ft3.commit();*/
                 //startActivity(new Intent(this,MessageActivity.class));
                 draw.closeDrawer(GravityCompat.START);
                 break;
             case R.id.settings:
-                FragmentTransaction ft4= getSupportFragmentManager().beginTransaction();
+                Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.settings_nav);
+                /*FragmentTransaction ft4= getSupportFragmentManager().beginTransaction();
                 ft4.replace(R.id.FrameContainer,new BlankFragment());
                 ft4.add(R.id.FrameContainer,new SettingMain());
                 if( (stack_fragment.size()>0) && (stack_fragment.get(stack_fragment.size()-1)!="setting"))
@@ -154,12 +141,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     ft4.addToBackStack("setting");
                     stack_fragment.add("setting");
                 }
-                ft4.commit();
+                ft4.commit();*/
                 //startActivity(new Intent(this,Settings.class));
                 draw.closeDrawer(GravityCompat.START);
                 break;
             case R.id.Appointment:
-                getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Calender()).commit();
+                Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.calender);
+                //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Calender()).commit();
                 draw.closeDrawer(GravityCompat.START);
                 break;
         }

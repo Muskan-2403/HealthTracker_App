@@ -24,14 +24,14 @@ public class DietChartAdapter extends RecyclerView.Adapter<DietChartAdapter.Diet
 
     @NonNull
     @Override
-    public DietChartAdapter.DietChartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DietChartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(con);
         View view = inflater.inflate(R.layout.diet_chart_layout,parent,false);
-        return new DietChartAdapter.DietChartViewHolder(view);
+        return new DietChartViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DietChartAdapter.DietChartViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DietChartViewHolder holder, int position) {
         holder.time.setText(foodTiming[position]);
         holder.card.setOnClickListener(v->{
             Log.d("Click", "onBindViewHolder: ");
