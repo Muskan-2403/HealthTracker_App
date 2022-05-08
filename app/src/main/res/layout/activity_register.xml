@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
@@ -35,6 +36,16 @@
             app:layout_constraintTop_toBottomOf="@+id/usernameReg" />
 
         <EditText
+            android:id="@+id/nameReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="name"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/qualificationReg" />
+
+        <EditText
             android:id="@+id/emailReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +53,58 @@
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameReg" />
+
+        <EditText
+            android:id="@+id/qualificationReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="qualification"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailReg"/>
+
+        <EditText
+            android:id="@+id/mobileReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="mobile number"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/qualificationReg" />
+
+        <EditText
+            android:id="@+id/locationReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="location"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mobileReg" />
+
+        <EditText
+            android:id="@+id/ageReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="age"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationReg" />
+
+        <EditText
+            android:id="@+id/genderReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="gender"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ageReg" />
+
     </LinearLayout>
 
     <Button

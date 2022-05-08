@@ -27,11 +27,11 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
-    EditText username,password,qual,email,mobile,loc,age,gender;
+    EditText username,password,qual,email,name,mobile,loc,age,gender;
     Button registerBtn;
-    String emailStr,pass,name;
+    String emailStr,passwordStr,nameStr,usernameStr,qualStr,mobileStr,locStr,ageStr,genderStr;
     Button login;
-    String url = "http://192.168.43.91/login/register.php";
+    String url = "http://192.168.201.1/register_dietian.php";
     RequestQueue queue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,12 @@ public class Register extends AppCompatActivity {
         password = findViewById(R.id.passwordReg);
         qual=findViewById(R.id.qualificationReg);
         email=findViewById(R.id.emailReg);
-        emailStr=pass="";
+        name = findViewById(R.id.nameReg);
+        mobile = findViewById(R.id.mobileReg);
+        loc = findViewById(R.id.locationReg);
+        age = findViewById(R.id.ageReg);
+        gender = findViewById(R.id.genderReg);
+        emailStr=passwordStr=nameStr=usernameStr=qualStr=mobileStr=locStr=ageStr=genderStr="";
         registerBtn = findViewById(R.id.registerbtn);
         login = findViewById(R.id.memlog);
 
@@ -57,9 +62,15 @@ public class Register extends AppCompatActivity {
     }
 
     public void register(View view) {
-        name = username.getText().toString();
-        emailStr = email.getText().toString();
-        pass = password.getText().toString();
+        usernameStr = username.getText().toString().trim();
+        emailStr = email.getText().toString().trim();
+        passwordStr = password.getText().toString().trim();
+        nameStr = name.getText().toString().trim();
+        qualStr = qual.getText().toString().trim();
+        mobileStr = mobile.getText().toString().trim();
+        locStr = loc.getText().toString().trim();
+        ageStr = age.getText().toString().trim();
+        genderStr = gender.getText().toString().trim();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             if(response.equals("success")){
@@ -71,9 +82,15 @@ public class Register extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams() throws AuthFailureError{
                 Map<String,String> data = new HashMap<>();
-                data.put("name",name);
+                data.put("userID",usernameStr);
+                data.put("password",passwordStr);
+                data.put("name",nameStr);
+                data.put("qualification",qualStr);
                 data.put("email",emailStr);
-                data.put("password",pass);
+                data.put("mobile",mobileStr);
+                data.put("location",locStr);
+                data.put("age",ageStr);
+                data.put("gender",genderStr);
                 return data;
             }
         };
