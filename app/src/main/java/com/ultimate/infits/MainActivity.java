@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ft2.commit();*/
                 draw.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.messageItem:
+            case R.id.message:
                 Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.message_nav);
                 System.out.println("Message");
 
