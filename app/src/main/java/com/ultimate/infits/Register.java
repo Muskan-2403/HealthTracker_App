@@ -34,8 +34,6 @@ public class Register extends AppCompatActivity {
 
     String url = "http://192.168.43.91/reg/register_dietian.php";
 
-    String url = "http://192.168.201.1/register_dietian.php";
-
     RequestQueue queue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

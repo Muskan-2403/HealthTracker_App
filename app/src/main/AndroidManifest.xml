@@ -16,16 +16,13 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity
-            android:name=".LoginScreen"
+            android:name=".Register"
             android:exported="false" />
         <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
             android:exported="false" />
         <activity
             android:name=".Tracker"
@@ -37,13 +34,7 @@
             android:name=".ClientDetails"
             android:exported="false" />
         <activity
-            android:name=".WeekSetter"
-            android:exported="false" />
-        <activity
-            android:name=".ClientDetails"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
+            android:name=".LoginScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
