@@ -3,6 +3,7 @@
     package="com.ultimate.infits">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -24,7 +25,16 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
             android:name=".Tracker"
+            android:exported="false" />
+        <activity
+            android:name=".WeekSetter"
+            android:exported="false" />
+        <activity
+            android:name=".ClientDetails"
             android:exported="false" />
         <activity
             android:name=".WeekSetter"

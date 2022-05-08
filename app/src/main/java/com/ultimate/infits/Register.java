@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -29,7 +31,11 @@ public class Register extends AppCompatActivity {
     Button registerBtn;
     String emailStr,passwordStr,nameStr,usernameStr,qualStr,mobileStr,locStr,ageStr,genderStr;
     Button login;
+
     String url = "http://192.168.43.91/reg/register_dietian.php";
+
+    String url = "http://192.168.201.1/register_dietian.php";
+
     RequestQueue queue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -18,6 +18,10 @@ import java.net.URLEncoder;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/**
+ * Created by ProgrammingKnowledge on 1/5/2016.
+ */
+
 public class BackgroundWorker extends AsyncTask<String,Void,String> {
     Context context;
     AlertDialog alertDialog;
@@ -33,6 +37,11 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
         if(type.equals("register")) {
             try {
                 HttpsTrustManager.allowAllSSL();
+        String login_url = "https://192.168.43.91/login.php";
+        String result="";
+        String line="";
+        if(type.equals("login")) {
+            try {
                 String username = params[1];
                 String password = params[2];
                 URL url = new URL(login_url);
@@ -76,6 +85,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String result) {
         alertDialog.setMessage(result);
         alertDialog.show();
+        System.out.println(result);
     }
 
     @Override
