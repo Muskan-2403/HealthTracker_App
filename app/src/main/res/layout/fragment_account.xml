@@ -35,14 +35,16 @@
         <ImageView
             android:layout_width="145dp"
             android:layout_height="145dp"
-            android:src="@drawable/profile_pic" />
+            android:src="@drawable/profile_pic"
+            android:id="@+id/dp"/>
 
         <ImageView
             android:layout_width="83dp"
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:src="@drawable/update_photo" />
+            android:src="@drawable/update_photo"
+            android:id="@+id/select_dp"/>
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,32 +78,6 @@
             android:text="Gender"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name_title" />
-
-        <ImageView
-            android:id="@+id/gender_male"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:adjustViewBounds="true"
-            android:elevation="5dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/gender_male_selected"
-            app:layout_constraintBottom_toBottomOf="@+id/gender_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toEndOf="@+id/gender_title"
-            app:layout_constraintTop_toTopOf="@+id/gender_title" />
-
-        <ImageView
-            android:id="@+id/gender_female"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:elevation="5dp"
-            android:src="@drawable/gender_female"
-            app:layout_constraintBottom_toBottomOf="@+id/gender_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.294"
-            app:layout_constraintStart_toEndOf="@+id/gender_male"
-            app:layout_constraintTop_toTopOf="@+id/gender_title" />
 
         <TextView
             android:id="@+id/age_title"
@@ -155,7 +131,8 @@
             app:layout_constraintTop_toTopOf="@+id/phone_title" />
 
         <Button
-            android:layout_width="177dp"
+            android:id="@+id/button_logout"
+            android:layout_width="117dp"
             android:layout_height="42dp"
             android:layout_gravity="center_horizontal|bottom"
             android:background="@drawable/edit_text_background"
@@ -166,10 +143,71 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.585"
+            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.997" />
+            app:layout_constraintVertical_bias="0.955" />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="117dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/edit_text_background"
+            android:backgroundTint="#FF565E"
+            android:fontFamily="@font/fonts"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.799"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.955" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/button_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.935"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.217">
+
+            <ImageView
+                android:id="@+id/gender_male_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:adjustViewBounds="true"
+                android:elevation="5dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/gender_male_selected"
+                app:layout_constraintBottom_toBottomOf="@+id/gender_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toEndOf="@+id/gender_title"
+                app:layout_constraintTop_toTopOf="@+id/gender_title" />
+
+            <ImageView
+                android:id="@+id/gender_female_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="68dp"
+                android:elevation="5dp"
+                android:src="@drawable/gender_female"
+                app:layout_constraintBottom_toBottomOf="@+id/gender_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.294"
+                app:layout_constraintStart_toEndOf="@+id/gender_male_icon"
+                app:layout_constraintTop_toTopOf="@+id/gender_title" />
+
+        </RadioGroup>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -16,12 +16,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginScreen extends AppCompatActivity {
 
+    TextView reg, fpass;
+    Button login;
     String url = "http://192.168.43.91/infits/login.php";
     String userID;
     String passwordStr;
@@ -30,14 +33,25 @@ public class LoginScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
-        Button login = findViewById(R.id.login_btn);
-        EditText username = findViewById(R.id.username);
-        EditText password = findViewById(R.id.password);
-        TextView name = findViewById(R.id.name);
+
+        reg = (TextView) findViewById(R.id.reg);
+        fpass = (TextView) findViewById(R.id.fpass);
+        login = (Button) findViewById(R.id.logbtn);
+
+
         queue = Volley.newRequestQueue(this);
         login.setOnClickListener(v->{
-            userID = username.getText().toString();
-            passwordStr = password.getText().toString();
+            TextInputLayout username= findViewById(R.id.textInputLayoutUsername);
+            TextInputLayout password= findViewById(R.id.textInputLayoutPassword);
+            userID = username.getEditText().getText().toString().trim();
+            passwordStr = password.getEditText().getText().toString().trim();
+
+             /* EditText username = findViewById(R.id.username);
+        EditText password = findViewById(R.id.password);
+        TextView name = findViewById(R.id.name);
+        userID = username.getText().toString();
+            passwordStr = password.getText().toString();*/
+
             Log.d("LoginClass","before");
             StringRequest stringRequest = new StringRequest(Request.Method.POST,url,response -> {
                 if (response.equals("success")){

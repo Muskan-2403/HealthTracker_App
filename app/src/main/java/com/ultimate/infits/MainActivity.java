@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
+            case R.id.clientList:
+                Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.client_list);
+                draw.closeDrawer(GravityCompat.START);
+
             case R.id.dashboard:
                 Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.dashboardFragment);
                 System.out.println("Dash");
