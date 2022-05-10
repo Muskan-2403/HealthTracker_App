@@ -16,6 +16,7 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:clickable="true"
+        android:onClick="register"
         android:fontFamily="@font/fonts"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

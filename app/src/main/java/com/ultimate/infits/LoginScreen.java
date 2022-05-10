@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +27,8 @@ public class LoginScreen extends AppCompatActivity {
 
     TextView reg, fpass;
     Button login;
-    String url = "http://192.168.43.91/infits/login.php";
+    DataFromDatabase dataFromDatabase;
+    String url = "http://192.168.127.1/login_dietian.php";
     String userID;
     String passwordStr;
     RequestQueue queue;
@@ -55,12 +58,15 @@ public class LoginScreen extends AppCompatActivity {
             Log.d("LoginClass","before");
             StringRequest stringRequest = new StringRequest(Request.Method.POST,url,response -> {
                 if (response.equals("success")){
-                    Log.d("LoginClass","s");
+                    Log.d("LoginClass","success");
                     Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show();
+                    dataFromDatabase.flag = true;
+                    dataFromDatabase.name = userID;
+                    Log.d("userID",dataFromDatabase.name);
                     startActivity(new Intent(LoginScreen.this,MainActivity.class));
                 }
                 else if (response.equals("failure")){
-                    Log.d("LoginClass","s");
+                    Log.d("LoginClass","failure");
                     Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
             },error -> {
@@ -78,5 +84,9 @@ public class LoginScreen extends AppCompatActivity {
             requestQueue.add(stringRequest);
             Log.d("LoginClass","at end");
         });
+    }
+
+    public void register(View view) {
+        startActivity(new Intent(LoginScreen.this,Register.class));
     }
 }

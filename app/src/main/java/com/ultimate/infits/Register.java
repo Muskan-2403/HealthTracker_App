@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -27,12 +28,13 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
-    EditText username,password,qual,email,name,mobile,loc,age,gender;
+    EditText userID,password,qual,email,name,mobile,loc,age,gender;
     Button registerBtn;
-    String emailStr,passwordStr,nameStr,usernameStr,qualStr,mobileStr,locStr,ageStr,genderStr;
+    DataFromDatabase dataFromDatabase;
+    String emailStr,passwordStr,nameStr,userIDStr,qualStr,mobileStr,locStr,ageStr,genderStr;
     Button login;
 
-    String url = "http://192.168.43.91/reg/register_dietian.php";
+    String url = "http://192.168.127.1/register_dietian.php";
 
     RequestQueue queue;
     @Override
@@ -40,7 +42,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        username = findViewById(R.id.usernameReg);
+        userID = findViewById(R.id.userIDReg);
         password = findViewById(R.id.passwordReg);
         qual=findViewById(R.id.qualificationReg);
         email=findViewById(R.id.emailReg);
@@ -49,22 +51,22 @@ public class Register extends AppCompatActivity {
         loc = findViewById(R.id.locationReg);
         age = findViewById(R.id.ageReg);
         gender = findViewById(R.id.genderReg);
-        emailStr=passwordStr=nameStr=usernameStr=qualStr=mobileStr=locStr=ageStr=genderStr="";
+        emailStr=passwordStr=nameStr=userIDStr=qualStr=mobileStr=locStr=ageStr=genderStr="";
         registerBtn = findViewById(R.id.registerbtn);
         login = findViewById(R.id.memlog);
-
         queue = Volley.newRequestQueue(this);
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(Register.this,LoginScreen.class));
             }
         });
     }
 
     public void register(View view) {
-        usernameStr = username.getText().toString().trim();
+        userIDStr = userID.getText().toString().trim();
         emailStr = email.getText().toString().trim();
         passwordStr = password.getText().toString().trim();
         nameStr = name.getText().toString().trim();
@@ -74,9 +76,12 @@ public class Register extends AppCompatActivity {
         ageStr = age.getText().toString().trim();
         genderStr = gender.getText().toString().trim();
 
+        Log.d("RegisterClass","at start");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             if(response.equals("success")){
                 Toast.makeText(Register.this,"successful",Toast.LENGTH_LONG).show();
+                dataFromDatabase.flag = true;
+                dataFromDatabase.name = userIDStr;
             }else{
                 Toast.makeText(Register.this,"failure",Toast.LENGTH_SHORT).show();
             }
@@ -84,7 +89,7 @@ public class Register extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams() throws AuthFailureError{
                 Map<String,String> data = new HashMap<>();
-                data.put("userID",usernameStr);
+                data.put("userID",userIDStr);
                 data.put("password",passwordStr);
                 data.put("name",nameStr);
                 data.put("qualification",qualStr);
@@ -93,10 +98,12 @@ public class Register extends AppCompatActivity {
                 data.put("location",locStr);
                 data.put("age",ageStr);
                 data.put("gender",genderStr);
+                Log.i("details", data.get("userID"));
                 return data;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
+        Log.d("RegisterClass","at end");
     }
 }
