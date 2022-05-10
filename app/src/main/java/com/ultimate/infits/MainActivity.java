@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             draw.closeDrawer(GravityCompat.START);
         }
         else{
+            super.onBackPressed();
            /* if(getSupportFragmentManager().getBackStackEntryCount()>0)
             {
 

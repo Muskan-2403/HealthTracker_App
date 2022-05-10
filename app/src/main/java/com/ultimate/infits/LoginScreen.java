@@ -28,7 +28,7 @@ public class LoginScreen extends AppCompatActivity {
     TextView reg, fpass;
     Button login;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.127.1/login_dietian.php";
+    String url = "http://192.168.2.240//infits_dietician//login_dietitian.php";
     String userID;
     String passwordStr;
     RequestQueue queue;
@@ -84,9 +84,14 @@ public class LoginScreen extends AppCompatActivity {
             requestQueue.add(stringRequest);
             Log.d("LoginClass","at end");
         });
+
+        reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),Register.class);
+                startActivity(i);
+            }
+        });
     }
 
-    public void register(View view) {
-        startActivity(new Intent(LoginScreen.this,Register.class));
-    }
-}
+   }
