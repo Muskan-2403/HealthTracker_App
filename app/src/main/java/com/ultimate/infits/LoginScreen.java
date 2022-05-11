@@ -113,6 +113,14 @@ public class LoginScreen extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        fpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),ResetPassword.class);
+                startActivity(i);
+            }
+        });
     }
 
    }

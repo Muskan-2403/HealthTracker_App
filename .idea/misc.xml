@@ -76,6 +76,7 @@
         <entry key="..\:/Analaised/Infits/app/src/main/res/layout/repeat_chart_overlay.xml" value="0.1" />
         <entry key="..\:/Analaised/Infits/app/src/main/res/layout/tracker_list_item.xml" value="0.22" />
         <entry key="..\:/Analaised/Infits/app/src/main/res/menu/main_menu.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/drawable/backbtn_background.xml" value="0.2015625" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/drawable/custom_edit_text_rounded.xml" value="0.1" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/drawable/rounded_corner.xml" value="0.215625" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/font/aleo_light.xml" value="0.2296875" />
@@ -85,12 +86,15 @@
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client_details.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client_list_search.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_dashboard.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_login_screen.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_main.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_message.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_notification.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_register.xml" value="0.1" />
-        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_registration.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_registration.xml" value="0.22" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_reset_password.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_settings.xml" value="0.1" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_terms_and_conditions.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_welcome_page.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/chat_log_layout.xml" value="0.1" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit/app/src/main/res/layout/client_list_layout.xml" value="0.11639492753623189" />

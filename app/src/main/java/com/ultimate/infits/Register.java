@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.StringReader;
 import java.net.URL;
@@ -30,11 +31,11 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
 
-    EditText username,password,password_recheck,qual,email,name,mobile,loc,age,gender;
+    TextInputLayout username,password,password_recheck,qual,email,name,mobile,loc,age,gender;
     Button registerBtn;
     DataFromDatabase dataFromDatabase;
     String emailStr,passwordStr,passwordrecheckStr,nameStr,usernameStr,qualStr,mobileStr,locStr,ageStr,genderStr;
-    TextView login;
+    TextView login,terms;
     RadioButton gender_male,gender_female;
 
     String url = "http://192.168.101.1/register_dietian.php";
@@ -62,7 +63,7 @@ public class Register extends AppCompatActivity {
         RadioButton agree= findViewById(R.id.radioButton);
         gender_male= findViewById(R.id.maleReg);
         gender_female= findViewById(R.id.femaleReg);
-
+        terms= findViewById(R.id.term);
         queue = Volley.newRequestQueue(this);
       /*  password.setTransformationMethod(PasswordTransformationMethod.getInstance());
         password_recheck.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -78,6 +79,13 @@ public class Register extends AppCompatActivity {
                 password_recheck.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
             }
         });*/
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(Register.this,TermsAndConditions.class);
+                startActivity(i);
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,15 +98,15 @@ public class Register extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usernameStr = username.getText().toString().trim();
-                emailStr = email.getText().toString().trim();
-                passwordStr = password.getText().toString().trim();
-                passwordrecheckStr = password_recheck.getText().toString().trim();
-                nameStr = name.getText().toString().trim();
-                qualStr = qual.getText().toString().trim();
-                mobileStr = mobile.getText().toString().trim();
-                locStr = loc.getText().toString().trim();
-                ageStr = age.getText().toString().trim();
+                usernameStr = username.getEditText().getText().toString().trim();
+                emailStr = email.getEditText().getText().toString().trim();
+                passwordStr = password.getEditText().getText().toString().trim();
+                passwordrecheckStr = password_recheck.getEditText().getText().toString().trim();
+                nameStr = name.getEditText().getText().toString().trim();
+                qualStr = qual.getEditText().getText().toString().trim();
+                mobileStr = mobile.getEditText().getText().toString().trim();
+                locStr = loc.getEditText().getText().toString().trim();
+                ageStr = age.getEditText().getText().toString().trim();
                 // genderStr = gender.getText().toString().trim();
                 int flag=0;
                 if(!agree.isChecked()) {
