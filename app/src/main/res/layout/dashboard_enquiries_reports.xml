@@ -97,6 +97,7 @@
             android:background="@drawable/rounded_corner"
             android:backgroundTint="@color/blue"
             android:fontFamily="@font/baloo_bhai_2"
+            android:onClick="return_message_area"
             android:text="Message"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if (savedInstanceState == null){
-//            Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.client_list);
+           // Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.client_list);
             //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
             //stack_fragment.add("client_list");
             System.out.println("My name is jeff");
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             draw.closeDrawer(GravityCompat.START);
         }
         else{
-            super.onBackPressed();
+           // super.onBackPressed();
            /* if(getSupportFragmentManager().getBackStackEntryCount()>0)
             {
 

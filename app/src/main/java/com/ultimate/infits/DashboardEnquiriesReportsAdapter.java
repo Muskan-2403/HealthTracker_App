@@ -6,10 +6,13 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
@@ -28,9 +31,15 @@ public class DashboardEnquiriesReportsAdapter extends RecyclerView.Adapter<Dashb
     public DashboardEnquiriesReportsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
         View view = inflater.inflate(R.layout.dashboard_enquiries_reports,parent,false);
+        Button enq_message= view.findViewById(R.id.enquiry_message);
+        enq_message.setOnClickListener(this::return_message_Area);
         return new DashboardEnquiriesReportsViewHolder(view);
     }
 
+        public void return_message_Area(View v) {
+            Toast.makeText(v.getContext(),"Clicked",Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(v).navigate(R.id.action_dashboardFragment_to_chattingArea2);
+        }
     @Override
     public void onBindViewHolder(@NonNull DashboardEnquiriesReportsViewHolder holder, int position) {
         Enquiries pos=list2.get(position);
@@ -69,4 +78,5 @@ public class DashboardEnquiriesReportsAdapter extends RecyclerView.Adapter<Dashb
 
         }
     }
+
 }

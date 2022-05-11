@@ -49,9 +49,6 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".Client"
-            android:exported="false" />
-        <activity
             android:name=".MessageActivity"
             android:exported="false" />
         <activity

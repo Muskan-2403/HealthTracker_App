@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -111,14 +114,6 @@ public class DashboardFragment extends Fragment {
         recyclerview3.setAdapter(padap);
         recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
        // recyclerview3.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
-       // Button b=v.findViewById(R.id.joincall);
-       // b.setOnHoverListener(new View.OnHoverListener() {
-        //    @Override
-         //   public boolean onHover(View v, MotionEvent event) {
-         //       b.setBackgroundColor(Color.parseColor("#4B9AFB"));
-          //      return true;
-          //  }
-        //});
         return v;
     }
 }

@@ -144,7 +144,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:layout_margin="1dp"
-                    android:text="Active"
+                    android:text="Latest Enquiries"
                     android:textColor="@drawable/switch_text"
                     android:fontFamily="@font/fonts"
                     />
@@ -157,7 +157,7 @@
                     android:background="@drawable/switch_on"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="Pending"
+                    android:text="Reports"
                     android:textColor="@drawable/switch_text"
                     android:fontFamily="@font/fonts"/>
             </RadioGroup>
