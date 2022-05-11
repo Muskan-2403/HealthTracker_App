@@ -21,9 +21,6 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
             android:name=".Tracker"
             android:exported="false" />
         <activity
@@ -48,15 +45,6 @@
         <activity android:name=".MainActivity"
             android:exported="false">
         </activity>
-        <activity
-            android:name=".MessageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Settings"
-            android:exported="false" />
-        <activity
-            android:name=".ClientListSearch"
-            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

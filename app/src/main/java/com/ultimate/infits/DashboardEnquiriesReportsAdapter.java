@@ -37,8 +37,7 @@ public class DashboardEnquiriesReportsAdapter extends RecyclerView.Adapter<Dashb
     }
 
         public void return_message_Area(View v) {
-            Toast.makeText(v.getContext(),"Clicked",Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(v).navigate(R.id.action_dashboardFragment_to_chattingArea2);
+            Navigation.findNavController(v).navigate(R.id.action_dashboardFragment2_to_chattingArea3);
         }
     @Override
     public void onBindViewHolder(@NonNull DashboardEnquiriesReportsViewHolder holder, int position) {

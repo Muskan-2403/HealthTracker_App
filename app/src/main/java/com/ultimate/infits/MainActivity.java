@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if (savedInstanceState == null){
-           // Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.client_list);
+            //Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.clientList4);
             //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
             //stack_fragment.add("client_list");
-            System.out.println("My name is jeff");
+            //System.out.println("My name is jeff");
         }
         else{
             //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new ClientList()).commit();
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav_account= (LinearLayout) findViewById(R.id.nav_account);
         nav_account.setOnClickListener(v -> {
             draw.closeDrawer(GravityCompat.START);
-            Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.profile);
+            Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.open_profile);
             //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Profile()).commit();
         });
     }
@@ -102,12 +102,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.clientList:
-                Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.client_list);
-                draw.closeDrawer(GravityCompat.START);
+            /*case R.id.clientList:
+                Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.clientList4);
+                Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.action_dashboardFragment2_to_clientList4);
+                draw.closeDrawer(GravityCompat.START);*/
 
             case R.id.dashboard:
-                Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.dashboardFragment);
+                Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.open_dashboard_fragment);
                 System.out.println("Dash");
                 /*FragmentTransaction ft2= getSupportFragmentManager().beginTransaction();
                 ft2.replace(R.id.FrameContainer,new BlankFragment());
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 draw.closeDrawer(GravityCompat.START);
                 break;
             case R.id.Appointment:
-                Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.calender);
+                Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.open_appointment);
                 //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Calender()).commit();
                 draw.closeDrawer(GravityCompat.START);
                 break;
