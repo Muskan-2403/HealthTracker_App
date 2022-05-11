@@ -37,7 +37,7 @@ public class Register extends AppCompatActivity {
     TextView login;
     RadioButton gender_male,gender_female;
 
-    String url = "http://192.168.127.1/register_dietian.php";
+    String url = "http://192.168.101.1/register_dietian.php";
 
     RequestQueue queue;
     @Override
@@ -142,6 +142,14 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(Register.this,"successful",Toast.LENGTH_LONG).show();
                 dataFromDatabase.flag = true;
                 dataFromDatabase.name = usernameStr;
+                dataFromDatabase.password = passwordStr;
+                dataFromDatabase.email = emailStr;
+                dataFromDatabase.name = nameStr;
+                dataFromDatabase.qualification = qualStr;
+                dataFromDatabase.mobile = mobileStr;
+                dataFromDatabase.age = ageStr;
+                dataFromDatabase.gender = genderStr;
+                dataFromDatabase.location = locStr;
                 Intent i=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(i);
                 finish();

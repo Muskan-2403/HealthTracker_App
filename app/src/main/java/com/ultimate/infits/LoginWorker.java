@@ -27,8 +27,10 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class LoginWorker extends AsyncTask<String, Void, String> {
 
+
+    // backup code
     WeakReference<TextView> name;
-    String username,password;
+    DataFromDatabase dataFromDatabase;
     AlertDialog alertDialog;
     Context context;
 

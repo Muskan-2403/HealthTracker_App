@@ -20,6 +20,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +32,7 @@ public class LoginScreen extends AppCompatActivity {
     TextView reg, fpass;
     Button login;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.2.240//infits_dietician//login_dietitian.php";
+    String url = "http://192.168.101.1/login_dietian.php";
     String userID;
     String passwordStr;
     RequestQueue queue;
@@ -57,12 +61,29 @@ public class LoginScreen extends AppCompatActivity {
 
             Log.d("LoginClass","before");
             StringRequest stringRequest = new StringRequest(Request.Method.POST,url,response -> {
-                if (response.equals("success")){
+                if (!response.equals("failure")){
                     Log.d("LoginClass","success");
+                    Log.d("response",response);
+
+                    try {
+                        JSONArray jsonArray = new JSONArray(response);
+                        JSONObject object = jsonArray.getJSONObject(0);
+                        DataFromDatabase.flag=true;
+                        DataFromDatabase.dietitianuserID= object.getString("dietitianuserID");
+                        DataFromDatabase.name=object.getString("name");
+                        DataFromDatabase.password = object.getString("password");
+                        DataFromDatabase.qualification=object.getString("qualification");
+                        DataFromDatabase.email=object.getString("email");
+                        DataFromDatabase.mobile=object.getString("mobile");
+                        DataFromDatabase.profilePhoto=object.getString("profilePhoto");
+                        DataFromDatabase.location=object.getString("location");
+                        DataFromDatabase.age= object.getString("age");
+                        DataFromDatabase.gender = object.getString("gender");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show();
-                    dataFromDatabase.flag = true;
-                    dataFromDatabase.name = userID;
-                    Log.d("userID",dataFromDatabase.name);
                     startActivity(new Intent(LoginScreen.this,MainActivity.class));
                 }
                 else if (response.equals("failure")){

@@ -38,6 +38,7 @@ import java.util.Locale;
  * create an instance of this fragment.
  */
 public class Account extends Fragment {
+    DataFromDatabase dataFromDatabase;
     ImageView male, female,profile_pic;
     Button logout,save;
     String dietitian_acc_gender="";
@@ -97,14 +98,25 @@ public class Account extends Fragment {
         male = view.findViewById(R.id.gender_male_icon);
         female=view.findViewById(R.id.gender_female_icon);
         EditText name=view.findViewById(R.id.name_edt);
+        name.setText(dataFromDatabase.name);
         EditText age=view.findViewById(R.id.age_edt);
+        age.setText(dataFromDatabase.age);
         EditText email=view.findViewById(R.id.email_edt);
+        email.setText(dataFromDatabase.email);
         EditText phone=view.findViewById(R.id.phone_edt);
+        phone.setText(dataFromDatabase.mobile);
         profile_pic=view.findViewById(R.id.dp);
         ImageView select_pic= view.findViewById(R.id.select_dp);
         save=view.findViewById(R.id.button_save);
         logout=view.findViewById(R.id.button_logout);
 
+        if(dataFromDatabase.gender=="M"){
+            male.setImageResource(R.drawable.gender_male_selected);
+            female.setImageResource(R.drawable.gender_female);
+        }else if(dataFromDatabase.gender=="F"){
+            male.setImageResource(R.drawable.gender_male);
+            female.setImageResource(R.drawable.gender_female_selected);
+        }
         select_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
