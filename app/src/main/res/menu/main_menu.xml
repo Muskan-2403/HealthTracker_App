@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 <group android:checkableBehavior="all">
-    <item
+    <!--item
         android:id="@+id/clientList"
         android:title="Client List"
-        android:icon="@drawable/dashboard"/>
+        android:icon="@drawable/dashboard"/-->
     <item
         android:id="@+id/dashboard"
         android:title="Dashboard"

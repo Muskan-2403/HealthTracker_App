@@ -2,6 +2,7 @@
 package com.ultimate.infits;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,6 +94,19 @@ public class ClientList extends Fragment {
         search = view.findViewById(R.id.search_client_icon);
         filter = view.findViewById(R.id.filter_client_icon);
         searchtext = view.findViewById(R.id.search_bar_text);
+        searchtext.setLines(1);
+
+        searchtext.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    Toast.makeText(getContext(), "Click on search icon after entering the name", Toast.LENGTH_SHORT).show();
+                    searchtext.setText("");
+                    return true;
+                }
+                return false;
+            }
+        });
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
