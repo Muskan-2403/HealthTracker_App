@@ -34,7 +34,7 @@ public class Register extends AppCompatActivity {
     Button registerBtn;
     DataFromDatabase dataFromDatabase;
     String emailStr,passwordStr,passwordrecheckStr,nameStr,usernameStr,qualStr,mobileStr,locStr,ageStr,genderStr;
-    TextView login;
+    TextView login,terms;
     RadioButton gender_male,gender_female;
 
     String url = "http://192.168.127.1/register_dietian.php";
@@ -62,7 +62,7 @@ public class Register extends AppCompatActivity {
         RadioButton agree= findViewById(R.id.radioButton);
         gender_male= findViewById(R.id.maleReg);
         gender_female= findViewById(R.id.femaleReg);
-
+        terms= findViewById(R.id.term);
         queue = Volley.newRequestQueue(this);
       /*  password.setTransformationMethod(PasswordTransformationMethod.getInstance());
         password_recheck.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -78,6 +78,13 @@ public class Register extends AppCompatActivity {
                 password_recheck.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
             }
         });*/
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(Register.this,TermsAndConditions.class);
+                startActivity(i);
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
