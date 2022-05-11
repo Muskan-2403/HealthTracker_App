@@ -24,7 +24,11 @@
         android:id="@+id/dashboardFragment"
         android:name="com.ultimate.infits.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_chattingArea2"
+            app:destination="@id/chattingArea2" />
+    </fragment>
     <include app:graph="@navigation/message_nav" />
     <include app:graph="@navigation/settings_nav" />
     <fragment
@@ -37,4 +41,13 @@
         android:name="com.ultimate.infits.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/chattingArea2"
+        android:name="com.ultimate.infits.ChattingArea"
+        android:label="fragment_chatting_area"
+        tools:layout="@layout/fragment_chatting_area" >
+        <action
+            android:id="@+id/action_chattingArea2_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
 </navigation>

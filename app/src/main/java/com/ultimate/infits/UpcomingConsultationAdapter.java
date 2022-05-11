@@ -1,11 +1,15 @@
 package com.ultimate.infits;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +34,20 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
     public UpcomingConsultationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
         View view=inflater.inflate(R.layout.dashboard_upcoming_consultations_layout,parent,false);
+         Button call=view.findViewById(R.id.joincall);
+         call.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 //call.setBackgroundResource(R.drawable.overlay_corner);
+                 // write logic to get phone number of client from the database of client and store it in call string
+                 String call_no="900123****";
+                 Intent i=new Intent();
+                 i.setAction(Intent.ACTION_DIAL);
+                 i.setData(Uri.parse("tel:"+call_no));
+                 ct.startActivity(i);
+             }
+         });
+
         return new UpcomingConsultationViewHolder(view);
     }
 

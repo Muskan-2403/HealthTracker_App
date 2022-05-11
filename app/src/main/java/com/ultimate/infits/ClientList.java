@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +27,8 @@ public class ClientList extends Fragment {
 
     RecyclerView clientList;
     RadioButton active,offline;
+    ImageView search,filter;
+    EditText searchtext;
     //ClientListAdapter cd;
     String client_list_image[]={"@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic",
             "@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic"};
@@ -85,13 +90,31 @@ public class ClientList extends Fragment {
         clientList = view.findViewById(R.id.client_list);
         active = view.findViewById(R.id.active_btn);
         offline = view.findViewById(R.id.pending_btn);
+        search = view.findViewById(R.id.search_client_icon);
+        filter = view.findViewById(R.id.filter_client_icon);
+        searchtext = view.findViewById(R.id.search_bar_text);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (searchtext.getVisibility() == v.VISIBLE) {
+                    String client_search_name = searchtext.getText().toString();
+                    searchtext.setVisibility(v.INVISIBLE);
+                    if(!(client_search_name.equals("")) && !(client_search_name.equals(" "))){
+                        Toast.makeText(getContext(),"Searching for the client "+client_search_name,Toast.LENGTH_SHORT).show();
+                        //query database for the searched username
+                    }
+                }
+                else
+                    searchtext.setVisibility(v.VISIBLE);
+            }
+        });
         client_list1.clear();
         for (int i = 0; i < client_list_image.length; i++) {
             List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],
                     client_list_start_date[i], client_list_end_date[i], true);
             client_list1.add(obj);
         }
-        ClientListAdapter cd = new ClientListAdapter(getContext(),client_list1);
+        ClientListAdapter cd = new ClientListAdapter(getContext(), client_list1);
         clientList.setAdapter(cd);
         clientList.setLayoutManager(new LinearLayoutManager(getContext()));
         active.setOnClickListener(new View.OnClickListener() {
@@ -103,10 +126,10 @@ public class ClientList extends Fragment {
                             client_list_start_date[i], client_list_end_date[i], true);
                     client_list1.add(obj);
                 }
-                  ClientListAdapter cd1 = new ClientListAdapter(getContext(),client_list1);
+                ClientListAdapter cd1 = new ClientListAdapter(getContext(), client_list1);
                 // cd = new ClientListAdapter(getContext(),true);
                 clientList.setAdapter(cd1);
-                 clientList.setLayoutManager(new LinearLayoutManager(getContext()));
+                clientList.setLayoutManager(new LinearLayoutManager(getContext()));
             }
         });
         offline.setOnClickListener(v -> {
@@ -116,16 +139,14 @@ public class ClientList extends Fragment {
                         client_list_start_date[i], client_list_end_date[i], false);
                 client_list2.add(obj);
             }
-             ClientListAdapter cd2 = new ClientListAdapter(getContext(),client_list2);
-             clientList.setAdapter(cd2);
+            ClientListAdapter cd2 = new ClientListAdapter(getContext(), client_list2);
+            clientList.setAdapter(cd2);
             clientList.setLayoutManager(new LinearLayoutManager(getContext()));
         });
-       // ClientListAdapter cd = new ClientListAdapter(getContext(), client_list1, (ClientListAdapter.Selecteditem) this);
-       // clientList.setAdapter(cd);
-       // clientList.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        // ClientListAdapter cd = new ClientListAdapter(getContext(), client_list1, (ClientListAdapter.Selecteditem) this);
+        // clientList.setAdapter(cd);
+        // clientList.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
-
 
 }
