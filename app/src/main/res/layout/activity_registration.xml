@@ -12,392 +12,238 @@
         android:id="@+id/textView2"
         android:layout_width="222dp"
         android:layout_height="79dp"
-        android:text="SIGN UP"
+        android:layout_gravity="center"
         android:fontFamily="@font/fonts"
-        android:textColor="@color/white"
+        android:text="SIGN UP"
         android:textAlignment="center"
-        android:textSize="50sp"
-        android:layout_gravity="center"/>
+        android:textColor="@color/white"
+        android:textSize="50sp" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:layout_marginTop="5dp">
-
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical"
-       android:layout_marginTop="10dp">
+        android:scrollbars="vertical">
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Username"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:hint="Enter username"
-        android:fontFamily="@font/fonts"
-        android:layout_gravity="center"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameReg"
-        android:textAlignment="center"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_corner"
-        android:layout_weight="1" />
-    </LinearLayout>
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:fontFamily="@font/fonts"
+        android:hint="Username"
+        app:boxStrokeColor="#FFFFFF"
+        app:hintTextColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordReg"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:fontFamily="@font/fonts"
+        android:hint="Password"
+        app:boxStrokeColor="#FFFFFF"
+        app:hintTextColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_recheckReg"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:fontFamily="@font/fonts"
+        android:hint="Re-enter Password"
+        app:boxStrokeColor="#FFFFFF"
+        app:hintTextColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameReg"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:fontFamily="@font/fonts"
+            android:hint="Full name"
+            app:boxStrokeColor="#FFFFFF"
+            app:hintTextColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/qualificationReg"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:fontFamily="@font/fonts"
+            android:hint="Qualification"
+            app:boxStrokeColor="#FFFFFF"
+            app:hintTextColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailReg"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:fontFamily="@font/fonts"
+            android:hint="Email"
+            app:boxStrokeColor="#FFFFFF"
+            app:hintTextColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Male "
+                android:textColor="#FFFFFF"
+                android:id="@+id/maleReg"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Female "
+                android:textColor="#FFFFFF"
+                android:id="@+id/femaleReg"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+        </RadioGroup>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/locationReg"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:fontFamily="@font/fonts"
+            android:hint="Location"
+            app:boxStrokeColor="#FFFFFF"
+            app:hintTextColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ageReg"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:fontFamily="@font/fonts"
+            android:hint="Age"
+            app:boxStrokeColor="#FFFFFF"
+            app:hintTextColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mobileReg"
+            android:layout_width="300dp"
+            android:layout_height="55dp"
+            android:fontFamily="@font/fonts"
+            android:hint="Mobile number"
+            app:boxStrokeColor="#FFFFFF"
+            app:hintTextColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned" />
+        </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Password"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <EditText
-           android:id="@+id/passwordReg"
-           android:layout_width="200dp"
-           android:layout_height="30dp"
-           android:layout_gravity="center"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/rounded_corner"
-           android:fontFamily="@font/fonts"
-           android:hint="Enter password"
-           android:inputType="textPassword"
-           android:textAlignment="center"
-           android:textColor="#000000" />
-        </LinearLayout>
-            <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Password"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <EditText
-           android:id="@+id/password_recheckReg"
-           android:layout_width="200dp"
-           android:layout_height="30dp"
-           android:layout_gravity="center"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/rounded_corner"
-           android:fontFamily="@font/fonts"
-           android:hint="Re-enter password"
-           android:inputType="textPassword"
-           android:textAlignment="center"
-           android:textColor="#000000"/>
-            </LinearLayout>
-            <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Name"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <EditText
-           android:layout_width="200dp"
-           android:layout_height="30dp"
-           android:hint="Enter your full name"
-           android:fontFamily="@font/fonts"
-           android:layout_gravity="center"
-           android:textColor="#000000"
-           android:textColorHint="#000000"
-           android:id="@+id/nameReg"
-           android:textAlignment="center"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/rounded_corner"/>
-            </LinearLayout>
-     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Gender"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <RadioGroup
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:layout_gravity="center"
-           android:layout_marginTop="15dp">
-           <RadioButton
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text=" Male "
-               android:textColor="#FFFFFF"
-               android:id="@+id/maleReg"
-               android:textSize="16sp"
-               android:textStyle="bold"/>
-           <RadioButton
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text=" Female "
-               android:textColor="#FFFFFF"
-               android:id="@+id/femaleReg"
-               android:textSize="16sp"
-               android:textStyle="bold"/>
-       </RadioGroup>
-     </LinearLayout>
-            <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Qualification"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <EditText
-           android:layout_width="200dp"
-           android:layout_height="30dp"
-           android:hint="Enter qualification"
-           android:fontFamily="@font/fonts"
-           android:layout_gravity="center"
-           android:textColor="#000000"
-           android:textColorHint="#000000"
-           android:id="@+id/qualificationReg"
-           android:textAlignment="center"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/rounded_corner"/>
-            </LinearLayout>
-            <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Email"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <EditText
-           android:layout_width="200dp"
-           android:layout_height="30dp"
-           android:hint="Enter email"
-           android:fontFamily="@font/fonts"
-           android:layout_gravity="center"
-           android:textColor="#000000"
-           android:textColorHint="#000000"
-           android:id="@+id/emailReg"
-           android:textAlignment="center"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/rounded_corner"/>
-            </LinearLayout>
-
-            <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Location"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <EditText
-           android:layout_width="200dp"
-           android:layout_height="30dp"
-           android:hint="Enter location"
-           android:fontFamily="@font/fonts"
-           android:layout_gravity="center"
-           android:textColor="#000000"
-           android:textColorHint="#000000"
-           android:id="@+id/locationReg"
-           android:textAlignment="center"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/rounded_corner"/>
-            </LinearLayout>
-            <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Age"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <EditText
-           android:id="@+id/ageReg"
-           android:layout_width="200dp"
-           android:layout_height="30dp"
-           android:layout_gravity="center"
-           android:fontFamily="@font/fonts"
-           android:hint="Enter age"
-           android:inputType="number"
-           android:textColor="#000000"
-           android:textColorHint="#000000"
-           android:textAlignment="center"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/rounded_corner"/>
-            </LinearLayout>
-            <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:text="Phone number"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
-        android:background="@drawable/outline"
-        android:layout_gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:layout_marginRight="20dp"/>
-       <EditText
-           android:id="@+id/mobileReg"
-           android:layout_width="200dp"
-           android:layout_height="30dp"
-           android:layout_gravity="center"
-           android:fontFamily="@font/fonts"
-           android:hint="Enter mobile number"
-           android:inputType="phone"
-           android:textColor="#000000"
-           android:textColorHint="#000000"
-           android:textAlignment="center"
-           android:layout_marginTop="15dp"
-           android:background="@drawable/rounded_corner"/>
-            </LinearLayout>
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:layout_marginLeft="50dp"
-           android:layout_marginTop="20dp">
-           <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp">
+            <RadioButton
                 android:id="@+id/radioButton"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="I agree to Infit's"
                 android:fontFamily="@font/fonts"
                 android:textStyle="bold" />
-           <TextView
-               android:id="@+id/term"
-               android:layout_width="wrap_content"
-               android:layout_height="30dp"
-               android:clickable="true"
-               android:fontFamily="@font/fonts"
-               android:text="Terms and Conditions"
-               android:textColor="#254396"
-               android:textSize="14sp" />
-       </LinearLayout>
+            <TextView
+                android:id="@+id/term"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:clickable="true"
+                android:fontFamily="@font/fonts"
+                android:text="Terms and Conditions"
+                android:textColor="#254396"
+                android:textSize="14sp" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/registerbtn"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-        android:text="Create an Account"
-        android:fontFamily="@font/fonts"
-        android:textAllCaps="false"
-        android:textAlignment="center"
-        android:clickable="true"
-        android:textColor="#2F3D96"
-        android:textSize="20sp"
-        app:cornerRadius="10sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/registerbtn"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/white"
+            android:text="Create an Account"
+            android:fontFamily="@font/fonts"
+            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:textColor="#2F3D96"
+            android:textSize="20sp"
+            app:cornerRadius="10sp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/memlog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Already a member? Login"
-        android:fontFamily="@font/fonts"
-        android:textSize="18sp"
-        android:clickable="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="30dp"/>
-
-   </LinearLayout>
-
+        <TextView
+            android:id="@+id/memlog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already a member? Login"
+            android:fontFamily="@font/fonts"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"/>
+    </LinearLayout>
     </ScrollView>
-
 </LinearLayout>
