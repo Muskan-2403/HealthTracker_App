@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -81,6 +82,21 @@ public class DashboardFragment extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_dashboard,container,false);
         recyclerView1= v.findViewById(R.id.upcoming_consultation_recycler);
+        ImageView consultaton_next=v.findViewById(R.id.upcoming_consultation_next);
+        ImageView patients_next= v.findViewById(R.id.patients_profile_next);
+
+        consultaton_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.calender2);
+            }
+        });
+        patients_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.clientList4);
+            }
+        });
         //finding listview
         for (int i=0;i<consultation_patient.length;i++)
         {

@@ -41,16 +41,7 @@ public class ClientListAdapter extends RecyclerView.Adapter<ClientListAdapter.Cl
     @Override
     public void onBindViewHolder(@NonNull ClientListHolder holder, int position) {
         List_Clients pos= obj.get(position);
-        if (pos.isStatus()){
-            holder.status_btn.setText("Online");
-        }
-        if (position == 2 || position == 7){
-            Drawable buttonDrawable = holder.status_btn.getBackground();
-            buttonDrawable = DrawableCompat.wrap(buttonDrawable);
-            DrawableCompat.setTint(buttonDrawable, Color.RED);
-            holder.status_btn.setText("Offline");
-            holder.status_btn.setBackground(buttonDrawable);
-        }
+
         File imgFile = new File(pos.getClient_list_image());
 
         if(imgFile.exists()){
@@ -78,12 +69,10 @@ public class ClientListAdapter extends RecyclerView.Adapter<ClientListAdapter.Cl
 
     public class ClientListHolder extends RecyclerView.ViewHolder{
 
-        Button status_btn;
         ImageView img;
         TextView name,plan,startdate,enddate;
         public ClientListHolder(@NonNull View itemView) {
             super(itemView);
-            status_btn = itemView.findViewById(R.id.status);
             img= itemView.findViewById(R.id.client_list_profile_pic);
             name=itemView.findViewById(R.id.client_list_profile_name);
             startdate=itemView.findViewById(R.id.client_list_startdate);
