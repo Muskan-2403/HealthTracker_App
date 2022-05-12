@@ -43,23 +43,23 @@ public class ClientList extends Fragment {
 
     DataFromDatabase dataFromDatabase;
     RecyclerView clientList;
-    RadioButton active,offline;
+    RadioButton active,pending;
     ImageView search,filter;
-    String url = "http://192.168.24.1/untitled.php";
+    String url = "http://192.168.24.1/clientsList.php";
     EditText searchtext;
     RequestQueue queue;
     //ClientListAdapter cd;
     String dietician = dataFromDatabase.dietitianuserID;
     String client_list_image[]={"@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic",
             "@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic","@drawable/doctor_pic"};
-    String client_list_client_name[]={"Ronald richard","Ronald richard","Ronald richard","Ronald richard","Ronald richard",
-            "Ronald richard","Ronald richard","Ronald richard","Ronald richard","Ronald richard"};
-    String client_list_plan[]={"Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan",
-            "Muscle Plan","Muscle Plan"};
-    String client_list_start_date[]={"10 Mar 2022","10 Mar 2022","10 Mar 2022","10 Mar 2022","10 Mar 2022","10 Mar 2022",
-            "10 Mar 2022","10 Mar 2022","10 Mar 2022","10 Mar 2022"};
-    String client_list_end_date[]={"10 Mar 2023","10 Mar 2023","10 Mar 2023","10 Mar 2023","10 Mar 2023",
-            "10 Mar 2023","10 Mar 2023","10 Mar 2023","10 Mar 2023","10 Mar 2023"};
+//    String client_list_client_name[]={"Ronald richard","Ronald richard","Ronald richard","Ronald richard","Ronald richard",
+//            "Ronald richard","Ronald richard","Ronald richard","Ronald richard","Ronald richard"};
+//    String client_list_plan[]={"Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan","Muscle Plan",
+//            "Muscle Plan","Muscle Plan"};
+//    String client_list_start_date[]={"10 Mar 2022","10 Mar 2022","10 Mar 2022","10 Mar 2022","10 Mar 2022","10 Mar 2022",
+//            "10 Mar 2022","10 Mar 2022","10 Mar 2022","10 Mar 2022"};
+//    String client_list_end_date[]={"10 Mar 2023","10 Mar 2023","10 Mar 2023","10 Mar 2023","10 Mar 2023",
+//            "10 Mar 2023","10 Mar 2023","10 Mar 2023","10 Mar 2023","10 Mar 2023"};
 
     List<List_Clients> client_list_active =new ArrayList<>();
     List<List_Clients> client_list_pending =new ArrayList<>();
@@ -109,29 +109,30 @@ public class ClientList extends Fragment {
                 Log.d("ClientList","success");
                 Log.d("response",response);
 
-//                try {
-//                    JSONArray jsonArray = new JSONArray(response);
-//                    for (int i=0;i< jsonArray.length();i++){
-//                        JSONObject object = jsonArray.getJSONObject(i);
-//                        client_list_client_name.add(object.getString("clientID"));
-//                        client_list_plan.add(object.getString("plan"));
-//                        client_list_start_date.add(object.getString("startdate"));
-//                        client_list_end_date.add(object.getString("enddate"));
-//                        String dietchart = object.getString("dietChart");
-//                        if(dietchart==null){
-//                            
-//                        }else if (dietchart!=null){
-//                            
-//                        }
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i=0;i< jsonArray.length();i++){
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        List_Clients obj = new List_Clients(object.getString("plan"), object.getString("clientID"),
+                                client_list_image[i],
+                                object.getString("startdate"), object.getString("enddate"), true);
+
+
+                        String dietchart = object.getString("dietChart");
+                        if(dietchart=="null"){
+                            client_list_pending.add(obj);
+                        }else if (dietchart!=null){
+                            client_list_active.add(obj);
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(getContext(), "ClientList success", Toast.LENGTH_SHORT).show();
             }
             else if (response.equals("failure")){
-                Log.d("LoginClass","failure");
+                Log.d("clientList","failure");
                 Toast.makeText(getContext(), "ClientList failed", Toast.LENGTH_SHORT).show();
             }
         },error -> {
@@ -159,7 +160,7 @@ public class ClientList extends Fragment {
         View view = inflater.inflate(R.layout.fragment_client_list, container, false);
         clientList = view.findViewById(R.id.client_list);
         active = view.findViewById(R.id.active_btn);
-        offline = view.findViewById(R.id.pending_btn);
+        pending = view.findViewById(R.id.pending_btn);
         search = view.findViewById(R.id.search_client_icon);
         filter = view.findViewById(R.id.filter_client_icon);
         searchtext = view.findViewById(R.id.search_bar_text);
@@ -191,37 +192,31 @@ public class ClientList extends Fragment {
                     searchtext.setVisibility(v.VISIBLE);
             }
         });
-        client_list_active.clear();
-        for (int i = 0; i < client_list_image.length; i++) {
-            List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],
-                    client_list_start_date[i], client_list_end_date[i], true);
-            client_list_active.add(obj);
-        }
+//        client_list_active.clear();
+//        for (int i = 0; i < client_list_image.length; i++) {
+//            List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],
+//                    client_list_start_date[i], client_list_end_date[i], true);
+//            client_list_active.add(obj);
+//        }
         ClientListAdapter cd = new ClientListAdapter(getContext(), client_list_active);
         clientList.setAdapter(cd);
         clientList.setLayoutManager(new LinearLayoutManager(getContext()));
         active.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                client_list_active.clear();
-                for (int i = 0; i < client_list_image.length; i++) {
-                    List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],
-                            client_list_start_date[i], client_list_end_date[i], true);
-                    client_list_active.add(obj);
-                }
                 ClientListAdapter cd1 = new ClientListAdapter(getContext(), client_list_active);
                 // cd = new ClientListAdapter(getContext(),true);
                 clientList.setAdapter(cd1);
                 clientList.setLayoutManager(new LinearLayoutManager(getContext()));
             }
         });
-        offline.setOnClickListener(v -> {
-            client_list_pending.clear();
-            for (int i = 0; i < client_list_image.length; i++) {
-                List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],
-                        client_list_start_date[i], client_list_end_date[i], false);
-                client_list_pending.add(obj);
-            }
+        pending.setOnClickListener(v -> {
+//            client_list_pending.clear();
+//            for (int i = 0; i < client_list_image.length; i++) {
+//                List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],
+//                        client_list_start_date[i], client_list_end_date[i], false);
+//                client_list_pending.add(obj);
+//            }
             ClientListAdapter cd2 = new ClientListAdapter(getContext(), client_list_pending);
             clientList.setAdapter(cd2);
             clientList.setLayoutManager(new LinearLayoutManager(getContext()));

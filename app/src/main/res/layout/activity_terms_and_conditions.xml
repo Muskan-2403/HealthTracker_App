@@ -57,7 +57,7 @@
         app:layout_constraintVertical_bias="0.122" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/clientemailTV"
         android:layout_width="302dp"
         android:layout_height="164dp"
         android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."

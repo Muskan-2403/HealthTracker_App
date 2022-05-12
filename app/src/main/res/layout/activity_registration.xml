@@ -9,7 +9,7 @@
     tools:context=".Register">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/clientIDTV"
         android:layout_width="222dp"
         android:layout_height="79dp"
         android:layout_gravity="center"

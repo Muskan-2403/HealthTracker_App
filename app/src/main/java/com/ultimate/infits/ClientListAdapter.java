@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
+import java.security.acl.LastOwnerException;
 import java.util.List;
 
 public class ClientListAdapter extends RecyclerView.Adapter<ClientListAdapter.ClientListHolder>{
@@ -55,7 +57,13 @@ public class ClientListAdapter extends RecyclerView.Adapter<ClientListAdapter.Cl
         holder.startdate.setText(pos.getClient_list_startdate());
         holder.enddate.setText(pos.getClient_list_enddate());
         holder.itemView.setOnClickListener(v->{
-                ct.startActivity(new Intent(ct,ClientDetails.class));
+            // here name refers to client ID
+                Log.d("ClientListAdapter",pos.getClient_list_name());
+                Intent in = new Intent(ct,ClientDetails.class);
+                in.putExtra("clientID",pos.getClient_list_name());
+                in.putExtra("startDate",pos.getClient_list_startdate());
+                in.putExtra("endDate",pos.getClient_list_enddate());
+                ct.startActivity(in);
         });
     }
 
