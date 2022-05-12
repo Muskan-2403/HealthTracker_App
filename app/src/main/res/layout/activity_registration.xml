@@ -36,12 +36,17 @@
         android:hint="Username"
         app:boxStrokeColor="#FFFFFF"
         app:hintTextColor="#FFFFFF"
+        app:counterMaxLength="25"
+        app:counterEnabled="true"
+        app:endIconMode="clear_text"
         android:layout_gravity="center"
         android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:fontFamily="@font/baloo_bhai_2"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -52,13 +57,18 @@
         android:hint="Password"
         app:boxStrokeColor="#FFFFFF"
         app:hintTextColor="#FFFFFF"
+        app:counterMaxLength="12"
+        app:counterEnabled="true"
+        app:endIconMode="password_toggle"
         android:layout_gravity="center"
         android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLength="12"
+            android:fontFamily="@font/baloo_bhai_2"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -69,13 +79,18 @@
         android:hint="Re-enter Password"
         app:boxStrokeColor="#FFFFFF"
         app:hintTextColor="#FFFFFF"
+        app:counterMaxLength="25"
+        app:counterEnabled="true"
+        app:endIconMode="password_toggle"
         android:layout_gravity="center"
         android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLength="12"
+            android:fontFamily="@font/baloo_bhai_2"/>
     </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -86,12 +101,17 @@
             android:hint="Full name"
             app:boxStrokeColor="#FFFFFF"
             app:hintTextColor="#FFFFFF"
+            app:counterMaxLength="30"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
             android:layout_gravity="center"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_bhai_2"
+                android:maxLength="30"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/qualificationReg"
@@ -101,12 +121,17 @@
             android:hint="Qualification"
             app:boxStrokeColor="#FFFFFF"
             app:hintTextColor="#FFFFFF"
+            app:counterMaxLength="20"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
             android:layout_gravity="center"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:maxLength="20"
+                android:fontFamily="@font/baloo_bhai_2"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailReg"
@@ -116,12 +141,17 @@
             android:hint="Email"
             app:boxStrokeColor="#FFFFFF"
             app:hintTextColor="#FFFFFF"
+            app:counterMaxLength="40"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
             android:layout_gravity="center"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_bhai_2"
+                android:maxLength="40"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
@@ -155,12 +185,17 @@
             android:hint="Location"
             app:boxStrokeColor="#FFFFFF"
             app:hintTextColor="#FFFFFF"
+            app:counterMaxLength="20"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
             android:layout_gravity="center"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_bhai_2"
+                android:maxLength="20"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ageReg"
@@ -170,13 +205,17 @@
             android:hint="Age"
             app:boxStrokeColor="#FFFFFF"
             app:hintTextColor="#FFFFFF"
+            app:counterMaxLength="3"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
             android:layout_gravity="center"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLength="3"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/mobileReg"
@@ -186,13 +225,17 @@
             android:hint="Mobile number"
             app:boxStrokeColor="#FFFFFF"
             app:hintTextColor="#FFFFFF"
+            app:counterMaxLength="20"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
             android:layout_gravity="center"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned" />
+                android:inputType="numberSigned"
+                android:maxLength="20"/>
         </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
             android:layout_width="wrap_content"

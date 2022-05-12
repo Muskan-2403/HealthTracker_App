@@ -102,14 +102,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
-            /*case R.id.clientList:
-                Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.clientList4);
+           /* case R.id.clientList:
+                Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.open_dashboard_fragment);
                 Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.action_dashboardFragment2_to_clientList4);
                 draw.closeDrawer(GravityCompat.START);*/
 
             case R.id.dashboard:
                 Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.open_dashboard_fragment);
-                System.out.println("Dash");
                 /*FragmentTransaction ft2= getSupportFragmentManager().beginTransaction();
                 ft2.replace(R.id.FrameContainer,new BlankFragment());
                 ft2.add(R.id.FrameContainer,new DashboardFragment());
@@ -123,8 +122,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.message:
                 Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.message_nav);
-                System.out.println("Message");
-
                 /*FragmentTransaction ft3= getSupportFragmentManager().beginTransaction();
                 ft3.replace(R.id.FrameContainer,new BlankFragment());
                 ft3.add(R.id.FrameContainer,new Messages());
