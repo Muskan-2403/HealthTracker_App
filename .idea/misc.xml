@@ -125,9 +125,20 @@
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/activity_client_details.xml" value="0.18342391304347827" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/activity_login_screen.xml" value="0.18342391304347827" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/activity_registration.xml" value="0.2" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/activity_tracker_bottom.xml" value="0.1" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/activity_welcome_page.xml" value="0.1" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/client_list_layout.xml" value="0.18342391304347827" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/diet_chart_layout.xml" value="0.5" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/dietchart_layout.xml" value="0.33" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/fragment_account.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/fragment_blank_diet_chart.xml" value="0.33" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/fragment_client_list.xml" value="0.18342391304347827" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/fragment_client_metrics.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/fragment_dashboard.xml" value="0.18342391304347827" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/fragment_diet_chart.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/fragment_dietchart_plan.xml" value="0.1" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/fragment_tracker.xml" value="0.1358695652173913" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/layout/tracker_list_item.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit1205/app/src/main/res/menu/main_menu.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/achivement_card_layout.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client.xml" value="0.19519927536231885" />

@@ -17,7 +17,7 @@ public class WelcomePage extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(WelcomePage.this, LoginScreen.class);
+                Intent intent = new Intent(WelcomePage.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
