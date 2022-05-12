@@ -11,12 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DietChartAdapter extends RecyclerView.Adapter<DietChartAdapter.DietChartViewHolder> {
+public class TrackerAdapter extends RecyclerView.Adapter<TrackerAdapter.TrackerViewHolder> {
 
     Context con;
     //    OnFoodItemClickListener onFoodItemClickListener;
     String[] foodTiming;
-    DietChartAdapter(String[] foodTiming,Context con){
+    TrackerAdapter(String[] foodTiming, Context con){
         this.foodTiming = foodTiming;
         this.con = con;
 //        this.onFoodItemClickListener = onFoodItemClickListener;
@@ -24,14 +24,14 @@ public class DietChartAdapter extends RecyclerView.Adapter<DietChartAdapter.Diet
 
     @NonNull
     @Override
-    public DietChartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TrackerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(con);
-        View view = inflater.inflate(R.layout.dietchart_layout,parent,false);
-        return new DietChartViewHolder(view);
+        View view = inflater.inflate(R.layout.tracker_layout,parent,false);
+        return new TrackerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DietChartViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TrackerViewHolder holder, int position) {
         holder.time.setText(foodTiming[position]);
         holder.card.setOnClickListener(v->{
             Log.d("Click", "onBindViewHolder: ");
@@ -53,12 +53,12 @@ public class DietChartAdapter extends RecyclerView.Adapter<DietChartAdapter.Diet
 //        void onFoodItemClick(int position);
 //    }
 
-    public class DietChartViewHolder extends RecyclerView.ViewHolder{
+    public class TrackerViewHolder extends RecyclerView.ViewHolder{
         TextView time,cal;
         CardView card;
         CardView foodList,imgOverview;
         //        OnFoodItemClickListener onFoodItemClickListener;
-        public DietChartViewHolder(@NonNull View itemView) {
+        public TrackerViewHolder(@NonNull View itemView) {
             super(itemView);
 //            this.onFoodItemClickListener = onFoodItemClickListener;
             time = itemView.findViewById(R.id.time);

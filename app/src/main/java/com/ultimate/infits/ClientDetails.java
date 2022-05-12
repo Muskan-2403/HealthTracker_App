@@ -69,7 +69,11 @@ public class ClientDetails extends AppCompatActivity  {
         metrics_btn = findViewById(R.id.metrics_btn);
         tracker_btn = findViewById(R.id.tracker_btn);
         health_details_btn = findViewById(R.id.health_details_btn);
-        getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new DietChartFragment()).commit();
+        //write php code to find if the selected client has a diet chart or no
+        // if()
+        getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new BlankDietChart()).commit();
+        //else
+        //getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new dietchart_plan()).commit();
 
 
         queue = Volley.newRequestQueue(getApplicationContext());
@@ -119,7 +123,10 @@ public class ClientDetails extends AppCompatActivity  {
             metrics_btn.setBackgroundResource(R.drawable.metrics_unselected);
             tracker_btn.setBackgroundResource(R.drawable.tracker_unselected);
             health_details_btn.setBackgroundResource(R.drawable.health_details_unselected);
-            getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new DietChartFragment()).commit();
+            // if()
+           // getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new BlankDietChart()).commit();
+            //else
+            getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new dietchart_plan()).commit();
         });
         chat_btn.setOnClickListener(v ->{
             diet_chart_btn.setBackgroundResource(R.drawable.diet_chart_unselected);
@@ -145,7 +152,7 @@ public class ClientDetails extends AppCompatActivity  {
             health_details_btn.setBackgroundResource(R.drawable.health_details_unselected);
             //Intent i=new Intent(getApplicationContext(),Tracker.class);
             //startActivity(i);
-            getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new DietChartFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new TrackerFragment()).commit();
         });
         health_details_btn.setOnClickListener(v ->{
             diet_chart_btn.setBackgroundResource(R.drawable.diet_chart_unselected);

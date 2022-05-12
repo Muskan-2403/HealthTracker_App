@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -163,19 +165,21 @@ public class Account extends Fragment {
             PackageManager pm = getContext().getPackageManager();
             int hasPerm = pm.checkPermission(Manifest.permission.CAMERA, getContext().getPackageName());
             if (hasPerm == PackageManager.PERMISSION_GRANTED) {
-                final CharSequence[] options = {"Take Photo", "Choose From Gallery","Remove picture","Cancel"};
+                //final CharSequence[] options = {"Take Photo", "Choose From Gallery","Remove picture","Cancel"};
+                final CharSequence[] options = { "Choose From Gallery","Remove picture","Cancel"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Select Option");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
-                        if (options[item].equals("Take Photo")) {
+                      /*  if (options[item].equals("Take Photo")) {
                             dialog.cancel();
-                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                             startActivityForResult(intent, PICK_IMAGE_CAMERA);
-                        } else if (options[item].equals("Choose From Gallery")) {
+                        } else*/
+                        if (options[item].equals("Choose From Gallery")) {
                             dialog.cancel();
-                            Intent pickPhoto = new Intent(Intent.ACTION_VIEW, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                             startActivityForResult(pickPhoto, PICK_IMAGE_GALLERY);
                         } else if (options[item].equals("Cancel")) {
                             dialog.cancel();
@@ -203,17 +207,20 @@ public class Account extends Fragment {
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
             inputStreamImg = null;
-            if (requestCode == PICK_IMAGE_CAMERA) {
+           /* if (requestCode == PICK_IMAGE_CAMERA) {
                 try {
-                    if(data.getData()!=null) {
+                    Log.w("error","entered");
+                    if((data.getData()) != null) {
+                        Log.w("error","!1!");
                         Uri selectedImage = data.getData();
-                        bitmap = (Bitmap) data.getExtras().get("data");
-                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
-
-                        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-                        //destination = new File(Environment.getExternalStorageDirectory() + "/" +
-                        //      getString(R.string.app_name), "IMG_" + timeStamp + ".jpg");
+                        Log.w("Error",selectedImage.toString());
+                        profile_pic.setImageURI(selectedImage);
+                       //bitmap = (Bitmap) data.getExtras().get("data");
+                       // ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                        //bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
+                        //profile_pic.setImageBitmap(bitmap);
+                       // String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+                        //destination = new File(Environment.getExternalStorageDirectory() + "/" +getString(R.string.app_name), "IMG_" + timeStamp + ".jpg");
                         //FileOutputStream fo;
                     /*try {
                         destination.createNewFile();
@@ -224,27 +231,28 @@ public class Account extends Fragment {
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }
+                    }*
 
-                    imgPath = destination.getAbsolutePath();*/
-                        profile_pic.setImageBitmap(bitmap);
+                    imgPath = destination.getAbsolutePath();
+                  //  profile_pic.setImageBitmap(selectedImage);
                     }
 
                 } catch (Exception e) {
                     Toast.makeText(getActivity(),"No picture was clicked",Toast.LENGTH_SHORT).show();
                 }
-            } else if (requestCode == PICK_IMAGE_GALLERY) {
+            } */
+            //else
+            if (requestCode == PICK_IMAGE_GALLERY) {
                      try {
                          if( data.getData() != null) {
                              Uri selectedImage = data.getData();
                              bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
-                             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
-                             // Log.e("Activity", "Pick from Gallery::>>> ");
-
+                             //ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                            // bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
+                             profile_pic.setImageBitmap(bitmap);
                   /*  imgPath = getRealPathFromURI(selectedImage);
                     destination = new File(imgPath.toString());*/
-                             profile_pic.setImageBitmap(bitmap);
+
                          }
                     } catch (Exception e) {
                         Toast.makeText(getActivity(),"No picture selected",Toast.LENGTH_SHORT).show();
