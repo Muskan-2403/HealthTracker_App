@@ -175,7 +175,7 @@
                             android:layout_marginTop="15dp"
                             android:src="@drawable/metrics_sleep"/>
                         <TextView
-                            android:id="@+id/hr_35_mins"
+                            android:id="@+id/sleep"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="41dp"
@@ -216,7 +216,7 @@
                             android:layout_marginLeft="30dp"
                             android:src="@drawable/metrics_weight"/>
                         <TextView
-                            android:id="@+id/kilograms"
+                            android:id="@+id/weight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="41dp"
@@ -256,7 +256,7 @@
                             android:layout_marginLeft="30dp"
                             android:src="@drawable/metrics_calories"/>
                         <TextView
-                            android:id="@+id/kcal"
+                            android:id="@+id/calorie"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="41dp"

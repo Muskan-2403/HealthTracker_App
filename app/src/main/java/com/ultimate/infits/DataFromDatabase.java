@@ -18,8 +18,9 @@ import java.util.Map;
 public class DataFromDatabase {
 
     HashMap<String,String> map = new HashMap<>();
-    String url = "http://192.168.127.1/getdietitiandetails.php";
+    String url = "http://192.168.184.1/getdietitiandetails.php";
     public static boolean flag= false;
+    public static String clientuserID;
     public static String profilePhoto="iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAM1BMVEXk5ueutLfn6eqrsbTp6+zg4uOwtrnJzc" +
             "\\/j5earsbW0uby4vcDQ09XGyszU19jd3+G\\/xMamCvwDAAAFLklEQVR4nO2d2bLbIAxAbYE3sDH\\/\\/7WFbPfexG4MiCAcnWmnrzkjIRaD2jQ" +
             "MwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMwzAMw5wQkHJczewxZh2lhNK\\/CBOQo1n0JIT74\\/H\\/qMV0Z7GU3aCcVPuEE1XDCtVLAh" +

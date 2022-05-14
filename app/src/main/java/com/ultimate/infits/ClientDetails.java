@@ -27,10 +27,11 @@ import java.util.Map;
 
 public class ClientDetails extends AppCompatActivity  {
 
-    TextView clientidtv,clientemailTV,genderTV,ageTV,mobileTV,planTV,startdateTV,enddateTV;
+    TextView clientidtv,clientemailtv,gendertv,agetv,mobiletv,plantv,startdatetv,enddatetv;
     ImageButton diet_chart_btn,chat_btn,metrics_btn,tracker_btn,health_details_btn;
     ImageView menu;
-    String url = "http://192.168.24.1/clientDetails.php";
+    DataFromDatabase dataFromDatabase;
+    String url = "http://192.168.231.1/clientDetails.php";
     String clientID,startdate,enddate;
     RequestQueue queue;
     @Override
@@ -40,6 +41,7 @@ public class ClientDetails extends AppCompatActivity  {
 
 
         clientID = getIntent().getStringExtra("clientID");
+        dataFromDatabase.clientuserID = clientID;
         startdate = getIntent().getStringExtra("startDate");
         enddate = getIntent().getStringExtra("endDate");
 
@@ -55,15 +57,15 @@ public class ClientDetails extends AppCompatActivity  {
 
         clientidtv = findViewById(R.id.clientIDTV);
         clientidtv.setText(clientID);
-        startdateTV = findViewById(R.id.startdateTV);
-        startdateTV.setText(startdate);
-        enddateTV = findViewById(R.id.enddateTV);
-        enddateTV.setText(enddate);
-        clientemailTV = findViewById(R.id.clientemailTV);
-        genderTV = findViewById(R.id.genderTV);
-        ageTV = findViewById(R.id.ageReg);
-        mobileTV = findViewById(R.id.mobileTV);
-        planTV = findViewById(R.id.planTV);
+        startdatetv = findViewById(R.id.startdateTV);
+        startdatetv.setText(startdate);
+        enddatetv = findViewById(R.id.enddateTV);
+        enddatetv.setText(enddate);
+        clientemailtv = findViewById(R.id.clientemailTV);
+        gendertv = findViewById(R.id.genderTV);
+        agetv = findViewById(R.id.ageTV);
+        mobiletv = findViewById(R.id.mobileTV);
+        plantv = findViewById(R.id.planTV);
         diet_chart_btn = findViewById(R.id.diet_chart_btn);
         chat_btn = findViewById(R.id.chat_btn);
         metrics_btn = findViewById(R.id.metrics_btn);
@@ -85,12 +87,17 @@ public class ClientDetails extends AppCompatActivity  {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     JSONObject jsonObject = jsonArray.getJSONObject(0);
-//                    clientemailTV.setText(jsonObject.getString("email"));
-//                    genderTV.setText(jsonObject.getString("gender"));
-//                    ageTV.setText(jsonObject.getString("age"));
-//                    mobileTV.setText(jsonObject.getString("mobile"));
-//                    planTV.setText(jsonObject.getString("plan"));
-//                    Log.d("ClientDetails","details"+jsonObject.getString("email"));
+                    String email = jsonObject.getString("email");
+                    clientemailtv.setText(email);
+                    String gender = jsonObject.getString("gender");
+                    gendertv.setText(gender);
+                    String age = jsonObject.getString("age");
+                    agetv.setText(age);
+                    String mobile = jsonObject.getString("mobile");
+                    mobiletv.setText(mobile);
+                    String plan = jsonObject.getString("plan");
+                    plantv.setText(plan);
+                    Log.d("ClientDetails","details"+email+" "+gender+" "+age+" "+mobile+" "+plan);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -142,6 +149,7 @@ public class ClientDetails extends AppCompatActivity  {
             metrics_btn.setBackgroundResource(R.drawable.metrics_selected);
             tracker_btn.setBackgroundResource(R.drawable.tracker_unselected);
             health_details_btn.setBackgroundResource(R.drawable.health_details_unselected);
+
             getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec, new ClientMetrics()).commit();
         });
         tracker_btn.setOnClickListener(v ->{
