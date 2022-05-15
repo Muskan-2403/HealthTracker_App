@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -24,6 +25,8 @@ import java.util.List;
  */
 public class DashboardFragment extends Fragment {
 
+    TextView name;
+    DataFromDatabase dataFromDatabase;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
     String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
     String consultation_time[]={"05:00pm","05:00pm","05:00pm","05:00pm"};
@@ -82,9 +85,11 @@ public class DashboardFragment extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_dashboard,container,false);
         recyclerView1= v.findViewById(R.id.upcoming_consultation_recycler);
+        name = v.findViewById(R.id.name);
         ImageView consultaton_next=v.findViewById(R.id.upcoming_consultation_next);
         ImageView patients_next= v.findViewById(R.id.patients_profile_next);
 
+        name.setText(dataFromDatabase.name);
         consultaton_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

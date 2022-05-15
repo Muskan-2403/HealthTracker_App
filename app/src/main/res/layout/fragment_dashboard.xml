@@ -40,6 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dr.Strange"
+                    android:id="@+id/name"
                     android:fontFamily="@font/fonts"
                     android:textColor="@color/white"
                     android:textSize="32sp"

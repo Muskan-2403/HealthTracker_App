@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,8 @@ import androidx.navigation.Navigation;
  */
 public class SettingMain extends Fragment {
 
+    TextView name;
+    DataFromDatabase dataFromDatabase;
     ImageView aboutUs,help;
     CardView gotoAccount,achievements,notifications;
     // TODO: Rename parameter arguments, choose names that match
@@ -64,6 +67,8 @@ public class SettingMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_setting_main, container, false);
         gotoAccount = view.findViewById(R.id.dieitician_gotoAccount);
         notifications = view.findViewById(R.id.notification);
+        name = view.findViewById(R.id.settings_dietician_name);
+        name.setText(dataFromDatabase.name);
         gotoAccount.setOnClickListener(v->{
 //            FragmentTransaction ftset1= getActivity().getSupportFragmentManager().beginTransaction();
 //            ftset1.replace(R.id.FrameContainer,new BlankFragment());

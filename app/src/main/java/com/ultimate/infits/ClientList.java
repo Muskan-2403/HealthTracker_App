@@ -45,7 +45,7 @@ public class ClientList extends Fragment {
     RecyclerView clientList;
     RadioButton active,pending;
     ImageView search,filter;
-    String url = "http://192.168.231.1/clientsList.php";
+    String url = "http://192.168.57.1/clientsList.php";
     EditText searchtext;
     RequestQueue queue;
     //ClientListAdapter cd;
@@ -102,6 +102,23 @@ public class ClientList extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_client_list, container, false);
+        clientList = view.findViewById(R.id.client_list);
+        active = view.findViewById(R.id.active_btn);
+        pending = view.findViewById(R.id.pending_btn);
+        search = view.findViewById(R.id.search_client_icon);
+        filter = view.findViewById(R.id.filter_client_icon);
+        searchtext = view.findViewById(R.id.search_bar_text);
+        searchtext.setLines(1);
+
+
         queue = Volley.newRequestQueue(getContext());
         Log.d("ClientList","before");
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url,response -> {
@@ -150,21 +167,6 @@ public class ClientList extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
         Log.d("ClientList","at end");
-
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_client_list, container, false);
-        clientList = view.findViewById(R.id.client_list);
-        active = view.findViewById(R.id.active_btn);
-        pending = view.findViewById(R.id.pending_btn);
-        search = view.findViewById(R.id.search_client_icon);
-        filter = view.findViewById(R.id.filter_client_icon);
-        searchtext = view.findViewById(R.id.search_bar_text);
-        searchtext.setLines(1);
 
         searchtext.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {

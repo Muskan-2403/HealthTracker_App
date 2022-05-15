@@ -203,6 +203,7 @@
         android:id="@+id/menu_icon_action"
         android:layout_width="45dp"
         android:layout_height="52dp"
+        android:src="@drawable/navimg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.008"

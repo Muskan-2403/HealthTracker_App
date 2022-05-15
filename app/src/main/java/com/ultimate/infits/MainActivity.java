@@ -3,6 +3,7 @@ package com.ultimate.infits;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    TextView name,qual;
+    DataFromDatabase dataFromDatabase;
     DrawerLayout draw;
     NavigationView navigationView;
     LinearLayout nav_account;
@@ -32,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        name = findViewById(R.id.nav_name);
+        qual = findViewById(R.id.nav_designation);
+        name.setText(dataFromDatabase.name);
+        qual.setText(dataFromDatabase.qualification);
         draw = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,draw,toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         draw.addDrawerListener(toggle);

@@ -20,9 +20,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -32,7 +44,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,9 +56,11 @@ import java.util.Locale;
 public class Account extends Fragment {
     DataFromDatabase dataFromDatabase;
     ImageView male, female,profile_pic;
+    String url = "http://192.168.57.1/account.php";
+    RequestQueue queue;
     Button logout,save;
-    String dietitian_acc_gender="";
-    String dieititian_acc_name, dietitiamn_acc_age, dietitian_acc_email,dietitian_acc_phoneno;
+    String dietitian_acc_gender;
+    String dieititian_acc_name, dietitiamn_acc_age, dietitian_acc_email,dietitian_acc_phoneno,dietitian_acc_userID;
 
     private Bitmap bitmap;
     private File destination = null;
@@ -126,6 +142,8 @@ public class Account extends Fragment {
             }
         });
 
+
+        dietitian_acc_gender=dataFromDatabase.gender;
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,14 +168,57 @@ public class Account extends Fragment {
                 getActivity().finish();
             }
         });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //save dietitian_acc_variables into db
-            }
-        });
+
+
+
+        queue = Volley.newRequestQueue(getContext());
+        save.setOnClickListener(v-> {
+             dieititian_acc_name=name.getText().toString().trim();
+                dietitiamn_acc_age=age.getText().toString().trim();
+                dietitian_acc_email=email.getText().toString().trim();
+                dietitian_acc_phoneno=phone.getText().toString().trim();
+                dietitian_acc_userID=dataFromDatabase.dietitianuserID;
+
+
+
+
+                Log.d("account","before");
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+                    if (!response.equals("failure")){
+                        Log.d("account","success");
+                        Log.d("response account",response);
+
+
+                        Toast.makeText(getContext(), "save success", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.equals("failure")){
+                        Log.d("account","failure");
+                        Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
+                    }
+                },error -> {
+                    Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();}){
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> data = new HashMap<>();
+                        data.put("userID",dietitian_acc_userID);
+                        data.put("name",dieititian_acc_name);
+                        data.put("email",dietitian_acc_email);
+                        data.put("mobile",dietitian_acc_phoneno);
+                        data.put("age",dietitiamn_acc_age);
+                        data.put("gender",dietitian_acc_gender);
+                        return data;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                requestQueue.add(stringRequest);
+                Log.d("account","at end");
+                });
+
         return view;
+
     }
+
 
 
     private void selectImage() {

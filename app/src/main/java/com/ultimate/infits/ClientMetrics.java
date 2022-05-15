@@ -31,7 +31,7 @@ import java.util.Map;
  */
 public class ClientMetrics extends Fragment {
 
-    String urlm = "http://192.168.231.1/metrics.php";
+    String urlm = "http://192.168.57.1/metrics.php";
     TextView stepstv,glassestv,glassesGoaltv,sleeptv,sleepGoaltv,weighttv,weightGoaltv,calorietv,
             calorieGoaltv,bpmtv,bpmUptv,bpmDowntv;
     DataFromDatabase dataFromDatabase;
