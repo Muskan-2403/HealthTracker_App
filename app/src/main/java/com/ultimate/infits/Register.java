@@ -146,6 +146,7 @@ public class Register extends AppCompatActivity {
 
         Log.d("RegisterClass","at start");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            Log.d("Register",response);
             if(response.equals("success")){
                 Toast.makeText(Register.this,"successful",Toast.LENGTH_LONG).show();
                 dataFromDatabase.flag = true;
@@ -177,7 +178,7 @@ public class Register extends AppCompatActivity {
                 data.put("location",locStr);
                 data.put("age",ageStr);
                 data.put("gender",genderStr);
-                Log.i("details", data.get("userID"));
+                Log.i("Register details", data.get("userID"));
                 return data;
             }
         };
