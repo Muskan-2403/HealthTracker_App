@@ -107,6 +107,8 @@ public class Register extends AppCompatActivity {
                 mobileStr = mobile.getEditText().getText().toString().trim();
                 locStr = loc.getEditText().getText().toString().trim();
                 ageStr = age.getEditText().getText().toString().trim();
+                Log.d("Register details",usernameStr+" "+emailStr+" "+passwordStr+" "+passwordrecheckStr+" "+nameStr+" "+
+                        qualStr+" "+mobileStr+" "+locStr+" "+ageStr);
                 // genderStr = gender.getText().toString().trim();
                 int flag=0;
                 if(!agree.isChecked()) {
@@ -146,7 +148,7 @@ public class Register extends AppCompatActivity {
 
         Log.d("RegisterClass","at start");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            Log.d("Register",response);
+            Log.d("Register response",response);
             if(response.equals("success")){
                 Toast.makeText(Register.this,"successful",Toast.LENGTH_LONG).show();
                 dataFromDatabase.flag = true;

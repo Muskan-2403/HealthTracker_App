@@ -114,7 +114,6 @@ public class ClientList extends Fragment {
         active = view.findViewById(R.id.active_btn);
         pending = view.findViewById(R.id.pending_btn);
         search = view.findViewById(R.id.search_client_icon);
-        filter = view.findViewById(R.id.filter_client_icon);
         searchtext = view.findViewById(R.id.search_bar_text);
         searchtext.setLines(1);
 

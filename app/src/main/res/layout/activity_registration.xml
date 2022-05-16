@@ -29,7 +29,7 @@
         android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usernameRegTV"
+        android:id="@+id/usernameReg"
         android:layout_width="300dp"
         android:layout_height="55dp"
         android:fontFamily="@font/fonts"
@@ -43,7 +43,6 @@
         android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usernameReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo_bhai_2"

@@ -21,6 +21,8 @@ import java.util.List;
  */
 public class Profile extends Fragment {
 
+    TextView name,qualification,location;
+    DataFromDatabase dataFromDatabase;
     RecyclerView recyclerView1;
     String reviewer_name[]={"Martha Finch", "Martha Finch","Martha Finch","Martha Finch"};
     String reviwer_ratings[]={"4.8","4.8","4.8","4.8"};
@@ -72,6 +74,8 @@ public class Profile extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+
     }
 
     @Override
@@ -79,6 +83,12 @@ public class Profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_profile, container, false);
+        name = v.findViewById(R.id.dietician_profile_name);
+        qualification = v.findViewById(R.id.qualificationProfile);
+        location = v.findViewById(R.id.dieitician_location);
+        name.setText(dataFromDatabase.name);
+        qualification.setText(dataFromDatabase.qualification);
+        location.setText(dataFromDatabase.location);
         RecyclerView r1=v.findViewById(R.id.dietician_reviews);
         for (int i=0;i<reviewer_image.length;i++)
         {
@@ -89,7 +99,6 @@ public class Profile extends Fragment {
         r1.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         r1.setAdapter(adap);
         return v;
-
 
 
     }

@@ -72,7 +72,7 @@
                             android:src="@drawable/metrics_steps"/>
                         <TextView
                             android:id="@+id/steps"
-                            android:layout_width="67dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="19dp"
                             android:layout_marginLeft="42dp"
                             android:layout_marginTop="62dp"

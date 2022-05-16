@@ -32,6 +32,7 @@
             android:layout_width="100dp"
             android:layout_height="25dp"
             android:gravity="center"
+            android:id="@+id/qualificationProfile"
             android:text="Dietitian"
             android:textSize="16dp"
             android:textColor="@color/white"
