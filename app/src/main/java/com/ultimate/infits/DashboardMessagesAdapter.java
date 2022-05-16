@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -18,30 +17,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.io.File;
 import java.util.List;
 
-public class DashboardEnquiriesReportsAdapter extends RecyclerView.Adapter<DashboardEnquiriesReportsAdapter.DashboardEnquiriesReportsViewHolder> {
+public class DashboardMessagesAdapter extends RecyclerView.Adapter<DashboardMessagesAdapter.DashboardMessagesViewHolder> {
     Context ct;
-    List<Enquiries> list2;
-    DashboardEnquiriesReportsAdapter(Context ct, List<Enquiries> lst){
+    List<DashboardMessages> list2;
+    DashboardMessagesAdapter(Context ct, List<DashboardMessages> lst){
         this.ct = ct;
         this.list2=lst;
     }
 
     @NonNull
     @Override
-    public DashboardEnquiriesReportsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DashboardMessagesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
-        View view = inflater.inflate(R.layout.dashboard_enquiries_reports,parent,false);
+        View view = inflater.inflate(R.layout.dashboard_messages,parent,false);
         Button enq_message= view.findViewById(R.id.enquiry_message);
         enq_message.setOnClickListener(this::return_message_Area);
-        return new DashboardEnquiriesReportsViewHolder(view);
+        return new DashboardMessagesViewHolder(view);
     }
 
         public void return_message_Area(View v) {
             Navigation.findNavController(v).navigate(R.id.action_dashboardFragment2_to_chattingArea3);
         }
     @Override
-    public void onBindViewHolder(@NonNull DashboardEnquiriesReportsViewHolder holder, int position) {
-        Enquiries pos=list2.get(position);
+    public void onBindViewHolder(@NonNull DashboardMessagesViewHolder holder, int position) {
+        DashboardMessages pos=list2.get(position);
 
         String img=pos.getConsultation_patient_image();
         String n=pos.getConsultation_patient_name();
@@ -66,10 +65,10 @@ public class DashboardEnquiriesReportsAdapter extends RecyclerView.Adapter<Dashb
         return list2.size();
     }
 
-    class DashboardEnquiriesReportsViewHolder extends RecyclerView.ViewHolder{
+    class DashboardMessagesViewHolder extends RecyclerView.ViewHolder{
         ImageView pimg;
         TextView pname,ptype;
-        public DashboardEnquiriesReportsViewHolder(@NonNull View itemView) {
+        public DashboardMessagesViewHolder(@NonNull View itemView) {
             super(itemView);
             ptype= itemView.findViewById(R.id.enquiry_consultation_type);
             pimg=itemView.findViewById(R.id.enquiry_profile_photo);

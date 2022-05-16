@@ -65,7 +65,7 @@ public class TrackerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tracker, container, false);
         re = view.findViewById(R.id.diet_chart_list);
         String[] time = {"Breakfast","Lunch","Dinner"};
-        TrackerAdapter da = new TrackerAdapter(time,getContext());
+        TackerAdapter da = new TackerAdapter(time,getContext());
         re.setAdapter(da);
         re.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;

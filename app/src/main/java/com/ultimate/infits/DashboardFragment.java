@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +52,7 @@ public class DashboardFragment extends Fragment {
     String consultation_type[]={"Video consultation","Video consultation","Audio consultation","Video consultation"};
 
     List<UpcomingConsultations> obj3= new ArrayList<>();
-    List<Enquiries> obj1=new ArrayList<>();
+    List<DashboardMessages> obj1=new ArrayList<>();
     List<Dashboard_profile_pics> obj2=new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -104,6 +103,7 @@ public class DashboardFragment extends Fragment {
         name = v.findViewById(R.id.name);
         ImageView consultaton_next=v.findViewById(R.id.upcoming_consultation_next);
         ImageView patients_next= v.findViewById(R.id.patients_profile_next);
+        ImageView messages_next= v.findViewById(R.id.messages_next);
 
         name.setText(dataFromDatabase.name);
         consultaton_next.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +116,12 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(v).navigate(R.id.clientList4);
+            }
+        });
+        messages_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_dashboardFragment2_to_allMessages2);
             }
         });
 
@@ -174,10 +180,10 @@ public class DashboardFragment extends Fragment {
         recyclerView2=v.findViewById(R.id.enquiries_reports_recycler);
         for(int i=0;i<consultation_patient.length;i++)
         {
-            Enquiries object=new Enquiries(consultation_patient_image[i],consultation_patient[i],consultation_type[i]);
+            DashboardMessages object=new DashboardMessages(consultation_patient_image[i],consultation_patient[i],consultation_type[i]);
             obj1.add(object);
         }
-        DashboardEnquiriesReportsAdapter dfadap=new DashboardEnquiriesReportsAdapter(getContext(),obj1);
+        DashboardMessagesAdapter dfadap=new DashboardMessagesAdapter(getContext(),obj1);
         recyclerView2.setAdapter(dfadap);
         recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView2.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));

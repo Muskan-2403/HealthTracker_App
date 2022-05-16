@@ -40,7 +40,7 @@ public class ClientDetails extends AppCompatActivity  {
         setContentView(R.layout.activity_client_details);
 
 
-        clientID = getIntent().getStringExtra("clientID");
+      /*  clientID = getIntent().getStringExtra("clientID");
         dataFromDatabase.clientuserID = clientID;
         startdate = getIntent().getStringExtra("startDate");
         enddate = getIntent().getStringExtra("endDate");
@@ -53,7 +53,7 @@ public class ClientDetails extends AppCompatActivity  {
                 Intent i=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
         clientidtv = findViewById(R.id.clientIDTV);
         clientidtv.setText(clientID);
@@ -78,7 +78,7 @@ public class ClientDetails extends AppCompatActivity  {
         //getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new dietchart_plan()).commit();
 
 
-        queue = Volley.newRequestQueue(getApplicationContext());
+        /*queue = Volley.newRequestQueue(getApplicationContext());
         Log.d("clientDetails","before");
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url,response ->{
             if (!response.equals("failure")) {
@@ -120,7 +120,7 @@ public class ClientDetails extends AppCompatActivity  {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
-        Log.d("ClientDetails","at end");
+        Log.d("ClientDetails","at end");*/
 
 
 

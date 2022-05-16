@@ -10,7 +10,6 @@
         android:name="com.ultimate.infits.ClientList"
         android:label="fragment_client_list"
         tools:layout="@layout/fragment_client_list" >
-
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment2"
@@ -23,6 +22,9 @@
         <action
             android:id="@+id/action_dashboardFragment2_to_clientList4"
             app:destination="@id/clientList4" />
+        <action
+            android:id="@+id/action_dashboardFragment2_to_allMessages2"
+            app:destination="@id/allMessages2" />
     </fragment>
     <fragment
         android:id="@+id/messages2"
@@ -72,5 +74,10 @@
         android:label="fragment_chatting_area"
         tools:layout="@layout/fragment_chatting_area" >
     </fragment>
+    <fragment
+        android:id="@+id/allMessages2"
+        android:name="com.ultimate.infits.AllMessages"
+        android:label="fragment_all_messages"
+        tools:layout="@layout/fragment_all_messages" />
 
 </navigation>
