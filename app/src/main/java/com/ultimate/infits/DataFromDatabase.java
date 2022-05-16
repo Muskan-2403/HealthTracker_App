@@ -18,7 +18,7 @@ import java.util.Map;
 public class DataFromDatabase {
 
     HashMap<String,String> map = new HashMap<>();
-    String url = "http://192.168.57.1/getdietitiandetails.php";
+    String url = "http://192.168.111.1/getdietitiandetails.php";
     public static boolean flag= false;
     public static String clientuserID;
     public static String profilePhoto="iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAM1BMVEXk5ueutLfn6eqrsbTp6+zg4uOwtrnJzc" +

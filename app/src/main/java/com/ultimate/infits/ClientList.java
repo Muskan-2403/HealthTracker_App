@@ -45,7 +45,7 @@ public class ClientList extends Fragment {
     RecyclerView clientList;
     RadioButton active,pending;
     ImageView search,filter;
-    String url = "http://192.168.57.1/clientsList.php";
+    String url = "http://192.168.111.1/clientsList.php";
     EditText searchtext;
     RequestQueue queue;
     //ClientListAdapter cd;

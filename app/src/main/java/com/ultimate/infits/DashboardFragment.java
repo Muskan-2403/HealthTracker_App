@@ -1,6 +1,7 @@
 package com.ultimate.infits;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +10,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +41,8 @@ public class DashboardFragment extends Fragment {
 
     TextView name;
     DataFromDatabase dataFromDatabase;
+    String url = "http://192.168.111.1/upcomingConsultations.php";
+    RequestQueue queue;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
     String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
     String consultation_time[]={"05:00pm","05:00pm","05:00pm","05:00pm"};
@@ -36,7 +52,7 @@ public class DashboardFragment extends Fragment {
     "app/src/main/res/drawable/doctor_blue_border.png"};
     String consultation_type[]={"Video consultation","Video consultation","Audio consultation","Video consultation"};
 
-    List<UpcomingConsultations> obj= new ArrayList<>();
+    List<UpcomingConsultations> obj3= new ArrayList<>();
     List<Enquiries> obj1=new ArrayList<>();
     List<Dashboard_profile_pics> obj2=new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
@@ -102,19 +118,60 @@ public class DashboardFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.clientList4);
             }
         });
-        //finding listview
-        for (int i=0;i<consultation_patient.length;i++)
+
+        queue = Volley.newRequestQueue(getContext());
+        Log.d("Dashboard","before");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+            if (!response.equals("failure")){
+                Log.d("dashboard","success");
+                Log.d("response",response);
+
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i=0;i<jsonArray.length();i++){
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        String dateandtime = object.getString("dateandtime");
+                        String date = dateandtime.substring(0,10);
+                        String time = dateandtime.substring(11,16);
+                        UpcomingConsultations obj=new UpcomingConsultations(date,time,consultation_patient_image[i],
+                                object.getString("clientID"));
+                        Log.d("Dashboard UC",date+" "+time+" "+object.getString("clientID"));
+                        obj3.add(obj);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Toast.makeText(getContext(), "Dashboard success", Toast.LENGTH_SHORT).show();
+            }
+            else if (response.equals("failure")){
+                Log.d("Dashboard","failure");
+                Toast.makeText(getContext(), "Dashboard failed", Toast.LENGTH_SHORT).show();
+            }
+        },error -> {
+            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
         {
-            UpcomingConsultations object=new UpcomingConsultations(consultation_date[i],consultation_time[i],consultation_patient_image[i],consultation_patient[i]);
-            obj.add(object);
-        }
-        UpcomingConsultationAdapter adap= new UpcomingConsultationAdapter(getContext(),obj);
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                String userid = dataFromDatabase.dietitianuserID;
+                Log.d("dashboard","dietitianid = "+userid);
+                data.put("userID", userid);
+                return data;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+        Log.d("Dashboard","at end");
+
+        UpcomingConsultationAdapter adap= new UpcomingConsultationAdapter(getContext(),obj3);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         //recyclerView1.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
         recyclerView1.setAdapter(adap);
 
         recyclerView2=v.findViewById(R.id.enquiries_reports_recycler);
-
         for(int i=0;i<consultation_patient.length;i++)
         {
             Enquiries object=new Enquiries(consultation_patient_image[i],consultation_patient[i],consultation_type[i]);

@@ -56,7 +56,7 @@ import java.util.Map;
 public class Account extends Fragment {
     DataFromDatabase dataFromDatabase;
     ImageView male, female,profile_pic;
-    String url = "http://192.168.57.1/account.php";
+    String url = "http://192.168.111.1/account.php";
     RequestQueue queue;
     Button logout,save;
     String dietitian_acc_gender;
@@ -127,6 +127,8 @@ public class Account extends Fragment {
         ImageView select_pic= view.findViewById(R.id.select_dp);
         save=view.findViewById(R.id.button_save);
         logout=view.findViewById(R.id.button_logout);
+        male.setImageResource(R.drawable.gender_male);
+        female.setImageResource(R.drawable.gender_female);
 
         if(dataFromDatabase.gender=="M"){
             male.setImageResource(R.drawable.gender_male_selected);
@@ -180,8 +182,6 @@ public class Account extends Fragment {
                 dietitian_acc_userID=dataFromDatabase.dietitianuserID;
 
 
-
-
                 Log.d("account","before");
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
                     if (!response.equals("failure")){
@@ -204,7 +204,7 @@ public class Account extends Fragment {
                         data.put("userID",dietitian_acc_userID);
                         data.put("name",dieititian_acc_name);
                         data.put("email",dietitian_acc_email);
-                        data.put("mobile",dietitian_acc_phoneno);
+                        data.put("mobile",dietitian_acc_phoneno);  
                         data.put("age",dietitiamn_acc_age);
                         data.put("gender",dietitian_acc_gender);
                         return data;
@@ -281,7 +281,10 @@ public class Account extends Fragment {
                         //bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
                         //profile_pic.setImageBitmap(bitmap);
                        // String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-                        //destination = new File(Environment.getExternalStorageDirectory() + "/" +getString(R.string.app_name), "IMG_" + timeStamp + ".jpg");
+                        //destination = new File(Environment.getExternalStorageDirectory() + "/" +getString(R.string.app_name),
+
+                        "IMG_" + timeStamp + ".jpg");
+            */
                         //FileOutputStream fo;
                     /*try {
                         destination.createNewFile();
