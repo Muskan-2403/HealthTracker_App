@@ -26,7 +26,7 @@ public class TrackerAdapter extends RecyclerView.Adapter<TrackerAdapter.TrackerV
     @Override
     public TrackerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(con);
-        View view = inflater.inflate(R.layout.tracker_layout,parent,false);
+        View view = inflater.inflate(R.layout.dietchart_layout,parent,false);
         return new TrackerViewHolder(view);
     }
 
@@ -37,6 +37,7 @@ public class TrackerAdapter extends RecyclerView.Adapter<TrackerAdapter.TrackerV
             Log.d("Click", "onBindViewHolder: ");
             if (holder.foodList.getVisibility() == View.VISIBLE){
                 holder.foodList.setVisibility(View.GONE);
+                holder.imgOverview.setVisibility(View.VISIBLE);
             }
             else{
                 holder.foodList.setVisibility(View.VISIBLE);

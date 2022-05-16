@@ -2,7 +2,7 @@ package com.ultimate.infits;
 
 import java.io.Serializable;
 
-public class Enquiries implements Serializable {
+public class DashboardMessages implements Serializable {
 
     private String consultation_type;
     private String consultation_patient_name;
@@ -10,7 +10,7 @@ public class Enquiries implements Serializable {
     //private int product_price;
     // private int product_url;
 
-    public Enquiries(String img, String name, String type) {
+    public DashboardMessages(String img, String name, String type) {
         this.consultation_patient_image = img;
         this.consultation_patient_name = name;
         this.consultation_type = type;

@@ -65,7 +65,8 @@
                 android:id="@+id/upcoming_consultation_next"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/blue_arrow" />
+                android:src="@drawable/blue_arrow"
+                android:layout_marginEnd="15dp"/>
 
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
@@ -94,7 +95,8 @@
                 android:id="@+id/patients_profile_next"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/blue_arrow" />
+                android:src="@drawable/blue_arrow"
+                android:layout_marginEnd="15dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -126,44 +128,29 @@
                     android:scrollbars="horizontal" />
             </LinearLayout>
 
-            <RadioGroup
-                android:id="@+id/toggle"
+
+               <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="#EFF8FF"
-                android:checkedButton="@+id/active_btn"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp"
-                android:layout_marginHorizontal="40dp"
-                >
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unread Messages"
+                android:fontFamily="@font/fonts"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:textColor="#4A4A4A"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/messages_next"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/blue_arrow"
+                android:layout_marginEnd="15dp"/>
 
-                <RadioButton
-                    android:id="@+id/active_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/switch_off"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_margin="1dp"
-                    android:text="Latest Enquiries"
-                    android:textColor="@drawable/switch_text"
-                    android:fontFamily="@font/fonts"
-                    />
-
-                <RadioButton
-                    android:id="@+id/pending_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/switch_on"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="Reports"
-                    android:textColor="@drawable/switch_text"
-                    android:fontFamily="@font/fonts"/>
-            </RadioGroup>
-
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/enquiries_reports_recycler"
                 android:layout_width="351dp"
