@@ -77,4 +77,9 @@
         <item name="android:textSize">15sp</item>
         <item name="android:layout_marginStart">10dp</item>
     </style>
+
+    <style name="DialogTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorAccent">#E375B3</item>
+        <item name="android:textColor">#E375B3</item>
+    </style>
 </resources>

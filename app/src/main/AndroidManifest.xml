@@ -27,7 +27,6 @@
         <activity
             android:name=".ClientDetails"
             android:exported="false" >
-
         </activity>
 
         <activity
