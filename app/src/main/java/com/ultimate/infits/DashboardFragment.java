@@ -145,6 +145,10 @@ public class DashboardFragment extends Fragment {
                         obj3.add(obj);
 
                     }
+                    UpcomingConsultationAdapter adap= new UpcomingConsultationAdapter(getContext(),obj3);
+                    recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+                    //recyclerView1.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
+                    recyclerView1.setAdapter(adap);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -172,10 +176,8 @@ public class DashboardFragment extends Fragment {
         requestQueue.add(stringRequest);
         Log.d("Dashboard","at end");
 
-        UpcomingConsultationAdapter adap= new UpcomingConsultationAdapter(getContext(),obj3);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-        //recyclerView1.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
-        recyclerView1.setAdapter(adap);
+
+
 
         recyclerView2=v.findViewById(R.id.enquiries_reports_recycler);
         for(int i=0;i<consultation_patient.length;i++)
