@@ -113,8 +113,8 @@ public class ClientDetails extends AppCompatActivity  {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> data = new HashMap<>();
-                Log.d("ClientDetails","clientid = "+clientID);
-                data.put("clientuserID", clientID);
+                data.put("clientuserID", dataFromDatabase.clientuserID);
+                Log.d("ClientDetails","clientid = "+dataFromDatabase.clientuserID);
                 return data;
             }
         };

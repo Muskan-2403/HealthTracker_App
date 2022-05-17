@@ -114,7 +114,6 @@ public class ClientList extends Fragment {
         active = view.findViewById(R.id.active_btn);
         pending = view.findViewById(R.id.pending_btn);
         search = view.findViewById(R.id.search_client_icon);
-        filter = view.findViewById(R.id.filter_client_icon);
         searchtext = view.findViewById(R.id.search_bar_text);
         searchtext.setLines(1);
 
@@ -141,6 +140,34 @@ public class ClientList extends Fragment {
                         }else if (dietchart!=null){
                             client_list_active.add(obj);
                         }
+
+                        ClientListAdapter cd = new ClientListAdapter(getContext(), client_list_active);
+                        clientList.setAdapter(cd);
+                        clientList.setLayoutManager(new LinearLayoutManager(getContext()));
+                        active.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ClientListAdapter cd1 = new ClientListAdapter(getContext(), client_list_active);
+                                // cd = new ClientListAdapter(getContext(),true);
+                                clientList.setAdapter(cd1);
+                                clientList.setLayoutManager(new LinearLayoutManager(getContext()));
+                            }
+                        });
+                        pending.setOnClickListener(v -> {
+//            client_list_pending.clear();
+//            for (int i = 0; i < client_list_image.length; i++) {
+//                List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],
+//                        client_list_start_date[i], client_list_end_date[i], false);
+//                client_list_pending.add(obj);
+//            }
+                            ClientListAdapter cd2 = new ClientListAdapter(getContext(), client_list_pending);
+                            clientList.setAdapter(cd2);
+                            clientList.setLayoutManager(new LinearLayoutManager(getContext()));
+                        });
+                        // ClientListAdapter cd = new ClientListAdapter(getContext(), client_list_active, (ClientListAdapter.Selecteditem) this);
+                        // clientList.setAdapter(cd);
+                        // clientList.setLayoutManager(new LinearLayoutManager(getContext()));
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -200,32 +227,6 @@ public class ClientList extends Fragment {
 //                    client_list_start_date[i], client_list_end_date[i], true);
 //            client_list_active.add(obj);
 //        }
-        ClientListAdapter cd = new ClientListAdapter(getContext(), client_list_active);
-        clientList.setAdapter(cd);
-        clientList.setLayoutManager(new LinearLayoutManager(getContext()));
-        active.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ClientListAdapter cd1 = new ClientListAdapter(getContext(), client_list_active);
-                // cd = new ClientListAdapter(getContext(),true);
-                clientList.setAdapter(cd1);
-                clientList.setLayoutManager(new LinearLayoutManager(getContext()));
-            }
-        });
-        pending.setOnClickListener(v -> {
-//            client_list_pending.clear();
-//            for (int i = 0; i < client_list_image.length; i++) {
-//                List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],
-//                        client_list_start_date[i], client_list_end_date[i], false);
-//                client_list_pending.add(obj);
-//            }
-            ClientListAdapter cd2 = new ClientListAdapter(getContext(), client_list_pending);
-            clientList.setAdapter(cd2);
-            clientList.setLayoutManager(new LinearLayoutManager(getContext()));
-        });
-        // ClientListAdapter cd = new ClientListAdapter(getContext(), client_list_active, (ClientListAdapter.Selecteditem) this);
-        // clientList.setAdapter(cd);
-        // clientList.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
 
