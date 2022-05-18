@@ -1,13 +1,25 @@
 package com.ultimate.infits;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class Calender extends Fragment {
 
     RecyclerView event_list;
+    String date_to_display_trackers;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,6 +80,28 @@ public class Calender extends Fragment {
         EventListAdapter ea = new EventListAdapter(getContext());
         event_list.setAdapter(ea);
         event_list.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        Date dateobj=new Date();
+        date_to_display_trackers=new SimpleDateFormat("yyyy-MM-dd").format(dateobj);
+        Button search_appointments= view.findViewById(R.id.appointment_done);
+        CalendarView calendarView = view.findViewById(R.id.appointment_calendar);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                String curDay = String.valueOf(dayOfMonth);
+                String curMonth = String.valueOf(month+1);
+                String curYear = String.valueOf(year);
+                date_to_display_trackers = curYear+"-"+curMonth+"-"+curDay;
+                Toast.makeText(getContext(),"Selected date= "+date_to_display_trackers,Toast.LENGTH_SHORT).show();
+            }
+        });
+        search_appointments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Searching appointments on "+date_to_display_trackers,Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 }

@@ -1,14 +1,12 @@
 package com.ultimate.infits;
 
 import android.app.Dialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -30,8 +28,6 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -206,7 +202,7 @@ public class ClientMetrics extends Fragment {
                 Dialog dialog = new Dialog(getContext());
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setCancelable(true);
-                dialog.setContentView(R.layout.dialog_metricscalendar);
+                dialog.setContentView(R.layout.dialog_calendar);
                 CalendarView calendarView = dialog.findViewById(R.id.calendarView);
                 dialog.show();
 
