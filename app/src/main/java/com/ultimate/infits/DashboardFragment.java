@@ -40,7 +40,7 @@ public class DashboardFragment extends Fragment {
 
     TextView name;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.111.1/upcomingConsultations.php";
+    String url = "http://192.168.166.1/upcomingConsultations.php";
     RequestQueue queue;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
     String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
@@ -137,6 +137,7 @@ public class DashboardFragment extends Fragment {
                     for (int i=0;i<jsonArray.length();i++){
                         JSONObject object = jsonArray.getJSONObject(i);
                         String dateandtime = object.getString("dateandtime");
+                        String mobile = object.getString("mobile");
                         String date = dateandtime.substring(0,10);
                         String time = dateandtime.substring(11,16);
                         UpcomingConsultations obj=new UpcomingConsultations(date,time,consultation_patient_image[i],

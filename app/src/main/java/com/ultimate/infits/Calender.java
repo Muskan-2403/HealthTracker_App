@@ -2,6 +2,7 @@ package com.ultimate.infits;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,27 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,8 +42,11 @@ import java.util.Date;
  */
 public class Calender extends Fragment {
 
+    DataFromDatabase dataFromDatabase;
     RecyclerView event_list;
     String date_to_display_trackers;
+    RequestQueue queue;
+    String url = "http://192.168.166.1/CalenderAppointment.php";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,6 +119,49 @@ public class Calender extends Fragment {
                 Toast.makeText(getContext(),"Searching appointments on "+date_to_display_trackers,Toast.LENGTH_SHORT).show();
             }
         });
+
+        vollyFunc(date_to_display_trackers);
         return view;
+    }
+
+    public void vollyFunc(String datex){
+        queue = Volley.newRequestQueue(getContext());
+        Log.d("Calender","before");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+            if (!response.equals("failure")){
+                Log.d("Calender","success");
+                Log.d("response Calender",response);
+
+//                try {
+//                    JSONArray jsonArray = new JSONArray(response);
+//                    JSONObject object = jsonArray.getJSONObject(0);
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+
+            }
+            else if (response.equals("failure")){
+                Log.d("Calender","failure");
+                Toast.makeText(getContext(), "Calender failed", Toast.LENGTH_SHORT).show();
+            }
+        },error -> {
+            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
+        {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                Log.d("Calender","dieticianuserID = "+dataFromDatabase.dietitianuserID);
+                Log.d("Calender","date= "+date_to_display_trackers);
+                data.put("userID", dataFromDatabase.dietitianuserID);
+                data.put("date",datex);
+
+                return data;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+        Log.d("Calender","at end");
     }
 }

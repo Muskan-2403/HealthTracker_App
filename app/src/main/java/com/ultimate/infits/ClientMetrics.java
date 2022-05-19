@@ -40,7 +40,7 @@ import java.util.Map;
  */
 public class ClientMetrics extends Fragment {
 
-    String urlm = "http://192.168.111.1/metrics.php";
+    String urlm = "http://192.168.166.1/metrics.php";
     TextView stepstv,glassestv,glassesGoaltv,sleeptv,sleepGoaltv,weighttv,weightGoaltv,calorietv,
             calorieGoaltv,bpmtv,bpmUptv,bpmDowntv;
     String date_to_display_trackers;
@@ -86,72 +86,6 @@ public class ClientMetrics extends Fragment {
         }
 
 
-        queue = Volley.newRequestQueue(getContext());
-        Log.d("ClientMetrics","before");
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,urlm, response -> {
-            if (!response.equals("failure")){
-                Log.d("ClientMetrics","success");
-                Log.d("response",response);
-
-                try {
-                    JSONArray jsonArray = new JSONArray(response);
-                    JSONObject object = jsonArray.getJSONObject(0);
-                    String stepsStr = object.getString("steps");
-                    String stepsGoal = object.getString("stepsgoal");
-                    String waterStr = object.getString("water");
-                    String waterGoal = object.getString("watergoal");
-                    String sleephrsStr = object.getString("sleephrs");
-                    String sleepminsStr = object.getString("sleepmins");
-                    String sleepGoal = object.getString("sleepgoal");
-                    String weightStr = object.getString("weight");
-                    String weightGoal = object.getString("weightgoal");
-
-                    stepstv.setText(stepsStr+" steps");
-                    glassestv.setText(waterStr+" glasses");
-                    glassesGoaltv.setText(waterGoal+" glasses");
-                    sleeptv.setText(sleephrsStr+" hours"+sleepminsStr+" mins");
-                    sleepGoaltv.setText(sleepGoal+" hours");
-                    weighttv.setText(weightStr+" KiloGrams");
-                    weightGoaltv.setText(weightGoal+" KG");
-                    if (stepsStr=="null"){
-                        stepstv.setText("no data available");
-                    }if (waterStr=="null"){
-                        glassestv.setText("no data available");
-                    }if (waterGoal=="null"){
-                        glassesGoaltv.setText("no data available");
-                    }if (sleephrsStr=="null"){
-                        sleeptv.setText("no data available");
-                    }if (sleepGoal=="null"){
-                        sleepGoaltv.setText("no data available");
-                    }if (weightStr=="null"){
-                        weighttv.setText("no data available");
-                    }if (weightGoal=="null"){
-                        weightGoaltv.setText("no data available");
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-            else if (response.equals("failure")){
-                Log.d("clientMetrics","failure");
-                Toast.makeText(getContext(), "ClientMetrics failed", Toast.LENGTH_SHORT).show();
-            }
-        },error -> {
-            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
-        {
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> data = new HashMap<>();
-                Log.d("ClientMetrics","clientuserID = "+dataFromDatabase.clientuserID);
-                data.put("userID", dataFromDatabase.clientuserID);
-                return data;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-        Log.d("ClientMetrics","at end");
 
     }
 
@@ -184,6 +118,7 @@ public class ClientMetrics extends Fragment {
             public void onClick(View v) {
                 date_to_display_trackers=new SimpleDateFormat("yyyy-MM-dd").format(dateobj);
                 Toast.makeText(getContext(),"Selected date= "+date_to_display_trackers,Toast.LENGTH_SHORT).show();
+                vollyFunc(date_to_display_trackers);
             }
         });
         yesterday.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +129,7 @@ public class ClientMetrics extends Fragment {
                 cal.add(Calendar.DATE, -1);
                 date_to_display_trackers= dateFormat.format(cal.getTime());
                 Toast.makeText(getContext(),"Selected date= "+date_to_display_trackers,Toast.LENGTH_SHORT).show();
+                vollyFunc(date_to_display_trackers);
             }
         });
         date_picker.setOnClickListener(new View.OnClickListener() {
@@ -216,14 +152,86 @@ public class ClientMetrics extends Fragment {
                                 date_to_display_trackers = curYear+"-"+curMonth+"-"+curDay;
                                 dialog.cancel();
                         Toast.makeText(getContext(),"Selected date= "+date_to_display_trackers,Toast.LENGTH_SHORT).show();
+                        vollyFunc(date_to_display_trackers);
                             }
                         });
 
             }
         });
+
+        vollyFunc(date_to_display_trackers);
         return view;
     }
+     public void vollyFunc(String datex){
+         queue = Volley.newRequestQueue(getContext());
+         Log.d("ClientMetrics","before");
+         StringRequest stringRequest = new StringRequest(Request.Method.POST,urlm, response -> {
+             if (!response.equals("failure")){
+                 Log.d("ClientMetrics","success");
+                 Log.d("response",response);
 
+                 try {
+                     JSONArray jsonArray = new JSONArray(response);
+                     JSONObject object = jsonArray.getJSONObject(0);
+                     String stepsStr = object.getString("steps");
+                     String stepsGoal = object.getString("stepsgoal");
+                     String waterStr = object.getString("water");
+                     String waterGoal = object.getString("watergoal");
+                     String sleephrsStr = object.getString("sleephrs");
+                     String sleepminsStr = object.getString("sleepmins");
+                     String sleepGoal = object.getString("sleepgoal");
+                     String weightStr = object.getString("weight");
+                     String weightGoal = object.getString("weightgoal");
 
+                     stepstv.setText(stepsStr+" steps");
+                     glassestv.setText(waterStr+" glasses");
+                     glassesGoaltv.setText(waterGoal+" glasses");
+                     sleeptv.setText(sleephrsStr+" hours"+sleepminsStr+" mins");
+                     sleepGoaltv.setText(sleepGoal+" hours");
+                     weighttv.setText(weightStr+" KiloGrams");
+                     weightGoaltv.setText(weightGoal+" KG");
+                     if (stepsStr=="null"){
+                         stepstv.setText("no data available");
+                     }if (waterStr=="null"){
+                         glassestv.setText("no data available");
+                     }if (waterGoal=="null"){
+                         glassesGoaltv.setText("no data available");
+                     }if (sleephrsStr=="null"){
+                         sleeptv.setText("no data available");
+                     }if (sleepGoal=="null"){
+                         sleepGoaltv.setText("no data available");
+                     }if (weightStr=="null"){
+                         weighttv.setText("no data available");
+                     }if (weightGoal=="null"){
+                         weightGoaltv.setText("no data available");
+                     }
+                 } catch (JSONException e) {
+                     e.printStackTrace();
+                 }
+
+             }
+             else if (response.equals("failure")){
+                 Log.d("clientMetrics","failure");
+                 Toast.makeText(getContext(), "ClientMetrics failed", Toast.LENGTH_SHORT).show();
+             }
+         },error -> {
+             Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
+         {
+             @Nullable
+             @Override
+             protected Map<String, String> getParams() throws AuthFailureError {
+                 Map<String, String> data = new HashMap<>();
+                 Log.d("ClientMetrics","clientuserID = "+dataFromDatabase.clientuserID);
+                 Log.d("Client metrics","date= "+date_to_display_trackers);
+                 data.put("userID", dataFromDatabase.clientuserID);
+                 data.put("date",datex);
+
+                 return data;
+             }
+         };
+         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+         requestQueue.add(stringRequest);
+         Log.d("ClientMetrics","at end");
+     }
 
 }

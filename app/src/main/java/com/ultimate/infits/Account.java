@@ -56,7 +56,7 @@ import java.util.Map;
 public class Account extends Fragment {
     DataFromDatabase dataFromDatabase;
     ImageView male, female,profile_pic;
-    String url = "http://192.168.111.1/account.php";
+    String url = "http://192.168.166.1/account.php";
     RequestQueue queue;
     Button logout,save;
     String dietitian_acc_gender;
