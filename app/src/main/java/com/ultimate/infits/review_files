@@ -1,0 +1,4 @@
+pending-check if recycler view is required for achievements, if not.. delete only fragment_achievement.xml file and  Achievement.java file
+pending-if fragment_achievement.xml is deleted,  delete AchievementAdapter and check if the fragment is deleted in the settings_nav_graph
+pending- if recycler view is needed, then delete achievement_card.java and delete fragment_achivement_card.xml and check the settings nav graph
+pending- change the settingsMain.java file accordingly

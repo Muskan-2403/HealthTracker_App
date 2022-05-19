@@ -80,19 +80,9 @@ public class SettingMain extends Fragment {
         });
         achievements=view.findViewById(R.id.dieitician_achievements_settings_view);
         achievements.setOnClickListener(v->{
-//            FragmentTransaction ftset2= getActivity().getSupportFragmentManager().beginTransaction();
-//            ftset2.replace(R.id.FrameContainer,new BlankFragment());
-//            ftset2.add(R.id.FrameContainer,new Achivement());
-//            ftset2.addToBackStack("settings_achievement");
-//            ftset2.commit();
-            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_achivement);
+            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_achievement_card);
        });
         notifications.setOnClickListener(v->{
-//            FragmentTransaction ftset3= getActivity().getSupportFragmentManager().beginTransaction();
-//            ftset3.replace(R.id.FrameContainer,new BlankFragment());
-//            ftset3.add(R.id.FrameContainer,new Notification());
-//            ftset3.addToBackStack("settings_notification");
-//            ftset3.commit();
             Navigation.findNavController(v).navigate(R.id.action_settingMain_to_notification);
        });
         return view;
