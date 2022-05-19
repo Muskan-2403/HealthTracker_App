@@ -60,7 +60,7 @@ public class Account extends Fragment {
     RequestQueue queue;
     Button logout,save;
     String dietitian_acc_gender;
-    String dieititian_acc_name, dietitiamn_acc_age, dietitian_acc_email,dietitian_acc_phoneno,dietitian_acc_userID;
+    String dieititian_acc_name, dietitiamn_acc_age, dietitian_acc_email,dietitian_acc_phoneno,dietitian_acc_userID,dietitian_about_me;
 
     private Bitmap bitmap;
     private File destination = null;
@@ -129,7 +129,44 @@ public class Account extends Fragment {
         logout=view.findViewById(R.id.button_logout);
         male.setImageResource(R.drawable.gender_male);
         female.setImageResource(R.drawable.gender_female);
+        EditText about_me=view.findViewById(R.id.about_me_edt);
 
+        ImageView name_btn=view.findViewById(R.id.name_edt_button);
+        ImageView age_btn=view.findViewById(R.id.age_edt_button);
+        ImageView email_btn=view.findViewById(R.id.email_edt_button);
+        ImageView phone_btn=view.findViewById(R.id.phone_edt_button);
+        ImageView about_me_btn=view.findViewById(R.id.about_me_edt_button);
+
+        name_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        age_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        email_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        phone_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        about_me_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         if(dataFromDatabase.gender=="M"){
             male.setImageResource(R.drawable.gender_male_selected);
             female.setImageResource(R.drawable.gender_female);

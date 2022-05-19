@@ -1,5 +1,6 @@
 package com.ultimate.infits;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
@@ -109,10 +110,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
-           /* case R.id.clientList:
-                Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.open_dashboard_fragment);
-                Navigation.findNavController(MainActivity.this,R.id.FrameContainer).navigate(R.id.action_dashboardFragment2_to_clientList4);
-                draw.closeDrawer(GravityCompat.START);*/
+            case R.id.accept_reject_List:
+                startActivity(new Intent(getApplicationContext(),AcceptRejectClients.class));
+                draw.closeDrawer(GravityCompat.START);
 
             case R.id.dashboard:
                 Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.open_dashboard_fragment);
