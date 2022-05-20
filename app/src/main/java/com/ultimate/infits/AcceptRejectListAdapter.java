@@ -26,10 +26,12 @@ public class AcceptRejectListAdapter extends RecyclerView.Adapter<AcceptRejectLi
 
     Context ct;
     List<AcceptRejectList> list2;
-     ImageView list_accept;
-    AcceptRejectListAdapter(Context ct, List<AcceptRejectList> lst){
+    private Selecteditem selectedItem;
+    ImageView list_accept;
+    AcceptRejectListAdapter(Context ct, List<AcceptRejectList> lst,Selecteditem selecteditem){
         this.ct = ct;
         this.list2=lst;
+        this.selectedItem=selecteditem;
     }
 
     @NonNull
@@ -37,7 +39,7 @@ public class AcceptRejectListAdapter extends RecyclerView.Adapter<AcceptRejectLi
     public AcceptRejectListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
         View view = inflater.inflate(R.layout.accept_reject_recyclerview,parent,false);
-         list_accept=view.findViewById(R.id.request_accept);
+        list_accept=view.findViewById(R.id.request_accept);
         return new AcceptRejectListViewHolder(view);
     }
 
@@ -83,11 +85,13 @@ public class AcceptRejectListAdapter extends RecyclerView.Adapter<AcceptRejectLi
             pimg = itemView.findViewById(R.id.accept_reject_profile_photo);
             pname = itemView.findViewById(R.id.accept_reject_profile_name);
 
-                    itemView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectedItem.selecteditem(list2.get(getAdapterPosition()));
+
                 }
             });
 
         }
-}}
+    }}
