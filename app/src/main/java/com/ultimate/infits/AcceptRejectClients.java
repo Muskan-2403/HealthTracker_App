@@ -30,6 +30,7 @@ import java.util.Map;
 
 public class AcceptRejectClients extends AppCompatActivity {
 
+
     DataFromDatabase dataFromDatabase;
     RequestQueue queue;
     String url = "http://192.168.134.1/allClients.php";
@@ -82,19 +83,17 @@ public class AcceptRejectClients extends AppCompatActivity {
                         String dieticianID = object.getString("dietitianID");
                         if (dieticianID=="null"){
                             AcceptRejectList obj=new AcceptRejectList(all_clients_img[i],clientid,plan);
-                            Log.d("plan_x",plan);
+                            Log.d("plan_x",plan.toString());
+                            all_plans.add(obj);
                             if (plan.equals("diet chart")){
                                 plan_diet.add(obj);
-                                all_plans.add(obj);
                             }
-                            if (plan.equals(" 1to1")){
+                            if (plan.toString()==" 1to1"){
                                 Log.d("1to1"," 1to1");
                                 plan_1to1.add(obj);
-                                all_plans.add(obj);
                             }
                             if (plan.equals("premium")){
                                 plan_premium.add(obj);
-                                all_plans.add(obj);
                             }
                         }
                     }

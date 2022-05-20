@@ -26,12 +26,10 @@ public class AcceptRejectListAdapter extends RecyclerView.Adapter<AcceptRejectLi
 
     Context ct;
     List<AcceptRejectList> list2;
-    private Selecteditem selectedItem;
      ImageView list_accept;
-    AcceptRejectListAdapter(Context ct, List<AcceptRejectList> lst,Selecteditem selecteditem){
+    AcceptRejectListAdapter(Context ct, List<AcceptRejectList> lst){
         this.ct = ct;
         this.list2=lst;
-        this.selectedItem=selecteditem;
     }
 
     @NonNull
@@ -88,8 +86,6 @@ public class AcceptRejectListAdapter extends RecyclerView.Adapter<AcceptRejectLi
                     itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            selectedItem.selecteditem(list2.get(getAdapterPosition()));
-
                 }
             });
 
