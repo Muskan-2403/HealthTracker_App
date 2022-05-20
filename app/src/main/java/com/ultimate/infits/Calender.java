@@ -46,7 +46,7 @@ public class Calender extends Fragment {
     RecyclerView event_list;
     String date_to_display_trackers;
     RequestQueue queue;
-    String url = "http://192.168.166.1/CalenderAppointment.php";
+    String url = "http://192.168.134.1/CalenderAppointment.php";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

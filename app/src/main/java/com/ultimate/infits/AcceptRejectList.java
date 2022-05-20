@@ -1,6 +1,7 @@
 package com.ultimate.infits;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class AcceptRejectList implements Serializable {
 
