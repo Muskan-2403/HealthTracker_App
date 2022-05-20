@@ -8,15 +8,16 @@ public class UpcomingConsultations implements Serializable {
     private String consultation_time;
     private String consultation_patient;
     private String consultation_patient_image;
+    private String consultation_patient_mobile;
     //private int product_price;
    // private int product_url;
 
-    public UpcomingConsultations(String date, String time, String img, String name) {
+    public UpcomingConsultations(String date, String time, String img, String name,String mobile) {
         this.consultation_date=date;
         this.consultation_time=time;
         this.consultation_patient=name;
         this.consultation_patient_image=img;
-
+        this.consultation_patient_mobile=mobile;
     }
 
     public String getConsultation_date() {
@@ -49,5 +50,13 @@ public class UpcomingConsultations implements Serializable {
 
     public void setConsultation_patient_image(String consultation_patient_image) {
         this.consultation_patient_image = consultation_patient_image;
+    }
+
+    public String getConsultation_patient_mobile() {
+        return consultation_patient_mobile;
+    }
+
+    public void setConsultation_patient_mobile(String consultation_patient_mobile) {
+        this.consultation_patient_mobile = consultation_patient_mobile;
     }
 }

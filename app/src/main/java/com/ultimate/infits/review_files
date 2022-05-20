@@ -1,4 +1,7 @@
-pending-check if recycler view is required for achievements, if not.. delete only fragment_achievement.xml file and  Achievement.java file
-pending-if fragment_achievement.xml is deleted,  delete AchievementAdapter and check if the fragment is deleted in the settings_nav_graph
-pending- if recycler view is needed, then delete achievement_card.java and delete fragment_achivement_card.xml and check the settings nav graph
-pending- change the settingsMain.java file accordingly
+pending- AcceptClients.java
+            if you want to fetch data from the database everytime a client is added, then start the activity(AcceptRejectClients.java)
+            else remove, the name, image, plan of that partuclar client from all 6 arrays.
+pending- Upcoming consultationsAdapter.java
+            Check the working of call option for different users and dialog box after the call
+pending- add database connectivity to achievement_card to retrieve client count
+pending- edit the php and java code in account.java to fetch and save dietitan's about me, location and year of experience

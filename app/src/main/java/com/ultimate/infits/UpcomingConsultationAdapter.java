@@ -1,6 +1,7 @@
 package com.ultimate.infits;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
@@ -22,11 +25,14 @@ import java.util.List;
 public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingConsultationAdapter.UpcomingConsultationViewHolder> {
 
     Context ct;
+    Button call;
+    private Selecteditem selectedItem;
    // private String date,time,image,name;
     private List<UpcomingConsultations> list1;
-    UpcomingConsultationAdapter(Context ct, List<UpcomingConsultations> list1){
+    UpcomingConsultationAdapter(Context ct, List<UpcomingConsultations> list1,Selecteditem selecteditem){
         this.ct = ct;
         this.list1=list1;
+        this.selectedItem=selecteditem;
     }
 
     @NonNull
@@ -34,20 +40,7 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
     public UpcomingConsultationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
         View view=inflater.inflate(R.layout.dashboard_upcoming_consultations_layout,parent,false);
-         Button call=view.findViewById(R.id.joincall);
-         call.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 //call.setBackgroundResource(R.drawable.overlay_corner);
-                 // write logic to get phone number of client from the database of client and store it in call string
-                 String call_no="900123****";
-                 Intent i=new Intent();
-                 i.setAction(Intent.ACTION_DIAL);
-                 i.setData(Uri.parse("tel:"+call_no));
-                 ct.startActivity(i);
-             }
-         });
-
+        call=view.findViewById(R.id.joincall);
         return new UpcomingConsultationViewHolder(view);
     }
 
@@ -59,6 +52,7 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
         String t=pos.getConsultation_time();
         String img=pos.getConsultation_patient_image();
         String n=pos.getConsultation_patient();
+
 
         File imgFile = new File(img);
 
@@ -79,6 +73,11 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
         return list1.size();
     }
 
+    public interface Selecteditem{
+        void selecteditem(String client_n,String time_n);
+    }
+
+
     class UpcomingConsultationViewHolder extends RecyclerView.ViewHolder{
 
         TextView pdate,pname,ptime;
@@ -90,6 +89,25 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
             pimg=itemView.findViewById(R.id.consultation_profile_photo);
             pname=itemView.findViewById(R.id.consultation_profile_name);
 
-        }
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    call.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //call.setBackgroundResource(R.drawable.overlay_corner);
+                            // write logic to get phone number of client from the database of client and store it in call string
+                            String call_no = list1.get(getAdapterPosition()).getConsultation_patient_mobile();
+                            Intent i = new Intent();
+                            i.setAction(Intent.ACTION_DIAL);
+                            i.setData(Uri.parse("tel:" + call_no));
+                            ct.startActivity(i);
+                        }});
+
+                    selectedItem.selecteditem(list1.get(getAdapterPosition()).getConsultation_patient(),list1.get(getAdapterPosition()).getConsultation_time());
+
+                }
+        });
+    }
     }
 }

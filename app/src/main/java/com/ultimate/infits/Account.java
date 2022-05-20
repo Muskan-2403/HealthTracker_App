@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +61,8 @@ public class Account extends Fragment {
     RequestQueue queue;
     Button logout,save;
     String dietitian_acc_gender;
-    String dieititian_acc_name, dietitiamn_acc_age, dietitian_acc_email,dietitian_acc_phoneno,dietitian_acc_userID,dietitian_about_me;
+    String dieititian_acc_name, dietitiamn_acc_age, dietitian_acc_email,dietitian_acc_phoneno,dietitian_acc_userID,
+            dietitian_about_me,dietitian_location,dietitian_experience;
 
     private Bitmap bitmap;
     private File destination = null;
@@ -81,15 +83,6 @@ public class Account extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Account.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Account newInstance(String param1, String param2) {
         Account fragment = new Account();
         Bundle args = new Bundle();
@@ -130,41 +123,77 @@ public class Account extends Fragment {
         male.setImageResource(R.drawable.gender_male);
         female.setImageResource(R.drawable.gender_female);
         EditText about_me=view.findViewById(R.id.about_me_edt);
+        EditText location=view.findViewById(R.id.location_edt);
+        EditText experience= view.findViewById(R.id.experience_edt);
 
         ImageView name_btn=view.findViewById(R.id.name_edt_button);
         ImageView age_btn=view.findViewById(R.id.age_edt_button);
         ImageView email_btn=view.findViewById(R.id.email_edt_button);
         ImageView phone_btn=view.findViewById(R.id.phone_edt_button);
         ImageView about_me_btn=view.findViewById(R.id.about_me_edt_button);
+        ImageView location_btn=view.findViewById(R.id.location_edt_button);
+        ImageView experience_btn=view.findViewById(R.id.experience_edt_button);
 
         name_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(),"name edit enabled",Toast.LENGTH_SHORT).show();
+                name.setCursorVisible(true);
+                name.setFocusableInTouchMode(true);
+                name.setInputType(InputType.TYPE_CLASS_TEXT);
             }
         });
         age_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(),"age edit enabled",Toast.LENGTH_SHORT).show();
+                age.setCursorVisible(true);
+                age.setFocusableInTouchMode(true);
+                age.setInputType(InputType.TYPE_CLASS_NUMBER);
             }
         });
         email_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(),"email edit enabled",Toast.LENGTH_SHORT).show();
+                email.setCursorVisible(true);
+                email.setFocusableInTouchMode(true);
+                email.setInputType(InputType.TYPE_CLASS_TEXT);
             }
         });
         phone_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(),"phone number edit enabled",Toast.LENGTH_SHORT).show();
+                phone.setCursorVisible(true);
+                phone.setFocusableInTouchMode(true);
+                phone.setInputType(InputType.TYPE_CLASS_PHONE);
+            }
+        });
+        location_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"location edit enabled",Toast.LENGTH_SHORT).show();
+                location.setCursorVisible(true);
+                location.setFocusableInTouchMode(true);
+                location.setInputType(InputType.TYPE_CLASS_TEXT);
+            }
+        });
+        experience_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"experience edit enabled",Toast.LENGTH_SHORT).show();
+                experience.setCursorVisible(true);
+                experience.setFocusableInTouchMode(true);
             }
         });
         about_me_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getContext(),"about me edit enabled",Toast.LENGTH_SHORT).show();
+                about_me.setCursorVisible(true);
+                about_me.setFocusableInTouchMode(true);
+                about_me.setInputType(InputType.TYPE_CLASS_TEXT);
             }
         });
         if(dataFromDatabase.gender=="M"){
@@ -305,44 +334,6 @@ public class Account extends Fragment {
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
             inputStreamImg = null;
-           /* if (requestCode == PICK_IMAGE_CAMERA) {
-                try {
-                    Log.w("error","entered");
-                    if((data.getData()) != null) {
-                        Log.w("error","!1!");
-                        Uri selectedImage = data.getData();
-                        Log.w("Error",selectedImage.toString());
-                        profile_pic.setImageURI(selectedImage);
-                       //bitmap = (Bitmap) data.getExtras().get("data");
-                       // ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                        //bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
-                        //profile_pic.setImageBitmap(bitmap);
-                       // String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-                        //destination = new File(Environment.getExternalStorageDirectory() + "/" +getString(R.string.app_name),
-
-                        "IMG_" + timeStamp + ".jpg");
-            */
-                        //FileOutputStream fo;
-                    /*try {
-                        destination.createNewFile();
-                        fo = new FileOutputStream(destination);
-                        fo.write(bytes.toByteArray());
-                        fo.close();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }*
-
-                    imgPath = destination.getAbsolutePath();
-                  //  profile_pic.setImageBitmap(selectedImage);
-                    }
-
-                } catch (Exception e) {
-                    Toast.makeText(getActivity(),"No picture was clicked",Toast.LENGTH_SHORT).show();
-                }
-            } */
-            //else
             if (requestCode == PICK_IMAGE_GALLERY) {
                      try {
                          if( data.getData() != null) {
