@@ -1,5 +1,7 @@
 package com.ultimate.infits;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -36,7 +39,7 @@ import java.util.Map;
  * Use the {@link DashboardFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DashboardFragment extends Fragment {
+public class DashboardFragment extends Fragment implements UpcomingConsultationAdapter.Selecteditem {
 
     TextView name;
     DataFromDatabase dataFromDatabase;
@@ -141,12 +144,12 @@ public class DashboardFragment extends Fragment {
                         String date = dateandtime.substring(0,10);
                         String time = dateandtime.substring(11,16);
                         UpcomingConsultations obj=new UpcomingConsultations(date,time,consultation_patient_image[i],
-                                object.getString("clientID"));
+                                object.getString("clientID"),mobile);
                         Log.d("Dashboard UC",date+" "+time+" "+object.getString("clientID"));
                         obj3.add(obj);
 
                     }
-                    UpcomingConsultationAdapter adap= new UpcomingConsultationAdapter(getContext(),obj3);
+                    UpcomingConsultationAdapter adap= new UpcomingConsultationAdapter(getContext(),obj3, (UpcomingConsultationAdapter.Selecteditem) this);
                     recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
                     //recyclerView1.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
                     recyclerView1.setAdapter(adap);
@@ -202,5 +205,32 @@ public class DashboardFragment extends Fragment {
         recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
        // recyclerview3.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
         return v;
+    }
+
+
+    @Override
+    public void selecteditem(String client_n, String time_n) {
+        AlertDialog.Builder ad = new AlertDialog.Builder(getChildFragmentManager().getPrimaryNavigationFragment().requireContext());
+        ad.setTitle("Info!");
+        ad.setMessage("Status of the appointment with " + client_n + " at time "+ time_n);
+        ad.setPositiveButton("Completed", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int arg1) {
+                //write code to update the appointment status
+
+
+                Toast.makeText(getContext(), "Appointment status updated", Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
+        ad.setNegativeButton("Pending", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int arg1) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog dialog = ad.create();
+        dialog.show();
     }
 }

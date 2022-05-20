@@ -29,11 +29,7 @@
             android:id="@+id/action_account_to_settingMain"
             app:destination="@id/settingMain" />
     </fragment>
-    <fragment
-        android:id="@+id/achivement"
-        android:name="com.ultimate.infits.Achivement"
-        android:label="fragment_achivement"
-        tools:layout="@layout/fragment_achivement" />
+
     <fragment
         android:id="@+id/notification"
         android:name="com.ultimate.infits.Notification"
