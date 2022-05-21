@@ -34,6 +34,9 @@ public class AcceptRejectClients extends AppCompatActivity {
     DataFromDatabase dataFromDatabase;
     RequestQueue queue;
     String url = "http://192.168.134.1/allClients.php";
+    String url1;
+    String url2;
+    String url3;
     String all_clients_img[]={"app/src/main/res/drawable/doctor_blue_border.png"
             ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
             "app/src/main/res/drawable/doctor_blue_border.png"};
@@ -45,10 +48,11 @@ public class AcceptRejectClients extends AppCompatActivity {
             "app/src/main/res/drawable/doctor_blue_border.png"};
     String particular_clients_plan[]={"diet plan","diet plan","diet plan","diet plan"};
 
-    List<AcceptRejectList> plan_diet= new ArrayList<>();
-    List<AcceptRejectList> plan_premium= new ArrayList<>();
-    List<AcceptRejectList> plan_1to1= new ArrayList<>();
+    //List<AcceptRejectList> plan_diet= new ArrayList<>();
+    //List<AcceptRejectList> plan_premium= new ArrayList<>();
+   // List<AcceptRejectList> plan_1to1= new ArrayList<>();
     List<AcceptRejectList> all_plans=new ArrayList<>();
+    List<AcceptRejectList> particular_plan= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,22 +89,9 @@ public class AcceptRejectClients extends AppCompatActivity {
                             AcceptRejectList obj=new AcceptRejectList(all_clients_img[i],clientid,plan);
                             Log.d("plan_x",plan.toString());
                             all_plans.add(obj);
-                            if (plan.equals("diet chart")){
-                                plan_diet.add(obj);
-                            }
-                            if (plan.toString()==" 1to1"){
-                                Log.d("1to1"," 1to1");
-                                plan_1to1.add(obj);
-                            }
-                            if (plan.equals("premium")){
-                                plan_premium.add(obj);
-                            }
                         }
                     }
                     Log.d("all_plans", String.valueOf(all_plans));
-                    Log.d("plan_diet", String.valueOf(plan_diet));
-                    Log.d("plan_1to1", String.valueOf(plan_1to1));
-                    Log.d("plan_premium", String.valueOf(plan_premium));
                     AcceptRejectListAdapter adapx= new AcceptRejectListAdapter(getApplicationContext(),all_plans, (AcceptRejectListAdapter.Selecteditem) this);
                     recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
                     recyclerView2.setAdapter(adapx);
@@ -133,9 +124,44 @@ public class AcceptRejectClients extends AppCompatActivity {
                 one_to_one_btn.setBackgroundResource(R.drawable.plan_button_background);
                 one_to_one_btn.setTextColor(Color.parseColor("#1D8BF1"));
                 //fetch data from database and store in particular_plan_x arrays
-                AcceptRejectListAdapter adap= new AcceptRejectListAdapter(getApplicationContext(),plan_diet);
-                recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
-                recyclerView1.setAdapter(adap);
+                Log.d("diet_plan","before");
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url1, response -> {
+                    if (!response.equals("failure")){
+                        Log.d("diet_plan","success");
+                        Log.d("response",response);
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            for (int i=0;i<jsonArray.length();i++){
+                                JSONObject object = jsonArray.getJSONObject(i);
+                                String clientid = object.getString("clientID");
+                                String plan = object.getString("plan");
+                                String dieticianID = object.getString("dietitianID");
+                                if (dieticianID=="null" && plan.equals("diet chart")){
+                                    {
+                                        AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
+                                        particular_plan.add(obj1);
+                                    }
+                                }
+                            }
+                            Log.d("plan_diet", String.valueOf(particular_plan));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Toast.makeText(getApplicationContext(), "Diet Plan success", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.equals("failure")){
+                        Log.d("diet_plan","failure");
+                        Toast.makeText(getApplicationContext(), "Diet Plan failed", Toast.LENGTH_SHORT).show();
+                    }
+                },error -> {
+                    Toast.makeText(getApplicationContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();});
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
+                Log.d("diet_plan","at end");
+
             }
         });
         premium_btn.setOnClickListener(new View.OnClickListener() {
@@ -148,9 +174,44 @@ public class AcceptRejectClients extends AppCompatActivity {
                 one_to_one_btn.setBackgroundResource(R.drawable.plan_button_background);
                 one_to_one_btn.setTextColor(Color.parseColor("#1D8BF1"));
                 //fetch data from database and store in particular_plan_x arrays
-                AcceptRejectListAdapter adap= new AcceptRejectListAdapter(getApplicationContext(),plan_premium);
-                recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
-                recyclerView1.setAdapter(adap);
+                Log.d("premium_plan","before");
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url2, response -> {
+                    if (!response.equals("failure")){
+                        Log.d("premium","success");
+                        Log.d("response",response);
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            for (int i=0;i<jsonArray.length();i++){
+                                JSONObject object = jsonArray.getJSONObject(i);
+                                String clientid = object.getString("clientID");
+                                String plan = object.getString("plan");
+                                String dieticianID = object.getString("dietitianID");
+                                if (dieticianID=="null" && plan.equals("premium")){
+                                    {
+                                        AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
+                                        particular_plan.add(obj1);
+                                    }
+                                }
+                            }
+                            Log.d("premium", String.valueOf(particular_plan));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Toast.makeText(getApplicationContext(), "premium success", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.equals("failure")){
+                        Log.d("Premium","failure");
+                        Toast.makeText(getApplicationContext(), "Premium failed", Toast.LENGTH_SHORT).show();
+                    }
+                },error -> {
+                    Toast.makeText(getApplicationContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();});
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
+                Log.d("premium","at end");
+
 
             }
         });
@@ -164,9 +225,45 @@ public class AcceptRejectClients extends AppCompatActivity {
                 diet_btn.setBackgroundResource(R.drawable.plan_button_background);
                 diet_btn.setTextColor(Color.parseColor("#1D8BF1"));
                 //fetch data from database and store in particular_plan_x arrays
-                AcceptRejectListAdapter adap= new AcceptRejectListAdapter(getApplicationContext(),plan_1to1);
-                recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
-                recyclerView1.setAdapter(adap);
+
+                Log.d("1 to 1","before");
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url3, response -> {
+                    if (!response.equals("failure")){
+                        Log.d("1 to 1","success");
+                        Log.d("response",response);
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            for (int i=0;i<jsonArray.length();i++){
+                                JSONObject object = jsonArray.getJSONObject(i);
+                                String clientid = object.getString("clientID");
+                                String plan = object.getString("plan");
+                                String dieticianID = object.getString("dietitianID");
+                                if (dieticianID=="null" && plan.equals("1to1")){
+                                    {
+                                        AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
+                                        particular_plan.add(obj1);
+                                    }
+                                }
+                            }
+                            Log.d("1 to 1", String.valueOf(particular_plan));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Toast.makeText(getApplicationContext(), "1 to 1 success", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.equals("failure")){
+                        Log.d("1 to 1","failure");
+                        Toast.makeText(getApplicationContext(), "1 to 1 failed", Toast.LENGTH_SHORT).show();
+                    }
+                },error -> {
+                    Toast.makeText(getApplicationContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();});
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
+                Log.d("1 to 1","at end");
+
 
             }
         });
@@ -185,13 +282,10 @@ public class AcceptRejectClients extends AppCompatActivity {
 //        AcceptRejectListAdapter adap1= new AcceptRejectListAdapter(getApplicationContext(),all_plans);
 //        recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
 //        recyclerView2.setAdapter(adap1);
-
-
-
-
-
+        AcceptRejectListAdapter adap= new AcceptRejectListAdapter(getApplicationContext(),particular_plan, (AcceptRejectListAdapter.Selecteditem) this);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerView1.setAdapter(adap);
 
     }
-
 
 }
