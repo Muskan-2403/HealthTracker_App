@@ -1,6 +1,7 @@
 package com.ultimate.infits;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,6 +48,7 @@ public class Calender extends Fragment {
     String date_to_display_trackers;
     RequestQueue queue;
     String url = "http://192.168.134.1/CalenderAppointment.php";
+    Button addevent;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -97,6 +99,16 @@ public class Calender extends Fragment {
         EventListAdapter ea = new EventListAdapter(getContext());
         event_list.setAdapter(ea);
         event_list.setLayoutManager(new LinearLayoutManager(getContext()));
+        addevent=view.findViewById(R.id.add_app);
+
+        addevent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity(),WeekSetter.class);
+                i.putExtra("dietitian_name",dataFromDatabase.dietitianuserID);
+                startActivity(i);
+            }
+        });
 
         Date dateobj=new Date();
         date_to_display_trackers=new SimpleDateFormat("yyyy-MM-dd").format(dateobj);
@@ -164,4 +176,5 @@ public class Calender extends Fragment {
         requestQueue.add(stringRequest);
         Log.d("Calender","at end");
     }
+
 }

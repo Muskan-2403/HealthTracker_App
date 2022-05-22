@@ -1,7 +1,10 @@
 package com.ultimate.infits;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -93,5 +96,7 @@ public class WeekSetter extends AppCompatActivity {
         fri_date = findViewById(R.id.fri_date);
         sat_date = findViewById(R.id.sat_date);
     }
-
+    RadioGroup gp= findViewById(R.id.days_group);
+    int sel= gp.getCheckedRadioButtonId();
+    //LinearLayout ab= (LinearLayout) findViewById(R.id.)).setBackgroundColor(Color.parseColor("#C6E0FF"));
 }

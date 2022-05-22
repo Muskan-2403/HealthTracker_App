@@ -6,11 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".WeekSetter"
     android:orientation="vertical">
-<LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/calendar_back"
+        android:src="@drawable/ic_baseline_arrow_back_black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CALENDAR"
+            android:fontFamily="@font/fonts"
+            android:textSize="38sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="75dp"/>
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:id="@+id/days_group">
+
+    <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_gravity="center_horizontal">
+    android:orientation="vertical">
     <TextView
         android:id="@+id/sun"
         android:layout_width="wrap_content"
@@ -18,69 +47,10 @@
         android:text="S"
         android:layout_marginStart="30dp"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:fontFamily="@font/fonts"
         android:textColor="#6F81F8"
         android:layout_marginEnd="30dp"/>
-    <TextView
-        android:id="@+id/mon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="M"
-        android:textSize="20sp"
-        android:fontFamily="@font/fonts"
-        android:textColor="#6F81F8"
-        android:layout_marginEnd="30dp"/>
-    <TextView
-        android:id="@+id/tue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="T"
-        android:textSize="20sp"
-        android:fontFamily="@font/fonts"
-        android:textColor="#6F81F8"
-        android:layout_marginEnd="30dp"/>
-    <TextView
-        android:id="@+id/wed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="W"
-        android:textSize="20sp"
-        android:fontFamily="@font/fonts"
-        android:textColor="#6F81F8"
-        android:layout_marginEnd="30dp"/>
-    <TextView
-        android:id="@+id/thur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="T"
-        android:textSize="20sp"
-        android:fontFamily="@font/fonts"
-        android:textColor="#6F81F8"
-        android:layout_marginEnd="30dp"/>
-    <TextView
-        android:id="@+id/fri"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="F"
-        android:textSize="20sp"
-        android:fontFamily="@font/fonts"
-        android:textColor="#6F81F8"
-        android:layout_marginEnd="30dp"/>
-    <TextView
-        android:id="@+id/sat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="S"
-        android:textSize="20sp"
-        android:fontFamily="@font/fonts"
-        android:textColor="#6F81F8"
-        android:layout_marginEnd="30dp"/>
-</LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
         <TextView
             android:id="@+id/sun_date"
             android:layout_width="wrap_content"
@@ -88,66 +58,246 @@
             android:text="S"
             android:layout_marginStart="30dp"
             android:textSize="14sp"
+            android:textStyle="bold"
             android:fontFamily="@font/fonts"
             android:textColor="#6F81F8"
             android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/mon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/fonts"
+        android:textColor="#6F81F8"
+        android:layout_marginEnd="30dp"/>
         <TextView
             android:id="@+id/mon_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M"
+            android:textStyle="bold"
             android:textSize="14sp"
             android:fontFamily="@font/fonts"
             android:textColor="#6F81F8"
             android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/tue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="T"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="@font/fonts"
+        android:textColor="#6F81F8"
+        android:layout_marginEnd="30dp"/>
         <TextView
             android:id="@+id/tue_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="T"
             android:textSize="14sp"
+            android:textStyle="bold"
             android:fontFamily="@font/fonts"
             android:textColor="#6F81F8"
             android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/wed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="W"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="@font/fonts"
+        android:textColor="#6F81F8"
+        android:layout_marginEnd="30dp"/>
         <TextView
             android:id="@+id/wed_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="W"
-            android:textSize="14sp"
-            android:fontFamily="@font/fonts"
-            android:textColor="#6F81F8"
-            android:layout_marginEnd="30dp"/>
-        <TextView
-            android:id="@+id/thur_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="T"
-            android:textSize="14sp"
-            android:fontFamily="@font/fonts"
-            android:textColor="#6F81F8"
-            android:layout_marginEnd="30dp"/>
-        <TextView
-            android:id="@+id/fri_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="F"
-            android:textSize="14sp"
-            android:fontFamily="@font/fonts"
-            android:textColor="#6F81F8"
-            android:layout_marginEnd="30dp"/>
-        <TextView
-            android:id="@+id/sat_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="S"
+            android:textStyle="bold"
             android:textSize="14sp"
             android:fontFamily="@font/fonts"
             android:textColor="#6F81F8"
             android:layout_marginEnd="30dp"/>
     </LinearLayout>
-    <FrameLayout
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/thur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="T"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="@font/fonts"
+        android:textColor="#6F81F8"
+        android:layout_marginEnd="30dp"/>
+            <TextView
+                android:id="@+id/thur_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:fontFamily="@font/fonts"
+                android:textColor="#6F81F8"
+                android:layout_marginEnd="30dp"/>
+        </LinearLayout>
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+    <TextView
+        android:id="@+id/fri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="F"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="@font/fonts"
+        android:textColor="#6F81F8"
+        android:layout_marginEnd="30dp"/>
+
+
+               <TextView
+                   android:id="@+id/fri_date"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="F"
+                   android:textStyle="bold"
+                   android:textSize="14sp"
+                   android:fontFamily="@font/fonts"
+                   android:textColor="#6F81F8"
+                   android:layout_marginEnd="30dp"/>
+           </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/fonts"
+            android:textColor="#6F81F8"
+            android:layout_marginEnd="30dp"/>
+
+
+        <TextView
+            android:id="@+id/sat_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:fontFamily="@font/fonts"
+            android:textColor="#6F81F8"
+            android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+    </RadioGroup>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="4dp"
+        android:layout_marginLeft="5dp"
+        android:outlineSpotShadowColor="@color/black">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/appointment_frame"/>
+        android:orientation="horizontal"
+        android:padding="1dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FEB"
+            android:textAllCaps="true"
+            android:textColor="#004EAD"
+            android:fontFamily="@font/baloo_bhai_2"
+            android:textSize="24sp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/new_appointment_month"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9:00 - 10:00AM"
+            android:textAllCaps="true"
+            android:textColor="#004EAD"
+            android:fontFamily="@font/baloo_bhai_2"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="105dp"
+            android:id="@+id/new_appointment_time"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="21"
+            android:textAllCaps="true"
+            android:textColor="#004EAD"
+            android:fontFamily="@font/baloo_bhai_2"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="45dp"
+            android:id="@+id/new_appointment_date"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#676767"
+                android:fontFamily="@font/fonts"
+                android:textSize="20sp"/>
+            <TimePicker
+                android:id="@+id/timePicker1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration"
+                android:layout_marginLeft="10dp"
+                android:textColor="#676767"
+                android:fontFamily="@font/fonts"
+                android:textSize="20sp"/>
+            <ke.tang.ruler.RulerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
