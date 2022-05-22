@@ -44,17 +44,19 @@
             android:textSize="24sp"
             android:textColor="#676767"
             android:fontFamily="@font/fonts"/>
+
         <Button
+            android:id="@+id/add_app"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/status_offline"
             android:backgroundTint="#4B9AFB"
             android:drawableStart="@drawable/add"
+            android:padding="10dp"
             android:text="Add Event"
-            android:textSize="14sp"
-            android:layout_gravity="center_horizontal"
             android:textColor="@color/white"
-            android:padding="10dp"/>
+            android:textSize="14sp" />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

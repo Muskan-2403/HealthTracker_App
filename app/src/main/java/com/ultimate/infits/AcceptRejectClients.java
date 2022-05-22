@@ -1,10 +1,13 @@
 package com.ultimate.infits;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AcceptRejectClients extends AppCompatActivity {
+public class AcceptRejectClients extends AppCompatActivity implements AcceptRejectListAdapter.Selecteditem {
 
 
     DataFromDatabase dataFromDatabase;
@@ -47,6 +50,7 @@ public class AcceptRejectClients extends AppCompatActivity {
             ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
             "app/src/main/res/drawable/doctor_blue_border.png"};
     String particular_clients_plan[]={"diet plan","diet plan","diet plan","diet plan"};
+    String dialog_name;
 
     //List<AcceptRejectList> plan_diet= new ArrayList<>();
     //List<AcceptRejectList> plan_premium= new ArrayList<>();
@@ -286,6 +290,36 @@ public class AcceptRejectClients extends AppCompatActivity {
         recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         recyclerView1.setAdapter(adap);
 
+    }
+    @Override
+    public void selecteditem(AcceptRejectList list_n) {
+        dialog_name = list_n.getClient_name();
+        Toast.makeText(getApplicationContext(), list_n.getClient_name(), Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder ad = new AlertDialog.Builder(AcceptRejectClients.this);
+        ad.setTitle("Info!");
+        ad.setMessage("Do you want to accept " + dialog_name + " as your client?");
+        ad.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int arg1) {
+                //write code to update subscribed client and refresh the page to reload set of clients by removing the last accepted client
+
+
+                Toast.makeText(getApplicationContext(), "Refreshing client list", Toast.LENGTH_SHORT).show();
+                onBackPressed();
+                Intent i = new Intent(getApplicationContext(), AcceptRejectClients.class);
+                //i.putExtra("dietitian_id",dietitian_id);
+                startActivity(i);
+            }
+
+        });
+        ad.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int arg1) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog dialog = ad.create();
+        dialog.show();
     }
 
 }
