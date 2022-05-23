@@ -5,3 +5,6 @@ pending- Upcoming consultationsAdapter.java
             Check the working of call option for different users and dialog box after the call
 pending- add database connectivity to achievement_card to retrieve client count
 pending- edit the php and java code in account.java to fetch and save dietitan's about me, location and year of experience
+pending- add recyclerview arrays to Calendar (edit ids in events_in_profile_layout)
+pending- add try method in volley of Calendar
+pending- edit EventListAdapter

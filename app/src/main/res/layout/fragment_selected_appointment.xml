@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".selected_appointment"
+    android:background="@drawable/appointment_bg">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/calendar_back"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CALENDAR"
+            android:fontFamily="@font/fonts"
+            android:textColor="#C6E0FF"
+            android:textSize="38sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="75dp"/>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="90dp"
+                android:orientation="vertical"
+                android:background="@drawable/calendar_selected"
+                android:layout_marginLeft="10dp">
+                <TextView
+                    android:id="@+id/selected_client_appt_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feb"
+                    android:layout_marginTop="18dp"
+                    android:textSize="16sp"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/baloo_bhai_2"
+                    android:textColor="#004EAD"
+                    android:layout_gravity="center" />
+                <TextView
+                    android:id="@+id/selected_client_appt_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21"
+                    android:layout_marginTop="-10dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/fonts"
+                    android:textColor="#004EAD"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Video consultation"
+                    android:textSize="28sp"
+                    android:fontFamily="@font/baloo_bhai_2"
+                    android:textColor="#C6E0FF"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VC Team"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/baloo_bhai_2"
+                    android:textColor="#C6E0FF"/>
+            </LinearLayout>
+        </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="400dp"
+        android:layout_height="450dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioGroup
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/calendar_selected"
+                    android:checkedButton="@+id/active_btn"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center">
+
+                    <RadioButton
+                        android:id="@+id/active_btn"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/switch_off"
+                        android:button="@null"
+                        android:fontFamily="@font/fonts"
+                        android:gravity="center"
+                        android:text="Details"
+                        android:textColor="@drawable/switch_text"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <RadioButton
+                        android:id="@+id/pending_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/switch_on"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Notes"
+                        android:textColor="@drawable/switch_text"
+                        android:fontFamily="@font/fonts"/>
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/duration_appointment_recycler"/>
+                </LinearLayout>
+            </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:src="@drawable/bell_icon"
+            android:layout_marginLeft="40dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notify me [10m]"
+            android:textColor="#C6E0FF"
+            android:textSize="18sp"/>
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="90dp"
+            android:background="@drawable/calendar_selected"/>
+    </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

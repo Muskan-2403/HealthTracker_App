@@ -40,7 +40,11 @@
         android:id="@+id/calender2"
         android:name="com.ultimate.infits.Calender"
         android:label="fragment_calender"
-        tools:layout="@layout/fragment_calender" />
+        tools:layout="@layout/fragment_calender" >
+        <action
+            android:id="@+id/action_calender2_to_selected_appointment"
+            app:destination="@id/selected_appointment" />
+    </fragment>
     <fragment
         android:id="@+id/profile2"
         android:name="com.ultimate.infits.Profile"
@@ -79,5 +83,10 @@
         android:name="com.ultimate.infits.AllMessages"
         android:label="fragment_all_messages"
         tools:layout="@layout/fragment_all_messages" />
+    <fragment
+        android:id="@+id/selected_appointment"
+        android:name="com.ultimate.infits.selected_appointment"
+        android:label="fragment_selected_appointment"
+        tools:layout="@layout/fragment_selected_appointment" />
 
 </navigation>
