@@ -36,20 +36,20 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 
     DataFromDatabase dataFromDatabase;
     RequestQueue queue;
-    String url = "http://192.168.134.1/allClients.php";
-    String url1;
-    String url2;
-    String url3;
+    String url = "http://192.168.197.1/allClients.php";
+//    String urldietchart;
+//    String urlpremium;
+//    String url101;
     String all_clients_img[]={"app/src/main/res/drawable/doctor_blue_border.png"
             ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
             "app/src/main/res/drawable/doctor_blue_border.png"};
-    String all_client_name[]={"Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
-    String all_clients_plan[]={"diet plan","diet plan","diet plan","diet plan"};
-    String particular_plan_client_name[]={"Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
-    String particular_plan_clients_img[]={"app/src/main/res/drawable/doctor_blue_border.png"
-            ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
-            "app/src/main/res/drawable/doctor_blue_border.png"};
-    String particular_clients_plan[]={"diet plan","diet plan","diet plan","diet plan"};
+//    String all_client_name[]={"Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
+//    String all_clients_plan[]={"diet plan","diet plan","diet plan","diet plan"};
+//    String particular_plan_client_name[]={"Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
+//    String particular_plan_clients_img[]={"app/src/main/res/drawable/doctor_blue_border.png"
+//            ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
+//            "app/src/main/res/drawable/doctor_blue_border.png"};
+//    String particular_clients_plan[]={"diet plan","diet plan","diet plan","diet plan"};
     String dialog_name;
 
     //List<AcceptRejectList> plan_diet= new ArrayList<>();
@@ -129,7 +129,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
                 one_to_one_btn.setTextColor(Color.parseColor("#1D8BF1"));
                 //fetch data from database and store in particular_plan_x arrays
                 Log.d("diet_plan","before");
-                StringRequest stringRequest = new StringRequest(Request.Method.POST,url1, response -> {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
                     if (!response.equals("failure")){
                         Log.d("diet_plan","success");
                         Log.d("response",response);
@@ -179,7 +179,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
                 one_to_one_btn.setTextColor(Color.parseColor("#1D8BF1"));
                 //fetch data from database and store in particular_plan_x arrays
                 Log.d("premium_plan","before");
-                StringRequest stringRequest = new StringRequest(Request.Method.POST,url2, response -> {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
                     if (!response.equals("failure")){
                         Log.d("premium","success");
                         Log.d("response",response);
@@ -231,7 +231,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
                 //fetch data from database and store in particular_plan_x arrays
 
                 Log.d("1 to 1","before");
-                StringRequest stringRequest = new StringRequest(Request.Method.POST,url3, response -> {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
                     if (!response.equals("failure")){
                         Log.d("1 to 1","success");
                         Log.d("response",response);
@@ -300,6 +300,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
         ad.setMessage("Do you want to accept " + dialog_name + " as your client?");
         ad.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
+
             public void onClick(DialogInterface dialog, int arg1) {
                 //write code to update subscribed client and refresh the page to reload set of clients by removing the last accepted client
 
