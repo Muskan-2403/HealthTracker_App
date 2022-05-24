@@ -22,6 +22,7 @@
             android:background="@drawable/bar" />
 
         <TextView
+            android:id="@+id/apt_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -31,6 +32,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/apt_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -39,11 +41,8 @@
             android:text="Martha Finch"
             android:textColor="#004EAD"
             android:textSize="18sp" />
-            android:text="Martha Finch"
-            android:textColor="#004EAD"
-            android:layout_marginTop="35dp"
-            android:layout_gravity="center_horizontal"
-            style="@style/repeat_overlay_check" />
+
+
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -52,6 +51,7 @@
             android:src="@drawable/clock" />
 
         <TextView
+            android:id="@+id/apt_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -59,11 +59,8 @@
             android:fontFamily="@font/fonts"
             android:text="9:00 - 10:00"
             android:textColor="#004EAD"
-            android:textSize="18sp" />
-            android:text="9:00 - 10:00"
-            android:textColor="#004EAD"
-            android:layout_marginTop="60dp"
-            android:layout_gravity="center_horizontal"
-            style="@style/repeat_overlay_check" />
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"/>
+
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

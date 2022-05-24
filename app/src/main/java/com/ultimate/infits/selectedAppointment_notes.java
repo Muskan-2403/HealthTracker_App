@@ -7,13 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link selected_appointment#newInstance} factory method to
+ * Use the {@link selectedAppointment_notes#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class selected_appointment extends Fragment {
+public class selectedAppointment_notes extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +25,7 @@ public class selected_appointment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public selected_appointment() {
+    public selectedAppointment_notes() {
         // Required empty public constructor
     }
 
@@ -34,11 +35,11 @@ public class selected_appointment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment selected_appointment.
+     * @return A new instance of fragment selectedAppointment_notes.
      */
     // TODO: Rename and change types and number of parameters
-    public static selected_appointment newInstance(String param1, String param2) {
-        selected_appointment fragment = new selected_appointment();
+    public static selectedAppointment_notes newInstance(String param1, String param2) {
+        selectedAppointment_notes fragment = new selectedAppointment_notes();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +60,10 @@ public class selected_appointment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_selected_appointment, container, false);
+        View v= inflater.inflate(R.layout.fragment_selected_appointment_notes, container, false);
+        TextView notes1= v.findViewById(R.id.selected_client_apt_notes);
+        //write volley code
+        //notes1.setText();
+        return v;
     }
 }

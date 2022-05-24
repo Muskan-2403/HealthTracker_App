@@ -31,9 +31,11 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,7 +51,10 @@ public class Calender extends Fragment {
     RequestQueue queue;
     String url = "http://192.168.134.1/CalenderAppointment.php";
     Button addevent;
-
+    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};
+    String[] appt_client_name={"Charlie Puth","maggie","La Lisa"};
+    String[] appt_time={"09:00 - 10:00AM","10:30 - 11:00AM","11:00-12:00PM"};
+    List<EventList> obj= new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -96,9 +101,15 @@ public class Calender extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calender, container, false);
         event_list = view.findViewById(R.id.event_list);
-        EventListAdapter ea = new EventListAdapter(getContext());
+        for(int i=0;i< appt_type.length;i++)
+        {
+            EventList a=new EventList(appt_type[i],appt_client_name[i],appt_time[i]);
+            obj.add(a);
+        }
+        EventListAdapter ea = new EventListAdapter(getContext(),obj);
         event_list.setAdapter(ea);
         event_list.setLayoutManager(new LinearLayoutManager(getContext()));
+
         addevent=view.findViewById(R.id.add_app);
 
         addevent.setOnClickListener(new View.OnClickListener() {
@@ -176,5 +187,6 @@ public class Calender extends Fragment {
         requestQueue.add(stringRequest);
         Log.d("Calender","at end");
     }
+
 
 }

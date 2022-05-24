@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ultimate.infits">
+    package="com.ultimate.infits" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/infit_transparent1"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".SelectedAppointment"
+            android:exported="false">
+        </activity>
         <activity
             android:name=".AcceptRejectClients"
             android:exported="false" />
@@ -33,11 +37,8 @@
             android:exported="false" />
         <activity
             android:name=".WelcomePage"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="true" >
+
         </activity>
         <activity
             android:name=".LoginScreen"
@@ -45,7 +46,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".TermsAndConditions"
