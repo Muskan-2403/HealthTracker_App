@@ -160,6 +160,9 @@ public class Calender extends Fragment {
                         String client = object.getString("clientID");
                         String datetime = object.getString("dateAndTime");
                         String duration = object.getString("duration");
+                        String location = object.getString("consultation_location");
+                        String note = object.getString("Note");
+                        String notifyMe = object.getString("NotifyMe");
                         Log.d("time","a"+datetime.substring(11,16));
                         EventList a=new EventList(title,client,datetime.substring(11,16)+"("+"duration:"+duration+")");
                         obj.add(a);

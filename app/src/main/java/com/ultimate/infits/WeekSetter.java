@@ -298,9 +298,9 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                      Toast.makeText(getApplicationContext(),"Enter all details",Toast.LENGTH_SHORT).show();
                  else
                  {
-                     Log.d("weeksetter",String.valueOf(selected_date)+" "+String.valueOf(duration)+" "+
-                             String.valueOf(start_time[0])+" "+String.valueOf(title_aptment)
-                             +" "+String.valueOf(loc_aptment)+" "+String.valueOf(note_aptment));
+                     Log.d("weeksetter",String.valueOf(selected_date)+" "+specific_d+" "+
+                             String.valueOf(start_time[0])+" "+title_aptment.getText().toString()
+                             +" "+loc_aptment.getText().toString()+" "+note_aptment.getText().toString());
                  }
              }
          });
