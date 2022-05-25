@@ -1,5 +1,6 @@
 package com.ultimate.infits;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,12 +13,16 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DataFromDatabase {
 
+    public static Bitmap profile;
     HashMap<String,String> map = new HashMap<>();
+    ArrayList<String> clientsID = new ArrayList<>();
     String url = "http://192.168.134.1/getdietitiandetails.php";
     public static boolean flag= false;
     public static String clientuserID;

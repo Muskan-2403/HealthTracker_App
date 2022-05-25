@@ -3,6 +3,7 @@ package com.ultimate.infits;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -297,7 +298,9 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                      Toast.makeText(getApplicationContext(),"Enter all details",Toast.LENGTH_SHORT).show();
                  else
                  {
-                     //store to db
+                     Log.d("weeksetter",String.valueOf(selected_date)+" "+String.valueOf(duration)+" "+
+                             String.valueOf(start_time[0])+" "+String.valueOf(title_aptment)
+                             +" "+String.valueOf(loc_aptment)+" "+String.valueOf(note_aptment));
                  }
              }
          });

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -55,9 +59,18 @@ import java.util.Map;
  * create an instance of this fragment.
  */
 public class Account extends Fragment {
+
+    ActivityResultLauncher<String> photo;
+
+    File file;
+
+    String fileName, path;
+
+    Bitmap photoBit;
+
     DataFromDatabase dataFromDatabase;
     ImageView male, female,profile_pic;
-    String url = "http://192.168.134.1/account.php";
+    String url = "http://192.168.197.1/upload.php";
     RequestQueue queue;
     Button logout,save;
     String dietitian_acc_gender;
@@ -134,6 +147,36 @@ public class Account extends Fragment {
         ImageView location_btn=view.findViewById(R.id.location_edt_button);
         ImageView experience_btn=view.findViewById(R.id.experience_edt_button);
 
+        profile_pic.setOnClickListener(v->{
+            photo.launch("image/*");
+        });
+
+        photo = registerForActivityResult(
+                new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+                    @Override
+                    public void onActivityResult(Uri result) {
+                        profile_pic.setImageURI(result);
+                        path = result.getPath();
+                        file = new File(result.toString());
+                        String filename = path.substring(path.lastIndexOf("/")+1);
+                        if (filename.indexOf(".") > 0) {
+                            fileName = filename.substring(0, filename.lastIndexOf("."));
+                        } else {
+                            fileName =  filename;
+                        }
+                        Log.d("MainClass", "Real Path: " + path);
+                        Log.d("MainClass", "Filename With Extension: " + filename);
+                        Log.d("MainClass", "File Without Extension: " + fileName);
+                        try {
+                            photoBit = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver() , result);
+                            DataFromDatabase.profile = photoBit;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+        );
+
         name_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,12 +246,12 @@ public class Account extends Fragment {
             male.setImageResource(R.drawable.gender_male);
             female.setImageResource(R.drawable.gender_female_selected);
         }
-        select_pic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectImage();
-            }
-        });
+//        select_pic.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                selectImage();
+//            }
+//        });
 
 
         dietitian_acc_gender=dataFromDatabase.gender;
@@ -237,127 +280,134 @@ public class Account extends Fragment {
             }
         });
 
-
-
         queue = Volley.newRequestQueue(getContext());
         save.setOnClickListener(v-> {
-             dieititian_acc_name=name.getText().toString().trim();
-                dietitiamn_acc_age=age.getText().toString().trim();
-                dietitian_acc_email=email.getText().toString().trim();
-                dietitian_acc_phoneno=phone.getText().toString().trim();
-                dietitian_acc_userID=dataFromDatabase.dietitianuserID;
+            dieititian_acc_name=name.getText().toString().trim();
+            dietitiamn_acc_age=age.getText().toString().trim();
+            dietitian_acc_email=email.getText().toString().trim();
+            dietitian_acc_phoneno=phone.getText().toString().trim();
+            dietitian_acc_userID=dataFromDatabase.dietitianuserID;
 
 
-                Log.d("account","before");
-                StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
-                    if (!response.equals("failure")){
-                        Log.d("account","success");
-                        Log.d("response account",response);
-
-
-                        Toast.makeText(getContext(), "save success", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (response.equals("failure")){
-                        Log.d("account","failure");
-                        Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
-                    }
-                },error -> {
-                    Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();}){
-                    @Nullable
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String,String> data = new HashMap<>();
-                        data.put("userID",dietitian_acc_userID);
-                        data.put("name",dieititian_acc_name);
-                        data.put("email",dietitian_acc_email);
-                        data.put("mobile",dietitian_acc_phoneno);  
-                        data.put("age",dietitiamn_acc_age);
-                        data.put("gender",dietitian_acc_gender);
-                        return data;
-                    }
-                };
-                RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-                requestQueue.add(stringRequest);
-                Log.d("account","at end");
-                });
+            Log.d("account","before");
+            StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+                if (!response.equals("failure")){
+                    Log.d("account","success");
+                    Log.d("response account",response);
+                    Toast.makeText(getContext(), "save success", Toast.LENGTH_SHORT).show();
+                }
+                else if (response.equals("failure")){
+                    Log.d("account","failure");
+                    Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
+                }
+            },error -> {
+                Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();}){
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    String image = getStringOfImage(photoBit);
+                    Map<String,String> data = new HashMap<>();
+//                        data.put("userID",dietitian_acc_userID);
+                    data.put("email","dietitian_acc_email");
+                    data.put("gender","M");
+                    data.put("age","90");
+                    data.put("mobile","29302");
+                    data.put("name","Aza");
+                    data.put("img",image);
+                    data.put("nameImg","Azarudeen");
+                    return data;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+            requestQueue.add(stringRequest);
+            Log.d("account","at end");
+        });
 
         return view;
 
     }
 
 
-
-    private void selectImage() {
-        try {
-            PackageManager pm = getContext().getPackageManager();
-            int hasPerm = pm.checkPermission(Manifest.permission.CAMERA, getContext().getPackageName());
-            if (hasPerm == PackageManager.PERMISSION_GRANTED) {
-                //final CharSequence[] options = {"Take Photo", "Choose From Gallery","Remove picture","Cancel"};
-                final CharSequence[] options = { "Choose From Gallery","Remove picture","Cancel"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Select Option");
-                builder.setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                      /*  if (options[item].equals("Take Photo")) {
-                            dialog.cancel();
-                            Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(intent, PICK_IMAGE_CAMERA);
-                        } else*/
-                        if (options[item].equals("Choose From Gallery")) {
-                            dialog.cancel();
-                            Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                            startActivityForResult(pickPhoto, PICK_IMAGE_GALLERY);
-                        } else if (options[item].equals("Cancel")) {
-                            dialog.cancel();
-                        }
-                        else if(options[item].equals("Remove picture")){
-                            dialog.dismiss();
-                            profile_pic.setImageResource(R.drawable.blankdp);
-                        }
-                        else
-                            dialog.cancel();
-                    }
-                });
-                builder.show();
-            } else {
-                Toast.makeText(getActivity(), "Camera Permission error", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Change app permission in your device settings", Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-            Toast.makeText(getActivity(), "Camera Permission error", Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), "Change app permission in your device settings", Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
+    public String getStringOfImage(Bitmap bm){
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG,100,bo);
+        byte[] imageByte = bo.toByteArray();
+        String imageEncode = Base64.encodeToString(imageByte, Base64.DEFAULT);
+        return imageEncode;
     }
-        @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-            inputStreamImg = null;
-            if (requestCode == PICK_IMAGE_GALLERY) {
-                     try {
-                         if( data.getData() != null) {
-                             Uri selectedImage = data.getData();
-                             bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
-                             //ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                            // bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
-                             profile_pic.setImageBitmap(bitmap);
-                  /*  imgPath = getRealPathFromURI(selectedImage);
-                    destination = new File(imgPath.toString());*/
 
-                         }
-                    } catch (Exception e) {
-                        Toast.makeText(getActivity(),"No picture selected",Toast.LENGTH_SHORT).show();
-                     }
 
-            }
-        }
+//    private void selectImage() {
+//        try {
+//            PackageManager pm = getContext().getPackageManager();
+//            int hasPerm = pm.checkPermission(Manifest.permission.CAMERA, getContext().getPackageName());
+//            if (hasPerm == PackageManager.PERMISSION_GRANTED) {
+//                //final CharSequence[] options = {"Take Photo", "Choose From Gallery","Remove picture","Cancel"};
+//                final CharSequence[] options = { "Choose From Gallery","Remove picture","Cancel"};
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//                builder.setTitle("Select Option");
+//                builder.setItems(options, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int item) {
+//                      /*  if (options[item].equals("Take Photo")) {
+//                            dialog.cancel();
+//                            Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//                            startActivityForResult(intent, PICK_IMAGE_CAMERA);
+//                        } else*/
+//                        if (options[item].equals("Choose From Gallery")) {
+//                            dialog.cancel();
+//                            Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                            startActivityForResult(pickPhoto, PICK_IMAGE_GALLERY);
+//                        } else if (options[item].equals("Cancel")) {
+//                            dialog.cancel();
+//                        }
+//                        else if(options[item].equals("Remove picture")){
+//                            dialog.dismiss();
+//                            profile_pic.setImageResource(R.drawable.blankdp);
+//                        }
+//                        else
+//                            dialog.cancel();
+//                    }
+//                });
+//                builder.show();
+//            } else {
+//                Toast.makeText(getActivity(), "Camera Permission error", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Change app permission in your device settings", Toast.LENGTH_LONG).show();
+//            }
+//        } catch (Exception e) {
+//            Toast.makeText(getActivity(), "Camera Permission error", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), "Change app permission in your device settings", Toast.LENGTH_LONG).show();
+//            e.printStackTrace();
+//        }
+//    }
+//        @Override
+//        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//            super.onActivityResult(requestCode, resultCode, data);
+//            inputStreamImg = null;
+//            if (requestCode == PICK_IMAGE_GALLERY) {
+//                     try {
+//                         if( data.getData() != null) {
+//                             Uri selectedImage = data.getData();
+//                             bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+//                             //ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+//                            // bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
+//                             profile_pic.setImageBitmap(bitmap);
+//                  /*  imgPath = getRealPathFromURI(selectedImage);
+//                    destination = new File(imgPath.toString());*/
+//
+//                         }
+//                    } catch (Exception e) {
+//                        Toast.makeText(getActivity(),"No picture selected",Toast.LENGTH_SHORT).show();
+//                     }
+//
+//            }
+//        }
 
-        public String getRealPathFromURI(Uri contentUri) {
-            String[] proj = {MediaStore.Audio.Media.DATA};
-            Cursor cursor = getActivity().managedQuery(contentUri, proj, null, null, null);
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        }
+//        public String getRealPathFromURI(Uri contentUri) {
+//            String[] proj = {MediaStore.Audio.Media.DATA};
+//            Cursor cursor = getActivity().managedQuery(contentUri, proj, null, null, null);
+//            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
+//            cursor.moveToFirst();
+//            return cursor.getString(column_index);
+//        }
 }

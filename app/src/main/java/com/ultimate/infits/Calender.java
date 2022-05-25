@@ -29,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,11 +50,11 @@ public class Calender extends Fragment {
     RecyclerView event_list;
     String date_to_display_trackers;
     RequestQueue queue;
-    String url = "http://192.168.134.1/CalenderAppointment.php";
+    String url = "http://192.168.70.1/CalenderAppointment.php";
     Button addevent;
-    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};
-    String[] appt_client_name={"Charlie Puth","maggie","La Lisa"};
-    String[] appt_time={"09:00 - 10:00AM","10:30 - 11:00AM","11:00-12:00PM"};
+//    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};
+//    String[] appt_client_name={"Charlie Puth","maggie","La Lisa"};
+//    String[] appt_time={"09:00 - 10:00AM","10:30 - 11:00AM","11:00-12:00PM"};
     List<EventList> obj= new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -101,14 +102,7 @@ public class Calender extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calender, container, false);
         event_list = view.findViewById(R.id.event_list);
-        for(int i=0;i< appt_type.length;i++)
-        {
-            EventList a=new EventList(appt_type[i],appt_client_name[i],appt_time[i]);
-            obj.add(a);
-        }
-        EventListAdapter ea = new EventListAdapter(getContext(),obj);
-        event_list.setAdapter(ea);
-        event_list.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         addevent=view.findViewById(R.id.add_app);
 
@@ -140,6 +134,7 @@ public class Calender extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Searching appointments on "+date_to_display_trackers,Toast.LENGTH_SHORT).show();
+                vollyFunc(date_to_display_trackers);
             }
         });
 
@@ -155,13 +150,26 @@ public class Calender extends Fragment {
                 Log.d("Calender","success");
                 Log.d("response Calender",response);
 
-//                try {
-//                    JSONArray jsonArray = new JSONArray(response);
-//                    JSONObject object = jsonArray.getJSONObject(0);
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    obj.clear();
+                    for(int i=0;i< jsonArray.length();i++)
+                    {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        String title = object.getString("Title");
+                        String client = object.getString("clientID");
+                        String datetime = object.getString("dateAndTime");
+                        String duration = object.getString("duration");
+                        Log.d("time","a"+datetime.substring(11,16));
+                        EventList a=new EventList(title,client,datetime.substring(11,16)+"("+"duration:"+duration+")");
+                        obj.add(a);
+                    }
+                    EventListAdapter ea = new EventListAdapter(getContext(),obj);
+                    event_list.setAdapter(ea);
+                    event_list.setLayoutManager(new LinearLayoutManager(getContext()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
             else if (response.equals("failure")){

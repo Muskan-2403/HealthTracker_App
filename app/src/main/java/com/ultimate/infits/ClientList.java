@@ -133,7 +133,7 @@ public class ClientList extends Fragment {
                                 client_list_image[i],
                                 object.getString("startdate"), object.getString("enddate"), true);
 
-
+                        dataFromDatabase.clientsID.add(object.getString("clientID"));
                         String dietchart = object.getString("dietChart");
                         if(dietchart=="null"){
                             client_list_pending.add(obj);
