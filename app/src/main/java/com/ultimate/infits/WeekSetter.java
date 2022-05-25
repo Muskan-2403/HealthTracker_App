@@ -14,10 +14,21 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -26,13 +37,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WeekSetter extends AppCompatActivity implements durationAdapter.Selecteditem{
     TextView sun_date,mon_date,tue_date,wed_date,thur_date,fri_date,sat_date;
     LinearLayout l1,l2,l3,l4,l5,l6,l7;
     String selected_date;
     int specific_d=60;
+    RequestQueue queue;
+    DataFromDatabase dataFromDatabase;
+    String url = "http://192.168.70.1/weeksetter.php";
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +63,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
         final String[] end_time = new String[1];
 
         TextView display_month,display_time,display_date;
-        String display_month1,display_time1,display_date1;
+        String display_month1 = null,display_time1,display_date1;
         TimePicker tt;
         ImageView iv1;
         EditText title_aptment,loc_aptment,note_aptment;
@@ -141,6 +157,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 Toast.makeText(getApplicationContext(),"Selected date= "+sun_date.getText(),Toast.LENGTH_SHORT).show();
+                selected_date=sun_date.getText().toString();
             }
         });
         l2.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +171,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 Toast.makeText(getApplicationContext(),"Selected date= "+mon_date.getText(),Toast.LENGTH_SHORT).show();
+                selected_date=mon_date.getText().toString();
             }
         });
         l3.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +185,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 Toast.makeText(getApplicationContext(),"Selected date= "+tue_date.getText(),Toast.LENGTH_SHORT).show();
+                selected_date=tue_date.getText().toString();
             }
         });
         l4.setOnClickListener(new View.OnClickListener() {
@@ -180,6 +199,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 Toast.makeText(getApplicationContext(),"Selected date= "+wed_date.getText(),Toast.LENGTH_SHORT).show();
+                selected_date=wed_date.getText().toString();
             }
         });
         l5.setOnClickListener(new View.OnClickListener() {
@@ -193,6 +213,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 Toast.makeText(getApplicationContext(),"Selected date= "+thur_date.getText(),Toast.LENGTH_SHORT).show();
+                selected_date=thur_date.getText().toString();
             }
         });
         l6.setOnClickListener(new View.OnClickListener() {
@@ -206,6 +227,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 Toast.makeText(getApplicationContext(),"Selected date= "+fri_date.getText(),Toast.LENGTH_SHORT).show();
+                selected_date=fri_date.getText().toString();
             }
         });
         l7.setOnClickListener(new View.OnClickListener() {
@@ -219,6 +241,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 Toast.makeText(getApplicationContext(),"Selected date= "+sat_date.getText(),Toast.LENGTH_SHORT).show();
+                selected_date=sat_date.getText().toString();
             }
         });
 
@@ -294,13 +317,70 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                  String apt_note=note_aptment.getEditableText().toString();
                  if(apt_title.equals("")||(apt_title.equals(" "))||
                          (apt_note.equals(""))|| (apt_note.equals(" "))||
-                         (apt_location.equals(""))||(apt_location.equals(" ")))
+                         (apt_location.equals(""))||(apt_location.equals(" "))){
                      Toast.makeText(getApplicationContext(),"Enter all details",Toast.LENGTH_SHORT).show();
+                 }
                  else
                  {
-                     Log.d("weeksetter",String.valueOf(selected_date)+" "+specific_d+" "+
-                             String.valueOf(start_time[0])+" "+title_aptment.getText().toString()
+                     Log.d("weeksetter",selected_date+" "+specific_d+" "+
+                             start_time[0]+" "+title_aptment.getText().toString()
                              +" "+loc_aptment.getText().toString()+" "+note_aptment.getText().toString());
+
+                     queue = Volley.newRequestQueue(getApplicationContext());
+                     Log.d("weeksetter","before");
+                     StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+                         if (!response.equals("failure")){
+                             Log.d("weeksetter","success");
+                             Log.d("response weeksetter",response);
+
+                             try {
+
+                             } catch (Exception e) {
+                                 e.printStackTrace();
+                             }
+
+                         }
+                         else if (response.equals("failure")){
+                             Log.d("weeksetter","failure");
+                             Toast.makeText(getApplicationContext(), "weeksetter failed", Toast.LENGTH_SHORT).show();
+                         }
+                     },error -> {
+                         Toast.makeText(getApplicationContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
+                     {
+                         @Nullable
+                         @Override
+                         protected Map<String, String> getParams() throws AuthFailureError {
+                             Map<String, String> data = new HashMap<>();
+                             Calendar c = Calendar.getInstance();
+                             int year = c.get(Calendar.YEAR);
+                             int month = c.get(Calendar.MONTH);
+                             int time = tt.getHour();
+                             if (start_time[0].substring(5,7)=="pm"){
+                                 time += 12;
+                             }
+                            String dateandtime = year+"-"+month+"-"+selected_date+" "+time+":"+tt.getMinute()+":00";
+                             Log.d("weeksetter dateandtime",dateandtime);
+                            String status = "pending";
+                            String duration = String.valueOf(specific_d);
+                            String loc = loc_aptment.getText().toString();
+                            String title =  title_aptment.getText().toString();
+                            String note = note_aptment.getText().toString();
+                            String notifyMe = "Y";
+                             data.put("dietitianuserID", dataFromDatabase.dietitianuserID);
+                             data.put("clientuserID", "Eden");
+                             data.put("dateandtime",dateandtime);
+                             data.put("status",status);
+                             data.put("duration",duration+":00");
+                             data.put("location",loc);
+                             data.put("title",title);
+                             data.put("note",note);
+                             data.put("notifyme",notifyMe);
+                             return data;
+                         }
+                     };
+                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                     requestQueue.add(stringRequest);
+                     Log.d("weeksetter","at end");
                  }
              }
          });
