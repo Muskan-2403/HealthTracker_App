@@ -5,12 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class durationAdapter extends RecyclerView.Adapter<durationAdapter.durationViewHolder> {
@@ -46,8 +49,22 @@ public class durationAdapter extends RecyclerView.Adapter<durationAdapter.durati
     public void onBindViewHolder(@NonNull durationViewHolder holder, int position) {
         durationList pos=list3.get(position);
 
-        int t=pos.getTime();
-        list_duration.setText(t+"m");
+        List<LinearLayout> tList= new ArrayList<>();
+        if(!tList.contains(holder.t))
+             tList.add(holder.t);
+        int tm1=pos.getTime();
+        list_duration.setText(tm1+"m");
+        holder.t.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                for (LinearLayout tt : tList) {
+                    tt.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+                }
+                holder.t.setBackgroundColor(Color.parseColor("#EFF8FF"));
+            }
+        });
 
     }
 
@@ -61,16 +78,17 @@ public class durationAdapter extends RecyclerView.Adapter<durationAdapter.durati
     }
 
     class durationViewHolder extends RecyclerView.ViewHolder{
+        LinearLayout t;
 
         public durationViewHolder(@NonNull View itemView) {
             super(itemView);
             list_duration = itemView.findViewById(R.id.appt_time);
-
+            t=itemView.findViewById(R.id.duration_layout);
+            t.setBackgroundColor(Color.parseColor("#FFFFFF"));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     selectedItem.selecteditem(list3.get(getAdapterPosition()).getTime());
-
                 }
             });
 

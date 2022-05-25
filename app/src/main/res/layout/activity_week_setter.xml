@@ -356,111 +356,124 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#676767"
-                android:fontFamily="@font/fonts"
-                android:textSize="20sp"/>
-            <TimePicker
-                android:id="@+id/timePicker1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:timePickerMode="spinner"
-                android:layout_gravity="center" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Duration"
-                android:layout_marginLeft="10dp"
-                android:textColor="#676767"
-                android:fontFamily="@font/fonts"
-                android:textSize="20sp"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="200dp"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:id="@+id/duration_appointment_recycler"/>
-
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:layout_marginTop="40dp"
                     android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/fonts"
-                    android:text="Title"
                     android:textColor="#676767"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/new_appointment_title_edt"
-                    android:background="#EFF8FF"
-                    android:textAlignment="textStart"
-                    android:layout_width="350dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_height="40dp"
-                    android:hint="Write the title"
-                    android:inputType="text" />
-
+                    android:fontFamily="@font/fonts"
+                    android:textSize="20sp"/>
+                <TimePicker
+                    android:id="@+id/timePicker1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:timePickerMode="spinner"
+                    android:layout_gravity="center" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Duration"
                     android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/fonts"
-                    android:text="Location"
                     android:textColor="#676767"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/new_appointment_location_edt"
-                    android:background="#EFF8FF"
-                    android:textAlignment="textStart"
-                    android:layout_height="40dp"
-                    android:layout_width="350dp"
-                    android:hint="Enter location/online link"
-                    android:layout_marginLeft="10dp"
-                    android:inputType="text"  />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
                     android:fontFamily="@font/fonts"
-                    android:text="Note"
-                    android:textColor="#676767"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"/>
 
-                <EditText
-                    android:id="@+id/new_appointment_note_edt"
-                    android:background="#EFF8FF"
-                    android:textAlignment="textStart"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="350dp"
-                    android:hint=" Write important note"
-                    android:inputType="text"
-                    android:layout_height="50dp"
-                    android:lines="3"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:id="@+id/duration_appointment_recycler"/>
 
-                <Button
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/fonts"
+                        android:text="Client Name"
+                        android:textColor="#676767"
+                        android:textSize="20sp" />
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/all_clients_under_me_spinner" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/fonts"
+                        android:text="Title"
+                        android:textColor="#676767"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/new_appointment_title_edt"
+                        android:background="#EFF8FF"
+                        android:textAlignment="textStart"
+                        android:layout_width="350dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="40dp"
+                        android:hint="Write the title"
+                        android:inputType="text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/fonts"
+                        android:text="Location"
+                        android:textColor="#676767"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/new_appointment_location_edt"
+                        android:background="#EFF8FF"
+                        android:textAlignment="textStart"
+                        android:layout_height="40dp"
+                        android:layout_width="350dp"
+                        android:hint="Enter location/online link"
+                        android:layout_marginLeft="10dp"
+                        android:inputType="text"  />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:fontFamily="@font/fonts"
+                        android:text="Note"
+                        android:textColor="#676767"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/new_appointment_note_edt"
+                        android:background="#EFF8FF"
+                        android:textAlignment="textStart"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="350dp"
+                        android:hint=" Write important note"
+                        android:inputType="text"
+                        android:layout_height="50dp"
+                        android:lines="3"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SAVE"
+                        android:layout_marginTop="20dp"
+                        android:textSize="22sp"
+                        android:textAllCaps="false"
+                        android:layout_gravity="center"
+                        android:background="#3498DB"
+                        android:textColor="#FFFFFF"
+                        android:id="@+id/new_appointment_save"/>
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SAVE"
-                    android:layout_marginTop="20dp"
-                    android:textSize="22sp"
-                    android:textAllCaps="false"
-                    android:layout_gravity="center"
-                    android:background="#3498DB"
-                    android:textColor="#FFFFFF"
-                    android:id="@+id/new_appointment_save"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
-            </LinearLayout>
+                    android:layout_height="20dp"/>
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>

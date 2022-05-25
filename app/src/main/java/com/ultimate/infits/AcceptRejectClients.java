@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -51,7 +52,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 //            "app/src/main/res/drawable/doctor_blue_border.png"};
 //    String particular_clients_plan[]={"diet plan","diet plan","diet plan","diet plan"};
     String dialog_name;
-
+    AcceptRejectClients particular_plan_adapter;
     //List<AcceptRejectList> plan_diet= new ArrayList<>();
     //List<AcceptRejectList> plan_premium= new ArrayList<>();
    // List<AcceptRejectList> plan_1to1= new ArrayList<>();
@@ -84,21 +85,25 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 
                 try {
                     JSONArray jsonArray = new JSONArray(response);
-                    for (int i=0;i<jsonArray.length();i++){
-                        JSONObject object = jsonArray.getJSONObject(i);
-                        String clientid = object.getString("clientID");
-                        String plan = object.getString("plan");
-                        String dieticianID = object.getString("dietitianID");
-                        if (dieticianID=="null"){
-                            AcceptRejectList obj=new AcceptRejectList(all_clients_img[i],clientid,plan);
-                            Log.d("plan_x",plan.toString());
-                            all_plans.add(obj);
+                    if(jsonArray.length()<1)
+                        Toast.makeText(getApplicationContext(),"No client is in the pending list",Toast.LENGTH_SHORT).show();
+                    else {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            String clientid = object.getString("clientID");
+                            String plan = object.getString("plan");
+                            String dieticianID = object.getString("dietitianID");
+                            if (dieticianID == "null") {
+                                AcceptRejectList obj = new AcceptRejectList(all_clients_img[i], clientid, plan);
+                                Log.d("plan_x", plan.toString());
+                                all_plans.add(obj);
+                            }
                         }
+                        Log.d("all_plans", String.valueOf(all_plans));
+                        AcceptRejectListAdapter adapx = new AcceptRejectListAdapter(getApplicationContext(), all_plans, (AcceptRejectListAdapter.Selecteditem) this);
+                        recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+                        recyclerView2.setAdapter(adapx);
                     }
-                    Log.d("all_plans", String.valueOf(all_plans));
-                    AcceptRejectListAdapter adapx= new AcceptRejectListAdapter(getApplicationContext(),all_plans, (AcceptRejectListAdapter.Selecteditem) this);
-                    recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
-                    recyclerView2.setAdapter(adapx);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -115,8 +120,9 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
         Log.d("allClients","at end");
-
-
+        EmptyLayoutAdapter adempty= new EmptyLayoutAdapter(getApplicationContext());
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerView1.setAdapter(adempty);
 
         diet_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +135,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
                 one_to_one_btn.setTextColor(Color.parseColor("#1D8BF1"));
                 //fetch data from database and store in particular_plan_x arrays
                 Log.d("diet_plan","before");
+                particular_plan= null;
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
                     if (!response.equals("failure")){
                         Log.d("diet_plan","success");
@@ -136,19 +143,23 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                            for (int i=0;i<jsonArray.length();i++){
-                                JSONObject object = jsonArray.getJSONObject(i);
-                                String clientid = object.getString("clientID");
-                                String plan = object.getString("plan");
-                                String dieticianID = object.getString("dietitianID");
-                                if (dieticianID=="null" && plan.equals("diet chart")){
-                                    {
-                                        AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
-                                        particular_plan.add(obj1);
+                            if(jsonArray.length()<1)
+                                Toast.makeText(getApplicationContext(),"No client is in the pending list",Toast.LENGTH_SHORT).show();
+                            else {
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String clientid = object.getString("clientID");
+                                    String plan = object.getString("plan");
+                                    String dieticianID = object.getString("dietitianID");
+                                    if (dieticianID == "null" && plan.equals("diet chart")) {
+                                        {
+                                            AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
+                                            particular_plan.add(obj1);
+                                        }
                                     }
                                 }
+                                Log.d("plan_diet", String.valueOf(particular_plan));
                             }
-                            Log.d("plan_diet", String.valueOf(particular_plan));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -179,6 +190,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
                 one_to_one_btn.setTextColor(Color.parseColor("#1D8BF1"));
                 //fetch data from database and store in particular_plan_x arrays
                 Log.d("premium_plan","before");
+                particular_plan= null;
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
                     if (!response.equals("failure")){
                         Log.d("premium","success");
@@ -231,6 +243,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
                 //fetch data from database and store in particular_plan_x arrays
 
                 Log.d("1 to 1","before");
+                particular_plan= null;
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
                     if (!response.equals("failure")){
                         Log.d("1 to 1","success");
@@ -286,9 +299,11 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 //        AcceptRejectListAdapter adap1= new AcceptRejectListAdapter(getApplicationContext(),all_plans);
 //        recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
 //        recyclerView2.setAdapter(adap1);
-        AcceptRejectListAdapter adap= new AcceptRejectListAdapter(getApplicationContext(),particular_plan, (AcceptRejectListAdapter.Selecteditem) this);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
-        recyclerView1.setAdapter(adap);
+        if(particular_plan.size()>0) {
+            AcceptRejectListAdapter adap = new AcceptRejectListAdapter(getApplicationContext(), particular_plan, (AcceptRejectListAdapter.Selecteditem) this);
+            recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+            recyclerView1.setAdapter(adap);
+        }
 
     }
     @Override

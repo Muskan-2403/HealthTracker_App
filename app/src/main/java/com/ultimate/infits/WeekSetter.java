@@ -5,11 +5,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -49,6 +51,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
     RequestQueue queue;
     DataFromDatabase dataFromDatabase;
     String url = "http://192.168.70.1/weeksetter.php";
+    String client_names[]={"Select one from drop down","Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,8 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
         ArrayList<String> days = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd ");
         Calendar cal = Calendar.getInstance();
+        selected_date=sdf.format(cal.DAY_OF_WEEK);
+        Toast.makeText(getApplicationContext(),selected_date,Toast.LENGTH_SHORT).show();
         if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
             cal.add(Calendar.DAY_OF_YEAR, 0);
             days.add(sdf.format(cal.getTime()));
@@ -304,7 +309,14 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                 display_time.setText(start_time[0]+"-"+date12);*/
             }
         });
+        Spinner spinner = (Spinner) findViewById(R.id.all_clients_under_me_spinner);
 
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item,client_names );
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        spinner.setAdapter(spinnerArrayAdapter);
+
+        int spinner_sel=spinner.getSelectedItemPosition();
+        Toast.makeText(getApplicationContext(),Integer.toString(spinner_sel),Toast.LENGTH_SHORT).show();
         title_aptment=findViewById(R.id.new_appointment_title_edt);
          loc_aptment=findViewById(R.id.new_appointment_location_edt);
          note_aptment=findViewById(R.id.new_appointment_note_edt);

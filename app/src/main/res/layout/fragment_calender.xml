@@ -18,18 +18,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="Cancel"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Done"
+                android:text="Search"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:backgroundTint="#4B9AFB"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="10dp"
                 android:id="@+id/appointment_done"/>
         </LinearLayout>
         <ImageView
