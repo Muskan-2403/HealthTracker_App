@@ -8,3 +8,12 @@ pending- edit the php and java code in account.java to fetch and save dietitan's
 pending- add recyclerview arrays to Calendar (edit ids in events_in_profile_layout)
 pending- add try method in volley of Calendar
 pending- edit EventListAdapter
+
+26/05/2022
+pending- in 158th line of Calendar.java
+        fetch client_mobile number for consultation link and check if the substring for month and date in EventList constructor is correct
+        write a volley function to update db when the client clicks on notifyme button (If the user changes from off to on, notifyme
+            should be updated as yes, if the user turns off the notify me from on to off, then update it to no)
+            For this, you can use getCal_apt_notifyme() and setCal_apt_notifyme()
+
+        update Eventlist constructor after updating volley

@@ -332,6 +332,8 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                          (apt_location.equals(""))||(apt_location.equals(" "))){
                      Toast.makeText(getApplicationContext(),"Enter all details",Toast.LENGTH_SHORT).show();
                  }
+                 else if(spinner.getSelectedItemPosition()<0)
+                     Toast.makeText(getApplicationContext(),"Select clients name",Toast.LENGTH_SHORT).show();
                  else
                  {
                      Log.d("weeksetter",selected_date+" "+specific_d+" "+
@@ -354,7 +356,7 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                          }
                          else if (response.equals("failure")){
                              Log.d("weeksetter","failure");
-                             Toast.makeText(getApplicationContext(), "weeksetter failed", Toast.LENGTH_SHORT).show();
+                             Toast.makeText(getApplicationContext(), "Couldn't save the appointment", Toast.LENGTH_SHORT).show();
                          }
                      },error -> {
                          Toast.makeText(getApplicationContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})

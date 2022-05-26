@@ -44,6 +44,15 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
             in.putExtra("clientID",pos.getCal_apt_clientname());
             in.putExtra("appointment_type",pos.getCal_apt_type());
             in.putExtra("appointment_time",pos.getCal_apt_time());
+            in.putExtra("appointment_note",pos.getCal_apt_note());
+            in.putExtra("appointment_title",pos.getCal_apt_title());
+            in.putExtra("appointment_month",pos.getCal_apt_date_month());
+            in.putExtra("appointment_date",pos.getCal_apt_date_date());
+            in.putExtra("appointment_duration",pos.getCal_apt_duration());
+            in.putExtra("appointment_location",pos.getCal_apt_location());
+            in.putExtra("appointment_link",pos.getCal_apt_link());
+            in.putExtra("appointment_notifyme",pos.getCal_apt_notifyme());
+
             con.startActivity(in);
         });
     }

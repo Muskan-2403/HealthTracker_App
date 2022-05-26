@@ -62,8 +62,8 @@ public class selectedAppointment_notes extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_selected_appointment_notes, container, false);
         TextView notes1= v.findViewById(R.id.selected_client_apt_notes);
-        //write volley code
-        //notes1.setText();
+
+        notes1.setText(getArguments().getString("appointment_note"));
         return v;
     }
 }

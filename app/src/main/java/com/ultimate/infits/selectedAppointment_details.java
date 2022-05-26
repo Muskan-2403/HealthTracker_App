@@ -71,8 +71,11 @@ public class selectedAppointment_details extends Fragment {
         selt_name=v.findViewById(R.id.selected_apt_name);
         selt_img=v.findViewById(R.id.selected_apt_img);
 
-
-
+        selt_time.setText(getArguments().getString("appointment_time")+"(Duration: "+getArguments().getString("appointment_duration")+")");
+        selt_loc.setText(getArguments().getString("appointment_location"));
+        selt_title.setText(getArguments().getString("appointment_title"));
+        selt_link.setText(getArguments().getString("appointment_link"));
+        selt_name.setText(getArguments().getString("appointment_client_name"));
         return v;
     }
 }

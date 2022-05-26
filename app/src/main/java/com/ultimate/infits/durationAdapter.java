@@ -31,6 +31,7 @@ public class durationAdapter extends RecyclerView.Adapter<durationAdapter.durati
     List<durationList> list3;
     private Selecteditem selectedItem;
     TextView list_duration;
+
     durationAdapter(Context ct, List<durationList> lst,Selecteditem selecteditem){
         this.ct = ct;
         this.list3=lst;
@@ -49,20 +50,21 @@ public class durationAdapter extends RecyclerView.Adapter<durationAdapter.durati
     public void onBindViewHolder(@NonNull durationViewHolder holder, int position) {
         durationList pos=list3.get(position);
 
-        List<LinearLayout> tList= new ArrayList<>();
-        if(!tList.contains(holder.t))
-             tList.add(holder.t);
         int tm1=pos.getTime();
         list_duration.setText(tm1+"m");
         holder.t.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-
+                List<LinearLayout> tList= new ArrayList<>();
+                if(!tList.contains(holder.t))
+                    tList.add(holder.t);
                 for (LinearLayout tt : tList) {
                     tt.setBackgroundColor(Color.parseColor("#FFFFFF"));
 
                 }
                 holder.t.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                Toast.makeText(ct.getApplicationContext(), tm1+" minutes",Toast.LENGTH_SHORT).show();
             }
         });
 
