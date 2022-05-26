@@ -22,7 +22,7 @@ public class DataFromDatabase {
 
     public static Bitmap profile;
     HashMap<String,String> map = new HashMap<>();
-    ArrayList<String> clientsID = new ArrayList<>();
+    public static ArrayList<String> clientsID = new ArrayList<>();
     String url = "http://192.168.134.1/getdietitiandetails.php";
     public static boolean flag= false;
     public static String clientuserID;

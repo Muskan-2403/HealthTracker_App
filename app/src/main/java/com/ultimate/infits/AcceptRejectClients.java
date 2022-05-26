@@ -53,6 +53,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 //    String particular_clients_plan[]={"diet plan","diet plan","diet plan","diet plan"};
     String dialog_name;
     AcceptRejectClients particular_plan_adapter;
+    int adapter_flag=0;
     //List<AcceptRejectList> plan_diet= new ArrayList<>();
     //List<AcceptRejectList> plan_premium= new ArrayList<>();
    // List<AcceptRejectList> plan_1to1= new ArrayList<>();
@@ -144,8 +145,9 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             if(jsonArray.length()<1)
-                                Toast.makeText(getApplicationContext(),"No client is in the pending list",Toast.LENGTH_SHORT).show();
+                                adapter_flag=0;
                             else {
+                                adapter_flag=1;
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String clientid = object.getString("clientID");
@@ -198,19 +200,23 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                            for (int i=0;i<jsonArray.length();i++){
-                                JSONObject object = jsonArray.getJSONObject(i);
-                                String clientid = object.getString("clientID");
-                                String plan = object.getString("plan");
-                                String dieticianID = object.getString("dietitianID");
-                                if (dieticianID=="null" && plan.equals("premium")){
-                                    {
-                                        AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
-                                        particular_plan.add(obj1);
+                            if(jsonArray.length()<1)
+                                adapter_flag=0;
+                            else {
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String clientid = object.getString("clientID");
+                                    String plan = object.getString("plan");
+                                    String dieticianID = object.getString("dietitianID");
+                                    if (dieticianID == "null" && plan.equals("premium")) {
+                                        {
+                                            AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
+                                            particular_plan.add(obj1);
+                                        }
                                     }
                                 }
+                                Log.d("premium", String.valueOf(particular_plan));
                             }
-                            Log.d("premium", String.valueOf(particular_plan));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -251,19 +257,23 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                            for (int i=0;i<jsonArray.length();i++){
-                                JSONObject object = jsonArray.getJSONObject(i);
-                                String clientid = object.getString("clientID");
-                                String plan = object.getString("plan");
-                                String dieticianID = object.getString("dietitianID");
-                                if (dieticianID=="null" && plan.equals("1to1")){
-                                    {
-                                        AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
-                                        particular_plan.add(obj1);
+                            if(jsonArray.length()<1)
+                                adapter_flag=0;
+                            else {
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String clientid = object.getString("clientID");
+                                    String plan = object.getString("plan");
+                                    String dieticianID = object.getString("dietitianID");
+                                    if (dieticianID == "null" && plan.equals("1to1")) {
+                                        {
+                                            AcceptRejectList obj1 = new AcceptRejectList(all_clients_img[i], clientid, plan);
+                                            particular_plan.add(obj1);
+                                        }
                                     }
                                 }
+                                Log.d("1 to 1", String.valueOf(particular_plan));
                             }
-                            Log.d("1 to 1", String.valueOf(particular_plan));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -284,26 +294,13 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 
             }
         });
-//            for(int i=0;i<all_plans.size();i++)
-//        {
-//            List<AcceptRejectList> obj= new ArrayList<>();
-//            obj= (List<AcceptRejectList>) all_plans.get(i);
-//            Log.d("xhdbekjf", String.valueOf(obj));
-//        }
-
-//        for(int i=0;i<all_clients_img.length;i++)
-//        {
-//            AcceptRejectList obj=new AcceptRejectList(all_clients_img[i],all_client_name[i],all_clients_plan[i]);
-//            all_plans.add(obj);
-//        }
-//        AcceptRejectListAdapter adap1= new AcceptRejectListAdapter(getApplicationContext(),all_plans);
-//        recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
-//        recyclerView2.setAdapter(adap1);
         if(particular_plan.size()>0) {
             AcceptRejectListAdapter adap = new AcceptRejectListAdapter(getApplicationContext(), particular_plan, (AcceptRejectListAdapter.Selecteditem) this);
             recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
             recyclerView1.setAdapter(adap);
         }
+        else if(adapter_flag==0)
+            Toast.makeText(getApplicationContext(),"No pending clients in the selected plan type",Toast.LENGTH_SHORT).show();
 
     }
     @Override

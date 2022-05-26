@@ -47,11 +47,11 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
     TextView sun_date,mon_date,tue_date,wed_date,thur_date,fri_date,sat_date;
     LinearLayout l1,l2,l3,l4,l5,l6,l7;
     String selected_date;
-    int specific_d=60;
+    int specific_d;
     RequestQueue queue;
     DataFromDatabase dataFromDatabase;
     String url = "http://192.168.70.1/weeksetter.php";
-    String client_names[]={"Select one from drop down","Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
+   // String client_names[]={"Select one from drop down","Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +136,12 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
         for (int a = 0 ; a < dateArr.length;a++) {
             dateArr[a].setText(days.get(a));
         }
-
+        DateFormat dateFormat1 = new SimpleDateFormat("dd");
+       Calendar cal1 = Calendar.getInstance();
+        Date date = cal1.getTime();
+        selected_date = dateFormat1.format(date);
+        specific_d=60;
+Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH_SHORT).show();
         iv1= findViewById(R.id.calendar_back);
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -310,7 +315,9 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
             }
         });
         Spinner spinner = (Spinner) findViewById(R.id.all_clients_under_me_spinner);
-
+        ArrayList<String> client_names= new ArrayList<>();
+        client_names.add("Select one from the drop down");
+        client_names.addAll(DataFromDatabase.clientsID);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item,client_names );
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner.setAdapter(spinnerArrayAdapter);
@@ -336,6 +343,9 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
                      Toast.makeText(getApplicationContext(),"Select clients name",Toast.LENGTH_SHORT).show();
                  else
                  {
+                     Toast.makeText(getApplicationContext(),selected_date+" "+specific_d+" "+
+                             start_time[0]+" "+title_aptment.getText().toString()
+                             +" "+loc_aptment.getText().toString()+" "+note_aptment.getText().toString(),Toast.LENGTH_SHORT).show();
                      Log.d("weeksetter",selected_date+" "+specific_d+" "+
                              start_time[0]+" "+title_aptment.getText().toString()
                              +" "+loc_aptment.getText().toString()+" "+note_aptment.getText().toString());

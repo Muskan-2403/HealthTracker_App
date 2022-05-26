@@ -52,19 +52,12 @@ public class durationAdapter extends RecyclerView.Adapter<durationAdapter.durati
 
         int tm1=pos.getTime();
         list_duration.setText(tm1+"m");
-        holder.t.setOnClickListener(new View.OnClickListener() {
+
+        list_duration.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                List<LinearLayout> tList= new ArrayList<>();
-                if(!tList.contains(holder.t))
-                    tList.add(holder.t);
-                for (LinearLayout tt : tList) {
-                    tt.setBackgroundColor(Color.parseColor("#FFFFFF"));
-
-                }
-                holder.t.setBackgroundColor(Color.parseColor("#EFF8FF"));
-                Toast.makeText(ct.getApplicationContext(), tm1+" minutes",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ct.getApplicationContext(), "Selected duration: "+tm1+" minutes",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -85,8 +78,8 @@ public class durationAdapter extends RecyclerView.Adapter<durationAdapter.durati
         public durationViewHolder(@NonNull View itemView) {
             super(itemView);
             list_duration = itemView.findViewById(R.id.appt_time);
+            list_duration.setBackgroundColor(Color.parseColor("#FFFFFF"));
             t=itemView.findViewById(R.id.duration_layout);
-            t.setBackgroundColor(Color.parseColor("#FFFFFF"));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

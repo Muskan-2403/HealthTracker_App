@@ -380,14 +380,31 @@
                     android:textColor="#676767"
                     android:fontFamily="@font/fonts"
                     android:textSize="20sp"/>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="100dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
                     <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="200dp"
+                        android:layout_width="100dp"
                         android:layout_height="70dp"
                         android:orientation="horizontal"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="18dp"
+                        android:scrollbars="horizontal"
                         android:id="@+id/duration_appointment_recycler"/>
-
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_navigate_next_24"/>
+</LinearLayout>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
