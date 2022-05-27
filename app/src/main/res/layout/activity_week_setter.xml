@@ -330,17 +330,18 @@
                 android:textSize="24sp"
                 android:layout_marginLeft="5dp"
                 android:id="@+id/new_appointment_month"/>
+
             <TextView
+                android:id="@+id/new_appointment_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9:00 - 10:00AM"
-                android:textAllCaps="true"
-                android:textColor="#004EAD"
-                android:fontFamily="@font/baloo_bhai_2"
-                android:textSize="24sp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="90dp"
-                android:id="@+id/new_appointment_time"/>
+                android:layout_marginLeft="65dp"
+                android:fontFamily="@font/baloo_bhai_2"
+                android:text="9:00AM (60 minutes)"
+                android:textColor="#004EAD"
+                android:textSize="24sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -350,7 +351,7 @@
                 android:fontFamily="@font/baloo_bhai_2"
                 android:textSize="24sp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="45dp"
+                android:layout_marginLeft="20dp"
                 android:id="@+id/new_appointment_date"/>
         </LinearLayout>
         <LinearLayout
@@ -388,20 +389,103 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="100dp"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="100dp"
-                        android:layout_height="70dp"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="18dp"
-                        android:scrollbars="horizontal"
-                        android:id="@+id/duration_appointment_recycler"/>
+
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:scrollbars="horizontal"
+        android:scrollbarStyle="insideInset">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:text="10m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_10m"/>
+        <Button
+            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:text="20m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_20m"/>
+        <Button
+            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:text="30m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_30m"/>
+        <Button
+            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:text="40m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_40m"/>
+        <Button
+            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:text="50m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_50m"/>
+        <Button
+            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:text="60m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_60m"/>
+        <Button
+            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:text="1h10m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_1h10m"/>
+        <Button
+            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:text="1h20m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_1h20m"/>
+        <Button
+            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:text="1h30m"
+            android:textAllCaps="false"
+            android:background="#FFFFFF"
+            android:textColor="#4D83C6"
+            android:id="@+id/duration_1h30m"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+    </LinearLayout>
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_baseline_navigate_next_24"/>
 </LinearLayout>

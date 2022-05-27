@@ -1,6 +1,7 @@
 package com.ultimate.infits;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.view.View;
@@ -73,9 +74,10 @@ public class SelectedAppointment extends AppCompatActivity {
                 b.putString("appointment_client_name",getIntent().getExtras().getString("clientID"));
                 b.putString("appointment_duration",getIntent().getExtras().getString("appointment_duration"));
                 //b.putString("appointment_client_photo",getIntent().getExtras().getString("appointment_photo"));
-                selectedAppointment_details fragobj=new selectedAppointment_details();
-                fragobj.setArguments(b);
-                getSupportFragmentManager().beginTransaction().replace(R.id.selected_client_appt,fragobj).commit();
+                Navigation.findNavController(SelectedAppointment.this,R.id.selected_client_appt).navigate(R.id.appointment_details,b);
+                //selectedAppointment_details fragobj=new selectedAppointment_details();
+                //fragobj.setArguments(b);
+               // getSupportFragmentManager().beginTransaction().replace(R.id.selected_client_appt,fragobj).commit();
 
             }
         });
@@ -84,9 +86,10 @@ public class SelectedAppointment extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle b1=new Bundle();
                 b1.putString("appointment_note",getIntent().getExtras().getString("appointment_note"));
-                selectedAppointment_notes fragobj1=new selectedAppointment_notes();
-                fragobj1.setArguments(b1);
-                getSupportFragmentManager().beginTransaction().replace(R.id.selected_client_appt,fragobj1).commit();
+               Navigation.findNavController(SelectedAppointment.this,R.id.selected_client_appt).navigate(R.id.appointment_notes,b1);
+                // selectedAppointment_notes fragobj1=new selectedAppointment_notes();
+                //fragobj1.setArguments(b1);
+                //getSupportFragmentManager().beginTransaction().replace(R.id.selected_client_appt,fragobj1).commit();
             }
         });
         ToggleButton btn=findViewById(R.id.toggleButtonNotify);

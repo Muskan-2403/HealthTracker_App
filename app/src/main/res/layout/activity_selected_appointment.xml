@@ -138,11 +138,13 @@
                         android:textColor="@drawable/switch_text"
                         android:fontFamily="@font/fonts"/>
                 </RadioGroup>
-                  <FrameLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginTop="10dp"
-                      android:id="@+id/selected_client_appt"/>
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/selected_client_appt"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:defaultNavHost="true"
+                    app:navGraph="@navigation/appointment" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <LinearLayout

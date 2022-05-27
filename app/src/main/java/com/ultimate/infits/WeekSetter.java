@@ -43,10 +43,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WeekSetter extends AppCompatActivity implements durationAdapter.Selecteditem{
+public class WeekSetter extends AppCompatActivity{
     TextView sun_date,mon_date,tue_date,wed_date,thur_date,fri_date,sat_date;
     LinearLayout l1,l2,l3,l4,l5,l6,l7;
     String selected_date;
+    String selected_month;
     int specific_d;
     RequestQueue queue;
     DataFromDatabase dataFromDatabase;
@@ -59,9 +60,6 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
         setContentView(R.layout.activity_week_setter);
         setUpUI();
         TextView[] dateArr = {sun_date,mon_date,tue_date,wed_date,thur_date,fri_date,sat_date};
-        int[] duration={10,20,30,40,50,60};
-        //"70m","80m","90m","100m","110m","120m"};
-        //String[] duration1={"1h10m","1h20m","1h30m"};
         final String[] start_time = new String[1];
         final String[] end_time = new String[1];
 
@@ -70,18 +68,31 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
         TimePicker tt;
         ImageView iv1;
         EditText title_aptment,loc_aptment,note_aptment;
-        List<durationList> time1=new ArrayList<>();
+        display_date=findViewById(R.id.new_appointment_date);
+        display_month=findViewById(R.id.new_appointment_month);
+        display_time=findViewById(R.id.new_appointment_time);
+        tt=findViewById(R.id.timePicker1);
+
         ArrayList<String> days = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd ");
+        SimpleDateFormat sdf1= new SimpleDateFormat("MMM");
+        SimpleDateFormat sdf3=new SimpleDateFormat("hh:mm a");
         Calendar cal = Calendar.getInstance();
-        selected_date=sdf.format(cal.DAY_OF_WEEK);
-        Toast.makeText(getApplicationContext(),selected_date,Toast.LENGTH_SHORT).show();
+        start_time[0]=sdf3.format(cal.getTime());
+        display_time.setText(start_time[0]+"("+specific_d+" minutes)");
+        DateFormat dateFormat1 = new SimpleDateFormat("dd");
+        Calendar cal1 = Calendar.getInstance();
+        Date date = cal1.getTime();
+        selected_date = dateFormat1.format(date);
+        Toast.makeText(getApplicationContext(),"selected_date="+selected_date,Toast.LENGTH_SHORT).show();
+        selected_month=sdf1.format(date);
+        display_month.setText(selected_month);
         if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
             cal.add(Calendar.DAY_OF_YEAR, 0);
             days.add(sdf.format(cal.getTime()));
             for(int i = 0; i< 6; i++){
                 cal.add(Calendar.DAY_OF_YEAR, 1);
-                days.add(sdf.format(cal.getTime()));
+                    days.add(sdf.format(cal.getTime()));
             }
         }
         if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY){
@@ -136,12 +147,9 @@ public class WeekSetter extends AppCompatActivity implements durationAdapter.Sel
         for (int a = 0 ; a < dateArr.length;a++) {
             dateArr[a].setText(days.get(a));
         }
-        DateFormat dateFormat1 = new SimpleDateFormat("dd");
-       Calendar cal1 = Calendar.getInstance();
-        Date date = cal1.getTime();
-        selected_date = dateFormat1.format(date);
+
         specific_d=60;
-Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH_SHORT).show();
+
         iv1= findViewById(R.id.calendar_back);
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,8 +174,8 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                Toast.makeText(getApplicationContext(),"Selected date= "+sun_date.getText(),Toast.LENGTH_SHORT).show();
-                selected_date=sun_date.getText().toString();
+              selected_date=sun_date.getText().toString().trim();
+                display_date.setText(selected_date);
             }
         });
         l2.setOnClickListener(new View.OnClickListener() {
@@ -180,8 +188,9 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                Toast.makeText(getApplicationContext(),"Selected date= "+mon_date.getText(),Toast.LENGTH_SHORT).show();
-                selected_date=mon_date.getText().toString();
+               selected_date=mon_date.getText().toString().trim();
+                display_date.setText(selected_date);
+
             }
         });
         l3.setOnClickListener(new View.OnClickListener() {
@@ -194,8 +203,9 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                Toast.makeText(getApplicationContext(),"Selected date= "+tue_date.getText(),Toast.LENGTH_SHORT).show();
-                selected_date=tue_date.getText().toString();
+               selected_date=tue_date.getText().toString().trim();
+                display_date.setText(selected_date);
+
             }
         });
         l4.setOnClickListener(new View.OnClickListener() {
@@ -208,8 +218,9 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                Toast.makeText(getApplicationContext(),"Selected date= "+wed_date.getText(),Toast.LENGTH_SHORT).show();
-                selected_date=wed_date.getText().toString();
+              selected_date=wed_date.getText().toString().trim();
+                display_date.setText(selected_date);
+
             }
         });
         l5.setOnClickListener(new View.OnClickListener() {
@@ -222,8 +233,8 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
                 l4.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                Toast.makeText(getApplicationContext(),"Selected date= "+thur_date.getText(),Toast.LENGTH_SHORT).show();
-                selected_date=thur_date.getText().toString();
+                selected_date=thur_date.getText().toString().trim();
+                display_date.setText(selected_date);
             }
         });
         l6.setOnClickListener(new View.OnClickListener() {
@@ -236,8 +247,9 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
                 l4.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                Toast.makeText(getApplicationContext(),"Selected date= "+fri_date.getText(),Toast.LENGTH_SHORT).show();
-                selected_date=fri_date.getText().toString();
+                selected_date=fri_date.getText().toString().trim();
+                display_date.setText(selected_date);
+
             }
         });
         l7.setOnClickListener(new View.OnClickListener() {
@@ -250,30 +262,166 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
                 l4.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                Toast.makeText(getApplicationContext(),"Selected date= "+sat_date.getText(),Toast.LENGTH_SHORT).show();
-                selected_date=sat_date.getText().toString();
+               selected_date=sat_date.getText().toString().trim();
+               display_date.setText(selected_date);
+
             }
         });
 
-        RecyclerView d=findViewById(R.id.duration_appointment_recycler);
-        for(int k=0;k<duration.length;k++)
-       {
-            durationList obj=new durationList(duration[k]);
-            time1.add(obj);
-        }
-        /*for(int k=0;k<duration1.length;k++)
-        {
-            durationList obj=new durationList(duration[k]);
-            time1.add(obj);
-        }*/
-        durationAdapter adap1= new durationAdapter(getApplicationContext(),time1, (durationAdapter.Selecteditem) this);
-        d.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
-        d.setAdapter(adap1);
+      Button dd1=findViewById(R.id.duration_10m);
+        Button dd2=findViewById(R.id.duration_20m);
+        Button dd3=findViewById(R.id.duration_30m);
+        Button dd4=findViewById(R.id.duration_40m);
+        Button dd5=findViewById(R.id.duration_50m);
+        Button dd6=findViewById(R.id.duration_60m);
+        Button dd7=findViewById(R.id.duration_1h10m);
+        Button dd8=findViewById(R.id.duration_1h20m);
+        Button dd9=findViewById(R.id.duration_1h30m);
+        dd1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd1.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd3.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd4.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd5.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd6.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd7.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd8.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd9.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=10;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
+        dd2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd2.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd3.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd4.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd5.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd6.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd7.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd8.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd9.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=20;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
+        dd3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd3.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd4.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd5.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd6.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd7.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd8.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd9.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=30;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
+        dd4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd4.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd3.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd5.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd6.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd7.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd8.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd9.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=40;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
+        dd5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd5.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd3.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd4.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd6.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd7.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd8.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd9.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=50;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
+        dd6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd6.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd3.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd4.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd5.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd7.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd8.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd9.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=60;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
+        dd7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd7.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd3.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd4.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd5.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd6.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd8.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd9.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=80;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
+        dd8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd8.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd3.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd4.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd5.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd6.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd7.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd9.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=100;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
+        dd9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dd9.setBackgroundColor(Color.parseColor("#EFF8FF"));
+                dd2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd3.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd4.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd5.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd6.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd7.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd8.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                dd1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                specific_d=120;
+                display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+            }
+        });
 
-        display_date=findViewById(R.id.new_appointment_date);
-        display_month=findViewById(R.id.new_appointment_month);
-        display_time=findViewById(R.id.new_appointment_time);
-        tt=findViewById(R.id.timePicker1);
 
 
         tt.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
@@ -282,14 +430,18 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
                 int h=tt.getHour();
                 int m=tt.getMinute();
                 String am_pm;
-                if(h<12)
-                    am_pm="am";
-                else {
-                    am_pm = "pm";
-                    h=h-12;
-                }
-                start_time[0] =String.valueOf(h)+":"+String.valueOf(m)+" "+am_pm;
-               /* DateFormat obj= new SimpleDateFormat("hh:mm");
+                    if (h < 12)
+                        am_pm = "am";
+                    else {
+                        am_pm = "pm";
+                        h = h - 12;
+                    }
+                    start_time[0] = String.valueOf(h) + ":" + String.valueOf(m) + " " + am_pm;
+                    display_date.setText(selected_date);
+                    display_month.setText(selected_month);
+                    display_time.setText(start_time[0]+"( "+specific_d+"minutes )");
+
+              /* DateFormat obj= new SimpleDateFormat("hh:mm");
                 Date date = null;
                 try {
                     date = obj.parse(start_time[0]);
@@ -323,7 +475,6 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
         spinner.setAdapter(spinnerArrayAdapter);
 
         int spinner_sel=spinner.getSelectedItemPosition();
-        Toast.makeText(getApplicationContext(),Integer.toString(spinner_sel),Toast.LENGTH_SHORT).show();
         title_aptment=findViewById(R.id.new_appointment_title_edt);
          loc_aptment=findViewById(R.id.new_appointment_location_edt);
          note_aptment=findViewById(R.id.new_appointment_note_edt);
@@ -419,9 +570,5 @@ Toast.makeText(getApplicationContext(),"Today's date"+selected_date,Toast.LENGTH
         fri_date = findViewById(R.id.fri_date);
         sat_date = findViewById(R.id.sat_date);
     }
-    @Override
-    public void selecteditem(int n) {
-        Toast.makeText(getApplicationContext(), String.valueOf(n)+" Minutes", Toast.LENGTH_SHORT).show();
-        specific_d=n;
-    }
+
 }
