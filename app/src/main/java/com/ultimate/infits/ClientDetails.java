@@ -141,7 +141,7 @@ public class ClientDetails extends AppCompatActivity  {
             metrics_btn.setBackgroundResource(R.drawable.metrics_unselected);
             tracker_btn.setBackgroundResource(R.drawable.tracker_unselected);
             health_details_btn.setBackgroundResource(R.drawable.health_details_unselected);
-            getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new ChatForProfile()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.client_details_sec,new Messages_Recycler()).commit();
         });
         metrics_btn.setOnClickListener(v ->{
             diet_chart_btn.setBackgroundResource(R.drawable.diet_chart_unselected);

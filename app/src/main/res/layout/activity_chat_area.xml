@@ -54,19 +54,11 @@
                 android:src="@drawable/more" />
         </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="470dp"
-            app:stackFromEnd="true"
-            android:id="@+id/chat_area_message_recycler"
-            android:layout_marginTop="90dp"
-            android:visibility="visible"/>
-        <ProgressBar
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:id="@+id/chat_area_loading_status"
-            android:layout_marginTop="300dp"
-            android:layout_marginLeft="200dp"/>
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/FrameContainerMessages"
+                android:layout_width="match_parent"
+                android:layout_height="495dp"
+                android:layout_marginTop="90dp"/>
 
         <EditText
             android:id="@+id/typed_message"
@@ -74,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|start"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/message_box"
             android:elevation="10dp"
             android:fontFamily="@font/fonts"
@@ -87,7 +79,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_attach_file_24"
             android:layout_marginLeft="290dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="20dp"
             android:layout_gravity="bottom"
             android:id="@+id/attach_file"/>
 
@@ -96,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="bottom|right"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/message_box"
             android:elevation="10dp"
             android:fontFamily="@font/fonts"

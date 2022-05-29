@@ -11,14 +11,13 @@
 
     <TextView
         android:id="@+id/client_msg"
-        android:layout_width="295dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_background"
         android:fontFamily="@font/fonts"
         android:lineHeight="16sp"
         android:paddingHorizontal="21dp"
         android:paddingVertical="9dp"
-        android:text="@string/Loremipsum"
         android:textAlignment="textStart"
         android:textColor="#535353"
         android:textSize="14sp"
@@ -26,7 +25,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_min="3dp"
+        app:layout_constraintWidth_max="270dp"
+        app:layout_constraintWidth_percent="0.7"/>
 
     <TextView
         android:id="@+id/client_msg_time"
