@@ -1,14 +1,22 @@
 package com.ultimate.infits;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ultimate.infits.databinding.ActivityChatAreaBinding;
 
@@ -51,6 +59,12 @@ public class ChatArea extends AppCompatActivity {
                 sendMessage();
             }
         });
+        ImageView i12=findViewById(R.id.attach_file);
+        i12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //dialog box
+            }});
         // Preference preferenceManager = new Preference(getApplicationContext());
         //chatMessages=new ArrayList<>();
 
