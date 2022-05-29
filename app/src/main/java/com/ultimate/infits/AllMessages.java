@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +28,8 @@ public class AllMessages extends Fragment {
     public static String[] unreadChat = {"Lorem ipsum dolor sit amet, consecteturelit","Lorem ipsum dolor sit amet, consecteturelit","Lorem ipsum dolor sit amet, consecteturelit"};
     RadioButton allChats,unRead;
     TextView unread_txt;
-
+    List<ChatLogList> l1=new ArrayList<>();
+    List<ChatLogList> l2=new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,21 +78,38 @@ public class AllMessages extends Fragment {
         allChats = view.findViewById(R.id.all_chat_btn);
         unRead = view.findViewById(R.id.unread_btn);
         unread_txt = view.findViewById(R.id.unread);
-
-        cd = new ChatLogAdapter(view.getContext(),msg);
+        for(int i=0;i<msg.length;i++)
+        {
+            ChatLogList obj=new ChatLogList("a","ronald","hi","14:00","r");
+            l1.add(obj);
+        }
+        cd = new ChatLogAdapter(view.getContext(),l1);
         recyclerView.setAdapter(cd);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+
 
         allChats.setOnClickListener(v->{
-            cd = new ChatLogAdapter(view.getContext(),msg);
+            for(int i=0;i<msg.length;i++)
+            {
+                ChatLogList obj=new ChatLogList("a","ronald","hi","14:00","r");
+                l1.add(obj);
+            }
+            cd = new ChatLogAdapter(view.getContext(),l1);
             recyclerView.setAdapter(cd);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+
         });
 
         unRead.setOnClickListener(v ->{
-            cd = new ChatLogAdapter(view.getContext(),unreadChat);
+            for(int i=0;i<msg.length;i++)
+            {
+                ChatLogList obj=new ChatLogList("a","ronald","hi","14:00","u");
+                l2.add(obj);
+            }
+            cd = new ChatLogAdapter(view.getContext(),l2);
             recyclerView.setAdapter(cd);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
+
         });
 
         return view;

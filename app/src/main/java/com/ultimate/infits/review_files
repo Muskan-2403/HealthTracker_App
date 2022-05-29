@@ -17,3 +17,10 @@ pending- in 158th line of Calendar.java
             For this, you can use getCal_apt_notifyme() and setCal_apt_notifyme()
 
         update Eventlist constructor after updating volley
+
+30/05/2022
+pending- in chatlogadapter.java
+        change the status of read messages from u to r if the dietitian opens the message (volley and db)
+             set profile picture in the same file
+        in ChatArea, add functionality for selecting picture and docs in attach file imageview
+        in ChatArea, save messages to db in void sendMessage() function

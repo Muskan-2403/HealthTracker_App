@@ -40,7 +40,7 @@ public class ClientSearchAdapter extends RecyclerView.Adapter<ClientSearchAdapte
         TextView textView,unread;
         public ClientSearchHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.msg);
+            textView = itemView.findViewById(R.id.chat_log_msg);
             unread = itemView.findViewById(R.id.unread);
         }
     }
