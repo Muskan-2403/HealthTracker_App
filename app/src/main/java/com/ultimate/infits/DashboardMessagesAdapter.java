@@ -1,8 +1,10 @@
 package com.ultimate.infits;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +38,9 @@ public class DashboardMessagesAdapter extends RecyclerView.Adapter<DashboardMess
     }
 
         public void return_message_Area(View v) {
-            Navigation.findNavController(v).navigate(R.id.action_dashboardFragment2_to_chattingArea3);
+        Bundle b=new Bundle();
+        b.putString("client_name","ronald richard");
+        ct.startActivity(new Intent(ct.getApplicationContext(),ChatArea.class));
         }
     @Override
     public void onBindViewHolder(@NonNull DashboardMessagesViewHolder holder, int position) {

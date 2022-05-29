@@ -17,9 +17,6 @@
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
-            android:id="@+id/action_dashboardFragment2_to_chattingArea3"
-            app:destination="@id/chattingArea3" />
-        <action
             android:id="@+id/action_dashboardFragment2_to_clientList4"
             app:destination="@id/clientList4" />
         <action
@@ -69,12 +66,6 @@
 
     <include app:graph="@navigation/settings_nav" />
     <include app:graph="@navigation/message_nav" />
-    <fragment
-        android:id="@+id/chattingArea3"
-        android:name="com.ultimate.infits.ChattingArea"
-        android:label="fragment_chatting_area"
-        tools:layout="@layout/fragment_chatting_area" >
-    </fragment>
     <fragment
         android:id="@+id/allMessages2"
         android:name="com.ultimate.infits.AllMessages"

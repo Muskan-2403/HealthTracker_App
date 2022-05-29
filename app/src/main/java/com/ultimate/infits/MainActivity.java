@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout draw;
     NavigationView navigationView;
     LinearLayout nav_account;
-    public static List<String> stack_fragment= new ArrayList<>();
+    //public static List<String> stack_fragment= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -206,14 +206,21 @@
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/drawable/calendar_selected.xml" value="0.2123076923076923" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/drawable/custom_edit_text_rounded.xml" value="0.2123076923076923" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/drawable/edit_text_background.xml" value="0.2123076923076923" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/ChatAreaClientMessage.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_chat_area.xml" value="0.1" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_client_details.xml" value="0.16757246376811594" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_main.xml" value="0.16757246376811594" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_selected_appointment.xml" value="0.1" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_week_setter.xml" value="0.25" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/chat_area_client_message.xml" value="0.5" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/chat_area_dietitan_message.xml" value="0.22" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/chat_area_dietitian_message.xml" value="0.2" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/chatareaclientmessage.xml" value="0.1" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/duration_appointment_recyclerview.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/empty_layout_for_accept_reject_client.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/events_in_profile_layout.xml" value="0.1721014492753623" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_calender.xml" value="0.18" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_chatting_area.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_selected_appointment_details.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/achivement_card_layout.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client.xml" value="0.19519927536231885" />

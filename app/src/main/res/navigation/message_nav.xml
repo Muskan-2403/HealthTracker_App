@@ -21,19 +21,7 @@
         tools:layout="@layout/fragment_all_messages" >
 
         <action
-            android:id="@+id/action_allMessages_to_chattingArea"
-            app:destination="@id/chattingArea" />
-        <action
             android:id="@+id/action_allMessages_to_messages3"
             app:destination="@id/messages" />
-    </fragment>
-    <fragment
-        android:id="@+id/chattingArea"
-        android:name="com.ultimate.infits.ChattingArea"
-        android:label="fragment_chatting_area"
-        tools:layout="@layout/fragment_chatting_area" >
-        <action
-            android:id="@+id/action_chattingArea_to_allMessages4"
-            app:destination="@id/allMessages" />
     </fragment>
 </navigation>
