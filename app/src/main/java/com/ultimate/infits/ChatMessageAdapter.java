@@ -3,6 +3,7 @@ package com.ultimate.infits;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.preference.Preference;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,6 +24,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private final List<ChatMessage> chatMessages;
     private final String senderID;
+   // private final Context ct;
    // private final Bitmap receiverProfileImage;
 
     public static final int VIEW_TYPE_SENT=1;
@@ -30,6 +32,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public ChatMessageAdapter(List<ChatMessage> chatMessages, String senderID){// Bitmap receiverProfileImage) {
         this.chatMessages = chatMessages;
         this.senderID = senderID;
+       // this.ct=ct;
       //  this.receiverProfileImage = receiverProfileImage;
     }
 
@@ -52,11 +55,14 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
             if(getItemViewType(position)== VIEW_TYPE_SENT) {
                 ((SentMessageViewHolder) holder).setData(chatMessages.get(position));
+                //return new SentMessageViewHolder(View(holder));
             }
             else{
                 ((ReceivedMessageViewHolder) holder).setData(chatMessages.get(position));
+
             }
     }
 
@@ -67,11 +73,12 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemViewType(int position) {
-        if(chatMessages.get(position).senderId.equals(senderID))
+        if(chatMessages.get(position).messageBy.equals("dietitian"))
             return VIEW_TYPE_SENT;
         else
             return VIEW_TYPE_RECEIVE;
     }
+
 
     static class SentMessageViewHolder extends RecyclerView.ViewHolder{
         private final ChatareadietitianmessageBinding binding1;
@@ -81,9 +88,12 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
         void setData(ChatMessage chatMessage){
-            binding1.dietitianMsg.setText(chatMessage.message);
-            binding1.dietitianMsgTime.setText(chatMessage.time);
+            binding1.dietitianMsg.setText(chatMessage.getMessage());
+            binding1.dietitianMsgTime.setText(chatMessage.getTime());
+            binding1.dietitianMsg.setGravity(Gravity.RIGHT);
+            binding1.dietitianMsgTime.setGravity(Gravity.RIGHT);
         }
+
     }
 
     static class ReceivedMessageViewHolder extends RecyclerView.ViewHolder{
@@ -99,39 +109,4 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-
-    /*Context ct;
-    private AcceptRejectListAdapter.Selecteditem selectedItem;
-    ImageView list_accept;
-    DietitianChatMessageAdapter(Context ct) {
-        this.ct = ct;
-    }
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(ct);
-        View view = inflater.inflate(R.layout.accept_reject_recyclerview,parent,false);
-        return new DietitianChatMessageViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
-
-    class DietitianChatMessageViewHolder extends RecyclerView.ViewHolder {
-        TextView pname, ptype;
-
-        public DietitianChatMessageViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ptype = itemView.findViewById(R.id.accept_reject_plan_type);
-            pname = itemView.findViewById(R.id.accept_reject_profile_name);
-
-        }
-    }*/
 }

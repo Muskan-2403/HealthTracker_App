@@ -1,13 +1,15 @@
 package com.ultimate.infits;
 
 public class ChatMessage {
-    public  String senderId, receiverId,message,time;
+    public  String senderId, receiverId,message,time,messageBy,read;
 
-    public ChatMessage(String senderId, String receiverId, String message, String time) {
+    public ChatMessage(String senderId, String receiverId, String message, String time,String messageBy,String read) {
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.message = message;
         this.time = time;
+        this.messageBy=messageBy;
+        this.read=read;
     }
 
     public String getSenderId() {
@@ -24,5 +26,13 @@ public class ChatMessage {
 
     public String getTime() {
         return time;
+    }
+
+    public String getMessageBy() {
+        return messageBy;
+    }
+
+    public String getRead() {
+        return read;
     }
 }

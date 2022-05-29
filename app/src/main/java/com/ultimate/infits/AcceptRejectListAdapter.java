@@ -24,6 +24,7 @@ import java.util.List;
 
 public class AcceptRejectListAdapter extends RecyclerView.Adapter<AcceptRejectListAdapter.AcceptRejectListViewHolder> {
 
+
     Context ct;
     List<AcceptRejectList> list2;
     private Selecteditem selectedItem;
