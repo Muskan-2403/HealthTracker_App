@@ -134,7 +134,61 @@ public class Calender extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Searching appointments on "+date_to_display_trackers,Toast.LENGTH_SHORT).show();
-                vollyFunc(date_to_display_trackers);
+              //  vollyFunc(date_to_display_trackers);
+                queue = Volley.newRequestQueue(getContext());
+                Log.d("Calender","before");
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+                    if (!response.equals("failure")){
+                        Log.d("Calender","success");
+                        Log.d("response Calender",response);
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            obj.clear();
+                            for(int i=0;i< jsonArray.length();i++)
+                            {
+                                JSONObject object = jsonArray.getJSONObject(i);
+                                String title = object.getString("Title");
+                                String client = object.getString("clientID");
+                                String datetime = object.getString("dateAndTime");
+                                String duration = object.getString("duration");
+                                String location = object.getString("consultation_location");
+                                String note = object.getString("Note");
+                                String notifyMe = object.getString("NotifyMe");
+                                Log.d("time","a"+datetime.substring(11,16));
+                                EventList a=new EventList("Video Consultation",client,datetime.substring(11,16),"("+"duration:"+duration+")",location,note,title,datetime.substring(5,7),datetime.substring(8,10),"9034*****",notifyMe);
+                                obj.add(a);
+                            }
+                            EventListAdapter ea = new EventListAdapter(getContext(),obj);
+                            event_list.setAdapter(ea);
+                            event_list.setLayoutManager(new LinearLayoutManager(getContext()));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    else if (response.equals("failure")){
+                        Log.d("Calender","failure");
+                        Toast.makeText(getContext(), "Calender failed", Toast.LENGTH_SHORT).show();
+                    }
+                },error -> {
+                    Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
+                {
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> data = new HashMap<>();
+                        Log.d("Calender","dieticianuserID = "+dataFromDatabase.dietitianuserID);
+                        Log.d("Calender","date= "+date_to_display_trackers);
+                        data.put("userID", dataFromDatabase.dietitianuserID);
+                        data.put("date",date_to_display_trackers);
+
+                        return data;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                requestQueue.add(stringRequest);
+                Log.d("Calender","at end");
             }
         });
 
@@ -196,8 +250,8 @@ public class Calender extends Fragment {
         return view;
     }
 
-    public void vollyFunc(String datex){
-      /*  queue = Volley.newRequestQueue(getContext());
+   /* public void vollyFunc(String datex) {
+        queue = Volley.newRequestQueue(getContext());
         Log.d("Calender","before");
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
             if (!response.equals("failure")){
@@ -252,6 +306,5 @@ public class Calender extends Fragment {
         requestQueue.add(stringRequest);
         Log.d("Calender","at end");
     }*/
-
 
 }
