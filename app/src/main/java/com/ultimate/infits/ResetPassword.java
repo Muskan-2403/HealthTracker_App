@@ -16,20 +16,20 @@ import com.google.android.material.textfield.TextInputLayout;
 public class ResetPassword extends AppCompatActivity {
 
     ImageButton b1;
-    TextView logtext;
     Button reset;
-    TextInputLayout email;
-    String sendto;
+    TextInputLayout old_pwd,new_pwd,new_pwd1;
+    String old_pwd_str,new_pwd_str,new_pwd1_str;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
 
-        b1=(ImageButton) findViewById(R.id.imageButton3);
-        logtext = (TextView) findViewById(R.id.logtext);
+        b1=(ImageButton) findViewById(R.id.newpwd_back);
         reset= findViewById(R.id.button3);
-        email= findViewById(R.id.textInputLayout8);
+        old_pwd= findViewById(R.id.textcurrentpwd);
+        new_pwd=findViewById(R.id.textnewpwd);
+        new_pwd1=findViewById(R.id.textnewpwd1);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,28 +37,13 @@ public class ResetPassword extends AppCompatActivity {
             }
         });
 
-        logtext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ResetPassword.super.onBackPressed();
-            }
-        });
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendto = email.getEditText().getText().toString();
-                Toast.makeText(getApplicationContext(),"Email",Toast.LENGTH_SHORT).show();
-             /*   Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("message/rfc822");
-                intent.setClassName("com.google.android.gm", "com.google.android.gm.ConversationListActivity");
-                intent.putExtra(Intent.EXTRA_EMAIL  , sendto);
-                intent.putExtra(Intent.EXTRA_SUBJECT, new String[]{"Reset password- Infits"});
-                intent.putExtra(Intent.EXTRA_TEXT, new String[]{"Reset the password using this link\n https://www.website.com/forgot-password/?source=SC&country=IN"+});
-                try {
-                    startActivity(intent);
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getApplicationContext(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-               }*/
+                old_pwd_str = old_pwd.getEditText().getText().toString();
+                new_pwd_str = new_pwd.getEditText().getText().toString();
+                new_pwd1_str = new_pwd1.getEditText().getText().toString();
+             //store to db
 
             }
         });
