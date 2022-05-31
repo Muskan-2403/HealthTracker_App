@@ -1,10 +1,10 @@
-pending- AcceptClients.java
+toberemoved- AcceptClients.java
             if you want to fetch data from the database everytime a client is added, then start the activity(AcceptRejectClients.java)
             else remove, the name, image, plan of that partuclar client from all 6 arrays.
 pending- Upcoming consultationsAdapter.java
             Check the working of call option for different users and dialog box after the call
-pending- add database connectivity to achievement_card to retrieve client count
-pending- edit the php and java code in account.java to fetch and save dietitan's about me, location and year of experience
+done- add database connectivity to achievement_card to retrieve client count
+done- edit the php and java code in account.java to fetch and save dietitan's about me, location and year of experience
 pending- add recyclerview arrays to Calendar (edit ids in events_in_profile_layout)
 pending- add try method in volley of Calendar
 pending- edit EventListAdapter
@@ -19,12 +19,14 @@ pending- in 158th line of Calendar.java
         update Eventlist constructor after updating volley
 
 30/05/2022
-pending- in chatlogadapter.java
+done-   in chatlogadapter.java
         change the status of read messages from u to r if the dietitian opens the message (volley and db)
              set profile picture in the same file
-        in ChatArea, add functionality for selecting picture and docs in attach file imageview
-        in ChatArea, save messages to db in void sendMessage() function
+pending-in ChatArea, add functionality for selecting picture and docs in attach file imageview
+done-   in ChatArea, save messages to db in void sendMessage() function
 
 
-
+        in register,allow user to enter only if his/her id is unique.
         sql duration(consultations) is int type
+        weekSetter's ClientID gets correctly selected is to be checked
+        by default clientID value in consultations(sql) is none(in case dietitian selects no name of client)

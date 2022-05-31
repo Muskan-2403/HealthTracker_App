@@ -218,7 +218,7 @@ public class WeekSetter extends AppCompatActivity{
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l7.setBackgroundColor(Color.parseColor("#FFFFFF"));
-              selected_date=wed_date.getText().toString().trim();
+                selected_date=wed_date.getText().toString().trim();
                 display_date.setText(selected_date);
 
             }
@@ -262,8 +262,8 @@ public class WeekSetter extends AppCompatActivity{
                 l4.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l5.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 l6.setBackgroundColor(Color.parseColor("#FFFFFF"));
-               selected_date=sat_date.getText().toString().trim();
-               display_date.setText(selected_date);
+                selected_date=sat_date.getText().toString().trim();
+                display_date.setText(selected_date);
 
             }
         });
