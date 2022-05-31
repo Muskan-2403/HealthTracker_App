@@ -62,7 +62,7 @@ public class TrackerAdapter extends RecyclerView.Adapter<TrackerAdapter.TrackerV
         public TrackerViewHolder(@NonNull View itemView) {
             super(itemView);
 //            this.onFoodItemClickListener = onFoodItemClickListener;
-            time = itemView.findViewById(R.id.time);
+//            time = itemView.findViewById(R.id.time);
             foodList = itemView.findViewById(R.id.food_list);
             imgOverview = itemView.findViewById(R.id.img_list_overview);
             card = itemView.findViewById(R.id.card);

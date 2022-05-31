@@ -36,7 +36,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         CardView cd;
         public NotificationListViewHolder(@NonNull View itemView) {
             super(itemView);
-            cd = itemView.findViewById(R.id.notification_background);
+//            cd = itemView.findViewById(R.id.notification_background);
         }
     }
 }

@@ -32,7 +32,7 @@ public class LoginScreen extends AppCompatActivity {
     TextView reg, fpass;
     Button login;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.70.1/login_dietian.php";
+    String url = "http://192.168.248.1/login_dietian.php";
     String userID;
     String passwordStr;
     RequestQueue queue;
@@ -44,7 +44,6 @@ public class LoginScreen extends AppCompatActivity {
         reg = (TextView) findViewById(R.id.reg);
         fpass = (TextView) findViewById(R.id.fpass);
         login = (Button) findViewById(R.id.logbtn);
-
 
         queue = Volley.newRequestQueue(this);
         login.setOnClickListener(v->{
