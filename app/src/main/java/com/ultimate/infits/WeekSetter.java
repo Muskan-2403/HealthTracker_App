@@ -51,7 +51,7 @@ public class WeekSetter extends AppCompatActivity{
     int specific_d;
     RequestQueue queue;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.70.1/weeksetter.php";
+    String url = "http://192.168.43.132/weeksetter.php";
    // String client_names[]={"Select one from drop down","Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -498,7 +498,7 @@ public class WeekSetter extends AppCompatActivity{
                              start_time[0]+" "+title_aptment.getText().toString()
                              +" "+loc_aptment.getText().toString()+" "+note_aptment.getText().toString(),Toast.LENGTH_SHORT).show();
                      Log.d("weeksetter",selected_date+" "+specific_d+" "+
-                             start_time[0]+" "+title_aptment.getText().toString()
+                             tt.getHour()+" "+tt.getMinute()+" "+title_aptment.getText().toString()
                              +" "+loc_aptment.getText().toString()+" "+note_aptment.getText().toString());
 
                      queue = Volley.newRequestQueue(getApplicationContext());
@@ -528,12 +528,21 @@ public class WeekSetter extends AppCompatActivity{
                              Map<String, String> data = new HashMap<>();
                              Calendar c = Calendar.getInstance();
                              int year = c.get(Calendar.YEAR);
-                             int month = c.get(Calendar.MONTH);
-                             int time = tt.getHour();
-                             if (start_time[0].substring(5,7)=="pm"){
-                                 time += 12;
+                             int month = c.get(Calendar.MONTH)+1;
+                             String hour = String.valueOf(tt.getHour());
+                             String minute =String.valueOf(tt.getMinute());
+                             if (tt.getHour()==0){
+                                 hour = "12";
                              }
-                            String dateandtime = year+"-"+month+"-"+selected_date+" "+time+":"+tt.getMinute()+":00";
+                             if(tt.getHour()<=9 && tt.getHour()>0){
+                                 hour = "0"+hour;
+                             }
+                             if(tt.getMinute()<=9){
+                                 minute = "0"+minute;
+                             }
+                            String dateandtime = year+"-"+month+"-"+selected_date+" "+hour+":"+minute+":00";
+                             //2022-05-25 11:35:31
+                             //2022-4-31 23:9:00
                              Log.d("weeksetter dateandtime",dateandtime);
                             String status = "pending";
                             String duration = String.valueOf(specific_d);
@@ -545,7 +554,7 @@ public class WeekSetter extends AppCompatActivity{
                              data.put("clientuserID", "Eden");
                              data.put("dateandtime",dateandtime);
                              data.put("status",status);
-                             data.put("duration",duration+":00");
+                             data.put("duration",duration);
                              data.put("location",loc);
                              data.put("title",title);
                              data.put("note",note);

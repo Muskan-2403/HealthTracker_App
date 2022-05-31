@@ -24,3 +24,7 @@ pending- in chatlogadapter.java
              set profile picture in the same file
         in ChatArea, add functionality for selecting picture and docs in attach file imageview
         in ChatArea, save messages to db in void sendMessage() function
+
+
+
+        sql duration(consultations) is int type

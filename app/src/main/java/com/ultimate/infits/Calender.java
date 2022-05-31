@@ -50,7 +50,7 @@ public class Calender extends Fragment {
     RecyclerView event_list;
     String date_to_display_trackers;
     RequestQueue queue;
-    String url = "http://192.168.70.1/CalenderAppointment.php";
+    String url = "http://192.168.134.1/CalenderAppointment.php";
     Button addevent;
 //    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};
 //    String[] appt_client_name={"Charlie Puth","maggie","La Lisa"};
@@ -156,7 +156,7 @@ public class Calender extends Fragment {
                                 String note = object.getString("Note");
                                 String notifyMe = object.getString("NotifyMe");
                                 Log.d("time","a"+datetime.substring(11,16));
-                                EventList a=new EventList("Video Consultation",client,datetime.substring(11,16),"("+"duration:"+duration+")",location,note,title,datetime.substring(5,7),datetime.substring(8,10),"9034*****",notifyMe);
+                                EventList a=new EventList("Video Consultation",client,datetime.substring(11,16),"("+"duration:"+duration+"minutes"+")",location,note,title,datetime.substring(5,7),datetime.substring(8,10),"9034*****",notifyMe);
                                 obj.add(a);
                             }
                             EventListAdapter ea = new EventListAdapter(getContext(),obj);
@@ -191,6 +191,7 @@ public class Calender extends Fragment {
                 Log.d("Calender","at end");
             }
         });
+
 
         //vollyFunc(date_to_display_trackers);
         queue = Volley.newRequestQueue(getContext());
