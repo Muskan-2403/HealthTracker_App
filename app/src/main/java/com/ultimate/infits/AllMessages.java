@@ -42,8 +42,8 @@ public class AllMessages extends Fragment {
     ImageView i1;
     List<ChatLogList> all_chats= new ArrayList<>();
     List<ChatLogList> unread_chats=new ArrayList<>();
-    String url1; //php file to fetch all chats- name of all clients
-    String url2; //php file to fetch unread chats- top message and time fetched from list obtained from url1
+    String url1= "http://192.168.154.1/fetch_names_for_messages"; //php file to fetch all chats- name of all clients
+    String url2= "http://192.168.154.1/fetch_top_messages.php"; //php file to fetch unread chats- top message and time fetched from list obtained from url1
   //  String url3;
     //String url4;
     String all_chats_names[];
@@ -113,6 +113,7 @@ public class AllMessages extends Fragment {
         r11=v.findViewById(R.id.chat_log);
         i1=v.findViewById(R.id.startmessage);
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url1, response -> {
+            Log.d("allmessages response", response);
             if (!response.equals("failure")){
                 try {
                     JSONArray jsonArray = new JSONArray(response);
@@ -213,7 +214,6 @@ public class AllMessages extends Fragment {
                 startActivity(i);
             }
         });
-
         return v;
     }
 

@@ -30,7 +30,7 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
     Context con;
     List<ChatLogList> l;
     RequestQueue queue;
-    String url2 = "http://192.168.134.1/messages2.php";
+    String url2 = "http://192.168.154.1/messages2.php";
     DataFromDatabase dataFromDatabase;
 
     ChatLogAdapter(Context con,List<ChatLogList> l){

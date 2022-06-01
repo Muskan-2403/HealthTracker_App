@@ -42,6 +42,9 @@
             android:name=".ClientDetails"
             android:exported="false" />
         <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".WelcomePage"
             android:exported="true">
             <intent-filter>
