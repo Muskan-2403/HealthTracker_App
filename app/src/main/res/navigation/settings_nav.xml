@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_settingMain_to_achievement_card"
             app:destination="@id/achievement_card" />
+        <action
+            android:id="@+id/action_settingMain_to_passwordReset"
+            app:destination="@id/passwordReset" />
     </fragment>
     <fragment
         android:id="@+id/account"
@@ -48,4 +51,9 @@
             android:id="@+id/action_achievement_card_to_settingMain"
             app:destination="@id/settingMain" />
     </fragment>
+    <fragment
+        android:id="@+id/passwordReset"
+        android:name="com.ultimate.infits.PasswordReset"
+        android:label="fragment_password_reset"
+        tools:layout="@layout/fragment_password_reset" />
 </navigation>

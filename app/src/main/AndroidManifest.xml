@@ -22,7 +22,7 @@
             android:exported="false" />
         <activity
             android:name=".SelectedAppointment"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".AcceptRejectClients"
             android:exported="true">
@@ -43,6 +43,12 @@
         <activity
             android:name=".WelcomePage"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
 
         </activity>
         <activity
@@ -51,21 +57,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
             android:name=".TermsAndConditions"
             android:exported="false" />
-        <activity
-            android:name=".ResetPassword"
-            android:exported="true" >
-
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -3,8 +3,10 @@ package com.ultimate.infits;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,19 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +37,9 @@ public class achievement_card extends Fragment {
 
     TextView progress1, progress2,progress3,progress4,progress5;
     ProgressBar bar1,bar2,bar3,bar4,bar5;
-    int client_count=0;
+    int client_count=5;
+    String url;
+    RequestQueue requestQueue;
     int p=0;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,6 +99,35 @@ public class achievement_card extends Fragment {
         bar5=view.findViewById(R.id.achievementbar5);
 
         //write code for volley connection and add the following lines in the try block
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+            if (!response.equals("failure")){
+
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    JSONObject object = jsonArray.getJSONObject(0);
+                    client_count=object.getInt("count");
+                    Log.d("Achievement screen","client count="+client_count);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Toast.makeText(getContext(), "Login success", Toast.LENGTH_SHORT).show();
+            }
+            else if (response.equals("failure")){
+            }
+        },error -> {
+            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();}){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> data = new HashMap<>();
+                data.put("userID",DataFromDatabase.dietitianuserID);
+                return data;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+        Log.d("LoginClass","at end");
 
         if(client_count<=10) {
             p = client_count * 100 / 10;
