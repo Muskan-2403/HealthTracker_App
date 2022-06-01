@@ -48,9 +48,14 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
 
     @Override
     public void onBindViewHolder(@NonNull ChatLogHolder holder, int position) {
-        if (l.get(position).getRead() == "u"){
+        if ((l.get(position).getRead() == "u") && (l.get(position).getMsg_by().equals("client"))){
             holder.unread.setVisibility(View.VISIBLE);
         }
+        if(l.get(position).getClient_msg().length()>20){
+            String m1=l.get(position).getClient_msg().substring(0,21)+".....";
+            holder.msg.setText(m1);
+        }
+        else
         holder.msg.setText(l.get(position).getClient_msg());
             holder.msg_time.setText(l.get(position).getClient_time());
            // holder.profile_pic.setImageBitmap(l.get(position).getProfile_pic());

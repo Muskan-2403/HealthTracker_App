@@ -18,6 +18,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AllClientsForMessage"
+            android:exported="false" />
+        <activity
             android:name=".ChatArea"
             android:exported="false" />
         <activity
@@ -25,9 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".AcceptRejectClients"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Congratulate"
             android:exported="false" />
@@ -48,17 +49,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity
             android:name=".LoginScreen"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".TermsAndConditions"
             android:exported="false" />

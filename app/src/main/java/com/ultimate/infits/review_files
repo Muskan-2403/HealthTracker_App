@@ -31,3 +31,16 @@ done-   in ChatArea, save messages to db in void sendMessage() function
         weeksetter's selected month problem
         weekSetter's ClientID gets correctly selected is to be checked
         by default clientID value in consultations(sql) is none(in case dietitian selects no name of client)
+
+01/06/2022
+pending- add volley code in PasswordReset to update password of dietitian
+
+pending- check functionality of calendar adapter
+            selected appointments
+             message displaying
+              send message
+
+pending- in client list.java and all clientsfor message .java add volley to return only searched client
+
+pending- in allmessages, add url1 and url2 and check for parameters in php file and in the map string
+        url1->string for fetch_names_for_messages, url2->string for fetch_top_messages
