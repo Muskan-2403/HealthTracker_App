@@ -73,8 +73,10 @@ public class SelectedAppointment extends AppCompatActivity {
                 b.putString("appointment _link",getIntent().getExtras().getString("appointment_time"));
                 b.putString("appointment_client_name",getIntent().getExtras().getString("clientID"));
                 b.putString("appointment_duration",getIntent().getExtras().getString("appointment_duration"));
+                selectedAppointment_details frag= new selectedAppointment_details();
+                frag.setArguments(b);
                 //b.putString("appointment_client_photo",getIntent().getExtras().getString("appointment_photo"));
-                Navigation.findNavController(SelectedAppointment.this,R.id.selected_client_appt).navigate(R.id.appointment_details,b);
+                Navigation.findNavController(v).navigate(R.id.appointment_details,b);
                 //selectedAppointment_details fragobj=new selectedAppointment_details();
                 //fragobj.setArguments(b);
                // getSupportFragmentManager().beginTransaction().replace(R.id.selected_client_appt,fragobj).commit();

@@ -72,24 +72,18 @@ public class Messages_Recycler extends Fragment {
         ProgressBar p1=v.findViewById(R.id.chat_area_loading_status);
         // r1.setAdapter(chatMessageAdapter);
         //setMessages();
-        for(int i=0;i<3;i++) {
+       /* for(int i=0;i<3;i++) {
             ChatMessage ch = new ChatMessage(ChatArea.chat_area_client_name,DataFromDatabase.dietitianuserID,"hello","14:00","dietitian","U");
-           /* ch.senderId = chat_area_client_name;
+            ch.senderId = chat_area_client_name;
             ch.receiverId = DataFromDatabase.dietitianuserID;
             ch.message ="hi";
-            ch.time="14:00";*/
+            ch.time="14:00";
             cMessages.add(ch);
-        }
-        for(int i=0;i<3;i++) {
-            ChatMessage ch = new ChatMessage(DataFromDatabase.dietitianuserID,ChatArea.chat_area_client_name,"hi","14:00","client","R");
-           /* ch.senderId = ;
-            ch.receiverId = ;
-            ch.message =;
-            ch.time=;*/
-            cMessages.add(ch);
-        }
+        }*/
         // chatMessageAdapter.notifyItemInserted(chatMessages.size());
-        chatMessageAdapter= new ChatMessageAdapter(cMessages,ChatArea.chat_area_client_name) ;//add constants.java from video 8
+       // chatMessageAdapter= new ChatMessageAdapter(cMessages,ChatArea.chat_area_client_name) ;//add constants.java from video 8
+        ChatArea o1=new ChatArea();
+        chatMessageAdapter= o1.setMessages();
         r1.smoothScrollToPosition(cMessages.size()-1);
         r1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         r1.setAdapter(chatMessageAdapter);

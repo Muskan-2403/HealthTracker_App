@@ -22,7 +22,7 @@
             android:exported="false" />
         <activity
             android:name=".SelectedAppointment"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".AcceptRejectClients"
             android:exported="true">
@@ -49,6 +49,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+
         </activity>
         <activity
             android:name=".LoginScreen"
@@ -61,11 +62,6 @@
         <activity
             android:name=".TermsAndConditions"
             android:exported="false" />
-        <activity
-            android:name=".ResetPassword"
-            android:exported="true" >
-
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

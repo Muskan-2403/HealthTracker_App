@@ -209,6 +209,7 @@
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/ChatAreaClientMessage.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_chat_area.xml" value="0.15" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_client_details.xml" value="0.16757246376811594" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_forgot_password.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_login_screen.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_main.xml" value="0.16757246376811594" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/activity_registration.xml" value="0.20416666666666666" />
@@ -222,6 +223,9 @@
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/chatareaclientmessage.xml" value="0.22" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/chatareadietitianmessage.xml" value="0.18" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/duration_appointment_recyclerview.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/empty_appointment.xml" value="0.1" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/empty_appointment_layout.xml" value="0.25" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/empty_layout.xml" value="0.1" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/empty_layout_for_accept_reject_client.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/events_in_profile_layout.xml" value="0.1721014492753623" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_all_messages.xml" value="0.20416666666666666" />
@@ -229,10 +233,10 @@
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_chat_for_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_chatting_area.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_messages__recycler.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_notification.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_password_reset.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_selected_appointment_details.xml" value="0.11639492753623189" />
-        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/drawable/outline.xml" value="0.194" />
-        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/drawable/switch_off.xml" value="0.194" />
-        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/drawable/switch_on.xml" value="0.194" />
+        <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_setting_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/achivement_card_layout.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client_details.xml" value="0.19519927536231885" />
@@ -258,7 +262,6 @@
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_enquiries_reports.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_profile_recycler.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_upcoming_consultations_layout.xml" value="0.19519927536231885" />
-        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dialog_calendar.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dietchart_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dietician_reviews.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/events_in_profile_layout.xml" value="0.19519927536231885" />
@@ -294,8 +297,6 @@
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/tracker_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/tracker_list_item.xml" value="0.6" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/menu/main_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.194" />
-        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.194" />
       </map>
     </option>
   </component>

@@ -67,4 +67,5 @@ public class Notification extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
     }
+
 }

@@ -117,7 +117,7 @@ public class LoginScreen extends AppCompatActivity {
         fpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(),ResetPassword.class);
+                Intent i=new Intent(getApplicationContext(),ForgotPassword.class);
                 startActivity(i);
             }
         });

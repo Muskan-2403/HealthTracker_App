@@ -21,7 +21,7 @@ public class SettingMain extends Fragment {
     TextView name;
     DataFromDatabase dataFromDatabase;
     ImageView aboutUs,help;
-    CardView gotoAccount,achievements,notifications;
+    CardView gotoAccount,achievements,notifications,resetpwd;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,6 +67,7 @@ public class SettingMain extends Fragment {
         View view = inflater.inflate(R.layout.fragment_setting_main, container, false);
         gotoAccount = view.findViewById(R.id.dieitician_gotoAccount);
         notifications = view.findViewById(R.id.notification);
+        resetpwd=view.findViewById(R.id.resetpassword);
         name = view.findViewById(R.id.settings_dietician_name);
         name.setText(dataFromDatabase.name);
         gotoAccount.setOnClickListener(v->{
@@ -85,6 +86,9 @@ public class SettingMain extends Fragment {
         notifications.setOnClickListener(v->{
             Navigation.findNavController(v).navigate(R.id.action_settingMain_to_notification);
        });
+        resetpwd.setOnClickListener(v->{
+            Navigation.findNavController(v).navigate(R.id.action_settingMain_to_passwordReset);
+        });
         return view;
     }
 }

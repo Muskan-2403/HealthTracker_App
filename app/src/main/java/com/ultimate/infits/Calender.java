@@ -52,9 +52,9 @@ public class Calender extends Fragment {
     RequestQueue queue;
     String url = "http://192.168.134.1/CalenderAppointment.php";
     Button addevent;
-//    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};
-//    String[] appt_client_name={"Charlie Puth","maggie","La Lisa"};
-//    String[] appt_time={"09:00 - 10:00AM","10:30 - 11:00AM","11:00-12:00PM"};
+    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};
+    String[] appt_client_name={"Charlie Puth","maggie","La Lisa"};
+    String[] appt_time={"09:00 - 10:00AM","10:30 - 11:00AM","11:00-12:00PM"};
     List<EventList> obj= new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -120,6 +120,65 @@ public class Calender extends Fragment {
         Button search_appointments= view.findViewById(R.id.appointment_done);
         CalendarView calendarView = view.findViewById(R.id.appointment_calendar);
 
+        queue = Volley.newRequestQueue(getContext());
+        Log.d("Calender","before");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+            if (!response.equals("failure")){
+                Log.d("Calender","success");
+                Log.d("response Calender",response);
+
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    obj.clear();
+                    if (jsonArray.length() > 0) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            String title = object.getString("Title");
+                            String client = object.getString("clientID");
+                            String datetime = object.getString("dateAndTime");
+                            String duration = object.getString("duration");
+                            String location = object.getString("consultation_location");
+                            String note = object.getString("Note");
+                            String notifyMe = object.getString("NotifyMe");
+                            Log.d("time", "a" + datetime.substring(11, 16));
+                            EventList a = new EventList("Video Consultation", client, datetime.substring(11, 16), "(" + "duration:" + duration + ")", location, note, title, datetime.substring(5, 7), datetime.substring(8, 10), "9034*****", notifyMe);
+                            obj.add(a);
+                        }
+                        EventListAdapter ea = new EventListAdapter(getContext(), obj);
+                        event_list.setAdapter(ea);
+                        event_list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                    }
+                    else
+                        Toast.makeText(getContext(),"No appointments of this date where found",Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            else if (response.equals("failure")){
+                Log.d("Calender","failure");
+                Toast.makeText(getContext(), "Calender failed", Toast.LENGTH_SHORT).show();
+            }
+        },error -> {
+            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
+        {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                Log.d("Calender","dieticianuserID = "+dataFromDatabase.dietitianuserID);
+                Log.d("Calender","date= "+date_to_display_trackers);
+                data.put("userID", dataFromDatabase.dietitianuserID);
+                data.put("date",date_to_display_trackers);
+
+                return data;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+        Log.d("Calender","at end");
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -145,8 +204,8 @@ public class Calender extends Fragment {
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             obj.clear();
-                            for(int i=0;i< jsonArray.length();i++)
-                            {
+                            if(jsonArray.length()>0){
+                            for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject object = jsonArray.getJSONObject(i);
                                 String title = object.getString("Title");
                                 String client = object.getString("clientID");
@@ -155,13 +214,16 @@ public class Calender extends Fragment {
                                 String location = object.getString("consultation_location");
                                 String note = object.getString("Note");
                                 String notifyMe = object.getString("NotifyMe");
-                                Log.d("time","a"+datetime.substring(11,16));
-                                EventList a=new EventList("Video Consultation",client,datetime.substring(11,16),"("+"duration:"+duration+"minutes"+")",location,note,title,datetime.substring(5,7),datetime.substring(8,10),"9034*****",notifyMe);
+                                Log.d("time", "a" + datetime.substring(11, 16));
+                                EventList a = new EventList("Video Consultation", client, datetime.substring(11, 16), "(" + "duration:" + duration + "minutes" + ")", location, note, title, datetime.substring(5, 7), datetime.substring(8, 10), "9034*****", notifyMe);
                                 obj.add(a);
                             }
-                            EventListAdapter ea = new EventListAdapter(getContext(),obj);
+                            EventListAdapter ea = new EventListAdapter(getContext(), obj);
                             event_list.setAdapter(ea);
-                            event_list.setLayoutManager(new LinearLayoutManager(getContext()));
+                            event_list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                        }
+                        else
+                            Toast.makeText(getContext(),"No appointments of this date where found",Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -194,60 +256,7 @@ public class Calender extends Fragment {
 
 
         //vollyFunc(date_to_display_trackers);
-        queue = Volley.newRequestQueue(getContext());
-        Log.d("Calender","before");
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
-            if (!response.equals("failure")){
-                Log.d("Calender","success");
-                Log.d("response Calender",response);
 
-                try {
-                    JSONArray jsonArray = new JSONArray(response);
-                    obj.clear();
-                    for(int i=0;i< jsonArray.length();i++)
-                    {
-                        JSONObject object = jsonArray.getJSONObject(i);
-                        String title = object.getString("Title");
-                        String client = object.getString("clientID");
-                        String datetime = object.getString("dateAndTime");
-                        String duration = object.getString("duration");
-                        String location = object.getString("consultation_location");
-                        String note = object.getString("Note");
-                        String notifyMe = object.getString("NotifyMe");
-                        Log.d("time","a"+datetime.substring(11,16));
-                        EventList a=new EventList("Video Consultation",client,datetime.substring(11,16),"("+"duration:"+duration+")",location,note,title,datetime.substring(5,7),datetime.substring(8,10),"9034*****",notifyMe);
-                        obj.add(a);
-                    }
-                    EventListAdapter ea = new EventListAdapter(getContext(),obj);
-                    event_list.setAdapter(ea);
-                    event_list.setLayoutManager(new LinearLayoutManager(getContext()));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-            else if (response.equals("failure")){
-                Log.d("Calender","failure");
-                Toast.makeText(getContext(), "Calender failed", Toast.LENGTH_SHORT).show();
-            }
-        },error -> {
-            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
-        {
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> data = new HashMap<>();
-                Log.d("Calender","dieticianuserID = "+dataFromDatabase.dietitianuserID);
-                Log.d("Calender","date= "+date_to_display_trackers);
-                data.put("userID", dataFromDatabase.dietitianuserID);
-                data.put("date",date_to_display_trackers);
-
-                return data;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-        Log.d("Calender","at end");
         return view;
     }
 
