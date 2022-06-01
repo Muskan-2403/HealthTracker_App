@@ -2,22 +2,36 @@ package com.ultimate.infits;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogHolder> {
 
     Context con;
     List<ChatLogList> l;
+    RequestQueue queue;
+    String url2 = "http://192.168.134.1/messages2.php";
+    DataFromDatabase dataFromDatabase;
 
     ChatLogAdapter(Context con,List<ChatLogList> l){
         this.con = con;
@@ -43,7 +57,31 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
         holder.name.setText(l.get(position).getClient_name());
             holder.chat_log_view.setOnClickListener(v ->{
                 //save to database the message is read
+                queue = Volley.newRequestQueue(con);
+                StringRequest stringRequest2 = new StringRequest(Request.Method.POST,url2, response -> {
+                    if (response.equals("success")){
+                        Log.d("ChatArea2","success");
+                        Log.d("response ChatArea2",response);
+                    }
+                    else if (response.equals("failure")){
+                        Log.d("ChatArea2","failure");
+                    }
+                },error -> {
+                    Toast.makeText(con,error.toString().trim(),Toast.LENGTH_SHORT).show();})
+                {
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> data = new HashMap<>();
+                        data.put("duserID", dataFromDatabase.clientuserID);
+                        data.put("cuserID",dataFromDatabase.clientuserID);
+                        return data;
+                    }
+                };
+                RequestQueue requestQueue2 = Volley.newRequestQueue(con);
+                requestQueue2.add(stringRequest2);
                 holder.unread.setVisibility(View.GONE);
+                l.get(position).setRead("r");
                 Intent i=new Intent(con.getApplicationContext(), ChatArea.class);
                 i.putExtra("client_name",l.get(position).getClient_name());
                 con.startActivity(i);

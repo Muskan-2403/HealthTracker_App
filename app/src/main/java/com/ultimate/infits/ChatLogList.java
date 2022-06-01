@@ -37,4 +37,8 @@ public class ChatLogList implements Serializable {
     public String getRead() {
         return read;
     }
+
+    public void setRead(String read) {
+        this.read = read;
+    }
 }
