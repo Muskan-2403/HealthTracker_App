@@ -220,7 +220,6 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
 
                 Toast.makeText(getContext(), "Appointment status updated", Toast.LENGTH_SHORT).show();
-
             }
 
         });

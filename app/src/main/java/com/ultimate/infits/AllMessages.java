@@ -42,11 +42,11 @@ public class AllMessages extends Fragment {
     ImageView i1;
     List<ChatLogList> all_chats= new ArrayList<>();
     List<ChatLogList> unread_chats=new ArrayList<>();
-    String url1= "http://192.168.158.1/fetch_names_for_messages"; //php file to fetch all chats- name of all clients
+    String url1= "http://192.168.158.1/fetch_names_for_messages.php"; //php file to fetch all chats- name of all clients
     String url2= "http://192.168.158.1/fetch_top_messages.php"; //php file to fetch unread chats- top message and time fetched from list obtained from url1
   //  String url3;
     //String url4;
-    String all_chats_names[];
+
   //  String unread_chats_names[];
    // String all_chats_messages[];
   //  String unread_chats_messages[];
@@ -107,25 +107,27 @@ public class AllMessages extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ArrayList<String> all_chats_names=new ArrayList<>();
         View v= inflater.inflate(R.layout.fragment_all_messages, container, false);
         all=v.findViewById(R.id.all_chat_btn);
         unread=v.findViewById(R.id.unread_btn);
         r11=v.findViewById(R.id.chat_log);
         i1=v.findViewById(R.id.startmessage);
         StringRequest stringRequest = new StringRequest(Request.Method.POST,url1, response -> {
-            Log.d("allmessages response", response);
             if (!response.equals("failure")){
+                Log.d("allmessages response", response);
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     if(jsonArray.length()>0) {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object = jsonArray.getJSONObject(i);
-                            all_chats_names[i] = object.getString("clientID");
+                            all_chats_names.add(object.getString("clientID"));
                         }
-                        for (int j = 0; j < all_chats_names.length; j++) {
+                        for (int j = 0; j < all_chats_names.size(); j++) {
                             int finalJ = j;
                             StringRequest stringRequest1 = new StringRequest(Request.Method.POST, url2, response1 -> {
                                 if (!response1.equals("failure")) {
+                                    Log.d("allmessages url2",response1);
                                     try {
                                         JSONArray jsonArray1 = new JSONArray(response1);
                                         if (jsonArray1.length() > 0) {
@@ -135,12 +137,12 @@ public class AllMessages extends Fragment {
                                                 all_chats_time = object.getString("time");
                                                 //  all_chats_profile[i]=object.getString("profilepic");
                                                 all_chats_messageby=object.getString("messageBy");
-                                                read_unread = object.getString("read_unread");
+                                                read_unread = object.getString("unread");
 
-                                                ChatLogList o12 = new ChatLogList(img, all_chats_names[i], all_chats_messages,all_chats_messageby, all_chats_time, read_unread);
+                                                ChatLogList o12 = new ChatLogList(img, all_chats_names.get(i), all_chats_messages,all_chats_messageby, all_chats_time, read_unread);
                                                 all_chats.add(o12);
                                                 if (read_unread == "u") {
-                                                    ChatLogList o13 = new ChatLogList(img, all_chats_names[i], all_chats_messages, all_chats_messageby, all_chats_time, read_unread);
+                                                    ChatLogList o13 = new ChatLogList(img, all_chats_names.get(i), all_chats_messages, all_chats_messageby, all_chats_time, read_unread);
                                                     unread_chats.add(o13);
                                                 }
                                             }
@@ -162,7 +164,7 @@ public class AllMessages extends Fragment {
                                 protected Map<String, String> getParams() throws AuthFailureError {
                                     Map<String, String> data = new HashMap<>();
                                     data.put("dietitianID", DataFromDatabase.dietitianuserID);
-                                    data.put("clientID",all_chats_names[finalJ]);
+                                    data.put("clientID",all_chats_names.get(finalJ));
                                     return data;
                                 }
                             };

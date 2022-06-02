@@ -105,7 +105,6 @@ public class ChatArea extends AppCompatActivity {
             if (!response.equals("failure")) {
                 Log.d("ChatArea", "success");
                 Log.d("response ChatArea", response);
-
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     if (jsonArray.length() > 0) {
