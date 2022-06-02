@@ -21,9 +21,10 @@ import java.util.Map;
 public class DataFromDatabase {
 
     public static Bitmap profile;
+    public static String about_me,experience;
     HashMap<String,String> map = new HashMap<>();
     public static ArrayList<String> clientsID = new ArrayList<>();
-    String url = "http://192.168.134.1/getdietitiandetails.php";
+    String url = "http://192.168.158.1/getdietitiandetails.php";
     public static boolean flag= false;
     public static String clientuserID;
     public static String profilePhoto="iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAM1BMVEXk5ueutLfn6eqrsbTp6+zg4uOwtrnJzc" +

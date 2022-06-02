@@ -43,7 +43,7 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
     TextView name;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.134.1/upcomingConsultations.php";
+    String url = "http://192.168.158.1/upcomingConsultations.php";
     RequestQueue queue;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
     String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
@@ -51,7 +51,9 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
     String consultation_patient[]={"Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
     String consultation_patient_image[]={"app/src/main/res/drawable/doctor_blue_border.png"
     ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
-    "app/src/main/res/drawable/doctor_blue_border.png"};
+    "app/src/main/res/drawable/doctor_blue_border.png","app/src/main/res/drawable/doctor_blue_border.png"
+            ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
+            "app/src/main/res/drawable/doctor_blue_border.png"};
     String consultation_type[]={"Video consultation","Video consultation","Audio consultation","Video consultation"};
 
     List<UpcomingConsultations> obj3= new ArrayList<>();
@@ -179,8 +181,6 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
         Log.d("Dashboard","at end");
-
-
 
 
         recyclerView2=v.findViewById(R.id.enquiries_reports_recycler);

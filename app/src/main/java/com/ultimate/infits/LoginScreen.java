@@ -32,7 +32,7 @@ public class LoginScreen extends AppCompatActivity {
     TextView reg, fpass;
     Button login;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.154.1/login_dietian.php";
+    String url = "http://192.168.158.1/login_dietian.php";
     String userID;
     String passwordStr;
     RequestQueue queue;
@@ -78,6 +78,8 @@ public class LoginScreen extends AppCompatActivity {
                         DataFromDatabase.location=object.getString("location");
                         DataFromDatabase.age= object.getString("age");
                         DataFromDatabase.gender = object.getString("gender");
+                        DataFromDatabase.about_me = object.getString("about_me");
+                        DataFromDatabase.experience = object.getString("experience");
                         Log.d("Login Screen","Dietician user id = "+dataFromDatabase.dietitianuserID);
                     } catch (JSONException e) {
                         e.printStackTrace();

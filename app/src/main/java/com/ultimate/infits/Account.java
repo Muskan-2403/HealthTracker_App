@@ -70,7 +70,7 @@ public class Account extends Fragment {
 
     DataFromDatabase dataFromDatabase;
     ImageView male, female,profile_pic;
-    String url = "http://192.168.154.1/upload.php";
+    String url = "http://192.168.158.1/upload.php";
     RequestQueue queue;
     Button logout,save;
     String dietitian_acc_gender;
@@ -136,8 +136,11 @@ public class Account extends Fragment {
         male.setImageResource(R.drawable.gender_male);
         female.setImageResource(R.drawable.gender_female);
         EditText about_me=view.findViewById(R.id.about_me_edt);
+        about_me.setText(dataFromDatabase.about_me);
         EditText location=view.findViewById(R.id.location_edt);
+        location.setText(dataFromDatabase.location);
         EditText experience= view.findViewById(R.id.experience_edt);
+        experience.setText(dataFromDatabase.experience);
 
         ImageView name_btn=view.findViewById(R.id.name_edt_button);
         ImageView age_btn=view.findViewById(R.id.age_edt_button);
@@ -287,7 +290,9 @@ public class Account extends Fragment {
             dietitian_acc_email=email.getText().toString().trim();
             dietitian_acc_phoneno=phone.getText().toString().trim();
             dietitian_acc_userID=dataFromDatabase.dietitianuserID;
-
+            dietitian_location = location.getText().toString().trim();
+            dietitian_experience= experience.getText().toString().trim();
+            dietitian_about_me = about_me.getText().toString().trim();
 
             Log.d("account","before");
             StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {

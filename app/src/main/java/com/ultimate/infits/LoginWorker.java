@@ -41,7 +41,7 @@ public class LoginWorker extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String login_url = "https://192.168.43.91/login_dietian.php";
+        String login_url = "https://192.168.158.1/login_dietian.php";
         String result="";
         String line="";
             try {

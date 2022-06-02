@@ -42,8 +42,8 @@ public class AllMessages extends Fragment {
     ImageView i1;
     List<ChatLogList> all_chats= new ArrayList<>();
     List<ChatLogList> unread_chats=new ArrayList<>();
-    String url1= "http://192.168.154.1/fetch_names_for_messages"; //php file to fetch all chats- name of all clients
-    String url2= "http://192.168.154.1/fetch_top_messages.php"; //php file to fetch unread chats- top message and time fetched from list obtained from url1
+    String url1= "http://192.168.158.1/fetch_names_for_messages"; //php file to fetch all chats- name of all clients
+    String url2= "http://192.168.158.1/fetch_top_messages.php"; //php file to fetch unread chats- top message and time fetched from list obtained from url1
   //  String url3;
     //String url4;
     String all_chats_names[];
