@@ -468,13 +468,14 @@ public class WeekSetter extends AppCompatActivity{
         });
         Spinner spinner = (Spinner) findViewById(R.id.all_clients_under_me_spinner);
         ArrayList<String> client_names= new ArrayList<>();
-        client_names.add("Select one from the drop down");
+        client_names.add("No clientID selected");
         client_names.addAll(DataFromDatabase.clientsID);
+        Log.d("weeksetter clientsID", String.valueOf(client_names)+"    "+String.valueOf(DataFromDatabase.clientsID));
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item,client_names );
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinner.setAdapter(spinnerArrayAdapter);
 
-        int spinner_sel=spinner.getSelectedItemPosition();
+
         title_aptment=findViewById(R.id.new_appointment_title_edt);
          loc_aptment=findViewById(R.id.new_appointment_location_edt);
          note_aptment=findViewById(R.id.new_appointment_note_edt);
@@ -551,7 +552,8 @@ public class WeekSetter extends AppCompatActivity{
                             String note = note_aptment.getText().toString();
                             String notifyMe = "Y";
                              data.put("dietitianuserID", dataFromDatabase.dietitianuserID);
-                             data.put("clientuserID", "Eden");
+                             Log.d("weeksetter clientID",client_names.get(spinner.getSelectedItemPosition()));
+                             data.put("clientuserID", client_names.get(spinner.getSelectedItemPosition()));
                              data.put("dateandtime",dateandtime);
                              data.put("status",status);
                              data.put("duration",duration);

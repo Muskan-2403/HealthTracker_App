@@ -27,10 +27,11 @@ done-   in ChatArea, save messages to db in void sendMessage() function
 
 
 Done -  in register,allow user to enter only if his/her id is unique.
-        sql duration(consultations) is int type
-        weeksetter's selected month problem
         weekSetter's ClientID gets correctly selected is to be checked
-        by default clientID value in consultations(sql) is none(in case dietitian selects no name of client)
+        by default clientID value in consultations is no ClientID selected(in case dietitian selects no name of client)
+
+pending-sql duration(consultations) is int type
+
 
 01/06/2022
 pending- add volley code in PasswordReset to update password of dietitian
