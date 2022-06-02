@@ -81,17 +81,26 @@
             android:textColor="#707070"
             android:textSize="12sp" />
 
-            <ImageView
-                android:id="@+id/request_accept"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:adjustViewBounds="true"
-                android:elevation="5dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/accepted_icon"
-                android:layout_marginLeft="280dp"
-                android:layout_marginTop="30dp"/>
-
+        <Button
+            android:id="@+id/request_accept"
+            android:layout_width="84dp"
+            android:layout_height="31dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="241dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="47dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/baloo_bhai_2"
+            android:onClick="return_message_area"
+            android:text="Accept"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
 
 
     </RelativeLayout>
