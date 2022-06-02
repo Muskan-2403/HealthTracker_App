@@ -141,7 +141,7 @@ public class Calender extends Fragment {
                             String note = object.getString("Note");
                             String notifyMe = object.getString("NotifyMe");
                             Log.d("time", "a" + datetime.substring(11, 16));
-                            EventList a = new EventList("Video Consultation", client, datetime.substring(11, 16), "(" + "duration:" + duration + ")", location, note, title, datetime.substring(5, 7), datetime.substring(8, 10), "9034*****", notifyMe);
+                            EventList a = new EventList(title, client, datetime.substring(11, 16), "(" + "duration:" + duration + ")", location, note, title, datetime.substring(5, 7), datetime.substring(8, 10), "9034*****", notifyMe);
                             obj.add(a);
                         }
                         EventListAdapter ea = new EventListAdapter(getContext(), obj);

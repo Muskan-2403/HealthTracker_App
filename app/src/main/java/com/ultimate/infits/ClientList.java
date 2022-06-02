@@ -110,6 +110,7 @@ public class ClientList extends Fragment {
         clientList = view.findViewById(R.id.client_list);
         active = view.findViewById(R.id.active_btn);
         pending = view.findViewById(R.id.pending_btn);
+        clientList.setAdapter(null);
         search = view.findViewById(R.id.search_client_icon);
         searchtext = view.findViewById(R.id.search_bar_text);
         searchtext.setLines(1);
@@ -137,7 +138,6 @@ public class ClientList extends Fragment {
                         }else if (dietchart!=null){
                             client_list_active.add(obj);
                         }
-
                         ClientListAdapter cd = new ClientListAdapter(getContext(), client_list_active);
                         clientList.setAdapter(cd);
                         clientList.setLayoutManager(new LinearLayoutManager(getContext()));

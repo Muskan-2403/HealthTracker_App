@@ -237,6 +237,7 @@
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_password_reset.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_selected_appointment_details.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/ManojMadhura/AndroidStudioProjects/Infit2505/app/src/main/res/layout/fragment_setting_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/drawable/message_box.xml" value="0.2135" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/achivement_card_layout.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client_details.xml" value="0.19519927536231885" />
@@ -257,13 +258,17 @@
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_week_setter.xml" value="0.1" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_welcome_page.xml" value="0.24365942028985507" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/chat_log_layout.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/chatareaclientmessage.xml" value="0.23550724637681159" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/chatareadietitianmessage.xml" value="0.23550724637681159" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/check_your_email.xml" value="0.176" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/client_list_layout.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/client_list_search_layout.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/consultation_layout.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_enquiries_reports.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_messages.xml" value="0.23550724637681159" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_profile_recycler.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dashboard_upcoming_consultations_layout.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dialog_calendar.xml" value="0.17255434782608695" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dietchart_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/dietician_reviews.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/events_in_profile_layout.xml" value="0.19519927536231885" />
@@ -285,6 +290,7 @@
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_diet_chart.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_dietchart_plan.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_messages.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_messages__recycler.xml" value="0.23550724637681159" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_notification.xml" value="0.1526268115942029" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_profile.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_remove_item_overlay.xml" value="0.25416666666666665" />
@@ -293,6 +299,7 @@
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_tracker.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/health_report_files_layout.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/listviewgender.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/message_myclients_recycler.xml" value="0.23550724637681159" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/messages_allclients_view.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/nav_header.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/notification_list.xml" value="0.19519927536231885" />

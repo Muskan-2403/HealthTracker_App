@@ -50,6 +50,10 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
     String consultation_time[]={"05:00pm","05:00pm","05:00pm","05:00pm"};
     String consultation_patient[]={"Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
     String consultation_patient_image[]={"app/src/main/res/drawable/doctor_blue_border.png"
+            ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
+            "app/src/main/res/drawable/doctor_blue_border.png","app/src/main/res/drawable/doctor_blue_border.png"
+            ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
+            "app/src/main/res/drawable/doctor_blue_border.png","app/src/main/res/drawable/doctor_blue_border.png"
     ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
     "app/src/main/res/drawable/doctor_blue_border.png","app/src/main/res/drawable/doctor_blue_border.png"
             ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",

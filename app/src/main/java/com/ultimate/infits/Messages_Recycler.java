@@ -1,18 +1,34 @@
 package com.ultimate.infits;
 
+import static com.ultimate.infits.ChatArea.chat_area_client_name;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +38,11 @@ import java.util.List;
 public class Messages_Recycler extends Fragment {
     List<ChatMessage> cMessages = new ArrayList<>();
     ChatMessageAdapter chatMessageAdapter;
+    DataFromDatabase dataFromDatabase;
+
+    List<ChatMessage> msg=new ArrayList<>();
+    ChatMessageAdapter ad1;
+    String url = "http://192.168.158.1/messages.php";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,13 +103,60 @@ public class Messages_Recycler extends Fragment {
         }*/
         // chatMessageAdapter.notifyItemInserted(chatMessages.size());
        // chatMessageAdapter= new ChatMessageAdapter(cMessages,ChatArea.chat_area_client_name) ;//add constants.java from video 8
-        ChatArea o1=new ChatArea();
-        chatMessageAdapter= o1.setMessages();
-        r1.smoothScrollToPosition(cMessages.size()-1);
-        r1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        r1.setAdapter(chatMessageAdapter);
-        r1.setVisibility(View.VISIBLE);
-        p1.setVisibility(View.GONE);
+
+
+        Log.d("ChatArea", "before");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            if (!response.equals("failure")) {
+                Log.d("ChatArea", "success");
+                Log.d("response ChatArea", response);
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    String messageby = null;
+                    if (jsonArray.length() > 0) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String message = jsonObject.getString("message");
+                            messageby = jsonObject.getString("messageBy");
+                            String time = jsonObject.getString("time");
+                            String readUnread = jsonObject.getString("read");
+                            ChatMessage obj = new ChatMessage("client_name", DataFromDatabase.dietitianuserID, message, time, messageby, readUnread);
+                            msg.add(obj);
+                        }
+                        ad1 = new ChatMessageAdapter(msg,messageby);
+                        r1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+//                        r1.smoothScrollToPosition(cMessages.size()-1);
+                        r1.setAdapter(chatMessageAdapter);
+                        r1.setVisibility(View.VISIBLE);
+                        p1.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            } else if (response.equals("failure")) {
+                Log.d("ChatArea", "failure");
+                Toast.makeText(getContext(), "ChatArea failed", Toast.LENGTH_SHORT).show();
+            }
+        }, error -> {
+            Toast.makeText(getContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                data.put("duserID", dataFromDatabase.dietitianuserID);
+                data.put("cuserID", chat_area_client_name);
+
+                return data;
+            }
+        };
+        Volley.newRequestQueue(getContext()).add(stringRequest);
+        Log.d("ChatArea", "at end");
+
+//        ChatArea o1=new ChatArea();
+//        chatMessageAdapter= new ChatMessageAdapter(msg,messageBy)
+
 
     return v;
     }
