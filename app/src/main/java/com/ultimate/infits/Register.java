@@ -39,6 +39,8 @@ public class Register extends AppCompatActivity {
     RadioButton gender_male,gender_female;
 
     String url = "http://192.168.158.1/register_dietian.php";
+    String url2 = "http://192.168.158.1/usernameCheck.php";
+
 
     RequestQueue queue;
     @Override
@@ -146,46 +148,69 @@ public class Register extends AppCompatActivity {
                          String qualStr,String mobileStr,String ageStr,String genderStr,String locStr) {
 
 
+
         Log.d("RegisterClass","at start");
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            Log.d("Register response",response);
-            if(response.equals("success")){
-                Toast.makeText(Register.this,"successful",Toast.LENGTH_LONG).show();
-                dataFromDatabase.flag = true;
-                dataFromDatabase.name = usernameStr;
-                dataFromDatabase.password = passwordStr;
-                dataFromDatabase.email = emailStr;
-                dataFromDatabase.name = nameStr;
-                dataFromDatabase.qualification = qualStr;
-                dataFromDatabase.mobile = mobileStr;
-                dataFromDatabase.age = ageStr;
-                dataFromDatabase.gender = genderStr;
-                dataFromDatabase.location = locStr;
-                Intent i=new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(i);
-                finish();
-            }else{
-                Toast.makeText(Register.this,"failure",Toast.LENGTH_SHORT).show();
+
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST,url2,response2 -> {
+            Log.d("Register response",response2);
+            if(response2.equals("failure")){
+                Toast.makeText(Register.this,"select unique UserID",Toast.LENGTH_LONG).show();
+            }else {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+                    Log.d("Register response",response);
+                    if(response.equals("success")){
+                        Toast.makeText(Register.this,"successful",Toast.LENGTH_LONG).show();
+                        dataFromDatabase.flag = true;
+                        dataFromDatabase.name = usernameStr;
+                        dataFromDatabase.password = passwordStr;
+                        dataFromDatabase.email = emailStr;
+                        dataFromDatabase.name = nameStr;
+                        dataFromDatabase.qualification = qualStr;
+                        dataFromDatabase.mobile = mobileStr;
+                        dataFromDatabase.age = ageStr;
+                        dataFromDatabase.gender = genderStr;
+                        dataFromDatabase.location = locStr;
+                        Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(i);
+                        finish();
+                    }else{
+                        Toast.makeText(Register.this,"failure",Toast.LENGTH_SHORT).show();
+                    }
+                }, error -> Toast.makeText(Register.this,error.toString().trim(),Toast.LENGTH_SHORT).show()){
+                    @Override
+                    protected Map<String,String> getParams() throws AuthFailureError{
+                        Map<String,String> data = new HashMap<>();
+                        data.put("userID",usernameStr);
+                        data.put("password",passwordStr);
+                        data.put("name",nameStr);
+                        data.put("qualification",qualStr);
+                        data.put("email",emailStr);
+                        data.put("mobile",mobileStr);
+                        data.put("location",locStr);
+                        data.put("age",ageStr);
+                        data.put("gender",genderStr);
+                        Log.i("Register details", data.get("userID"));
+                        return data;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
             }
         }, error -> Toast.makeText(Register.this,error.toString().trim(),Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String,String> getParams() throws AuthFailureError{
                 Map<String,String> data = new HashMap<>();
                 data.put("userID",usernameStr);
-                data.put("password",passwordStr);
-                data.put("name",nameStr);
-                data.put("qualification",qualStr);
-                data.put("email",emailStr);
-                data.put("mobile",mobileStr);
-                data.put("location",locStr);
-                data.put("age",ageStr);
-                data.put("gender",genderStr);
                 Log.i("Register details", data.get("userID"));
                 return data;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(stringRequest);
+        RequestQueue requestQueue2 = Volley.newRequestQueue(getApplicationContext());
+        requestQueue2.add(stringRequest2);
+
+
+
+
         Log.d("RegisterClass","at end");
     }
 }

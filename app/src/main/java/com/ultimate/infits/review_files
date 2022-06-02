@@ -26,7 +26,7 @@ pending-in ChatArea, add functionality for selecting picture and docs in attach 
 done-   in ChatArea, save messages to db in void sendMessage() function
 
 
-        in register,allow user to enter only if his/her id is unique.
+Done -  in register,allow user to enter only if his/her id is unique.
         sql duration(consultations) is int type
         weeksetter's selected month problem
         weekSetter's ClientID gets correctly selected is to be checked

@@ -33,7 +33,7 @@
         android:layout_width="300dp"
         android:layout_height="55dp"
         android:fontFamily="@font/fonts"
-        android:hint="Username"
+        android:hint="UserID"
         android:textColorHint="@color/white"
         app:boxStrokeColor="#FFFFFF"
         app:hintTextColor="#FFFFFF"
