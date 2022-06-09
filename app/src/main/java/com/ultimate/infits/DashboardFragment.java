@@ -43,7 +43,7 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
     TextView name;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.182.1/upcomingConsultations.php";
+    String url = "http://192.168.223.1/upcomingConsultations.php";
     RequestQueue queue;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
     String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};

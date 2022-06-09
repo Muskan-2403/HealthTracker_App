@@ -1,17 +1,34 @@
 package com.ultimate.infits;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +38,9 @@ import com.google.android.material.textfield.TextInputLayout;
 public class PasswordReset extends Fragment {
     ImageButton b1;
     Button reset;
+    RequestQueue queue;
+    DataFromDatabase dataFromDatabase;
+    String url = "http://192.168.223.1/pwdReset.php";
     TextInputLayout old_pwd,new_pwd,new_pwd1;
     String old_pwd_str,new_pwd_str,new_pwd1_str;
 
@@ -91,8 +111,43 @@ public class PasswordReset extends Fragment {
                 old_pwd_str = old_pwd.getEditText().getText().toString();
                 new_pwd_str = new_pwd.getEditText().getText().toString();
                 new_pwd1_str = new_pwd1.getEditText().getText().toString();
+                Log.d("passwords",old_pwd_str+" "+new_pwd_str+" "+new_pwd1_str);
                 //store to db
+                if(new_pwd_str.equals(new_pwd1_str)){
+                    if (old_pwd_str.equals(dataFromDatabase.password)){
+                        Log.d("pwdReset","before");
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+                            if (response.equals("success")){
+                                Log.d("pwdReset","success");
+                                Log.d("pwdReset response",response);
 
+                                Toast.makeText(getContext(), "pwdReset success", Toast.LENGTH_SHORT).show();
+//                                startActivity(new Intent(getContext(),MainActivity.class));
+                            }
+                            else if (response.equals("failure")){
+                                Log.d("pwdReset","failure");
+                                Toast.makeText(getContext(), "pwdReset failed", Toast.LENGTH_SHORT).show();
+                            }
+                        },error -> {
+                            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();}){
+                            @Nullable
+                            @Override
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String,String> data = new HashMap<>();
+                                data.put("userID",dataFromDatabase.dietitianuserID);
+                                data.put("password",new_pwd_str);
+                                return data;
+                            }
+                        };
+                        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                        requestQueue.add(stringRequest);
+                        Log.d("pwdReset","at end");
+                    }else {
+                        Toast.makeText(getContext(),"Incorrect Old Password",Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(getContext(),"New password fields need to be same ",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;
