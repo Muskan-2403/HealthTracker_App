@@ -20,7 +20,7 @@ public class FetchData extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... strings) {
         System.out.println("Azar");
         try {
-            URL url = new URL("https://192.168.158.1/get_from.php");
+            URL url = new URL("https://192.168.182.1/get_from.php");
             HttpsURLConnection httpURLConnection = (HttpsURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
             InputStream inputStream = httpURLConnection.getInputStream();

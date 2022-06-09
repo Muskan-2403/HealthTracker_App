@@ -51,7 +51,7 @@ public class WeekSetter extends AppCompatActivity{
     int specific_d;
     RequestQueue queue;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.158.1/weeksetter.php";
+    String url = "http://192.168.182.1/weeksetter.php";
    // String client_names[]={"Select one from drop down","Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

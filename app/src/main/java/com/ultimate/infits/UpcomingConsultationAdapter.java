@@ -97,11 +97,11 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
                         public void onClick(View v) {
                             //call.setBackgroundResource(R.drawable.overlay_corner);
                             // write logic to get phone number of client from the database of client and store it in call string
-                            String call_no = list1.get(getAdapterPosition()).getConsultation_patient_mobile();
-                            Intent i = new Intent();
-                            i.setAction(Intent.ACTION_DIAL);
-                            i.setData(Uri.parse("tel:" + call_no));
-                            ct.startActivity(i);
+//                            String call_no = list1.get(getAdapterPosition()).getConsultation_patient_mobile();
+//                            Intent i = new Intent();
+//                            i.setAction(Intent.ACTION_DIAL);
+//                            i.setData(Uri.parse("tel:" + call_no));
+//                            ct.startActivity(i);
                         }});
 
                     selectedItem.selecteditem(list1.get(getAdapterPosition()).getConsultation_patient(),list1.get(getAdapterPosition()).getConsultation_time());
