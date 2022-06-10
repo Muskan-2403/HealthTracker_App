@@ -2,7 +2,9 @@
 package com.ultimate.infits;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -45,7 +47,7 @@ public class ClientList extends Fragment {
     RecyclerView clientList;
     RadioButton active,pending;
     ImageView search,filter;
-    String url = "http://192.168.223.1/clientsList.php";
+    String url = "http://192.168.115.1/clientsList.php";
     EditText searchtext;
     RequestQueue queue;
     //ClientListAdapter cd;
@@ -127,8 +129,10 @@ public class ClientList extends Fragment {
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i=0;i< jsonArray.length();i++){
                         JSONObject object = jsonArray.getJSONObject(i);
+                        byte[] qrimage = Base64.decode(object.getString("profilePhoto"),0);
+                        DataFromDatabase.profile = BitmapFactory.decodeByteArray(qrimage,0,qrimage.length);
                         List_Clients obj = new List_Clients(object.getString("plan"), object.getString("clientID"),
-                                client_list_image[i],
+                                DataFromDatabase.profile,
                                 object.getString("startdate"), object.getString("enddate"), true);
 
                         dataFromDatabase.clientsID.add(object.getString("clientID"));

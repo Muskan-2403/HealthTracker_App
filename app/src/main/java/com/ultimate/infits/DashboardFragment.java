@@ -2,7 +2,10 @@ package com.ultimate.infits;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,11 +46,12 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
     TextView name;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.223.1/upcomingConsultations.php";
+    String url = "http://192.168.115.1/upcomingConsultations.php";
+    String url2 = "http://192.168.115.1/dashboard2.php";
     RequestQueue queue;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
-    String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
-    String consultation_time[]={"05:00pm","05:00pm","05:00pm","05:00pm"};
+//    String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
+//    String consultation_time[]={"05:00pm","05:00pm","05:00pm","05:00pm"};
     String consultation_patient[]={"Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
     String consultation_patient_image[]={"app/src/main/res/drawable/doctor_blue_border.png"
             ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
@@ -149,7 +153,9 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
                         String mobile = object.getString("mobile");
                         String date = dateandtime.substring(0,10);
                         String time = dateandtime.substring(11,16);
-                        UpcomingConsultations obj=new UpcomingConsultations(date,time,consultation_patient_image[i],
+                        byte[] qrimage = Base64.decode(object.getString("profilePhoto"),0);
+                        Bitmap img = BitmapFactory.decodeByteArray(qrimage,0,qrimage.length);
+                        UpcomingConsultations obj=new UpcomingConsultations(date,time,img,
                                 object.getString("clientID"),mobile);
                         Log.d("Dashboard UC",date+" "+time+" "+object.getString("clientID"));
                         obj3.add(obj);
@@ -198,42 +204,94 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
         recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView2.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
-        recyclerview3= v.findViewById(R.id.add_profile_recycler);
-        for(int i=0;i<consultation_patient_image.length;i++)
-        {
-            Dashboard_profile_pics object= new Dashboard_profile_pics(consultation_patient_image[i]);
-            obj2.add(object);
-        }
-        Dashboard_profile_adapter padap= new Dashboard_profile_adapter(getContext(),obj2);
-        recyclerview3.setAdapter(padap);
-        recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-       // recyclerview3.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
+
+
+//        queue = Volley.newRequestQueue(getContext());
+//        Log.d("Dashboard2","before");
+//        StringRequest stringRequest2 = new StringRequest(Request.Method.POST,url2, response -> {
+//            if (!response.equals("failure")){
+//                Log.d("dashboard2","success");
+//                Log.d("response2",response);
+//
+//                try {
+//                    JSONArray jsonArray = new JSONArray(response);
+//                    for (int i=0;i<jsonArray.length();i++){
+//                        JSONObject object = jsonArray.getJSONObject(i);
+//                        String clientID = object.getString("clientID");
+//                        byte[] qrimage2 = Base64.decode(object.getString("profilePhoto"),0);
+//                        Bitmap img2 = BitmapFactory.decodeByteArray(qrimage2,0,qrimage2.length);
+//                        Dashboard_profile_pics objectx= new Dashboard_profile_pics(img2);
+//                          obj2.add(objectx);
+//                    }
+//                    Dashboard_profile_adapter padapx= new Dashboard_profile_adapter(getContext(),obj2);
+//                    recyclerview3.setAdapter(padapx);
+//                    recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Toast.makeText(getContext(), "Dashboard2 success", Toast.LENGTH_SHORT).show();
+//            }
+//            else if (response.equals("failure")){
+//                Log.d("Dashboard2","failure");
+//                Toast.makeText(getContext(), "Dashboard2 failed", Toast.LENGTH_SHORT).show();
+//            }
+//        },error -> {
+//            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
+//        {
+//            @Nullable
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> data = new HashMap<>();
+//                String userid = dataFromDatabase.dietitianuserID;
+//                Log.d("dashboard","dietitianid = "+userid);
+//                data.put("userID", userid);
+//                return data;
+//            }
+//        };
+//        RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
+//        requestQueue2.add(stringRequest2);
+//        Log.d("Dashboard2","at end");
+
+
+
+
+//        recyclerview3= v.findViewById(R.id.add_profile_recycler);
+//        for(int i=0;i<consultation_patient_image.length;i++)
+//        {
+//            Dashboard_profile_pics object= new Dashboard_profile_pics(consultation_patient_image[i]);
+//            obj2.add(object);
+//        }
+//        Dashboard_profile_adapter padap= new Dashboard_profile_adapter(getContext(),obj2);
+//        recyclerview3.setAdapter(padap);
+//        recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+//        recyclerview3.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
         return v;
     }
 
 
     @Override
     public void selecteditem(String client_n, String time_n) {
-        AlertDialog.Builder ad = new AlertDialog.Builder(getChildFragmentManager().getPrimaryNavigationFragment().requireContext());
-        ad.setTitle("Info!");
-        ad.setMessage("Status of the appointment with " + client_n + " at time "+ time_n);
-        ad.setPositiveButton("Completed", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int arg1) {
-                //write code to update the appointment status
-
-
-                Toast.makeText(getContext(), "Appointment status updated", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-        ad.setNegativeButton("Pending", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int arg1) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog dialog = ad.create();
-        dialog.show();
+//        AlertDialog.Builder ad = new AlertDialog.Builder(getChildFragmentManager().getPrimaryNavigationFragment().requireContext());
+//        ad.setTitle("Info!");
+//        ad.setMessage("Status of the appointment with " + client_n + " at time "+ time_n);
+//        ad.setPositiveButton("Completed", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int arg1) {
+//                //write code to update the appointment status
+//
+//
+//                Toast.makeText(getContext(), "Appointment status updated", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        });
+//        ad.setNegativeButton("Pending", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int arg1) {
+//                dialog.cancel();
+//            }
+//        });
+//        AlertDialog dialog = ad.create();
+//        dialog.show();
     }
 }

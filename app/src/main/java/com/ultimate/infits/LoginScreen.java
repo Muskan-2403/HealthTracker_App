@@ -33,7 +33,7 @@ public class LoginScreen extends AppCompatActivity {
     TextView reg, fpass;
     Button login;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.223.1/login_dietian.php";
+    String url = "http://192.168.115.1/login_dietian.php";
     String userID;
     SharedPreferences sharedPreferences;
     private static final String SP ="infitsPref";

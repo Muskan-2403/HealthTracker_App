@@ -44,14 +44,16 @@ public class ClientListAdapter extends RecyclerView.Adapter<ClientListAdapter.Cl
     public void onBindViewHolder(@NonNull ClientListHolder holder, int position) {
         List_Clients pos= obj.get(position);
 
-        File imgFile = new File(pos.getClient_list_image());
+//        File imgFile = new File(String.valueOf(pos.getClient_list_image()));
 
-        if(imgFile.exists()){
+        holder.img.setImageBitmap(pos.getClient_list_image());
 
-            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-            holder.img.setImageBitmap(myBitmap);
-
-        }
+//        if(imgFile.exists()){
+//
+////            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//            holder.img.setImageBitmap(pos.getClient_list_image());
+//
+//        }
         holder.plan.setText(pos.getPlan_type());
         holder.name.setText(pos.getClient_list_name());
         holder.startdate.setText(pos.getClient_list_startdate());

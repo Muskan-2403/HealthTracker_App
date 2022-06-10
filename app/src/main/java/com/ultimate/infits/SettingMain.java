@@ -20,7 +20,7 @@ public class SettingMain extends Fragment {
 
     TextView name;
     DataFromDatabase dataFromDatabase;
-    ImageView aboutUs,help;
+    ImageView aboutUs,help,profilePic;
     CardView gotoAccount,achievements,notifications,resetpwd;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,6 +68,8 @@ public class SettingMain extends Fragment {
         gotoAccount = view.findViewById(R.id.dieitician_gotoAccount);
         notifications = view.findViewById(R.id.notification);
         resetpwd=view.findViewById(R.id.resetpassword);
+        profilePic=view.findViewById(R.id.settings_dietician_profile_icon);
+        profilePic.setImageBitmap(dataFromDatabase.profile);
         name = view.findViewById(R.id.settings_dietician_name);
         name.setText(dataFromDatabase.name);
         gotoAccount.setOnClickListener(v->{

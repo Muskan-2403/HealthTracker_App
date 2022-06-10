@@ -70,7 +70,7 @@ public class Account extends Fragment {
 
     DataFromDatabase dataFromDatabase;
     ImageView male, female,profile_pic;
-    String url = "http://192.168.223.1/upload.php";
+    String url = "http://192.168.115.1/upload.php";
     RequestQueue queue;
     Button logout,save;
     String dietitian_acc_gender;
@@ -149,6 +149,8 @@ public class Account extends Fragment {
         ImageView about_me_btn=view.findViewById(R.id.about_me_edt_button);
         ImageView location_btn=view.findViewById(R.id.location_edt_button);
         ImageView experience_btn=view.findViewById(R.id.experience_edt_button);
+
+        profile_pic.setImageBitmap(dataFromDatabase.profile);
 
         profile_pic.setOnClickListener(v->{
             photo.launch("image/*");

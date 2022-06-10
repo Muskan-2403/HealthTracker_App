@@ -37,7 +37,7 @@ public class AcceptRejectClients extends AppCompatActivity implements AcceptReje
 
     DataFromDatabase dataFromDatabase;
     RequestQueue queue;
-    String url = "http://192.168.223.1/allClients.php";
+    String url = "http://192.168.115.1/allClients.php";
 //    String urldietchart;
 //    String urlpremium;
 //    String url101;

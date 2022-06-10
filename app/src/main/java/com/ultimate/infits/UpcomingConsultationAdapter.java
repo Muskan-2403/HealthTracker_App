@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
 
     Context ct;
     Button call;
+    String mobile;
     private Selecteditem selectedItem;
    // private String date,time,image,name;
     private List<UpcomingConsultations> list1;
@@ -50,18 +52,19 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
 
         String d=pos.getConsultation_date();
         String t=pos.getConsultation_time();
-        String img=pos.getConsultation_patient_image();
+//        String img=pos.getConsultation_patient_image();
         String n=pos.getConsultation_patient();
 
+        mobile = pos.getConsultation_patient_mobile();
+//        File imgFile = new File(img);
 
-        File imgFile = new File(img);
-
-        if(imgFile.exists()){
-
-            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-            holder.pimg.setImageBitmap(myBitmap);
-
-        }
+//        if(imgFile.exists()){
+//
+//            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//            holder.pimg.setImageBitmap(myBitmap);
+//
+//        }
+        holder.pimg.setImageBitmap(pos.getConsultation_patient_image());
         holder.pdate.setText(d);
         holder.ptime.setText(t);
        // holder.pimg.setImageDrawable(img);
@@ -95,6 +98,7 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
                     call.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            Log.d("mobile",mobile);
                             //call.setBackgroundResource(R.drawable.overlay_corner);
                             // write logic to get phone number of client from the database of client and store it in call string
 //                            String call_no = list1.get(getAdapterPosition()).getConsultation_patient_mobile();
@@ -104,7 +108,7 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
 //                            ct.startActivity(i);
                         }});
 
-                    selectedItem.selecteditem(list1.get(getAdapterPosition()).getConsultation_patient(),list1.get(getAdapterPosition()).getConsultation_time());
+//                    selectedItem.selecteditem(list1.get(getAdapterPosition()).getConsultation_patient(),list1.get(getAdapterPosition()).getConsultation_time());
 
                 }
         });

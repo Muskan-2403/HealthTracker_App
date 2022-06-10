@@ -26,6 +26,7 @@ pending-in ChatArea, add functionality for selecting picture and docs in attach 
 done-   in ChatArea, save messages to db in void sendMessage() function
 
 
+3
 Done -  in register,allow user to enter only if his/her id is unique.
         weekSetter's ClientID gets correctly selected is to be checked
         by default clientID value in consultations is no ClientID selected(in case dietitian selects no name of client)

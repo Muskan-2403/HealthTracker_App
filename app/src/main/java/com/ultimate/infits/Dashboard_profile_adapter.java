@@ -36,16 +36,17 @@ public Dashboard_profileViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
 public void onBindViewHolder(@NonNull Dashboard_profileViewHolder holder, int position) {
         Dashboard_profile_pics pos=list2.get(position);
 
-        String img=pos.getDashboard_photos();
-
-        File imgFile = new File(img);
-
-        if(imgFile.exists()){
-
-        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-        holder.pimg.setImageBitmap(myBitmap);
-
-        }
+        holder.pimg.setImageBitmap(pos.getDashboard_photos());
+//        String img=pos.getDashboard_photos();
+//
+//        File imgFile = new File(img);
+//
+//        if(imgFile.exists()){
+//
+//        Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//        holder.pimg.setImageBitmap(myBitmap);
+//
+//        }
         }
 
 @Override

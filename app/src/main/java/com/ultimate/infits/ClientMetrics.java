@@ -40,7 +40,7 @@ import java.util.Map;
  */
 public class ClientMetrics extends Fragment {
 
-    String urlm = "http://192.168.223.1/metrics.php";
+    String urlm = "http://192.168.115.1/metrics.php";
     TextView stepstv,glassestv,glassesGoaltv,sleeptv,sleepGoaltv,weighttv,weightGoaltv,calorietv,
             calorieGoaltv,bpmtv,bpmUptv,bpmDowntv;
     String date_to_display_trackers;

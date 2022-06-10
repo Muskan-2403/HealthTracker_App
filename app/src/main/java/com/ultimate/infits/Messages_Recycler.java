@@ -42,7 +42,7 @@ public class Messages_Recycler extends Fragment {
 
     List<ChatMessage> msg=new ArrayList<>();
     ChatMessageAdapter ad1;
-    String url = "http://192.168.182.1/messages.php";
+    String url = "http://192.168.115.1/messages.php";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
