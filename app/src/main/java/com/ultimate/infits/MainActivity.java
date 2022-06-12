@@ -3,6 +3,7 @@ package com.ultimate.infits;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     TextView name,qual;
+    ImageView dieticianimg;
     DataFromDatabase dataFromDatabase;
     DrawerLayout draw;
     NavigationView navigationView;
@@ -35,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+//        dieticianimg.findViewById(R.id.img_image);
+//        dietician.setImageBitmap(dataFromDatabase.profile);
         name = findViewById(R.id.nav_name);
         qual = findViewById(R.id.nav_designation);
         name.setText(dataFromDatabase.name);

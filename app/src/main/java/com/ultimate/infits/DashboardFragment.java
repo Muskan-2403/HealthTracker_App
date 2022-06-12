@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -46,8 +47,8 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
     TextView name;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.115.1/upcomingConsultations.php";
-    String url2 = "http://192.168.115.1/dashboard2.php";
+    String url = "http://192.168.95.1/upcomingConsultations.php";
+    String url2 = "http://192.168.95.1/dashboard2.php";
     RequestQueue queue;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
 //    String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
@@ -113,7 +114,12 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_dashboard,container,false);
         recyclerView1= v.findViewById(R.id.upcoming_consultation_recycler);
+//        recyclerView1.setAdapter(null);
+//        recyclerView2.setAdapter(null);
+//        recyclerview3.setAdapter(null);
         name = v.findViewById(R.id.name);
+        ImageView dietician= v.findViewById(R.id.dietician_img);
+        dietician.setImageBitmap(dataFromDatabase.profile);
         ImageView consultaton_next=v.findViewById(R.id.upcoming_consultation_next);
         ImageView patients_next= v.findViewById(R.id.patients_profile_next);
         ImageView messages_next= v.findViewById(R.id.messages_next);
@@ -193,6 +199,7 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
         Log.d("Dashboard","at end");
 
 
+
         recyclerView2=v.findViewById(R.id.enquiries_reports_recycler);
         for(int i=0;i<consultation_patient.length;i++)
         {
@@ -206,52 +213,52 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
 
 
-//        queue = Volley.newRequestQueue(getContext());
-//        Log.d("Dashboard2","before");
-//        StringRequest stringRequest2 = new StringRequest(Request.Method.POST,url2, response -> {
-//            if (!response.equals("failure")){
-//                Log.d("dashboard2","success");
-//                Log.d("response2",response);
-//
-//                try {
-//                    JSONArray jsonArray = new JSONArray(response);
-//                    for (int i=0;i<jsonArray.length();i++){
-//                        JSONObject object = jsonArray.getJSONObject(i);
-//                        String clientID = object.getString("clientID");
-//                        byte[] qrimage2 = Base64.decode(object.getString("profilePhoto"),0);
-//                        Bitmap img2 = BitmapFactory.decodeByteArray(qrimage2,0,qrimage2.length);
-//                        Dashboard_profile_pics objectx= new Dashboard_profile_pics(img2);
-//                          obj2.add(objectx);
-//                    }
-//                    Dashboard_profile_adapter padapx= new Dashboard_profile_adapter(getContext(),obj2);
-//                    recyclerview3.setAdapter(padapx);
-//                    recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                Toast.makeText(getContext(), "Dashboard2 success", Toast.LENGTH_SHORT).show();
-//            }
-//            else if (response.equals("failure")){
-//                Log.d("Dashboard2","failure");
-//                Toast.makeText(getContext(), "Dashboard2 failed", Toast.LENGTH_SHORT).show();
-//            }
-//        },error -> {
-//            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
-//        {
-//            @Nullable
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> data = new HashMap<>();
-//                String userid = dataFromDatabase.dietitianuserID;
-//                Log.d("dashboard","dietitianid = "+userid);
-//                data.put("userID", userid);
-//                return data;
-//            }
-//        };
-//        RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
-//        requestQueue2.add(stringRequest2);
-//        Log.d("Dashboard2","at end");
+        queue = Volley.newRequestQueue(getContext());
+        Log.d("Dashboard2","before");
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST,url2, response -> {
+            if (!response.equals("failure")){
+                Log.d("dashboard2","success");
+                Log.d("response2",response);
+
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i=0;i<jsonArray.length();i++){
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        String clientID = object.getString("clientID");
+                        byte[] qrimage2 = Base64.decode(object.getString("profilePhoto"),0);
+                        Bitmap img2 = BitmapFactory.decodeByteArray(qrimage2,0,qrimage2.length);
+                        Dashboard_profile_pics objectx= new Dashboard_profile_pics(img2);
+                          obj2.add(objectx);
+                    }
+                    Dashboard_profile_adapter padapx= new Dashboard_profile_adapter(getContext(),obj2);
+                    recyclerview3.setAdapter(padapx);
+                    recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Toast.makeText(getContext(), "Dashboard2 success", Toast.LENGTH_SHORT).show();
+            }
+            else if (response.equals("failure")){
+                Log.d("Dashboard2","failure");
+                Toast.makeText(getContext(), "Dashboard2 failed", Toast.LENGTH_SHORT).show();
+            }
+        },error -> {
+            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
+        {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                String userid = dataFromDatabase.dietitianuserID;
+                Log.d("dashboard","dietitianid = "+userid);
+                data.put("userID", userid);
+                return data;
+            }
+        };
+        RequestQueue requestQueue2 = Volley.newRequestQueue(getContext());
+        requestQueue2.add(stringRequest2);
+        Log.d("Dashboard2","at end");
 
 
 

@@ -228,6 +228,7 @@ public class ClientList extends Fragment {
 //                    client_list_start_date[i], client_list_end_date[i], true);
 //            client_list_active.add(obj);
 //        }
+
         return view;
     }
 
