@@ -14,14 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="1dp">
+            android:layout_margin="10dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:elevation="5dp"
-                app:cardCornerRadius="20dp"
-                android:layout_margin="1dp">
+                android:layout_margin="1dp"
+                app:cardCornerRadius="20dp">
                 <androidx.cardview.widget.CardView
                     android:layout_width="50dp"
                     android:layout_height="match_parent">
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="1dp">
+            android:layout_margin="10dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -118,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="1dp">
+            android:layout_margin="10dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -170,7 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="1dp">
+            android:layout_margin="10dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -222,7 +222,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="1dp">
+            android:layout_margin="10dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -254,7 +254,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="3/100"
-                    android:layout_marginLeft="330dp"
+                    android:layout_marginLeft="310dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/baloo_bhai_2"
                     android:textSize="16sp"
@@ -273,6 +273,7 @@
                     android:id="@+id/imageviewachievement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/diet_chart_next"
                     android:layout_marginLeft="370dp"/>
             </androidx.cardview.widget.CardView>

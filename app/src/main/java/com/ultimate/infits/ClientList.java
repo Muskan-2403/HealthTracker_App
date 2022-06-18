@@ -47,7 +47,7 @@ public class ClientList extends Fragment {
     RecyclerView clientList;
     RadioButton active,pending;
     ImageView search,filter;
-    String url = "http://192.168.115.1/clientsList.php";
+    String url = "http://192.168.118.1/clientsList.php";
     EditText searchtext;
     RequestQueue queue;
     //ClientListAdapter cd;
@@ -113,9 +113,9 @@ public class ClientList extends Fragment {
         active = view.findViewById(R.id.active_btn);
         pending = view.findViewById(R.id.pending_btn);
         clientList.setAdapter(null);
-        search = view.findViewById(R.id.search_client_icon);
-        searchtext = view.findViewById(R.id.search_bar_text);
-        searchtext.setLines(1);
+//        search = view.findViewById(R.id.search_client_icon);
+//        searchtext = view.findViewById(R.id.search_bar_text);
+//        searchtext.setLines(1);
 
 
         queue = Volley.newRequestQueue(getContext());
@@ -196,32 +196,34 @@ public class ClientList extends Fragment {
         requestQueue.add(stringRequest);
         Log.d("ClientList","at end");
 
-        searchtext.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    Toast.makeText(getContext(), "Click on search icon after entering the name", Toast.LENGTH_SHORT).show();
-                    searchtext.setText("");
-                    return true;
-                }
-                return false;
-            }
-        });
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (searchtext.getVisibility() == v.VISIBLE) {
-                    String client_search_name = searchtext.getText().toString();
-                    searchtext.setVisibility(v.INVISIBLE);
-                    if(!(client_search_name.equals("")) && !(client_search_name.equals(" "))){
-                        Toast.makeText(getContext(),"Searching for the client "+client_search_name,Toast.LENGTH_SHORT).show();
-                        //query database for the searched username
-                    }
-                }
-                else
-                    searchtext.setVisibility(v.VISIBLE);
-            }
-        });
+//        searchtext.setOnKeyListener(new View.OnKeyListener() {
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                // If the event is a key-down event on the "enter" button
+//                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+//                    Toast.makeText(getContext(), "Click on search icon after entering the name", Toast.LENGTH_SHORT).show();
+//                    searchtext.setText("");
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (searchtext.getVisibility() == v.VISIBLE) {
+//                    String client_search_name = searchtext.getText().toString();
+//                    searchtext.setVisibility(v.INVISIBLE);
+//                    if(!(client_search_name.equals("")) && !(client_search_name.equals(" "))){
+//                        Toast.makeText(getContext(),"Searching for the client "+client_search_name,Toast.LENGTH_SHORT).show();
+//                        //query database for the searched username
+//                    }
+//                }
+//                else
+//                    searchtext.setVisibility(v.VISIBLE);
+//            }
+//        });
+
+
 //        client_list_active.clear();
 //        for (int i = 0; i < client_list_image.length; i++) {
 //            List_Clients obj = new List_Clients(client_list_plan[i], client_list_client_name[i], client_list_image[i],

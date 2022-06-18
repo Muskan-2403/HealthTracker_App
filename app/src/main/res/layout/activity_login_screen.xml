@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/infit_transparent2" />
+        app:srcCompat="@drawable/infit_white" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutPassword"
@@ -82,69 +82,68 @@
             android:maxLength="12"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/logbtn"
+    <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/white"
-        android:fontFamily="@font/fonts"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#2F3D96"
-        android:textSize="20sp"
-        app:cornerRadius="10sp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.782" />
+        app:layout_constraintVertical_bias="0.782" >
+        <Button
+            android:id="@+id/logbtn"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Login"
+            android:fontFamily="@font/fonts"
+            android:textColor="#2F3D96"
+            android:textSize="20sp"
+            android:layout_gravity="center"/>
+    </androidx.cardview.widget.CardView>
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/social_back"
-        android:backgroundTint="@color/white"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/google"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921"
-        app:srcCompat="@drawable/google" />
+        app:layout_constraintVertical_bias="0.921" />
 
     <ImageButton
         android:id="@+id/imageButton1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/social_back"
-        android:backgroundTint="@color/white"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/twitter"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921"
-        app:srcCompat="@drawable/twitter" />
+        app:layout_constraintVertical_bias="0.921" />
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/social_back"
-        android:backgroundTint="@color/white"
+        android:layout_width="60dp"
+        android:layout_height="65dp"
+        android:background="@drawable/facebook"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921"
-        app:srcCompat="@drawable/facebook" />
+        app:layout_constraintVertical_bias="0.921" />
 
     <TextView
         android:id="@+id/fpass"

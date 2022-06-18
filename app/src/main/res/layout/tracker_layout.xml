@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
-        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -30,6 +31,9 @@
             android:fontFamily="@font/fonts"
             android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"/>
+<!--        <ImageView-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="20dp"-->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +41,7 @@
             android:layout_marginTop="30dp"
             android:visibility="visible">
             <LinearLayout
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:gravity="center"
                 android:paddingEnd="50dp">
@@ -75,13 +79,20 @@
             android:visibility="visible"
             android:layout_marginTop="30dp">
             <LinearLayout
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_margin="5dp">
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_gravity="end"
+                        android:background="@drawable/uptracker"/>
                     <androidx.cardview.widget.CardView
                         android:layout_width="45dp"
                         android:layout_height="45dp"

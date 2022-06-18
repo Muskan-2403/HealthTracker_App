@@ -36,7 +36,7 @@ import java.util.Map;
  */
 public class achievement_card extends Fragment {
 
-    String url = "http://192.168.115.1/achievement.php";
+    String url = "http://192.168.118.1/achievement.php";
     TextView progress1, progress2,progress3,progress4,progress5;
     ProgressBar bar1,bar2,bar3,bar4,bar5;
     int client_count=0;
@@ -167,7 +167,8 @@ public class achievement_card extends Fragment {
                 Toast.makeText(getContext(), "Achievement failed", Toast.LENGTH_SHORT).show();
             }
         },error -> {
-            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();})
+//            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();
+        })
         {
             @Nullable
             @Override

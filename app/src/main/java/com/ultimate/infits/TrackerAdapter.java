@@ -32,7 +32,7 @@ public class TrackerAdapter extends RecyclerView.Adapter<TrackerAdapter.TrackerV
 
     @Override
     public void onBindViewHolder(@NonNull TrackerViewHolder holder, int position) {
-        holder.time.setText(foodTiming[position]);
+//        holder.time.setText(foodTiming[position]);
         holder.card.setOnClickListener(v->{
             Log.d("Click", "onBindViewHolder: ");
             if (holder.foodList.getVisibility() == View.VISIBLE){

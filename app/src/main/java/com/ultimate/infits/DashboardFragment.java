@@ -47,8 +47,8 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
     TextView name;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.95.1/upcomingConsultations.php";
-    String url2 = "http://192.168.95.1/dashboard2.php";
+    String url = "http://192.168.118.1/upcomingConsultations.php";
+    String url2 = "http://192.168.118.1/dashboard2.php";
     RequestQueue queue;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
 //    String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
@@ -157,6 +157,7 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
                         JSONObject object = jsonArray.getJSONObject(i);
                         String dateandtime = object.getString("dateandtime");
                         String mobile = object.getString("mobile");
+                        Log.d("mobile",mobile);
                         String date = dateandtime.substring(0,10);
                         String time = dateandtime.substring(11,16);
                         byte[] qrimage = Base64.decode(object.getString("profilePhoto"),0);
@@ -211,8 +212,8 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
         recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView2.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
-
-
+        recyclerview3= v.findViewById(R.id.add_profile_recycler);
+//
         queue = Volley.newRequestQueue(getContext());
         Log.d("Dashboard2","before");
         StringRequest stringRequest2 = new StringRequest(Request.Method.POST,url2, response -> {
@@ -226,6 +227,7 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
                         JSONObject object = jsonArray.getJSONObject(i);
                         String clientID = object.getString("clientID");
                         byte[] qrimage2 = Base64.decode(object.getString("profilePhoto"),0);
+                        Log.d("profilePhoto",object.getString("profilePhoto"));
                         Bitmap img2 = BitmapFactory.decodeByteArray(qrimage2,0,qrimage2.length);
                         Dashboard_profile_pics objectx= new Dashboard_profile_pics(img2);
                           obj2.add(objectx);
@@ -269,6 +271,7 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 //            Dashboard_profile_pics object= new Dashboard_profile_pics(consultation_patient_image[i]);
 //            obj2.add(object);
 //        }
+//
 //        Dashboard_profile_adapter padap= new Dashboard_profile_adapter(getContext(),obj2);
 //        recyclerview3.setAdapter(padap);
 //        recyclerview3.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -279,26 +282,26 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
     @Override
     public void selecteditem(String client_n, String time_n) {
-//        AlertDialog.Builder ad = new AlertDialog.Builder(getChildFragmentManager().getPrimaryNavigationFragment().requireContext());
-//        ad.setTitle("Info!");
-//        ad.setMessage("Status of the appointment with " + client_n + " at time "+ time_n);
-//        ad.setPositiveButton("Completed", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int arg1) {
-//                //write code to update the appointment status
-//
-//
-//                Toast.makeText(getContext(), "Appointment status updated", Toast.LENGTH_SHORT).show();
-//            }
-//
-//        });
-//        ad.setNegativeButton("Pending", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int arg1) {
-//                dialog.cancel();
-//            }
-//        });
-//        AlertDialog dialog = ad.create();
-//        dialog.show();
+        AlertDialog.Builder ad = new AlertDialog.Builder(getActivity());
+        ad.setTitle("Info!");
+        ad.setMessage("Status of the appointment with " + client_n + " at time "+ time_n);
+        ad.setPositiveButton("Completed", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int arg1) {
+                //write code to update the appointment status
+
+
+                Toast.makeText(getContext(), "Appointment status updated", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+        ad.setNegativeButton("Pending", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int arg1) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog dialog = ad.create();
+        dialog.show();
     }
 }

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".dietchart_plan"
-    android:background="@drawable/diet_plan_background">
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         android:layout_margin="20dp"

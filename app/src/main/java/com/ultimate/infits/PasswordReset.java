@@ -40,7 +40,7 @@ public class PasswordReset extends Fragment {
     Button reset;
     RequestQueue queue;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.115.1/pwdReset.php";
+    String url = "http://192.168.118.1/pwdReset.php";
     TextInputLayout old_pwd,new_pwd,new_pwd1;
     String old_pwd_str,new_pwd_str,new_pwd1_str;
 

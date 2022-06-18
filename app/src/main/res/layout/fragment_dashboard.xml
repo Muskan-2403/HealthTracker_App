@@ -19,16 +19,23 @@
                 android:layout_height="70dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
+                android:id="@+id/dash1"
                 android:backgroundTint="#4B9AFB"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                app:cardCornerRadius="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="70dp"
+                app:cardElevation="10dp">
                 <ImageView
                     android:id="@+id/dietician_img"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/doctor_pic"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="70dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/doctor_pic"/>
+            </androidx.cardview.widget.CardView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,11 +77,12 @@
                 android:layout_marginEnd="15dp"/>
 
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/upcoming_consultation_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
+                android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:scrollbars="horizontal" />
 
@@ -102,29 +110,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    app:cardCornerRadius="250dp"
-                    android:layout_marginTop="5dp"
-                    android:backgroundTint="@color/blue">
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    app:cardCornerRadius="250dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:backgroundTint="@color/blue">-->
 
-                    <ImageView
-                        android:id="@+id/enquiry_add_profile_photo"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:layout_marginTop="12dp"
-                        android:src="@drawable/add_symbol" />
-                </androidx.cardview.widget.CardView>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/enquiry_add_profile_photo"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="35dp"-->
+<!--                        android:layout_marginTop="12dp"-->
+<!--                        android:src="@drawable/add_symbol" />-->
+<!--                </androidx.cardview.widget.CardView>-->
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/add_profile_recycler"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
                     android:layout_height="100dp"
-                    android:layout_marginStart="10dp"
                     android:orientation="horizontal"
                     android:scrollbars="horizontal" />
             </LinearLayout>
@@ -156,8 +164,7 @@
                 android:id="@+id/enquiries_reports_recycler"
                 android:layout_width="351dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp" />
+                android:layout_gravity="center" />
 
         </LinearLayout>
     </ScrollView>

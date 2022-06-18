@@ -2,7 +2,11 @@ package com.ultimate.infits;
 
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,9 +34,9 @@ public class ClientDetails extends AppCompatActivity  {
 
     TextView clientidtv,clientemailtv,gendertv,agetv,mobiletv,plantv,startdatetv,enddatetv;
     ImageButton diet_chart_btn,chat_btn,metrics_btn,tracker_btn,health_details_btn;
-    ImageView menu;
+    ImageView menu,clientPic;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.115.1/clientDetails.php";
+    String url = "http://192.168.118.1/clientDetails.php";
     String clientID,startdate,enddate;
     RequestQueue queue;
     @Override
@@ -55,6 +60,7 @@ public class ClientDetails extends AppCompatActivity  {
             }
         });
 
+        clientPic=findViewById(R.id.imageView3);
         clientidtv = findViewById(R.id.clientIDTV);
         clientidtv.setText(clientID);
         startdatetv = findViewById(R.id.startdateTV);
@@ -97,6 +103,9 @@ public class ClientDetails extends AppCompatActivity  {
                     mobiletv.setText(mobile);
                     String plan = jsonObject.getString("plan");
                     plantv.setText(plan);
+                    byte[] qrimage = Base64.decode(jsonObject.getString("profilePhoto"),0);
+                    Bitmap img = BitmapFactory.decodeByteArray(qrimage,0,qrimage.length);
+                    clientPic.setImageBitmap(img);
                     Log.d("ClientDetails","details"+email+" "+gender+" "+age+" "+mobile+" "+plan);
                 }catch (Exception e){
                     e.printStackTrace();

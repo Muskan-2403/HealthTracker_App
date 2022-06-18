@@ -70,7 +70,7 @@ public class Account extends Fragment {
 
     DataFromDatabase dataFromDatabase;
     ImageView male, female,profile_pic;
-    String url = "http://192.168.115.1/upload.php";
+    String url = "http://192.168.118.1/upload.php";
     RequestQueue queue;
     Button logout,save;
     String dietitian_acc_gender;

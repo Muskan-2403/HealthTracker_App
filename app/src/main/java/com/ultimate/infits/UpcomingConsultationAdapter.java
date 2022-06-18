@@ -26,7 +26,6 @@ import java.util.List;
 public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingConsultationAdapter.UpcomingConsultationViewHolder> {
 
     Context ct;
-    Button call;
     String mobile;
     private Selecteditem selectedItem;
    // private String date,time,image,name;
@@ -42,7 +41,7 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
     public UpcomingConsultationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(ct);
         View view=inflater.inflate(R.layout.dashboard_upcoming_consultations_layout,parent,false);
-        call=view.findViewById(R.id.joincall);
+//        call=view.findViewById(R.id.call);
         return new UpcomingConsultationViewHolder(view);
     }
 
@@ -50,6 +49,7 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
     public void onBindViewHolder(@NonNull UpcomingConsultationViewHolder holder, int position) {
         UpcomingConsultations pos=list1.get(position);
 
+        Integer posit= holder.getAbsoluteAdapterPosition();
         String d=pos.getConsultation_date();
         String t=pos.getConsultation_time();
 //        String img=pos.getConsultation_patient_image();
@@ -69,6 +69,25 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
         holder.ptime.setText(t);
        // holder.pimg.setImageDrawable(img);
         holder.pname.setText(n);
+
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.call.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d("mobile",mobile);
+                        holder.call.setBackgroundResource(R.drawable.overlay_corner);
+                        // write logic to get phone number of client from the database of client and store it in call string
+                        String call_no = list1.get(posit).getConsultation_patient_mobile();
+                        Intent i = new Intent();
+                        i.setAction(Intent.ACTION_DIAL);
+                        i.setData(Uri.parse("tel:" + call_no));
+                        ct.startActivity(i);
+                        selectedItem.selecteditem(list1.get(posit).getConsultation_patient(),list1.get(posit).getConsultation_time());
+                    }});
+            }
+        });
     }
 
     @Override
@@ -85,33 +104,16 @@ public class UpcomingConsultationAdapter extends RecyclerView.Adapter<UpcomingCo
 
         TextView pdate,pname,ptime;
         ImageView pimg;
+        Button call;
         public UpcomingConsultationViewHolder(@NonNull View itemView) {
             super(itemView);
             pdate= itemView.findViewById(R.id.consultation_date);
             ptime=itemView.findViewById(R.id.consultation_time);
             pimg=itemView.findViewById(R.id.consultation_profile_photo);
             pname=itemView.findViewById(R.id.consultation_profile_name);
+            call = itemView.findViewById(R.id.call);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    call.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Log.d("mobile",mobile);
-                            //call.setBackgroundResource(R.drawable.overlay_corner);
-                            // write logic to get phone number of client from the database of client and store it in call string
-//                            String call_no = list1.get(getAdapterPosition()).getConsultation_patient_mobile();
-//                            Intent i = new Intent();
-//                            i.setAction(Intent.ACTION_DIAL);
-//                            i.setData(Uri.parse("tel:" + call_no));
-//                            ct.startActivity(i);
-                        }});
 
-//                    selectedItem.selecteditem(list1.get(getAdapterPosition()).getConsultation_patient(),list1.get(getAdapterPosition()).getConsultation_time());
-
-                }
-        });
     }
     }
 }

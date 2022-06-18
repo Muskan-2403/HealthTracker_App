@@ -53,7 +53,7 @@ public class ChatArea extends AppCompatActivity {
     TextView name;
     EditText message;
     ImageView profile_pic;
-    String url3 = "http://192.168.115.1/messagesSend.php";
+    String url3 = "http://192.168.185.1/messagesSend.php";
     DataFromDatabase dataFromDatabase;
     RequestQueue queue;
 
