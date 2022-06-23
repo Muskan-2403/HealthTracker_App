@@ -1,7 +1,10 @@
 package com.ultimate.infits;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,21 +45,21 @@ public class AllMessages extends Fragment {
     ImageView i1;
     List<ChatLogList> all_chats= new ArrayList<>();
     List<ChatLogList> unread_chats=new ArrayList<>();
-    String url1= "http://192.168.185.1/fetch_names_for_messages.php"; //php file to fetch all chats- name of all clients
-    String url2= "http://192.168.185.1/fetch_top_messages.php"; //php file to fetch unread chats- top message and time fetched from list obtained from url1
-  //  String url3;
-    //String url4;
+    String url1= "http://192.168.9.1/fetch_names_for_messages.php"; //php file to fetch all chats- name of all clients
+    String url2= "http://192.168.9.1/fetch_top_messages.php"; //php file to fetch unread chats- top message and time fetched from list obtained from url1
+//    String url3;
+//    String url4;
 
-  //  String unread_chats_names[];
-   // String all_chats_messages[];
-  //  String unread_chats_messages[];
+//    String unread_chats_names[];
+//    String all_chats_messages[];
+//    String unread_chats_messages[];
     String all_chats_profile[];
     String img="app/src/main/res/drawable/doctor_blue_border.png";
-  //  String unread_chats_profile[];
-   // String all_chats_time[];
-  //  String unread_chats_time[];
-    //String read_unread[];
-   // String all_chats_names;
+//    String unread_chats_profile[];
+//    String all_chats_time[];
+//    String unread_chats_time[];
+//    String read_unread[];
+//    String all_chats_names;
     String all_chats_messages;
     String all_chats_time;
     String read_unread;
@@ -123,7 +126,7 @@ public class AllMessages extends Fragment {
                             JSONObject object = jsonArray.getJSONObject(i);
                             all_chats_names.add(object.getString("clientID"));
                         }
-                        for (int j = 0; j < all_chats_names.size(); j++) {
+                        for ( int j = 0; j < all_chats_names.size(); j++) {
                             int finalJ = j;
                             StringRequest stringRequest1 = new StringRequest(Request.Method.POST, url2, response1 -> {
                                 if (!response1.equals("failure")) {
@@ -131,18 +134,19 @@ public class AllMessages extends Fragment {
                                     try {
                                         JSONArray jsonArray1 = new JSONArray(response1);
                                         if (jsonArray1.length() > 0) {
-                                            for (int i = 0; i < jsonArray1.length(); i++) {
-                                                JSONObject object = jsonArray1.getJSONObject(i);
+                                            for (int k = 0; k < jsonArray1.length(); k++) {
+                                                JSONObject object = jsonArray1.getJSONObject(k);
                                                 all_chats_messages = object.getString("message");
                                                 all_chats_time = object.getString("time");
-                                                //  all_chats_profile[i]=object.getString("profilepic");
+                                                byte[] qrimage = Base64.decode(object.getString("profilePhoto"),0);
+                                                Bitmap pic = BitmapFactory.decodeByteArray(qrimage,0,qrimage.length);
                                                 all_chats_messageby=object.getString("messageBy");
                                                 read_unread = object.getString("unread");
 
-                                                ChatLogList o12 = new ChatLogList(img, all_chats_names.get(i), all_chats_messages,all_chats_messageby, all_chats_time, read_unread);
+                                                ChatLogList o12 = new ChatLogList(pic, all_chats_names.get(finalJ), all_chats_messages,all_chats_messageby, all_chats_time, read_unread);
                                                 all_chats.add(o12);
-                                                if (read_unread == "u") {
-                                                    ChatLogList o13 = new ChatLogList(img, all_chats_names.get(i), all_chats_messages, all_chats_messageby, all_chats_time, read_unread);
+                                                if (read_unread.equals("U")) {
+                                                    ChatLogList o13 = new ChatLogList(pic, all_chats_names.get(finalJ), all_chats_messages, all_chats_messageby, all_chats_time, read_unread);
                                                     unread_chats.add(o13);
                                                 }
                                             }
@@ -164,6 +168,7 @@ public class AllMessages extends Fragment {
                                 protected Map<String, String> getParams() throws AuthFailureError {
                                     Map<String, String> data = new HashMap<>();
                                     data.put("dietitianID", DataFromDatabase.dietitianuserID);
+                                    Log.d("allmessages j",finalJ+" "+all_chats_names.get(finalJ));
                                     data.put("clientID",all_chats_names.get(finalJ));
                                     return data;
                                 }
