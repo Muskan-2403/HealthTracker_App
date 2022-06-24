@@ -36,7 +36,7 @@ public class ClientDetails extends AppCompatActivity  {
     ImageButton diet_chart_btn,chat_btn,metrics_btn,tracker_btn,health_details_btn;
     ImageView menu,clientPic;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.118.1/clientDetails.php";
+    String url = "http://192.168.9.1/clientDetails.php";
     String clientID,startdate,enddate;
     RequestQueue queue;
     @Override

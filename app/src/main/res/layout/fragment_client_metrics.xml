@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ClientMetrics">
     <ScrollView
         android:layout_width="match_parent"
@@ -11,52 +12,60 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <RadioGroup
-                android:id="@+id/toggle"
+            <androidx.cardview.widget.CardView
                 android:layout_width="300dp"
                 android:layout_height="30dp"
                 android:background="@drawable/outline"
-                android:layout_gravity="center_horizontal"
-                android:checkedButton="@+id/active_btn"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/active_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/switch_off"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_margin="1dp"
-                    android:text="Today"
-                    android:textColor="@drawable/switch_text"
-                    android:fontFamily="@font/fonts"
-                    />
-
-                <RadioButton
-                    android:id="@+id/yesterday_btn"
-                    android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="10dp"
+                android:layout_marginTop="5dp"
+                app:cardCornerRadius="10dp">
+                <RadioGroup
+                    android:id="@+id/toggle"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/switch_on"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="Yesterday"
-                    android:textColor="@drawable/switch_text"
-                    android:fontFamily="@font/fonts"/>
-                <RadioButton
-                    android:id="@+id/date_picker_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/switch_on"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="Custom date"
-                    android:textColor="@drawable/switch_text"
-                    android:fontFamily="@font/fonts"/>
-            </RadioGroup>
+                    android:checkedButton="@+id/active_btn"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/active_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/switch_off"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_margin="1dp"
+                        android:text="Today"
+                        android:textColor="@drawable/switch_text"
+                        android:fontFamily="@font/fonts"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/yesterday_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/switch_on"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Yesterday"
+                        android:textColor="@drawable/switch_text"
+                        android:fontFamily="@font/fonts"/>
+                    <RadioButton
+                        android:id="@+id/date_picker_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/switch_on"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="Custom date"
+                        android:textColor="@drawable/switch_text"
+                        android:fontFamily="@font/fonts"/>
+                </RadioGroup>
+            </androidx.cardview.widget.CardView>
+
             <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +84,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="19dp"
                             android:layout_marginLeft="42dp"
-                            android:layout_marginTop="62dp"
+                            android:layout_marginTop="61dp"
                             android:text="500 Steps"
                             android:textSize="14dp"
                             android:textColor="@color/white"
@@ -159,7 +168,8 @@
                             android:id="@+id/glassesGoal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="110dp"
+                            android:layout_gravity="end"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="93dp"
                             android:gravity="top"
                             android:text="8 Glasses"
@@ -198,7 +208,8 @@
                             android:id="@+id/Goalsleep"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="110dp"
+                            android:layout_gravity="end"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="93dp"
                             android:gravity="top"
                             android:text="8 Hours"
@@ -240,7 +251,8 @@
                             android:id="@+id/GoalWeight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="110dp"
+                            android:layout_gravity="end"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="93dp"
                             android:gravity="top"
                             android:text="60 KG"
@@ -279,7 +291,8 @@
                             android:id="@+id/GoalCalorie"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="110dp"
+                            android:layout_gravity="end"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="93dp"
                             android:gravity="top"
                             android:text="2000 kCal"

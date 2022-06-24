@@ -50,11 +50,11 @@ public class Calender extends Fragment {
     RecyclerView event_list;
     String date_to_display_trackers;
     RequestQueue queue;
-    String url = "http://192.168.118.1/CalenderAppointment.php";
+    String url = "http://192.168.9.1/CalenderAppointment.php";
     Button addevent;
-    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};
-    String[] appt_client_name={"Charlie Puth","maggie","La Lisa"};
-    String[] appt_time={"09:00 - 10:00AM","10:30 - 11:00AM","11:00-12:00PM"};
+//    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};
+//    String[] appt_client_name={"Charlie Puth","maggie","La Lisa"};
+//    String[] appt_time={"09:00 - 10:00AM","10:30 - 11:00AM","11:00-12:00PM"};
     List<EventList> obj= new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

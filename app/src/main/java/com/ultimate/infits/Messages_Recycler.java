@@ -42,7 +42,7 @@ public class Messages_Recycler extends Fragment {
 
     List<ChatMessage> msg=new ArrayList<>();
     ChatMessageAdapter ad1;
-    String url = "http://192.168.185.1/messages.php";
+    String url = "http://192.168.9.1/messages.php";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -126,7 +126,7 @@ public class Messages_Recycler extends Fragment {
                         ad1 = new ChatMessageAdapter(msg,messageby);
                         r1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 //                        r1.smoothScrollToPosition(cMessages.size()-1);
-                        r1.setAdapter(chatMessageAdapter);
+                        r1.setAdapter(ad1);
                         r1.setVisibility(View.VISIBLE);
                         p1.setVisibility(View.GONE);
                     }
@@ -146,7 +146,8 @@ public class Messages_Recycler extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> data = new HashMap<>();
                 data.put("duserID", dataFromDatabase.dietitianuserID);
-                data.put("cuserID", chat_area_client_name);
+                data.put("cuserID", dataFromDatabase.clientuserID);
+                Log.d("clientID",dataFromDatabase.clientuserID);
 
                 return data;
             }

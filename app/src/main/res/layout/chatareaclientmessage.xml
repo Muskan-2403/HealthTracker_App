@@ -11,13 +11,14 @@
 
     <TextView
         android:id="@+id/client_msg"
-        android:layout_width="0dp"
+        android:layout_width="295dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_background"
         android:fontFamily="@font/fonts"
         android:lineHeight="16sp"
         android:paddingHorizontal="21dp"
         android:paddingVertical="9dp"
+        android:text="message"
         android:textAlignment="textStart"
         android:textColor="#535353"
         android:textSize="14sp"
@@ -32,16 +33,15 @@
 
     <TextView
         android:id="@+id/client_msg_time"
-        android:layout_width="49dp"
+        android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:layout_gravity="end"
+        android:gravity="end"
         android:fontFamily="@font/fonts"
         android:text="13:00"
         android:textSize="16sp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
-        app:layout_constraintStart_toEndOf="@+id/client_msg"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout

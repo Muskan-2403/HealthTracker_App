@@ -16,20 +16,20 @@ public class AllClientsForMessage extends AppCompatActivity {
         setContentView(R.layout.activity_all_clients_for_message);
         ImageView search= findViewById(R.id.search_client_icon_message);
         EditText searchtext= findViewById(R.id.search_bar_text_message);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (searchtext.getVisibility() == v.VISIBLE) {
-                    String client_search_name = searchtext.getText().toString();
-                    searchtext.setVisibility(v.INVISIBLE);
-                    if(!(client_search_name.equals("")) && !(client_search_name.equals(" "))){
-                        Toast.makeText(getApplicationContext(),"Searching for the client "+client_search_name,Toast.LENGTH_SHORT).show();
-                        //query database for the searched username
-                    }
-                }
-                else
-                    searchtext.setVisibility(v.VISIBLE);
-            }
-        });
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (searchtext.getVisibility() == v.VISIBLE) {
+//                    String client_search_name = searchtext.getText().toString();
+//                    searchtext.setVisibility(v.INVISIBLE);
+//                    if(!(client_search_name.equals("")) && !(client_search_name.equals(" "))){
+//                        Toast.makeText(getApplicationContext(),"Searching for the client "+client_search_name,Toast.LENGTH_SHORT).show();
+//                        //query database for the searched username
+//                    }
+//                }
+//                else
+//                    searchtext.setVisibility(v.VISIBLE);
+//            }
+//        });
     }
 }

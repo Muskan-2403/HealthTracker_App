@@ -30,7 +30,7 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
     Context con;
     List<ChatLogList> l;
     RequestQueue queue;
-    String url2 = "http://192.168.185.1/messages2.php";
+    String url2 = "http://192.168.9.1/messages2.php";
     DataFromDatabase dataFromDatabase;
 
     ChatLogAdapter(Context con,List<ChatLogList> l){
@@ -48,6 +48,8 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
 
     @Override
     public void onBindViewHolder(@NonNull ChatLogHolder holder, int position) {
+        ChatLogList  pos= l.get(position);
+        holder.profile_pic.setImageBitmap(pos.getProfile_pic());
         if ((l.get(position).getRead() == "u") && (l.get(position).getMsg_by().equals("client"))){
             holder.unread.setVisibility(View.VISIBLE);
         }

@@ -11,16 +11,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fonts"
-        android:text="You have not \nCreated a diet chart yet"
+        android:text="You have not \n Created a diet chart yet"
         android:textAlignment="center"
         android:textColor=" #FFA381"
         android:textSize="24sp"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="100dp" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
 
     <Button
         android:id="@+id/start_diet_plan"
         android:layout_width="300dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="170dp"

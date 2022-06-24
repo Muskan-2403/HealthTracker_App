@@ -108,8 +108,8 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:background="@drawable/google"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,8 +121,8 @@
 
     <ImageButton
         android:id="@+id/imageButton1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:background="@drawable/twitter"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,8 +134,8 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="60dp"
-        android:layout_height="65dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:background="@drawable/facebook"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"

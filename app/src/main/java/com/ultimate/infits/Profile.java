@@ -1,5 +1,6 @@
 package com.ultimate.infits;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +22,10 @@ import java.util.List;
  */
 public class Profile extends Fragment {
 
-    TextView name,qualification,location;
+    TextView name,qualification,location,aboutMe;
     DataFromDatabase dataFromDatabase;
     RecyclerView recyclerView1;
+    View pic;
     String reviewer_name[]={"Martha Finch", "Martha Finch","Martha Finch","Martha Finch"};
     String reviwer_ratings[]={"4.8","4.8","4.8","4.8"};
     String reviwer_review[]={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporLorem ipsum dolor sit amet... ",
@@ -85,10 +87,14 @@ public class Profile extends Fragment {
         View v= inflater.inflate(R.layout.fragment_profile, container, false);
         name = v.findViewById(R.id.dietician_profile_name);
         qualification = v.findViewById(R.id.qualificationProfile);
+        pic=v.findViewById(R.id.dietician_profile_image);
         location = v.findViewById(R.id.dieitician_location);
         name.setText(dataFromDatabase.name);
         qualification.setText(dataFromDatabase.qualification);
         location.setText(dataFromDatabase.location);
+        aboutMe=v.findViewById(R.id.dieitician_about_me);
+        aboutMe.setText("About me: \n"+dataFromDatabase.about_me);
+
         RecyclerView r1=v.findViewById(R.id.dietician_reviews);
         for (int i=0;i<reviewer_image.length;i++)
         {

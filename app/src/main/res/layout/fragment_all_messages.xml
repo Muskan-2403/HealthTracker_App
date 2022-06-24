@@ -11,50 +11,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <RadioGroup
-            android:id="@+id/toggle"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="25dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="140dp"
+            android:layout_marginLeft="10dp"
+            app:cardCornerRadius="10dp"
+            android:layout_margin="10dp"
             android:background="@drawable/outline"
-            android:checkedButton="@+id/all_chat_btn"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
+            <RadioGroup
+                android:id="@+id/toggle"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:background="@drawable/outline"
+                android:checkedButton="@+id/active_btn"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/all_chat_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/switch_off"
-                android:button="@null"
-                android:fontFamily="@font/fonts"
-                android:gravity="center"
-                android:minWidth="48dp"
-                android:padding="10dp"
-                android:text="@string/off"
-                android:textColor="@drawable/switch_text" />
+                <RadioButton
+                    android:id="@+id/all_chat_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/switch_off"
+                    android:button="@null"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/fonts"
+                    android:gravity="center"
+                    android:text="@string/off"
+                    android:textColor="@drawable/switch_text"
+                    tools:ignore="TouchTargetSizeCheck" />
 
-            <RadioButton
-                android:id="@+id/unread_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/switch_on"
-                android:button="@null"
-                android:fontFamily="@font/fonts"
-                android:gravity="center"
-                android:minWidth="48dp"
-                android:padding="10dp"
-                android:text="Unread chats"
-                android:textColor="@drawable/switch_text" />
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/unread_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_on"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Unread Chats"
+                    android:textColor="@drawable/switch_text"
+                    android:fontFamily="@font/fonts" />
+            </RadioGroup>
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"

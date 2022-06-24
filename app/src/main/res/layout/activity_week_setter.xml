@@ -17,6 +17,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:id="@+id/calendar_back"
+            android:scaleType="center"
             android:src="@drawable/ic_baseline_arrow_back_black"/>
 
         <TextView
@@ -37,14 +38,15 @@
         android:id="@+id/days_group">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="90dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="2dp"
             app:cardCornerRadius="50dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
                 android:id="@+id/sunday"
                 android:clickable="true">
                 <TextView
@@ -74,15 +76,17 @@
 
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="90dp"
-            android:padding="5dp"
             android:layout_marginLeft="2dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
             app:cardCornerRadius="50dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
                 android:id="@+id/monday"
                 android:clickable="true">
                 <TextView
@@ -111,14 +115,16 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="90dp"
             android:layout_marginLeft="2dp"
+            android:padding="5dp"
             app:cardCornerRadius="50dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
                 android:id="@+id/tuesday"
                 android:clickable="true">
                 <TextView
@@ -147,14 +153,16 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="90dp"
             android:layout_marginLeft="2dp"
+            android:padding="5dp"
             app:cardCornerRadius="50dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
                 android:id="@+id/wednesday"
                 android:clickable="true">
                 <TextView
@@ -183,14 +191,16 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="90dp"
             android:layout_marginLeft="2dp"
+            android:padding="5dp"
             app:cardCornerRadius="50dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
                 android:id="@+id/thursday"
                 android:clickable="true">
 
@@ -220,14 +230,16 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="90dp"
             android:layout_marginLeft="2dp"
+            android:padding="5dp"
             app:cardCornerRadius="50dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
                 android:id="@+id/friday"
                 android:clickable="true">
                 <TextView
@@ -258,15 +270,17 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="90dp"
-            android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:padding="5dp"
             app:cardCornerRadius="50dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
                 android:id="@+id/saturday"
                 android:clickable="true">
 
@@ -361,8 +375,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date"
-                    android:layout_marginTop="40dp"
+                    android:text="Time"
+                    android:layout_marginTop="0dp"
                     android:layout_marginLeft="10dp"
                     android:textColor="#676767"
                     android:fontFamily="@font/fonts"
@@ -560,17 +574,23 @@
                         android:layout_height="50dp"
                         android:lines="3"/>
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="SAVE"
-                        android:layout_marginTop="20dp"
-                        android:textSize="22sp"
-                        android:textAllCaps="false"
-                        android:layout_gravity="center"
-                        android:background="#3498DB"
-                        android:textColor="#FFFFFF"
-                        android:id="@+id/new_appointment_save"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="10dp"
+                android:layout_gravity="center">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SAVE"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:background="@color/blue"
+                    android:layout_gravity="center"
+                    android:id="@+id/new_appointment_save"/>
+            </androidx.cardview.widget.CardView>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"/>

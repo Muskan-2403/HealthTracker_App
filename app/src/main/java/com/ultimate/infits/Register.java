@@ -38,8 +38,8 @@ public class Register extends AppCompatActivity {
     TextView login,terms;
     RadioButton gender_male,gender_female;
 
-    String url = "http://192.168.118.1/register_dietian.php";
-    String url2 = "http://192.168.118.1/usernameCheck.php";
+    String url = "http://192.168.9.1/register_dietian.php";
+    String url2 = "http://192.168.9.1/usernameCheck.php";
 
 
     RequestQueue queue;

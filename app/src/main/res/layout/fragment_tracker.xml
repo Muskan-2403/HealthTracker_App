@@ -10,54 +10,59 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical">
-        <RadioGroup
-            android:id="@+id/toggle"
+        <androidx.cardview.widget.CardView
             android:layout_width="300dp"
             android:layout_height="30dp"
-            android:gravity="center"
             android:background="@drawable/outline"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="-10dp"
-            android:checkedButton="@+id/active_btn"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/active_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/switch_off"
-                android:button="@null"
-                android:gravity="center"
-                android:layout_margin="1dp"
-                android:text="Today"
-                android:textColor="@drawable/switch_text"
-                android:fontFamily="@font/fonts"
-                />
-
-            <RadioButton
-                android:id="@+id/yesterday_btn"
-                android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="10dp">
+            <RadioGroup
+                android:id="@+id/toggle"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/switch_on"
-                android:button="@null"
-                android:gravity="center"
-                android:text="Yesterday"
-                android:textColor="@drawable/switch_text"
-                android:fontFamily="@font/fonts"/>
-            <RadioButton
-                android:id="@+id/date_picker_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/switch_on"
-                android:button="@null"
-                android:gravity="center"
-                android:text="Custom date"
-                android:textColor="@drawable/switch_text"
-                android:fontFamily="@font/fonts"/>
-        </RadioGroup>
+                android:checkedButton="@+id/active_btn"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/active_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_off"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:layout_margin="1dp"
+                    android:text="Today"
+                    android:textColor="@drawable/switch_text"
+                    android:fontFamily="@font/fonts"
+                    />
+
+                <RadioButton
+                    android:id="@+id/yesterday_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_on"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Yesterday"
+                    android:textColor="@drawable/switch_text"
+                    android:fontFamily="@font/fonts"/>
+                <RadioButton
+                    android:id="@+id/date_picker_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_on"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Custom date"
+                    android:textColor="@drawable/switch_text"
+                    android:fontFamily="@font/fonts"/>
+            </RadioGroup>
+        </androidx.cardview.widget.CardView>
 
 
         <androidx.cardview.widget.CardView

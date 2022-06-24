@@ -47,13 +47,13 @@ public class DashboardFragment extends Fragment implements UpcomingConsultationA
 
     TextView name;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.118.1/upcomingConsultations.php";
-    String url2 = "http://192.168.118.1/dashboard2.php";
+    String url = "http://192.168.9.1/upcomingConsultations.php";
+    String url2 = "http://192.168.9.1/dashboard2.php";
     RequestQueue queue;
     RecyclerView recyclerView1, recyclerView2, recyclerview3;
 //    String consultation_date[]={"Dec 07", "Dec 07","Dec 07","Dec 07"};
 //    String consultation_time[]={"05:00pm","05:00pm","05:00pm","05:00pm"};
-    String consultation_patient[]={"Michael Simpson","Michael Simpson","Michael Simpson","Michael Simpson"};
+    String consultation_patient[]={"John Wayne","John Wayne","John Wayne","John Wayne"};
     String consultation_patient_image[]={"app/src/main/res/drawable/doctor_blue_border.png"
             ,"app/src/main/res/drawable/doctor_blue_border.png", "app/src/main/res/drawable/doctor_blue_border.png",
             "app/src/main/res/drawable/doctor_blue_border.png","app/src/main/res/drawable/doctor_blue_border.png"
