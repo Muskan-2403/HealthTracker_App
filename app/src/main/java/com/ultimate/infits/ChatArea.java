@@ -251,6 +251,32 @@ public class ChatArea extends AppCompatActivity {
         String typed_message = message.getEditableText().toString().trim();
         message.setText(null);
         Log.d("message",typed_message);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url3, response -> {
+            if (response.equals("success")) {
+                Log.d("ChatArea3", "success");
+                Log.d("response ChatArea3", response);
+            } else if (response.equals("failure")) {
+                Log.d("ChatArea3", "failure");
+                Toast.makeText(getApplicationContext(), "unable to send message!! try again", Toast.LENGTH_SHORT).show();
+            }
+        }, error -> {
+            Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                data.put("dieticianID", dataFromDatabase.dietitianuserID);
+                data.put("clientID", dataFromDatabase.clientuserID);
+                data.put("message", typed_message);
+                return data;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+
+        Log.d("tag1","tag1");
         String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
         ChatMessage obj = new ChatMessage(DataFromDatabase.dietitianuserID,dataFromDatabase.clientuserID , typed_message, String.valueOf(currentTime.substring(0,5)), "dietitian", "U");
         msg.add(obj);
@@ -259,7 +285,7 @@ public class ChatArea extends AppCompatActivity {
 //                        r1.smoothScrollToPosition(cMessages.size()-1);
         r1.setAdapter(ad1);
         r1.setVisibility(View.VISIBLE);
-
+        Log.d("tag2","tag2");
 
 //        attemptSend();
 
@@ -268,29 +294,7 @@ public class ChatArea extends AppCompatActivity {
 
 //        if ((typed_message != "") || (typed_message != " ") || (typed_message != null)) {
 //            queue = Volley.newRequestQueue(getApplicationContext());
-//            StringRequest stringRequest3 = new StringRequest(Request.Method.POST, url3, response -> {
-//                if (response.equals("success")) {
-//                    Log.d("ChatArea3", "success");
-//                    Log.d("response ChatArea3", response);
-//                } else if (response.equals("failure")) {
-//                    Log.d("ChatArea3", "failure");
-//                    Toast.makeText(getApplicationContext(), "unable to send message!! try again", Toast.LENGTH_SHORT).show();
-//                }
-//            }, error -> {
-//                Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
-//            }) {
-//                @Nullable
-//                @Override
-//                protected Map<String, String> getParams() throws AuthFailureError {
-//                    Map<String, String> data = new HashMap<>();
-//                    data.put("duserID", dataFromDatabase.dietitianuserID);
-//                    data.put("cuserID", chat_area_client_name);
-//                    data.put("message", typed_message);
-//                    return data;
-//                }
-//            };
-//            RequestQueue requestQueue3 = Volley.newRequestQueue(getApplicationContext());
-//            requestQueue3.add(stringRequest3);
+
 //        }
     }
 
