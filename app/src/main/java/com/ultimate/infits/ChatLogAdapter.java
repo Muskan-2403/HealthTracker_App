@@ -80,7 +80,7 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> data = new HashMap<>();
-                        data.put("duserID", dataFromDatabase.clientuserID);
+                        data.put("duserID", dataFromDatabase.dietitianuserID);
                         data.put("cuserID",dataFromDatabase.clientuserID);
                         return data;
                     }
@@ -90,6 +90,7 @@ public class ChatLogAdapter extends RecyclerView.Adapter<ChatLogAdapter.ChatLogH
                 holder.unread.setVisibility(View.GONE);
                 l.get(position).setRead("r");
                 Intent i=new Intent(con.getApplicationContext(), ChatArea.class);
+                DataFromDatabase.clientuserID=l.get(position).getClient_name();
                 i.putExtra("client_name",l.get(position).getClient_name());
                 con.startActivity(i);
             });

@@ -28,7 +28,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +62,7 @@ public class AllMessages extends Fragment {
 //    String unread_chats_time[];
 //    String read_unread[];
 //    String all_chats_names;
+    String month,year,date;
     String all_chats_messages;
     String all_chats_time;
     String read_unread;
@@ -111,6 +114,17 @@ public class AllMessages extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ArrayList<String> all_chats_names=new ArrayList<>();
+        Calendar cal = Calendar.getInstance();
+        Integer monthint = cal.get(Calendar.MONTH)+1;
+        month = String.valueOf(cal.get(Calendar.MONTH)+1);
+        if(monthint<10){
+            month = String.valueOf(0)+month;
+        }
+        year = String.valueOf(cal.get(Calendar.YEAR));
+        date = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+        Integer yearint = cal.get(Calendar.YEAR);
+        Integer dateint = cal.get(Calendar.DAY_OF_MONTH);
+        Log.d("date",String.valueOf(date)+" "+String.valueOf(month)+" "+String.valueOf(year));
         View v= inflater.inflate(R.layout.fragment_all_messages, container, false);
         all=v.findViewById(R.id.all_chat_btn);
         unread=v.findViewById(R.id.unread_btn);
@@ -137,7 +151,15 @@ public class AllMessages extends Fragment {
                                             for (int k = 0; k < jsonArray1.length(); k++) {
                                                 JSONObject object = jsonArray1.getJSONObject(k);
                                                 all_chats_messages = object.getString("message");
-                                                all_chats_time = object.getString("time");
+                                                String resyear = object.getString("time").substring(0,4);
+                                                String resmonth = object.getString("time").substring(5,7);
+                                                String resdate = object.getString("time").substring(8,10);
+                                                Log.d("date response",resdate+" "+resmonth+" "+resyear);
+                                                if (resyear.equals(year) && resmonth.equals(month) && resdate.equals(date)){
+                                                    all_chats_time = object.getString("time").substring(11,16);
+                                                }else{
+                                                    all_chats_time = resdate+"/"+resmonth;
+                                                }
                                                 byte[] qrimage = Base64.decode(object.getString("profilePhoto"),0);
                                                 Bitmap pic = BitmapFactory.decodeByteArray(qrimage,0,qrimage.length);
                                                 all_chats_messageby=object.getString("messageBy");

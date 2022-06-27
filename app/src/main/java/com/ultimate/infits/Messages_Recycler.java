@@ -118,7 +118,7 @@ public class Messages_Recycler extends Fragment {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             String message = jsonObject.getString("message");
                             messageby = jsonObject.getString("messageBy");
-                            String time = jsonObject.getString("time");
+                            String time = jsonObject.getString("time").substring(11,16);
                             String readUnread = jsonObject.getString("read");
                             ChatMessage obj = new ChatMessage("client_name", DataFromDatabase.dietitianuserID, message, time, messageby, readUnread);
                             msg.add(obj);
@@ -148,7 +148,6 @@ public class Messages_Recycler extends Fragment {
                 data.put("duserID", dataFromDatabase.dietitianuserID);
                 data.put("cuserID", dataFromDatabase.clientuserID);
                 Log.d("clientID",dataFromDatabase.clientuserID);
-
                 return data;
             }
         };

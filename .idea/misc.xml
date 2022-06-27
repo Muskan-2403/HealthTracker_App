@@ -253,7 +253,7 @@
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_all_clients_for_message.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_chat_area.xml" value="0.2" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client.xml" value="0.19519927536231885" />
-        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client_details.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client_details.xml" value="0.4184652278177458" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_client_list_search.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_congratulate.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/activity_forgot_password.xml" value="0.4" />
@@ -303,7 +303,7 @@
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_chatting_area.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_client_health_details.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_client_list.xml" value="0.5409582689335394" />
-        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_client_metrics.xml" value="0.4701348747591522" />
+        <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_client_metrics.xml" value="0.136" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_congratulations.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_dashboard.xml" value="0.264" />
         <entry key="..\:/Users/muska/AndroidStudioProjects/Infit/app/src/main/res/layout/fragment_diet_chart.xml" value="0.19519927536231885" />

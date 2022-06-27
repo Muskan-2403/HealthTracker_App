@@ -34,17 +34,52 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 
 public class ChatArea extends AppCompatActivity {
 
 
+    final String TAG = "MessageApp";
+
     public ChatArea(){
 
     }
+
+    private final Emitter.Listener onNewMessage = args -> runOnUiThread(() -> {
+        Log.d(TAG,"username");
+        JSONObject data = (JSONObject) args[0];
+        String username;
+        String message;
+        try {
+            username = data.getString("username");
+            message = data.getString("message");
+            Log.d(TAG,username);
+            Log.d(TAG,message);
+        } catch (JSONException e) {
+            Log.d(TAG,"username");
+        }
+    });
+
+    private Socket mSocket;
+    {
+        try {
+            mSocket = IO.socket("http://192.168.9.1:8080");
+        } catch (URISyntaxException e) {}
+    }
+    
+    
     public ChatArea(ActivityChatAreaBinding binding) {
         this.binding = binding;
     }
@@ -53,18 +88,25 @@ public class ChatArea extends AppCompatActivity {
     TextView name;
     EditText message;
     ImageView profile_pic;
+    String url = "http://192.168.9.1/messages.php";
     String url3 = "http://192.168.9.1/messagesSend.php";
     DataFromDatabase dataFromDatabase;
     RequestQueue queue;
+    List<ChatMessage> msg=new ArrayList<>();
+    ChatMessageAdapter ad1;
+    RecyclerView r1;
+    Button send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         binding = ActivityChatAreaBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_chat_area);
+        setContentView(R.layout.activity_chat_area);
         setContentView(binding.getRoot());
 
+        r1=findViewById(R.id.FrameContainerMessages);
 
+        send = findViewById(R.id.send_message_btn);
         chat_area_client_name = getIntent().getExtras().getString("client_name");
         name = findViewById(R.id.chat_area_client_name);
         name.setText(chat_area_client_name);
@@ -75,6 +117,7 @@ public class ChatArea extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendMessage();
+                attemptSend(v);
             }
         });
         ImageView i12 = findViewById(R.id.attach_file);
@@ -85,9 +128,68 @@ public class ChatArea extends AppCompatActivity {
             }
         });
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainerMessages, new Messages_Recycler()).commit();
+        mSocket.on(Socket.EVENT_CONNECT,onConnect);
+        mSocket.on("chat-message",onReceived);
+        mSocket.connect();
+        mSocket.emit("new-user",DataFromDatabase.dietitianuserID);
+        mSocket.emit("new-receiver",dataFromDatabase.clientuserID);
 
+//        getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainerMessages, new Messages_Recycler()).commit();
+
+
+//        r1.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+////                        r1.smoothScrollToPosition(cMessages.size()-1);
+//        r1.setAdapter(setMessages());
+//        r1.setVisibility(View.VISIBLE);
         //chatMessages=new ArrayList<>();
+
+        Log.d("ChatArea", "before");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            if (!response.equals("failure")) {
+                Log.d("ChatArea", "success");
+                Log.d("response ChatArea", response);
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    String messageby = null;
+                    if (jsonArray.length() > 0) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String message = jsonObject.getString("message");
+                            messageby = jsonObject.getString("messageBy");
+                            String time = jsonObject.getString("time").substring(11,16);
+                            String readUnread = jsonObject.getString("read");
+                            ChatMessage obj = new ChatMessage(DataFromDatabase.dietitianuserID,dataFromDatabase.clientuserID , message, time, messageby, readUnread);
+                            msg.add(obj);
+                        }
+                        ad1 = new ChatMessageAdapter(msg,messageby);
+                        r1.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+//                        r1.smoothScrollToPosition(cMessages.size()-1);
+                        r1.setAdapter(ad1);
+                        r1.setVisibility(View.VISIBLE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            } else if (response.equals("failure")) {
+                Log.d("ChatArea", "failure");
+                Toast.makeText(getApplicationContext(), "ChatArea failed", Toast.LENGTH_SHORT).show();
+            }
+        }, error -> {
+            Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
+        }) {
+            @org.jetbrains.annotations.Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                data.put("duserID", dataFromDatabase.dietitianuserID);
+                data.put("cuserID", dataFromDatabase.clientuserID);
+                Log.d("clientID",dataFromDatabase.clientuserID);
+                return data;
+            }
+        };
+        Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
+        Log.d("ChatArea", "at end");
 
 
     }
@@ -110,11 +212,11 @@ public class ChatArea extends AppCompatActivity {
 //                            String message = jsonObject.getString("message");
 //                            String messageby = jsonObject.getString("messageBy");
 //                            String time = jsonObject.getString("time");
-//                            String readUnread = jsonObject.getString("read/unread");
-////                            ChatMessage obj = new ChatMessage("client_name", DataFromDatabase.dietitianuserID, message, time, messageby, readUnread);
-////                            msg.add(obj);
+//                            String readUnread = jsonObject.getString("read");
+//                            ChatMessage obj = new ChatMessage("client_name", DataFromDatabase.dietitianuserID, message, time, messageby, readUnread);
+//                            msg.add(obj);
 //                        }
-////                        ad1 = new ChatMessageAdapter(msg, "client_name");
+//                        ad1 = new ChatMessageAdapter(msg, "client_name");
 //                    }
 //                } catch (JSONException e) {
 //                    e.printStackTrace();
@@ -133,7 +235,7 @@ public class ChatArea extends AppCompatActivity {
 //            @Override
 //            protected Map<String, String> getParams() throws AuthFailureError {
 //                Map<String, String> data = new HashMap<>();
-//                data.put("duserID", dataFromDatabase.clientuserID);
+//                data.put("duserID", dataFromDatabase.dietitianuserID);
 //                data.put("cuserID", chat_area_client_name);
 //
 //                return data;
@@ -148,6 +250,21 @@ public class ChatArea extends AppCompatActivity {
         //insert to db
         String typed_message = message.getEditableText().toString().trim();
         message.setText(null);
+        Log.d("message",typed_message);
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        ChatMessage obj = new ChatMessage(DataFromDatabase.dietitianuserID,dataFromDatabase.clientuserID , typed_message, String.valueOf(currentTime.substring(0,5)), "dietitian", "U");
+        msg.add(obj);
+        ad1 = new ChatMessageAdapter(msg,"dietitian");
+        r1.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+//                        r1.smoothScrollToPosition(cMessages.size()-1);
+        r1.setAdapter(ad1);
+        r1.setVisibility(View.VISIBLE);
+
+
+//        attemptSend();
+
+
+
 
 //        if ((typed_message != "") || (typed_message != " ") || (typed_message != null)) {
 //            queue = Volley.newRequestQueue(getApplicationContext());
@@ -176,4 +293,61 @@ public class ChatArea extends AppCompatActivity {
 //            requestQueue3.add(stringRequest3);
 //        }
     }
+
+    public void attemptSend(View view) {
+        String typed_message = message.getEditableText().toString().trim();
+//        message.setText("");
+
+//        Log.d(TAG,message);
+        mSocket.emit("new message", typed_message);
+    }
+
+    private Emitter.Listener onConnect = new Emitter.Listener() {
+        @Override
+        public void call(Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    };
+
+    private Emitter.Listener onReceived = new Emitter.Listener() {
+        @Override
+        public void call(Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    JSONObject data = (JSONObject) args[0];
+                    String message,sender,receiver;
+                    try{
+                        sender = data.getString("sender");
+                        receiver = data.getString("receiver");
+                        message = data.getString("message");
+                        Log.d("response", sender+" "+message);
+                        Toast.makeText(getApplicationContext(),sender+" "+message,Toast.LENGTH_LONG).show();
+                        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+                        ChatMessage obj=new ChatMessage(sender,receiver, message, String.valueOf(currentTime.substring(0,5)), "dietitian", "U");
+                        if(sender.equals(DataFromDatabase.dietitianuserID)&&receiver.equals(dataFromDatabase.clientuserID)){
+                            obj = new ChatMessage(sender,receiver, message, String.valueOf(currentTime.substring(0,5)), "dietitian", "U");
+                        }else if (receiver.equals(DataFromDatabase.dietitianuserID) && sender.equals(dataFromDatabase.clientuserID)){
+                            obj = new ChatMessage(sender,receiver, message, String.valueOf(currentTime.substring(0,5)), "client", "U");
+                        }
+                        msg.add(obj);
+                        ad1 = new ChatMessageAdapter(msg,"dietitian");
+                        r1.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+//                        r1.smoothScrollToPosition(cMessages.size()-1);
+                        r1.setAdapter(ad1);
+                        r1.setVisibility(View.VISIBLE);
+                    }catch (Exception e){
+                        Log.d("exception", String.valueOf(e));
+                    }
+                    Log.d("args", String.valueOf(args[0]));
+//                    Toast.makeText(getApplicationContext(), "new", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    };
 }

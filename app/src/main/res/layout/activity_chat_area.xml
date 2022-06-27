@@ -55,7 +55,7 @@
                 android:src="@drawable/more" />
         </androidx.cardview.widget.CardView>
 
-            <androidx.fragment.app.FragmentContainerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/FrameContainerMessages"
                 android:layout_width="match_parent"
                 android:layout_height="495dp"
