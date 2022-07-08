@@ -117,7 +117,7 @@ public class ChatArea extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendMessage();
-                attemptSend(v);
+                attemptSend();
             }
         });
         ImageView i12 = findViewById(R.id.attach_file);
@@ -249,7 +249,7 @@ public class ChatArea extends AppCompatActivity {
     private final void sendMessage() {
         //insert to db
         String typed_message = message.getEditableText().toString().trim();
-        message.setText(null);
+//        message.setText(null);
         Log.d("message",typed_message);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url3, response -> {
@@ -298,7 +298,7 @@ public class ChatArea extends AppCompatActivity {
 //        }
     }
 
-    public void attemptSend(View view) {
+    public void attemptSend() {
         String typed_message = message.getEditableText().toString().trim();
 //        message.setText("");
 
@@ -334,7 +334,7 @@ public class ChatArea extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),sender+" "+message,Toast.LENGTH_LONG).show();
                         String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                         ChatMessage obj=new ChatMessage(sender,receiver, message, String.valueOf(currentTime.substring(0,5)), "dietitian", "U");
-                        if(sender.equals(DataFromDatabase.dietitianuserID)&&receiver.equals(dataFromDatabase.clientuserID)){
+                        if(sender.equals(DataFromDatabase.dietitianuserID) && receiver.equals(dataFromDatabase.clientuserID)){
                             obj = new ChatMessage(sender,receiver, message, String.valueOf(currentTime.substring(0,5)), "dietitian", "U");
                         }else if (receiver.equals(DataFromDatabase.dietitianuserID) && sender.equals(dataFromDatabase.clientuserID)){
                             obj = new ChatMessage(sender,receiver, message, String.valueOf(currentTime.substring(0,5)), "client", "U");

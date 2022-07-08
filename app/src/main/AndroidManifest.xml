@@ -18,6 +18,15 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".food_details"
+            android:exported="false" />
+        <activity
+            android:name=".FoodDetails"
+            android:exported="false" />
+        <activity
+            android:name=".Recipies"
+            android:exported="false" />
+        <activity
             android:name=".AllClientsForMessage"
             android:exported="false" />
         <activity
@@ -28,7 +37,7 @@
             android:exported="false" />
         <activity
             android:name=".AcceptRejectClients"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Congratulate"
             android:exported="false" />
@@ -47,18 +56,26 @@
         <activity
             android:name=".WelcomePage"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".LoginScreen"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".TermsAndConditions"
             android:exported="false" />

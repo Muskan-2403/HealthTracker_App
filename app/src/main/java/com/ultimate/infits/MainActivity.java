@@ -113,8 +113,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.accept_reject_List:
-                startActivity(new Intent(getApplicationContext(),AcceptRejectClients.class));
+            case R.id.recepies:
+                startActivity(new Intent(getApplicationContext(),Recipies.class));
                 draw.closeDrawer(GravityCompat.START);
 
             case R.id.dashboard:
