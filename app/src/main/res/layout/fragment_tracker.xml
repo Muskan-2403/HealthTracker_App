@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TrackerFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/outline"
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="10dp">
+            <RadioGroup
+                android:id="@+id/toggle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:checkedButton="@+id/active_btn"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/active_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_off"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:layout_margin="1dp"
+                    android:text="Today"
+                    android:textColor="@drawable/switch_text"
+                    android:fontFamily="@font/fonts"
+                    />
+
+                <RadioButton
+                    android:id="@+id/yesterday_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_on"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Yesterday"
+                    android:textColor="@drawable/switch_text"
+                    android:fontFamily="@font/fonts"/>
+                <RadioButton
+                    android:id="@+id/date_picker_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_on"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Custom date"
+                    android:textColor="@drawable/switch_text"
+                    android:fontFamily="@font/fonts"/>
+            </RadioGroup>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="368dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="
+#76A5FF"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/diet_chart_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="15dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</FrameLayout>

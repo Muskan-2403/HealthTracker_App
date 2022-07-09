@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ClientHealthDetails">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:contentPadding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Client Health Form :"
+            android:fontFamily="@font/fonts"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="https://forms.gle/qNjdAmgKeSAb9Xyz5"
+            android:linksClickable="true"
+            android:fontFamily="@font/montserrat"
+            android:textSize="15sp"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/blue"/>
+
+        <TextView
+            android:text="Client Documents"
+            android:layout_marginTop="80dp"
+            android:textColor="@color/black"
+            style="@style/repeat_overlay_check" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:textSize="18sp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/sort"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"/>
+
+        <TextView
+            android:text="Document Name"
+            android:layout_marginTop="110dp"
+            android:textColor="@color/black"
+            style="@style/repeat_overlay_check" />
+        <TextView
+            android:text="Upload Date"
+            android:layout_marginTop="110dp"
+            android:layout_marginStart="130dp"
+            android:textColor="@color/black"
+            style="@style/repeat_overlay_check" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/files_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/add_fab"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"/>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
