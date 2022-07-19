@@ -4,7 +4,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -33,28 +32,10 @@ public class LoginScreen extends AppCompatActivity {
     TextView reg, fpass;
     Button login;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.9.1/login_dietian.php";
+    String url = "http://192.168.158.1/login_dietian.php";
     String userID;
-    SharedPreferences sharedPreferences;
-    private static final String SP ="infitsPref";
-    private static final String SPUserID ="";
-    private static final String SPpassword ="";
-    private static final String SPName ="";
-    private static final String SPqual ="";
-    private static final String SPemail ="";
-    private static final String SPmobile ="";
-    private static final String SPprofilepic ="";
-    private static final String SPlocation ="";
-    private static final String SPage ="";
-    private static final String SPgender ="";
-    private static final String SPaboutme ="";
-    private static final String SPexp ="";
-
-
     String passwordStr;
     RequestQueue queue;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,14 +44,6 @@ public class LoginScreen extends AppCompatActivity {
         reg = (TextView) findViewById(R.id.reg);
         fpass = (TextView) findViewById(R.id.fpass);
         login = (Button) findViewById(R.id.logbtn);
-
-        sharedPreferences = getSharedPreferences(SP,MODE_PRIVATE);
-        String SPuser = sharedPreferences.getString(SP,null);
-//        Log.d("SharedPref",SPuser.toString());
-        if (SPuser!=null){
-            Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginScreen.this,MainActivity.class));
-        }
 
         queue = Volley.newRequestQueue(this);
         login.setOnClickListener(v->{
@@ -108,21 +81,6 @@ public class LoginScreen extends AppCompatActivity {
                         DataFromDatabase.about_me = object.getString("about_me");
                         DataFromDatabase.experience = object.getString("experience");
                         Log.d("Login Screen","Dietician user id = "+dataFromDatabase.dietitianuserID);
-
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString(SPUserID,username.getEditText().toString());
-                        editor.putString(SPpassword,password.getEditText().toString());
-                        editor.putString(SPName,dataFromDatabase.name);
-                        editor.putString(SPqual,dataFromDatabase.qualification);
-                        editor.putString(SPemail,dataFromDatabase.email);
-                        editor.putString(SPmobile,dataFromDatabase.mobile);
-                        editor.putString(SPprofilepic,dataFromDatabase.profilePhoto);
-                        editor.putString(SPlocation,dataFromDatabase.location);
-                        editor.putString(SPage,dataFromDatabase.age);
-                        editor.putString(SPgender,dataFromDatabase.gender);
-                        editor.putString(SPaboutme,dataFromDatabase.about_me);
-                        editor.putString(SPexp,dataFromDatabase.experience);
-                        editor.apply();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

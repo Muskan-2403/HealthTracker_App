@@ -10,58 +10,65 @@
         android:id="@+id/menu_icon_action2"
         android:layout_width="30dp"
         android:layout_height="40dp"
-        android:src="@drawable/navimg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
+        android:src="@drawable/ic_baseline_arrow_back_black"
+        app:layout_constraintBottom_toBottomOf="@+id/recepies"
+        app:layout_constraintEnd_toStartOf="@+id/recepies"
+        app:layout_constraintHorizontal_bias="0.22"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintTop_toTopOf="@+id/recepies" />
 
     <TextView
         android:id="@+id/recepies"
-        android:layout_width="212dp"
-        android:layout_height="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/fonts"
+        android:gravity="center_vertical"
         android:text="Recepies"
         android:textColor="#000000"
-        android:gravity="center_vertical"
-        android:textSize="18sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/add_recipes_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/categories"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/recepies"
-        android:text="Categories"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/baloo_bhai_2"
+        android:text="Add Recipes"
+
+        android:textColor="#9873FF"
+        app:layout_constraintBottom_toBottomOf="@+id/recepies"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.10" />
+        app:layout_constraintStart_toEndOf="@+id/recepies"
+        app:layout_constraintTop_toTopOf="@+id/recepies" />
+
+    <TextView
+        android:id="@+id/categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fonts"
+        android:text="Categories"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/menu_icon_action2"
+        app:layout_constraintTop_toBottomOf="@+id/recepies" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="@+id/categories"
         app:layout_constraintTop_toBottomOf="@id/categories">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:orientation="horizontal">
+
             <ImageButton
                 android:id="@+id/breakfast_btn"
                 android:layout_width="135dp"
@@ -69,6 +76,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/breakfast" />
+
             <ImageButton
                 android:id="@+id/lunch_btn"
                 android:layout_width="135dp"
@@ -76,6 +84,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/lunch" />
+
             <ImageButton
                 android:id="@+id/snacks_btn"
                 android:layout_width="135dp"
@@ -83,6 +92,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/snacks" />
+
             <ImageButton
                 android:id="@+id/dinner_btn"
                 android:layout_width="135dp"
@@ -95,25 +105,24 @@
 
     </HorizontalScrollView>
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <TextView
+        android:id="@+id/meal_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Breakfast Recipes"
+        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+        android:textSize="24sp"
+        android:fontFamily="@font/fonts"
+        android:textColor="@color/black"/>
+
+    <FrameLayout
+        android:id="@+id/recepies_sec"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
-
-        <FrameLayout
-            android:id="@+id/recepies_sec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
-    </ScrollView>
-
-
+        app:layout_constraintTop_toBottomOf="@+id/meal_time" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

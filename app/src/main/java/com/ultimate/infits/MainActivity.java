@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -161,6 +162,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.Appointment:
                 Navigation.findNavController(MainActivity.this, R.id.FrameContainer).navigate(R.id.open_appointment);
                 //getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer,new Calender()).commit();
+                draw.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.live:
+                startActivity(new Intent(this,LiveSchedule.class));
+                Toast.makeText(getApplicationContext(),"Text",Toast.LENGTH_SHORT).show();
                 draw.closeDrawer(GravityCompat.START);
                 break;
         }

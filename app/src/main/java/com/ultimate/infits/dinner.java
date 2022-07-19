@@ -1,12 +1,18 @@
 package com.ultimate.infits;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +20,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class dinner extends Fragment {
-
+    RecyclerView re;
+    List<List_Food> food_list =new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,7 +65,15 @@ public class dinner extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dinner, container, false);
+        View view= inflater.inflate(R.layout.fragment_dinner, container, false);
+        re = view.findViewById(R.id.breakfast_list);
+        List_Food obj = new List_Food("BreadTruffle","20 min",DataFromDatabase.profile,"1 serving");
+        List_Food obj2 = new List_Food("BreadTruffle","20 min",DataFromDatabase.profile,"1 serving");
+        food_list.add(obj);
+        food_list.add(obj2);
+        BreakfastAdapter da = new BreakfastAdapter(food_list,getContext(), Color.parseColor("#D9E3FF"));
+        re.setAdapter(da);
+        re.setLayoutManager(new LinearLayoutManager(getContext()));
+        return view;
     }
 }

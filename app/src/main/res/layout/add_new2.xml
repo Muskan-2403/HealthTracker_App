@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="300dp"
+    android:layout_height="100dp"
+    android:layout_margin="10dp">
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="300dp"
-        android:layout_height="81dp"
-        android:src="@drawable/add_new2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/remove_item"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/removeitem"
+        android:layout_marginTop="20dp"
+        android:translationZ="1dp"
+        android:layout_marginStart="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:background="@drawable/add_recipies_item"
+        android:layout_marginTop="30dp">
+
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/food_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
-        android:hint="Cholestrol"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="26dp"
+        android:hint="Nutritions"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/fonts"
         android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/food_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="36dp"
-        android:hint="mg"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="46dp"
+        android:hint="units"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/fonts"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+        android:textColorHint="@color/white"/>
 
     <EditText
         android:id="@+id/food_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="196dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="4dp"
-        android:hint="10"
-        android:textColorHint="@color/white"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/add_amount_items"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textColorHint="@color/white" />
+</RelativeLayout>

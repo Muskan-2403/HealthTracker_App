@@ -7,13 +7,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/br_card"
-        android:layout_width="345dp"
+        android:layout_width="330dp"
         android:layout_gravity="center"
         android:layout_height="70dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
-        android:backgroundTint="#F6E7FA"
-        android:layout_margin="20dp">
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#D9E3FF">
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -58,8 +58,9 @@
             android:id="@+id/br_next"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="295dp"
+            android:layout_gravity="end"
             android:layout_marginTop="17dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/imageviewcorner"
             android:src="@drawable/arrow_right"/>
 

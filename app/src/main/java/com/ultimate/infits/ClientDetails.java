@@ -45,12 +45,12 @@ public class ClientDetails extends AppCompatActivity  {
         setContentView(R.layout.activity_client_details);
 
 
-        clientID = getIntent().getStringExtra("clientID");
-        dataFromDatabase.clientuserID = clientID;
+//        clientID = getIntent().getStringExtra("clientID");
+//        dataFromDatabase.clientuserID = clientID;
         startdate = getIntent().getStringExtra("startDate");
         enddate = getIntent().getStringExtra("endDate");
 
-        Log.d("ClientDetails",clientID);
+//        Log.d("ClientDetails",clientID);
         menu=(ImageView)findViewById(R.id.menu_icon_action);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override

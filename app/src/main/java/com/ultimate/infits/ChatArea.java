@@ -50,7 +50,6 @@ import io.socket.emitter.Emitter;
 
 public class ChatArea extends AppCompatActivity {
 
-
     final String TAG = "MessageApp";
 
     public ChatArea(){

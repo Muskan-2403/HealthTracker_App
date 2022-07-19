@@ -19,9 +19,11 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
     Context con;
     //    OnFoodItemClickListener onFoodItemClickListener;
     List<List_Food> obj;
-    public BreakfastAdapter(List<List_Food> obj, Context context) {
+    int color;
+    public BreakfastAdapter(List<List_Food> obj, Context context,int color) {
         this.obj = obj;
         this.con = context;
+        this.color = color;
     }
 
     @NonNull
@@ -38,11 +40,12 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
         holder.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(con,food_details.class);
+                Intent in = new Intent(con,FoodDetails.class);
                 in.putExtra("Food Name",pos.getFoodName());
                 con.startActivity(in);
             }
         });
+        holder.br_card.setCardBackgroundColor(color);
     }
 
     @Override
@@ -54,6 +57,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
         TextView name,time,serving;
         ImageView image;
         ImageButton next;
+        CardView br_card;
         public BreakfastViewHolder(View view) {
             super(view);
             name=view.findViewById(R.id.br_food_name);
@@ -61,6 +65,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
             serving=view.findViewById(R.id.br_serving);
             image=view.findViewById(R.id.br_image);
             next=view.findViewById(R.id.br_next);
+            br_card = view.findViewById(R.id.br_card);
         }
     }
 }

@@ -17,4 +17,5 @@
     <color name="colorPrimaryDark">#56B22C</color>
     <color name="active">#3ED598</color>
     <color name="offline">#FF565E</color>
+    <color name="live_text_box">#66FFFFFF</color>
 </resources>

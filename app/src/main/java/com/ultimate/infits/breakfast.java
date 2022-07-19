@@ -1,5 +1,6 @@
 package com.ultimate.infits;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -73,7 +74,7 @@ public class breakfast extends Fragment {
         List_Food obj2 = new List_Food("BreadTruffle","20 min",DataFromDatabase.profile,"1 serving");
         food_list.add(obj);
         food_list.add(obj2);
-        BreakfastAdapter da = new BreakfastAdapter(food_list,getContext());
+        BreakfastAdapter da = new BreakfastAdapter(food_list,getContext(), Color.parseColor("#F6E7FA"));
         re.setAdapter(da);
         re.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;
