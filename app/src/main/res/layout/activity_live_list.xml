@@ -19,6 +19,7 @@
                 android:background="#13131A"
                 android:textColor="@color/white"
                 android:textSize="28dp"
+                android:paddingStart="10dp"
                 android:fontFamily="@font/fonts"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/streaming_live"
@@ -31,6 +32,7 @@
                 android:text="Upcoming Live"
                 android:textSize="28dp"
                 android:textColor="@color/black"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/fonts"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/upcoming_live"
@@ -43,6 +45,7 @@
                 android:text="Live history"
                 android:textSize="28dp"
                 android:textColor="@color/black"
+                android:layout_marginStart="10dp"
                 android:fontFamily="@font/fonts"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/live_history"

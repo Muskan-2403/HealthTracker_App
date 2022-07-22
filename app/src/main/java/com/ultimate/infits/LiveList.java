@@ -76,7 +76,7 @@ public class LiveList extends AppCompatActivity {
         endStreaming.setAdapter(new EndStreamingLive(getApplicationContext(), endTitle, endDate, endTime, endNote));
         endStreaming.setLayoutManager(new LinearLayoutManager(this));
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-y");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("y-MM-dd");
         SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm:ss");
 
         Date time1 = new Date();
@@ -129,7 +129,7 @@ public class LiveList extends AppCompatActivity {
 
                             Date liveDate = simpleDateFormat.parse(date);
 
-                            if (!date.equals(simpleDateFormat.format(dateToday.getTime())) && !calendarLive.before(calendar.getTime()) ){
+                            if (liveDate.compareTo(todayDate) > 0 && dateToday1.after(calendarLive.getTime())){
                                 System.out.println("Inside UP");
                                 System.out.println(date.equals(simpleDateFormat.format(dateToday.getTime())));
                                 System.out.println();
@@ -139,7 +139,7 @@ public class LiveList extends AppCompatActivity {
                                 upNote.add(note);
                                 upcomingList.setAdapter(new UpcomingListAdapter(getApplicationContext(),upTitle,upDate,upTime,upNote));
                             }
-                            if (liveDate.compareTo(todayDate) <= 0 && dateToday1.after(calendarLive.getTime())){
+                            else if (liveDate.compareTo(todayDate) <= 0 && dateToday1.after(calendarLive.getTime())){
                                 if (status.equals("ended")){
                                     endTitle.add(title);
                                     endDate.add(date);
@@ -175,9 +175,10 @@ public class LiveList extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
-    public void GotoLive(String room){
+    public void GotoLive(String room,String date){
         Intent intent = new Intent(this,LiveAct.class);
         intent.putExtra("room",room);
+        intent.putExtra("date",date);
         startActivity(intent);
     }
     private void askPermissions() {
