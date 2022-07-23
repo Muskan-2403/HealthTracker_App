@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,8 +38,11 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -48,6 +54,8 @@ import io.socket.emitter.Emitter;
 public class LiveAct extends AppCompatActivity {
 
     String username = "";
+
+    String date = "";
 
     WebView webView;
 
@@ -65,15 +73,13 @@ public class LiveAct extends AppCompatActivity {
     ImageButton close;
 
     ArrayList<String> userName = new ArrayList<>();
-
+    ArrayList<Bitmap> chatPics = new ArrayList<>();
     EditText chatBox;
 
     RecyclerView recyclerView;
 
     Socket sock;
     private String room;
-    private boolean user;
-
     {
         try {
             sock = IO.socket("http://192.168.10.91:8000");
@@ -82,7 +88,7 @@ public class LiveAct extends AppCompatActivity {
         }
     }
 
-    private Emitter.Listener onConnect = new Emitter.Listener() {
+    private final Emitter.Listener onConnect = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
             runOnUiThread(new Runnable() {
@@ -90,6 +96,9 @@ public class LiveAct extends AppCompatActivity {
                 public void run() {
                     Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_LONG).show();
                     sock.emit("join-room",room,username);
+//                    sock.on("view-count", view->{
+//                        count.setText(view[0].toString());
+//                    });
                 }
             });
         }
@@ -102,9 +111,13 @@ public class LiveAct extends AppCompatActivity {
             JSONObject res = (JSONObject)args[0];
             String sender = res.getString("name");
             String message = res.getString("message");
+            String photo = res.getString("photo");
             userName.add(sender);
             messagesList.add(message);
-            recyclerView.setAdapter(new LiveMessageAdapter(getApplicationContext(),messagesList,userName));
+            byte[] qrimage = Base64.decode(photo,0);
+            Bitmap sendPhoto = BitmapFactory.decodeByteArray(qrimage,0,qrimage.length);
+            chatPics.add(sendPhoto);
+            recyclerView.setAdapter(new LiveMessageAdapter(getApplicationContext(),messagesList,userName,chatPics));
             recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         }catch (JSONException jsonException){
             Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_LONG).show();
@@ -121,9 +134,9 @@ public class LiveAct extends AppCompatActivity {
 
         close = findViewById(R.id.close);
 
-//        toggleAudioBtn = findViewById(R.id.toggleAudioBtn);
+        toggleAudioBtn = findViewById(R.id.toggleAudioBtn);
 
-//        toggleVideoBtn = findViewById(R.id.toggleVideoBtn);
+        toggleVideoBtn = findViewById(R.id.toggleVideoBtn);
 
         webView = findViewById(R.id.webView);
 
@@ -132,14 +145,14 @@ public class LiveAct extends AppCompatActivity {
         Intent get = getIntent();
 
 //        username = get.getStringExtra("username");
-        username = "Eden";
+        username =DataFromDatabase.dietitianuserID;
         room = get.getStringExtra("room");
-        user = get.getBooleanExtra("user",false);
+        date = get.getStringExtra("date");
+//        user = get.getBooleanExtra("user",false);
         sock.on(Socket.EVENT_CONNECT,onConnect);
         sock.connect();
         sock.emit("new-user",username);
         sock.on("chat-message",onReceived);
-
         sock.on("view-count", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
@@ -158,36 +171,40 @@ public class LiveAct extends AppCompatActivity {
                     Log.d("Azar", o.toString());
                 }
         });
+        toggleAudioBtn.setOnClickListener (v->{
+            isAudio = !isAudio;
+            callJavaScriptFunction(String.format("javascript:toggleAudio(\"%s\")",isAudio));
+            if (isAudio){
+                toggleAudioBtn.setImageResource(R.drawable.mic_on);
+            }
+            else {
+                toggleAudioBtn.setImageResource(R.drawable.mic_off);
+            }
+        });
 
-//        toggleAudioBtn.setOnClickListener (v->{
-//            isAudio = !isAudio;
-//            callJavaScriptFunction(String.format("javascript:toggleAudio(\"%s\")",isAudio));
-//            if (isAudio){
-////                toggleAudioBtn.setImageResource(R.drawable.ic_baseline_mic_24);
-//            }
-//            else {
-////                toggleAudioBtn.setImageResource(R.drawable.ic_baseline_mic_off_24);
-//            }
-//        });
-//
-//        toggleVideoBtn.setOnClickListener(v-> {
-//            isVideo = !isVideo;
-//            callJavaScriptFunction(String.format("javascript:toggleVideo(\"%s\")",isVideo));
-//            if (isVideo){
-//                toggleVideoBtn.setImageResource(R.drawable.ic_baseline_videocam_24);
-//            }
-//            else{
-////                toggleVideoBtn.setImageResource(R.drawable.ic_baseline_videocam_off_24);
-//            }
-//        });
+        toggleVideoBtn.setOnClickListener(v-> {
+            isVideo = !isVideo;
+            callJavaScriptFunction(String.format("javascript:toggleVideo(\"%s\")",isVideo));
+            if (isVideo){
+                toggleVideoBtn.setImageResource(R.drawable.video_on);
+            }
+            else{
+                toggleVideoBtn.setImageResource(R.drawable.video_off);
+            }
+        });
         setUpWebView();
         sendText.setOnClickListener(v->{
             String message = chatBox.getText().toString();
             if (!message.equals("")){
                 userName.add(DataFromDatabase.dietitianuserID);
-                sock.emit("send-live-chat",room,message,username);
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                Bitmap dir = BitmapFactory.decodeResource(getResources(), R.drawable.achivements);
+                dir.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
+                String base64String = Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
+                sock.emit("send-live-chat",room,message,username,base64String);
                 messagesList.add(message);
-                recyclerView.setAdapter(new LiveMessageAdapter(getApplicationContext(),messagesList,userName));
+                chatPics.add(DataFromDatabase.profile);
+                recyclerView.setAdapter(new LiveMessageAdapter(getApplicationContext(),messagesList,userName,chatPics));
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 chatBox.setText("");
             }
@@ -197,15 +214,18 @@ public class LiveAct extends AppCompatActivity {
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(LiveAct.this);
 //                dialog.requestWindowFeature(Window.);
+                dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.end_live_dialog);
                 Button yes = dialog.findViewById(R.id.end_live);
                 Button no = dialog.findViewById(R.id.cancel_live);
                 dialog.show();
+
                 System.out.println("Hi");
-            yes.setOnClickListener(view->{
+                yes.setOnClickListener(view->{
                 String url = "http://192.168.10.91/infits/livesave.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+                    System.out.println(response);
                     if (response.equals("success")){
                         Toast.makeText(getApplicationContext(), "save success", Toast.LENGTH_SHORT).show();
                     }
@@ -217,24 +237,23 @@ public class LiveAct extends AppCompatActivity {
                     @Nullable
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                         Map<String,String> data = new HashMap<>();
-//                        data.put("userID",dietitian_acc_userID);
+                        data.put("dietitianuserID",DataFromDatabase.dietitianuserID);
+                        data.put("dateandtime",date);
+                        data.put("title", room);
+                        data.put("viewer","9");
                         return data;
                     }
                 };
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 requestQueue.add(stringRequest);
                 finish();
+                sock.disconnect();
             });
             no.setOnClickListener(view->{
                 dialog.dismiss();
             });
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//                ViewGroup viewGroup = findViewById(android.R.id.content);
-//                View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.end_live_dialog, viewGroup, false);
-//                builder.setView(dialogView);
-//                AlertDialog alertDialog = builder.create();
-//                alertDialog.show();
             }
         });
     }

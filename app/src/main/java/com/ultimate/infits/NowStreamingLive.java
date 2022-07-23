@@ -40,11 +40,11 @@ public class NowStreamingLive extends RecyclerView.Adapter<NowStreamingLive.NowS
     public void onBindViewHolder(@NonNull NowStreamingLiveViewHolder holder, int position) {
                     holder.nowTitle.setText(nowTitle.get(position));
                     holder.nowNotes.setText(nowNote.get(position));
-        holder.joinLive.setOnClickListener(new View.OnClickListener() {
+                    holder.joinLive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("Hi");
-                LiveList.act.GotoLive(nowTitle.get(position));
+                LiveList.act.GotoLive(nowTitle.get(position),nowDate.get(position)+" "+nowTime.get(position));
             }
         });
     }

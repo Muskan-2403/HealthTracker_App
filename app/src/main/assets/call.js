@@ -51,16 +51,18 @@ function startCall(otherUserId) {
 function toggleVideo(b) {
    if (b == "true") {
        localStream.getVideoTracks()[0].enabled = true
+       video.srcObject = localStream
    } else {
        localStream.getVideoTracks()[0].enabled = false
+       video.srcObject = null
    }
 }
 
 function toggleAudio(b) {
    if (b == "true") {
-       localStream.getAudioTracks()[0].enabled = true
+       videoStream.getAudioTracks()[0].enabled = true
    } else {
-       localStream.getAudioTracks()[0].enabled = false
+       videoStream.getAudioTracks()[0].enabled = false
    }
 }
 

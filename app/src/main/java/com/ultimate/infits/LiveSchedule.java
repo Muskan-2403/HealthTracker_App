@@ -43,7 +43,7 @@ public class LiveSchedule extends AppCompatActivity{
     int specific_d;
     RequestQueue queue;
     DataFromDatabase dataFromDatabase;
-    String url = "http://192.168.10.91/infits/weeksetter.php";
+    String url = "http://192.168.10.91/infits/livesetter.php";
     Button cancel_live;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -297,6 +297,7 @@ public class LiveSchedule extends AppCompatActivity{
                          if (!response.equals("failure")){
                              Log.d("weeksetter","success");
                              Log.d("response weeksetter",response);
+                             Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
                              startActivity(new Intent(getApplicationContext(),LiveList.class));
                          }
                          else {
