@@ -51,7 +51,7 @@
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutUsername"
+            android:id="@+id/title"
             android:layout_width="303dp"
             android:layout_height="wrap_content"
             android:hint="Enter Item Title"
@@ -127,6 +127,7 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/foodPic"
             android:layout_width="245dp"
             android:layout_height="185dp"
             android:background="@drawable/camerabackground"
@@ -156,7 +157,7 @@
                 android:layout_width="300dp"
                 android:layout_height="81dp"
                 android:src="@drawable/add_new"
-                android:layout_gravity="center"/>
+                android:layout_marginLeft="10dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -179,7 +180,7 @@
             android:layout_width="300dp"
             android:layout_height="81dp"
             android:src="@drawable/add_new"
-            android:layout_gravity="center"/>
+            android:layout_marginLeft="10dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -202,7 +203,7 @@
             android:layout_width="300dp"
             android:layout_height="81dp"
             android:src="@drawable/add_new"
-            android:layout_gravity="center"/>
+            android:layout_marginLeft="10dp"/>
         <ImageView
             android:id="@+id/nextStep"
             android:layout_width="120dp"
