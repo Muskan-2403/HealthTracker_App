@@ -48,6 +48,13 @@ public class DataFromDatabase {
             "zDMAzDMF\\/KP09VUmxBAiI3AAAAAElFTkSuQmCC";
     public static String dietitianuserID="Eden",password,name,qualification,email,mobile,location,age,gender;
 
+    public static String categoryChoosen ;
+    public static String timeChoosen ;
+    public static String foodImage ;
+    public static String nutritions ;
+    public static String ingredients ;
+    public static String utensil ;
+
 //    private void getDetails(){
 //
 //        if (flag==true){

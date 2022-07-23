@@ -1,18 +1,35 @@
 package com.ultimate.infits;
 
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +40,8 @@ public class breakfast extends Fragment {
 
     RecyclerView re;
     List<List_Food> food_list =new ArrayList<>();
+    String url = "http://192.168.244.1/foodCategory.php";
+    RequestQueue queue;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,13 +89,62 @@ public class breakfast extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_breakfast, container, false);
         re = view.findViewById(R.id.breakfast_list);
-        List_Food obj = new List_Food("BreadTruffle","20 min",DataFromDatabase.profile,"1 serving");
-        List_Food obj2 = new List_Food("BreadTruffle","20 min",DataFromDatabase.profile,"1 serving");
-        food_list.add(obj);
-        food_list.add(obj2);
-        BreakfastAdapter da = new BreakfastAdapter(food_list,getContext(), Color.parseColor("#F6E7FA"));
-        re.setAdapter(da);
-        re.setLayoutManager(new LinearLayoutManager(getContext()));
+        re.setAdapter(null);
+//        List_Food obj = new List_Food("BreadTruffle","20 min",DataFromDatabase.profile,"1 serving");
+//        List_Food obj2 = new List_Food("BreadTruffle","20 min",DataFromDatabase.profile,"1 serving");
+//        food_list.add(obj);
+//        food_list.add(obj2);
+//        BreakfastAdapter da = new BreakfastAdapter(food_list,getContext(), Color.parseColor("#F6E7FA"));
+//        re.setAdapter(da);
+//        re.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        queue = Volley.newRequestQueue(getContext());
+        Log.d("breakfast","before");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,url, response -> {
+            if (!response.equals("failure")){
+                Log.d("breakfast","success");
+                Log.d("response",response);
+
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    for (int i=0;i< jsonArray.length();i++){
+                        JSONObject object = jsonArray.getJSONObject(i);
+
+                        List_Food obj = new List_Food(object.getString("name"), object.getString("time"), DataFromDatabase.profile, object.getString("serving"));
+                        food_list.add(obj);
+                    }
+                    BreakfastAdapter da = new BreakfastAdapter(food_list,getContext(), Color.parseColor("#F6E7FA"));
+                    re.setAdapter(da);
+                    re.setLayoutManager(new LinearLayoutManager(getContext()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Toast.makeText(getContext(), "breakfast success", Toast.LENGTH_SHORT).show();
+            }
+            else if (response.equals("failure")){
+                food_list.clear();
+                BreakfastAdapter da = new BreakfastAdapter(food_list,getContext(), Color.parseColor("#F6E7FA"));
+                re.setAdapter(da);
+                re.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
+        },error -> {
+            Toast.makeText(getContext(),error.toString().trim(),Toast.LENGTH_SHORT).show();
+        })
+        {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+                data.put("category", "breakfast");
+                return data;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+        Log.d("breakfast","at end");
+
         return view;
     }
 }

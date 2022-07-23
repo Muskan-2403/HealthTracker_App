@@ -50,6 +50,7 @@
             android:text="Bread Truffle"
             android:textSize="26dp"
             android:textStyle="bold"
+            android:id="@+id/Food_Name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
                 <RelativeLayout
@@ -68,8 +69,8 @@
                             android:id="@+id/br_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="54dp"
+                            android:layout_marginTop="10dp"
                             android:text="20 min"
                             android:textSize="10dp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -79,10 +80,10 @@
                             android:id="@+id/br_serving"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:textSize="10dp"
                             android:layout_marginLeft="200dp"
+                            android:layout_marginTop="10dp"
                             android:text="1 serving"
+                            android:textSize="10dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -95,6 +96,18 @@
                             app:layout_constraintTop_toTopOf="parent"
                             android:src="@drawable/serving"/>
                 </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/Link"
+            android:text="Link Link Link"
+            android:textColor="@color/blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
 
         <TextView
@@ -122,6 +135,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="166dp"
                     android:layout_height="51dp"
+                    android:id="@+id/nutritions1"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="38dp"
@@ -144,6 +158,7 @@
                                     android:layout_width="33dp"
                                     android:layout_height="20dp"
                                     android:layout_gravity="center"
+                                    android:id="@+id/nuttvv1"
                                     android:gravity="center"
                                     android:text="250"
                                     android:textSize="10dp"
@@ -154,6 +169,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="60dp"
+                            android:id="@+id/nuttv11"
                             android:layout_marginTop="5dp"
                             android:text="Calories"
                             android:textStyle="bold" />
@@ -162,6 +178,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="60dp"
+                            android:id="@+id/nuttv12"
                             android:layout_marginTop="25dp"
                             android:text="kCal" />
 
@@ -169,6 +186,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/nutritions2"
                     android:layout_width="166dp"
                     android:layout_height="51dp"
                     android:layout_alignParentStart="true"
@@ -193,6 +211,7 @@
                                     android:layout_height="20dp"
                                     android:layout_gravity="center"
                                     android:gravity="center"
+                                    android:id="@+id/nuttvv2"
                                     android:text="1"
                                     android:textSize="10dp"
                                     android:textStyle="bold" />
@@ -203,6 +222,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="60dp"
                             android:layout_marginTop="5dp"
+                            android:id="@+id/nuttv21"
                             android:text="Cholestrol"
                             android:textStyle="bold" />
 
@@ -211,10 +231,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="60dp"
                             android:layout_marginTop="25dp"
+                            android:id="@+id/nuttv22"
                             android:text="mg" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/nutritions3"
                     android:layout_width="166dp"
                     android:layout_height="51dp"
                     android:layout_alignParentStart="true"
@@ -236,6 +258,7 @@
                             app:cardCornerRadius="50dp">
 
                                 <TextView
+                                    android:id="@+id/nuttvv3"
                                     android:layout_width="33dp"
                                     android:layout_height="20dp"
                                     android:layout_gravity="center"
@@ -251,6 +274,7 @@
                             android:layout_marginLeft="60dp"
                             android:layout_marginTop="5dp"
                             android:text="Proteins"
+                            android:id="@+id/nuttv31"
                             android:textStyle="bold" />
 
                         <TextView
@@ -258,7 +282,58 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="60dp"
                             android:layout_marginTop="25dp"
+                            android:id="@+id/nuttv32"
                             android:text="g" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/nutritions4"
+                    android:layout_width="166dp"
+                    android:layout_height="51dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="221dp"
+                    android:layout_marginTop="65dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="#E8F0FF"
+                    android:padding="5dp"
+                    android:paddingBottom="5dp"
+                    app:cardCornerRadius="30dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="39dp"
+                            android:layout_height="39dp"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginTop="6dp"
+                            app:cardCornerRadius="50dp">
+
+                                <TextView
+                                    android:layout_width="33dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="1"
+                                    android:id="@+id/nuttvv4"
+                                    android:textSize="10dp"
+                                    android:textStyle="bold" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Cholestrol"
+                            android:id="@+id/nuttv41"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="25dp"
+                            android:id="@+id/nuttv42"
+                            android:text="mg" />
                 </androidx.cardview.widget.CardView>
         </RelativeLayout>
 

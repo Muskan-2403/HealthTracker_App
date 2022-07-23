@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
-    android:layout_height="100dp"
+    android:layout_width="400dp"
+    android:layout_height="81dp"
     android:layout_margin="10dp">
 
     <ImageView
@@ -16,10 +16,10 @@
         android:layout_marginStart="10dp"/>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:background="@drawable/add_recipies_item"
-        android:layout_marginTop="30dp">
+        android:layout_width="260dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/add_recipies_item">
 
     </RelativeLayout>
 
@@ -49,13 +49,16 @@
 
     <EditText
         android:id="@+id/food_amount"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="58dp"
+        android:layout_height="44dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="159dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="183dp"
         android:background="@drawable/add_amount_items"
+        android:gravity="center"
+        android:text="1 mg"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 </RelativeLayout>
