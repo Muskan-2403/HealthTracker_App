@@ -40,6 +40,7 @@ public class breakfast extends Fragment {
 
     RecyclerView re;
     List<List_Food> food_list =new ArrayList<>();
+
     String url = "http://192.168.244.1/foodCategory.php";
     RequestQueue queue;
 

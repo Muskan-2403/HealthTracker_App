@@ -41,6 +41,7 @@ public class FoodDetails extends AppCompatActivity {
     TextView nuttv12,nuttv22,nuttv32,nuttv42;
     List<String> ingrd = new ArrayList<>();
     List<String> instr = new ArrayList<>();
+
     String url = "http://192.168.244.1/foodDetails.php";
     RequestQueue queue;
     @Override

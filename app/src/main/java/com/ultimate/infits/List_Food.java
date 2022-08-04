@@ -11,6 +11,7 @@ public class List_Food {
     public List_Food(String foodName,String foodTime,Bitmap foodImage,String foodServing) {
         this.foodName = foodName;
         this.foodImage= foodImage;
+
         this.foodServing = foodServing;
         this.foodTime = foodTime;
     }

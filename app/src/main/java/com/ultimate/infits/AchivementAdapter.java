@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AchivementAdapter extends RecyclerView.Adapter<AchivementAdapter.AchivementViewHolder> {
 
     Context con;
-
     AchivementAdapter(Context con){
         this.con = con;
     }

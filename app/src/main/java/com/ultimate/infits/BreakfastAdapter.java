@@ -23,6 +23,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.Brea
     public BreakfastAdapter(List<List_Food> obj, Context context,int color) {
         this.obj = obj;
         this.con = context;
+
         this.color = color;
     }
 

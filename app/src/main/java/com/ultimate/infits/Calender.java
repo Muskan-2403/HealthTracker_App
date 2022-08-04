@@ -50,6 +50,7 @@ public class Calender extends Fragment {
     RecyclerView event_list;
     String date_to_display_trackers;
     RequestQueue queue;
+
     String url = "http://192.168.9.1/CalenderAppointment.php";
     Button addevent;
 //    String[] appt_type={"Video Consultation","Diet Plan","Appointment"};

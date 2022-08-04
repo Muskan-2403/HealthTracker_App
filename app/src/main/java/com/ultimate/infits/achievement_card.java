@@ -39,6 +39,8 @@ public class achievement_card extends Fragment {
     String url = "http://192.168.9.1/achievement.php";
     TextView progress1, progress2,progress3,progress4,progress5;
     ProgressBar bar1,bar2,bar3,bar4,bar5;
+
+
     int client_count=0;
     DataFromDatabase dataFromDatabase;
     RequestQueue queue;
